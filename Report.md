@@ -14,7 +14,7 @@ Our group will communicate with each other through the Group Chat we have create
 ## 3. _due 10/25_ Project topic
 - Choose 3+ parallel sorting algorithms, implement in MPI and CUDA.  Examine and compare performance in detail (computation time, communication time, how much data is sent) on a variety of inputs: sorted, random, reverse, sorted with 1% perturbed, etc.  Strong scaling, weak scaling, GPU performance
 
-## 2. _due 10/25_ Brief project description (what algorithms will you be comparing and on what architectures)
+## 4. _due 10/25_ Brief project description (what algorithms will you be comparing and on what architectures)
 The project will include the following algorithms and architectures:
 
 - Merge Sort (MPI + CUDA)
