@@ -27,20 +27,49 @@ The project will include the following algorithms and architectures:
 For each algorithm and architecture, the code will test the performance of the sorting algorithm, the performance of the communication used, strong and weak scaling, etc. Algorithms implemented with MPI on each core will follow the master/worker organization, and will look something like:
 
 ```
-establish_master_process()
-schedule_worker_processes()
-worker_process_sort()
-combine_worker_results()
-analyze_results()
+function MPI_Sort():
+    establish_master_process()
+    schedule_worker_processes()
+
+    worker_process_sort()
+
+    combine_worker_results()
+    analyze_results()
+
+function establish_master_process():
+    // Setup the master process and distribute initial data among worker processes.
+
+function schedule_worker_processes():
+    // Schedule worker processes to handle parts of the data.
+
+function worker_process_sort():
+    // Each worker will sort its part of the data using the specific sorting algorithm (Merge, Radix, Quick, etc.)
+
+function combine_worker_results():
+    // Gather and combine sorted results from all workers.
+
+function analyze_results():
+    // Analyze the performance and other metrics.
+
 ```
 
 Algorithms implemented with MPI and CUDA will follow the SIMD organization, and will look something like:
 
 ```
-create_array()
-for i in array:
-    algorithm_step<<<blocks, threads>>>
-analyze_results()
+function MPI_CUDA_Sort():
+    create_array()
+
+    for i in array:
+        sort_step<<<blocks, threads>>>(array[i])
+
+    analyze_results()
+
+function create_array():
+    // Initialize and populate the array to be sorted.
+
+function sort_step<<<blocks, threads>>>(data):
+    // Implement the specific sorting algorithm (Merge, Radix, Quick, etc.) in CUDA kernel.
+
 ```
 
 Each algorithm will have different inputs and be tested at different scales to see how it performs.
