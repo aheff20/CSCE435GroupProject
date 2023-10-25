@@ -17,58 +17,78 @@ Our group will communicate with each other through the Group Chat we have create
 ## 4. _due 10/25_ Brief project description (what algorithms will you be comparing and on what architectures)
 The project will include the following algorithms and architectures:
 
-- Merge Sort (MPI + CUDA)
+- Merge Sort (CUDA)
 - Merge Sort (MPI on each core)
-- Radix Sort (MPI + CUDA)
+- Radix Sort (CUDA)
 - Radix Sort (MPI on each core)
-- Quick Sort (MPI + CUDA)
+- Quick Sort (CUDA)
 - Quick Sort (MPI on each core)
 
 For each algorithm and architecture, the code will test the performance of the sorting algorithm, the performance of the communication used, strong and weak scaling, etc. Algorithms implemented with MPI on each core will follow the master/worker organization, and will look something like:
 
 ```
-function MPI_Sort():
-    establish_master_process()
-    schedule_worker_processes()
+main {
+    MPI_Init();
+    MPI_Comm_rank(MPI_COMM_WORLD, &taskid)
+    MPI_Comm_size(MPI_COMM_WORKLD, &numtasks)
 
-    worker_process_sort()
+    if(taskid == MASTER) {
+        // split array up and assign sections to workers
+        for destination in numworkers:
+            MPI_Send(/* part to sort */);
 
-    combine_worker_results()
-    analyze_results()
+        // receive results from workers
+        for result in numworkers:
+            MPI_Recv(...)
 
-function establish_master_process():
-    // Setup the master process and distribute initial data among worker processes.
+    }
 
-function schedule_worker_processes():
-    // Schedule worker processes to handle parts of the data.
+    if(taskid != MASTER) {
+        // receive part to sort from master
+        MPI_Recv(...)
 
-function worker_process_sort():
-    // Each worker will sort its part of the data using the specific sorting algorithm (Merge, Radix, Quick, etc.)
+        // sort array following whatever algorithm is being used (i.e merge sort, radix sort, etc.)
+        sort_array()
 
-function combine_worker_results():
-    // Gather and combine sorted results from all workers.
+        // send sorted array back to master
+        MPI_Send(...)
 
-function analyze_results():
-    // Analyze the performance and other metrics.
+    }
 
+    // Reduce to calculate time of worker processes for analytics
+    MPI_Reduce(...)
+
+}
 ```
 
 Algorithms implemented with MPI and CUDA will follow the SIMD organization, and will look something like:
 
 ```
-function MPI_CUDA_Sort():
-    create_array()
+__global__ void function current_algorithm_step {
+    // this function computes a step for whatever sorting algorithm is currently being used (i.e merge sort, radix sort, etc.)
+    // it is a cuda function to run on the GPU
+}
 
-    for i in array:
-        sort_step<<<blocks, threads>>>(array[i])
+function sort_array() {
+    cudaEvent_t start, stop;
 
+    cudaMemcpy(dev_values, values, size, hostToDevice)
+
+    for i in major_step:
+        for j in minor_step:
+            current_algorithm_step<<<blocks, threads>>>
+
+    synchronize()
+
+    cudaMemcpy(values, dev_values, size, deviceToHost)
+
+}
+
+main {
+    fill_array()
+    sort_array()
     analyze_results()
-
-function create_array():
-    // Initialize and populate the array to be sorted.
-
-function sort_step<<<blocks, threads>>>(data):
-    // Implement the specific sorting algorithm (Merge, Radix, Quick, etc.) in CUDA kernel.
+}
 
 ```
 
