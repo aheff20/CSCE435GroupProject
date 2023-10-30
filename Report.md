@@ -19,8 +19,8 @@ The project will include the following algorithms and architectures:
 
 - Merge Sort (CUDA)
 - Merge Sort (MPI on each core)
-- Radix Sort (CUDA)
-- Radix Sort (MPI on each core)
+- Bubble Sort (CUDA)
+- Bubble Sort (MPI on each core)
 - Quick Sort (CUDA)
 - Quick Sort (MPI on each core)
 
