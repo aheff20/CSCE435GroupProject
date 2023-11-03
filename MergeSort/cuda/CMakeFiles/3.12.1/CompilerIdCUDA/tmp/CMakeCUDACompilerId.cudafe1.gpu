@@ -1,0 +1,5 @@
+typedef char __nv_bool;
+# 216 "/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+#include "common_functions.h"
