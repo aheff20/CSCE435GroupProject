@@ -24,37 +24,33 @@ const char* comm_large = "comm_large";
 
 
 
-__global__ void merge_sort_step(float *dev_values, int size, int width) {
-    unsigned int i = threadIdx.x + blockDim.x * blockIdx.x;
-    unsigned int start = 2 * i * width;
+__global__ void merge_sort_step(float *dev_values, unsigned int start, unsigned int middle, unsigned int end) {
+    unsigned int i = start;
+    unsigned int j = middle;
+    float temp[NUM_VALS];
     
-    if (start < size) {
-        unsigned int middle = min(start + width, size);
-        unsigned int end = min(start + 2 * width, size);
-        float *temp = new float[end - start];
-        
-        unsigned int i = start, j = middle, k = 0;
-        while (i < middle && j < end) {
-            if (dev_values[i] < dev_values[j]) {
-                temp[k++] = dev_values[i++];
-            } else {
-                temp[k++] = dev_values[j++];
-            }
+    unsigned int k = 0;
+    while (i < middle && j < end) {
+        if (dev_values[i] < dev_values[j]) {
+            temp[k++] = dev_values[i++];
+        } else {
+            temp[k++] = dev_values[j++];
         }
-        while (i < middle) temp[k++] = dev_values[i++];
-        while (j < end) temp[k++] = dev_values[j++];
+    }
+    while (i < middle) temp[k++] = dev_values[i++];
+    while (j < end) temp[k++] = dev_values[j++];
 
-        for (i = start, k = 0; i < end; i++, k++) {
-            dev_values[i] = temp[k];
-        }
-        delete[] temp;
+    for (i = start, k = 0; i < end; i++, k++) {
+        dev_values[i] = temp[k];
     }
 }
 
 
-void merge_sort(float *values, int size, float *merge_sort_step_time, float *cudaMemcpy_host_to_device_time, float *cudaMemcpy_device_to_host_time, int *kernel_calls) {
+void merge_sort(float *values, float *merge_sort_step_time, float *cudaMemcpy_host_to_device_time, float *cudaMemcpy_device_to_host_time, int *kernel_calls) {
     float *dev_values;
-    size_t bytes = size * sizeof(float);
+    size_t bytes = NUM_VALS * sizeof(float);
+    cudaMalloc((void**)&dev_values, bytes);
+
 
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
@@ -69,25 +65,27 @@ void merge_sort(float *values, int size, float *merge_sort_step_time, float *cud
     cudaEventElapsedTime(&milliseconds, start, stop);
     *cudaMemcpy_host_to_device_time += milliseconds;
 
-    int threads = THREADS;
-    int blocks = (size + threads - 1) / threads;
+    dim3 blocks(BLOCKS,1);    /* Number of blocks   */
+    dim3 threads(THREADS,1);  /* Number of threads  */
+
 
     // Assume major_step and minor_step are defined elsewhere
     CALI_MARK_BEGIN("comp");
     CALI_MARK_BEGIN("comp_large");
-    for (int i = 0; i < major_step; ++i) {
-        for (int j = 0; j < minor_step; ++j) {
-            cudaEventRecord(start);
-            merge_sort_step<<<blocks, threads>>>(dev_values, size, width);
-            cudaDeviceSynchronize();
-            cudaEventRecord(stop);
-            cudaEventSynchronize(stop);
+    int width;
+    for (width = 1; width < NUM_VALS; width = 2 * width) {
+    for (int i = 0; i < NUM_VALS; i = i + 2 * width) {
+                cudaEventRecord(start);
+                merge_sort_step<<<blocks, threads>>>(dev_values, i, min(i+width, NUM_VALS), min(i+2*width, NUM_VALS));
+                cudaDeviceSynchronize();
+                cudaEventRecord(stop);
+                cudaEventSynchronize(stop);
 
-            cudaEventElapsedTime(&milliseconds, start, stop);
-            *merge_sort_step_time += milliseconds;
-            (*kernel_calls)++;
+                cudaEventElapsedTime(&milliseconds, start, stop);
+                *merge_sort_step_time += milliseconds;
+                (*kernel_calls)++;
+            }
         }
-    }
     CALI_MARK_END("comp_large");
     CALI_MARK_END("comp");
 
@@ -136,11 +134,7 @@ int main(int argc, char *argv[]) {
     array_fill_random(values, NUM_VALS);
     CALI_MARK_END("data_init");
 
-    // Declare variables for timing information
-    float merge_sort_step_time = 0.0f;
-    float cudaMemcpy_host_to_device_time = 0.0f;
-    float cudaMemcpy_device_to_host_time = 0.0f;
-    int kernel_calls = 0;
+    
 
     // Perform merge sort
     CALI_MARK_BEGIN("comp");
@@ -175,7 +169,7 @@ int main(int argc, char *argv[]) {
     // Finalize and clean up
     adiak::fini();
     // Deallocate memory
-    delete[] values;
+    free(values);
 
     return 0;
 }
