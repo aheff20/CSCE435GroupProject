@@ -11,11 +11,11 @@ include_directories(${CMAKE_SOURCE_DIR}/../Utils)
 
 set(SOURCE_FILES
     merge_cuda.cu
-    ${CMAKE_SOURCE_DIR}/../Utils/helper_functions.cpp 
+    ${CMAKE_SOURCE_DIR}/../../Utils/helper_functions.cpp 
 )
 
+add_executable(merge_cuda ${SOURCE_FILES})
 
-add_executable(merge_cuda merge_cuda.cu)
 
 message(STATUS "MPI includes : ${MPI_INCLUDE_PATH}")
 message(STATUS "CUDA includes : ${CUDA_INCLUDE_DIRS}")

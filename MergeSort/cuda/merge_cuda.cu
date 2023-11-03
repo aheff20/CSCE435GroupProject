@@ -23,13 +23,10 @@ const char* comm_large = "comm_large";
 
 
 
-
-__global__ void merge_sort_step(float *dev_values, unsigned int start, unsigned int middle, unsigned int end) {
+__global__ void merge_sort_step(float *dev_values, float *temp, unsigned int start, unsigned int middle, unsigned int end) {
     unsigned int i = start;
     unsigned int j = middle;
-    float temp[NUM_VALS];
-    
-    unsigned int k = 0;
+    unsigned int k = start;
     while (i < middle && j < end) {
         if (dev_values[i] < dev_values[j]) {
             temp[k++] = dev_values[i++];
@@ -40,16 +37,17 @@ __global__ void merge_sort_step(float *dev_values, unsigned int start, unsigned 
     while (i < middle) temp[k++] = dev_values[i++];
     while (j < end) temp[k++] = dev_values[j++];
 
-    for (i = start, k = 0; i < end; i++, k++) {
-        dev_values[i] = temp[k];
+    for (i = start; i < end; i++) {
+        dev_values[i] = temp[i];
     }
 }
 
 
 void merge_sort(float *values, float *merge_sort_step_time, float *cudaMemcpy_host_to_device_time, float *cudaMemcpy_device_to_host_time, int *kernel_calls) {
-    float *dev_values;
+    float *dev_values, *temp;
     size_t bytes = NUM_VALS * sizeof(float);
     cudaMalloc((void**)&dev_values, bytes);
+    cudaMalloc((void**)&temp, bytes);
 
 
     cudaEvent_t start, stop;
@@ -76,7 +74,7 @@ void merge_sort(float *values, float *merge_sort_step_time, float *cudaMemcpy_ho
     for (width = 1; width < NUM_VALS; width = 2 * width) {
     for (int i = 0; i < NUM_VALS; i = i + 2 * width) {
                 cudaEventRecord(start);
-                merge_sort_step<<<blocks, threads>>>(dev_values, i, min(i+width, NUM_VALS), min(i+2*width, NUM_VALS));
+                merge_sort_step<<<blocks, threads>>>(dev_values, temp, i, min(i+width, NUM_VALS), min(i+2*width, NUM_VALS));
                 cudaDeviceSynchronize();
                 cudaEventRecord(stop);
                 cudaEventSynchronize(stop);
@@ -86,6 +84,7 @@ void merge_sort(float *values, float *merge_sort_step_time, float *cudaMemcpy_ho
                 (*kernel_calls)++;
             }
         }
+
     CALI_MARK_END("comp_large");
     CALI_MARK_END("comp");
 
@@ -98,6 +97,7 @@ void merge_sort(float *values, float *merge_sort_step_time, float *cudaMemcpy_ho
     *cudaMemcpy_device_to_host_time += milliseconds;
 
     cudaFree(dev_values);
+    cudaFree(temp);
     cudaEventDestroy(start);
     cudaEventDestroy(stop);
 }
@@ -142,6 +142,17 @@ int main(int argc, char *argv[]) {
     merge_sort(values, &merge_sort_step_time, &cudaMemcpy_host_to_device_time, &cudaMemcpy_device_to_host_time, &kernel_calls);
     CALI_MARK_END("comp_large");
     CALI_MARK_END("comp");
+
+
+
+    bool correct = check_sorted(values,NUM_VALS);
+    if (correct){
+        printf("Array was sorted correctly!");
+    }
+    else{
+         printf("Array was incorrectly sorted!");
+    }
+    
 
   
 

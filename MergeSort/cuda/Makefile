@@ -123,6 +123,33 @@ merge_cuda/fast:
 	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/build
 .PHONY : merge_cuda/fast
 
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
+
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o
+
+# target to build an object file
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
+
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i
+
+# target to preprocess a source file
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
+
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s
+
+# target to generate assembly for a file
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
+
 merge_cuda.o: merge_cuda.cu.o
 
 .PHONY : merge_cuda.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... merge_cuda"
 	@echo "... edit_cache"
+	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o"
+	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i"
+	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s"
 	@echo "... merge_cuda.o"
 	@echo "... merge_cuda.i"
 	@echo "... merge_cuda.s"
