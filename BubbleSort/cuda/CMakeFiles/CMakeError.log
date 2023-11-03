@@ -1,0 +1,51 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_5f348/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_5f348.dir/build.make CMakeFiles/cmTC_5f348.dir/build
+gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5f348.dir/CheckSymbolExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_5f348.dir/CheckSymbolExists.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_5f348
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f348.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_5f348.dir/CheckSymbolExists.cxx.o  -o cmTC_5f348 
+CMakeFiles/cmTC_5f348.dir/CheckSymbolExists.cxx.o:CheckSymbolExists.cxx:function main: error: undefined reference to 'pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_5f348] Error 1
+gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_5f348/fast] Error 2
+
+File /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_442ea/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_442ea.dir/build.make CMakeFiles/cmTC_442ea.dir/build
+gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_442ea.dir/CheckFunctionExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_442ea.dir/CheckFunctionExists.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_442ea
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_442ea.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_442ea.dir/CheckFunctionExists.cxx.o  -o cmTC_442ea -lpthreads 
+/sw/eb/sw/binutils/2.35/bin/ld.gold: error: cannot find -lpthreads
+CMakeFiles/cmTC_442ea.dir/CheckFunctionExists.cxx.o:CheckFunctionExists.cxx:function main: error: undefined reference to 'pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_442ea] Error 1
+gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_442ea/fast] Error 2
+
+
