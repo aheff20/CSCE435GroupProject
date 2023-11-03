@@ -10,6 +10,7 @@ set(CMAKE_CUDA_COMPILER_ID "NVIDIA")
 
 # The include file search paths:
 set(CMAKE_CUDA_TARGET_INCLUDE_PATH
+  "../Utils"
   "/scratch/group/csce435-f23/Adiak/adiak/include"
   "/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include"
   "/scratch/group/csce435-f23/Caliper/caliper/include"

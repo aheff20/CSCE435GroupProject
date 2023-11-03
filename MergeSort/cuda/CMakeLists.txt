@@ -6,6 +6,15 @@ find_package(MPI REQUIRED)
 find_package(caliper REQUIRED)
 find_package(adiak REQUIRED)
 
+
+include_directories(${CMAKE_SOURCE_DIR}/../Utils)
+
+set(SOURCE_FILES
+    merge_cuda.cu
+    ${CMAKE_SOURCE_DIR}/../Utils/helper_functions.cpp 
+)
+
+
 add_executable(merge_cuda merge_cuda.cu)
 
 message(STATUS "MPI includes : ${MPI_INCLUDE_PATH}")

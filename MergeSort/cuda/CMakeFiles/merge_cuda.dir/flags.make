@@ -6,5 +6,5 @@ CUDA_FLAGS =   -std=c++11
 
 CUDA_DEFINES = 
 
-CUDA_INCLUDES = -I/scratch/group/csce435-f23/Adiak/adiak/include -isystem=/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include -isystem=/scratch/group/csce435-f23/Caliper/caliper/include 
+CUDA_INCLUDES = -I/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/../Utils -I/scratch/group/csce435-f23/Adiak/adiak/include -isystem=/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include -isystem=/scratch/group/csce435-f23/Caliper/caliper/include 
 

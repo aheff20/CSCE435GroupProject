@@ -5,6 +5,7 @@
 #include <caliper/cali.h>
 #include <caliper/cali-manager.h>
 #include <adiak.hpp>
+#include "../../Utils/helper_functions.h"
 
 int THREADS;
 int BLOCKS;
@@ -21,16 +22,7 @@ const char* comm_large = "comm_large";
 
 
 
-float random_float() {
-    return (float)rand() / (float)RAND_MAX;
-}
 
-void array_fill(float *arr, int length) {
-    srand(time(NULL));
-    for (int i = 0; i < length; ++i) {
-        arr[i] = random_float();
-    }
-}
 
 __global__ void merge_sort_step(float *dev_values, int size, int width) {
     unsigned int i = threadIdx.x + blockDim.x * blockIdx.x;
@@ -59,40 +51,6 @@ __global__ void merge_sort_step(float *dev_values, int size, int width) {
     }
 }
 
-void sort_array(int *values, int size) {
-    int *dev_values;
-    size_t bytes = size * sizeof(int);
-
-    cudaEvent_t start, stop;
-    cudaEventCreate(&start);
-    cudaEventCreate(&stop);
-
-    cudaMalloc(&dev_values, bytes);
-    cudaMemcpy(dev_values, values, bytes, cudaMemcpyHostToDevice);
-
-    int threads = 1024;
-    int blocks = (size + threads - 1) / threads;
-    CALI_MARK_BEGIN("comp");
-    CALI_MARK_BEGIN("comp_large");
-    cudaEventRecord(start);
-    for (int width = 1; width < size; width *= 2) {
-        merge<<<blocks, threads>>>(dev_values, size, width);
-        cudaDeviceSynchronize();
-    }
-
-    cudaEventRecord(stop);
-    CALI_MARK_END("comp_large");
-    CALI_MARK_END("comp");
-
-    cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
-
-    cudaFree(dev_values);
-
-    float milliseconds = 0;
-    cudaEventElapsedTime(&milliseconds, start, stop);
-    printf("Time elapsed: %f ms\n", milliseconds);
-}
-
 
 void merge_sort(float *values, int size, float *merge_sort_step_time, float *cudaMemcpy_host_to_device_time, float *cudaMemcpy_device_to_host_time, int *kernel_calls) {
     float *dev_values;
@@ -115,6 +73,8 @@ void merge_sort(float *values, int size, float *merge_sort_step_time, float *cud
     int blocks = (size + threads - 1) / threads;
 
     // Assume major_step and minor_step are defined elsewhere
+    CALI_MARK_BEGIN("comp");
+    CALI_MARK_BEGIN("comp_large");
     for (int i = 0; i < major_step; ++i) {
         for (int j = 0; j < minor_step; ++j) {
             cudaEventRecord(start);
@@ -128,6 +88,8 @@ void merge_sort(float *values, int size, float *merge_sort_step_time, float *cud
             (*kernel_calls)++;
         }
     }
+    CALI_MARK_END("comp_large");
+    CALI_MARK_END("comp");
 
     cudaEventRecord(start);
     cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
@@ -167,15 +129,11 @@ int main(int argc, char *argv[]) {
     int kernel_calls = 0;
 
     float *values = (float*)malloc(NUM_VALS * sizeof(float));
-    array_fill(values, NUM_VALS);
-    
     CALI_CXX_MARK_FUNCTION;
-
-
 
     // Initialize data
     CALI_MARK_BEGIN("data_init");
-    array_fill(values, num_vals);
+    array_fill_random(values, NUM_VALS);
     CALI_MARK_END("data_init");
 
     // Declare variables for timing information
