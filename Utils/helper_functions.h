@@ -6,6 +6,8 @@
 
 void array_fill_random(float *arr, int length);
 
+void array_fill_random_no_seed(float *arr, int length);
+
 void array_fill_ascending(float *arr, int length);
 
 
