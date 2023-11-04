@@ -147,37 +147,186 @@ Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" p
 
 The CXX compiler identification is GNU, found in "/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/3.12.1/CompilerIdCXX/a.out"
 
+The system is: Linux - 3.10.0-1160.83.1.el7.x86_64 - x86_64
+Compiling the CUDA compiler identification source file "CMakeCUDACompilerId.cu" succeeded.
+Compiler: /sw/eb/sw/CUDA/9.2.88/bin/nvcc 
+Build flags: 
+Id flags:  -v;--keep;--keep-dir;tmp
+
+The output was:
+0
+#$ _SPACE_= 
+#$ _CUDART_=cudart
+#$ _HERE_=/sw/eb/sw/CUDA/9.2.88/bin
+#$ _THERE_=/sw/eb/sw/CUDA/9.2.88/bin
+#$ _TARGET_SIZE_=
+#$ _TARGET_DIR_=
+#$ _TARGET_SIZE_=64
+#$ TOP=/sw/eb/sw/CUDA/9.2.88/bin/..
+#$ NVVMIR_LIBRARY_DIR=/sw/eb/sw/CUDA/9.2.88/bin/../nvvm/libdevice
+#$ LD_LIBRARY_PATH=/sw/eb/sw/CUDA/9.2.88/bin/../lib:/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib:/sw/eb/sw/GCCcore/7.3.0/lib64:/sw/eb/sw/GCCcore/7.3.0/lib:/sw/eb/sw/binutils/2.35/lib:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib:/sw/eb/sw/iccifort/2020.4.304/debugger_2020/libipt/intel64/lib:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/lib:/sw/eb/sw/CUDA/9.2.88/nvvm/lib64:/sw/eb/sw/CUDA/9.2.88/extras/CUPTI/lib64:/sw/eb/sw/CUDA/9.2.88/lib64
+#$ PATH=/sw/eb/sw/CUDA/9.2.88/bin/../nvvm/bin:/sw/eb/sw/CUDA/9.2.88/bin:/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin:/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/bin:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/bin:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/bin:/sw/eb/sw/GCCcore/7.3.0/bin:/sw/eb/sw/binutils/2.35/bin:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/bin:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/bin:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/bin/intel64:/sw/eb/sw/CUDA/9.2.88:/sw/eb/sw/CUDA/9.2.88/nvvm/bin:/sw/eb/sw/CUDA/9.2.88/bin:/home/jfquismorio/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/bin/remote-cli:/usr/lib64/qt-3.3/bin:/sw/local/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lpp/mmfs/bin:/home/jfquismorio/.local/bin:/home/jfquismorio/bin
+#$ INCLUDES="-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"  
+#$ LIBRARIES=  "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64"
+#$ CUDAFE_FLAGS=
+#$ PTXAS_FLAGS=
+#$ rm tmp/a_dlink.reg.c
+#$ gcc -std=c++14 -D__CUDA_ARCH__=300 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" > "tmp/CMakeCUDACompilerId.cpp1.ii" 
+#$ cicc --c++14 --gnu_version=70300 --allow_managed   -arch compute_30 -m64 -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused -nvvmir-library "/sw/eb/sw/CUDA/9.2.88/bin/../nvvm/libdevice/libdevice.10.bc" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --orig_src_file_name "CMakeCUDACompilerId.cu" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"
+#$ ptxas -arch=sm_30 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_30.cubin" 
+#$ fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 "--image=profile=sm_30,file=tmp/CMakeCUDACompilerId.sm_30.cubin" "--image=profile=compute_30,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" --cuda
+#$ gcc -std=c++14 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" > "tmp/CMakeCUDACompilerId.cpp4.ii" 
+#$ cudafe++ --c++14 --gnu_version=70300 --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" 
+#$ gcc -std=c++14 -D__CUDA_ARCH__=300 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -m64 -o "tmp/CMakeCUDACompilerId.o" "tmp/CMakeCUDACompilerId.cudafe1.cpp" 
+#$ nvlink --arch=sm_30 --register-link-binaries="tmp/a_dlink.reg.c"  -m64   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -o "tmp/a_dlink.sm_30.cubin"
+#$ fatbinary --create="tmp/a_dlink.fatbin" -64 -link "--image=profile=sm_30,file=tmp/a_dlink.sm_30.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" 
+#$ gcc -std=c++14 -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION=  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -m64 -o "tmp/a_dlink.o" "/sw/eb/sw/CUDA/9.2.88/bin/crt/link.stub" 
+#$ g++ -m64 -o "a.out" -std=c++14 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group 
+
+
+Compilation of the CUDA compiler identification source "CMakeCUDACompilerId.cu" produced "a.out"
+
+The CUDA compiler identification is NVIDIA, found in "/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/3.12.1/CompilerIdCUDA/a.out"
+
+Parsed CUDA nvcc implicit link information from above output:
+  found 'PATH=' string: [/sw/eb/sw/CUDA/9.2.88/bin/../nvvm/bin:/sw/eb/sw/CUDA/9.2.88/bin:/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin:/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/bin:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/bin:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/bin:/sw/eb/sw/GCCcore/7.3.0/bin:/sw/eb/sw/binutils/2.35/bin:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/bin:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/bin:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/bin/intel64:/sw/eb/sw/CUDA/9.2.88:/sw/eb/sw/CUDA/9.2.88/nvvm/bin:/sw/eb/sw/CUDA/9.2.88/bin:/home/jfquismorio/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/bin/remote-cli:/usr/lib64/qt-3.3/bin:/sw/local/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lpp/mmfs/bin:/home/jfquismorio/.local/bin:/home/jfquismorio/bin]
+  found 'LIBRARIES=' string: ["-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64"]
+  considering line: [#$ rm tmp/a_dlink.reg.c]
+  considering line: [gcc -std=c++14 -D__CUDA_ARCH__=300 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" > "tmp/CMakeCUDACompilerId.cpp1.ii" ]
+  considering line: [cicc --c++14 --gnu_version=70300 --allow_managed   -arch compute_30 -m64 -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused -nvvmir-library "/sw/eb/sw/CUDA/9.2.88/bin/../nvvm/libdevice/libdevice.10.bc" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --orig_src_file_name "CMakeCUDACompilerId.cu" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"]
+  considering line: [ptxas -arch=sm_30 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_30.cubin" ]
+  considering line: [fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 "--image=profile=sm_30,file=tmp/CMakeCUDACompilerId.sm_30.cubin" "--image=profile=compute_30,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" --cuda]
+  considering line: [gcc -std=c++14 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" > "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [cudafe++ --c++14 --gnu_version=70300 --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [gcc -std=c++14 -D__CUDA_ARCH__=300 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -m64 -o "tmp/CMakeCUDACompilerId.o" "tmp/CMakeCUDACompilerId.cudafe1.cpp" ]
+  considering line: [nvlink --arch=sm_30 --register-link-binaries="tmp/a_dlink.reg.c"  -m64   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -o "tmp/a_dlink.sm_30.cubin"]
+    ignoring nvlink line
+  considering line: [fatbinary --create="tmp/a_dlink.fatbin" -64 -link "--image=profile=sm_30,file=tmp/a_dlink.sm_30.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" ]
+  considering line: [gcc -std=c++14 -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION=  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -m64 -o "tmp/a_dlink.o" "/sw/eb/sw/CUDA/9.2.88/bin/crt/link.stub" ]
+  considering line: [g++ -m64 -o "a.out" -std=c++14 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group ]
+    extracted link line: [g++ -m64 -o "a.out" -std=c++14 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group ]
+  considering line: []
+  extracted link launcher name: [g++]
+  found link launcher absolute path: [/sw/eb/sw/GCCcore/7.3.0/bin/g++]
+
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  link line: [cuda-fake-ld g++ -m64 -o "a.out" -std=c++14 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group ]
+    arg [cuda-fake-ld] ==> ignore
+    arg [g++] ==> ignore
+    arg [-m64] ==> ignore
+    arg [-o] ==> ignore
+    arg [a.out] ==> ignore
+    arg [-std=c++14] ==> ignore
+    arg [-Wl,--start-group] ==> ignore
+    arg [tmp/a_dlink.o] ==> ignore
+    arg [tmp/CMakeCUDACompilerId.o] ==> ignore
+    arg [-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs] ==> dir [/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs]
+    arg [-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64] ==> dir [/sw/eb/sw/CUDA/9.2.88/bin/..//lib64]
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [-Wl,--end-group] ==> ignore
+  collapse library dir [/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs] ==> [/sw/eb/sw/CUDA/9.2.88/lib64/stubs]
+  collapse library dir [/sw/eb/sw/CUDA/9.2.88/bin/..//lib64] ==> [/sw/eb/sw/CUDA/9.2.88/lib64]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl]
+  implicit dirs: [/sw/eb/sw/CUDA/9.2.88/lib64/stubs;/sw/eb/sw/CUDA/9.2.88/lib64]
+  implicit fwks: []
+
+
+Parsed CUDA nvcc include information from above output:
+  found 'PATH=' string: [/sw/eb/sw/CUDA/9.2.88/bin/../nvvm/bin:/sw/eb/sw/CUDA/9.2.88/bin:/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin:/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/bin:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/bin:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/bin:/sw/eb/sw/GCCcore/7.3.0/bin:/sw/eb/sw/binutils/2.35/bin:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/bin:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/bin:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/bin/intel64:/sw/eb/sw/CUDA/9.2.88:/sw/eb/sw/CUDA/9.2.88/nvvm/bin:/sw/eb/sw/CUDA/9.2.88/bin:/home/jfquismorio/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/bin/remote-cli:/usr/lib64/qt-3.3/bin:/sw/local/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lpp/mmfs/bin:/home/jfquismorio/.local/bin:/home/jfquismorio/bin]
+  found 'LIBRARIES=' string: ["-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64"]
+  considering line: [#$ rm tmp/a_dlink.reg.c]
+  considering line: [gcc -std=c++14 -D__CUDA_ARCH__=300 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" > "tmp/CMakeCUDACompilerId.cpp1.ii" ]
+  considering line: [cicc --c++14 --gnu_version=70300 --allow_managed   -arch compute_30 -m64 -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused -nvvmir-library "/sw/eb/sw/CUDA/9.2.88/bin/../nvvm/libdevice/libdevice.10.bc" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --orig_src_file_name "CMakeCUDACompilerId.cu" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"]
+  considering line: [ptxas -arch=sm_30 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_30.cubin" ]
+  considering line: [fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 "--image=profile=sm_30,file=tmp/CMakeCUDACompilerId.sm_30.cubin" "--image=profile=compute_30,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" --cuda]
+  considering line: [gcc -std=c++14 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" > "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [cudafe++ --c++14 --gnu_version=70300 --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [gcc -std=c++14 -D__CUDA_ARCH__=300 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -m64 -o "tmp/CMakeCUDACompilerId.o" "tmp/CMakeCUDACompilerId.cudafe1.cpp" ]
+  considering line: [nvlink --arch=sm_30 --register-link-binaries="tmp/a_dlink.reg.c"  -m64   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -o "tmp/a_dlink.sm_30.cubin"]
+    ignoring nvlink line
+  considering line: [fatbinary --create="tmp/a_dlink.fatbin" -64 -link "--image=profile=sm_30,file=tmp/a_dlink.sm_30.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" ]
+  considering line: [gcc -std=c++14 -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION=  "-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"   -D"__CUDACC_VER_BUILD__=88" -D"__CUDACC_VER_MINOR__=2" -D"__CUDACC_VER_MAJOR__=9" -m64 -o "tmp/a_dlink.o" "/sw/eb/sw/CUDA/9.2.88/bin/crt/link.stub" ]
+  considering line: [g++ -m64 -o "a.out" -std=c++14 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group ]
+    extracted link line: [g++ -m64 -o "a.out" -std=c++14 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group ]
+  considering line: []
+  extracted link launcher name: [g++]
+  found link launcher absolute path: [/sw/eb/sw/GCCcore/7.3.0/bin/g++]
+  found 'INCLUDES=' string: ["-I/sw/eb/sw/CUDA/9.2.88/bin/..//include"  ]
+
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  link line: [cuda-fake-ld g++ -m64 -o "a.out" -std=c++14 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs" "-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64" -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group ]
+    arg [cuda-fake-ld] ==> ignore
+    arg [g++] ==> ignore
+    arg [-m64] ==> ignore
+    arg [-o] ==> ignore
+    arg [a.out] ==> ignore
+    arg [-std=c++14] ==> ignore
+    arg [-Wl,--start-group] ==> ignore
+    arg [tmp/a_dlink.o] ==> ignore
+    arg [tmp/CMakeCUDACompilerId.o] ==> ignore
+    arg [-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs] ==> dir [/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs]
+    arg [-L/sw/eb/sw/CUDA/9.2.88/bin/..//lib64] ==> dir [/sw/eb/sw/CUDA/9.2.88/bin/..//lib64]
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [-Wl,--end-group] ==> ignore
+  collapse library dir [/sw/eb/sw/CUDA/9.2.88/bin/..//lib64/stubs] ==> [/sw/eb/sw/CUDA/9.2.88/lib64/stubs]
+  collapse library dir [/sw/eb/sw/CUDA/9.2.88/bin/..//lib64] ==> [/sw/eb/sw/CUDA/9.2.88/lib64]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl]
+  implicit dirs: [/sw/eb/sw/CUDA/9.2.88/lib64/stubs;/sw/eb/sw/CUDA/9.2.88/lib64]
+  implicit fwks: []
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /sw/eb/sw/GCCcore/7.3.0/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/3.12.1/CompilerIdCXX/a.out"
+
 Determining if the CUDA compiler works passed with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_adb37/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_adb37.dir/build.make CMakeFiles/cmTC_adb37.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_ade64/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_ade64.dir/build.make CMakeFiles/cmTC_ade64.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CUDA object CMakeFiles/cmTC_adb37.dir/main.cu.o
-/sw/eb/sw/CUDA/9.2.88/bin/nvcc     -x cu -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp/main.cu -o CMakeFiles/cmTC_adb37.dir/main.cu.o
-Linking CUDA device code CMakeFiles/cmTC_adb37.dir/cmake_device_link.o
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_adb37.dir/dlink.txt --verbose=1
-/sw/eb/sw/CUDA/9.2.88/bin/nvcc    -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink CMakeFiles/cmTC_adb37.dir/main.cu.o -o CMakeFiles/cmTC_adb37.dir/cmake_device_link.o 
-Linking CUDA executable cmTC_adb37
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_adb37.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/g++   CMakeFiles/cmTC_adb37.dir/main.cu.o CMakeFiles/cmTC_adb37.dir/cmake_device_link.o -o cmTC_adb37  -L"/sw/eb/sw/CUDA/9.2.88/lib64/stubs" -L"/sw/eb/sw/CUDA/9.2.88/lib64" -lcudadevrt -lcudart_static -lrt -lpthread -ldl
+Building CUDA object CMakeFiles/cmTC_ade64.dir/main.cu.o
+/sw/eb/sw/CUDA/9.2.88/bin/nvcc     -x cu -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp/main.cu -o CMakeFiles/cmTC_ade64.dir/main.cu.o
+Linking CUDA device code CMakeFiles/cmTC_ade64.dir/cmake_device_link.o
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ade64.dir/dlink.txt --verbose=1
+/sw/eb/sw/CUDA/9.2.88/bin/nvcc    -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink CMakeFiles/cmTC_ade64.dir/main.cu.o -o CMakeFiles/cmTC_ade64.dir/cmake_device_link.o 
+Linking CUDA executable cmTC_ade64
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ade64.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/g++   CMakeFiles/cmTC_ade64.dir/main.cu.o CMakeFiles/cmTC_ade64.dir/cmake_device_link.o -o cmTC_ade64  -L"/sw/eb/sw/CUDA/9.2.88/lib64/stubs" -L"/sw/eb/sw/CUDA/9.2.88/lib64" -lcudadevrt -lcudart_static -lrt -lpthread -ldl
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
 Detecting CUDA compiler ABI info compiled with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_78b43/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_78b43.dir/build.make CMakeFiles/cmTC_78b43.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_2c33b/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_2c33b.dir/build.make CMakeFiles/cmTC_2c33b.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CUDA object CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o
-/sw/eb/sw/CUDA/9.2.88/bin/nvcc     -x cu -c /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/share/cmake-3.12/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o
-Linking CUDA device code CMakeFiles/cmTC_78b43.dir/cmake_device_link.o
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78b43.dir/dlink.txt --verbose=1
-/sw/eb/sw/CUDA/9.2.88/bin/nvcc    -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o -o CMakeFiles/cmTC_78b43.dir/cmake_device_link.o 
-Linking CUDA executable cmTC_78b43
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78b43.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/g++  -v CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o CMakeFiles/cmTC_78b43.dir/cmake_device_link.o -o cmTC_78b43  -L"/sw/eb/sw/CUDA/9.2.88/lib64/stubs" -L"/sw/eb/sw/CUDA/9.2.88/lib64" -lcudadevrt -lcudart_static -lrt -lpthread -ldl
+Building CUDA object CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o
+/sw/eb/sw/CUDA/9.2.88/bin/nvcc     -x cu -c /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/share/cmake-3.12/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o
+Linking CUDA device code CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2c33b.dir/dlink.txt --verbose=1
+/sw/eb/sw/CUDA/9.2.88/bin/nvcc    -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o -o CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o 
+Linking CUDA executable cmTC_2c33b
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2c33b.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/g++  -v CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o -o cmTC_2c33b  -L"/sw/eb/sw/CUDA/9.2.88/lib64/stubs" -L"/sw/eb/sw/CUDA/9.2.88/lib64" -lcudadevrt -lcudart_static -lrt -lpthread -ldl
 Using built-in specs.
 COLLECT_GCC=/sw/eb/sw/GCCcore/7.3.0/bin/g++
 COLLECT_LTO_WRAPPER=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper
@@ -187,9 +336,9 @@ Thread model: posix
 gcc version 7.3.0 (GCC) 
 COMPILER_PATH=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/
 LIBRARY_PATH=/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/binutils/2.35/lib/../lib64/:/sw/eb/sw/CUDA/9.2.88/lib64/../lib64/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/:/sw/eb/sw/binutils/2.35/lib/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8/:/sw/eb/sw/CUDA/9.2.88/lib64/stubs/:/sw/eb/sw/CUDA/9.2.88/lib64/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_78b43' '-L/sw/eb/sw/CUDA/9.2.88/lib64/stubs' '-L/sw/eb/sw/CUDA/9.2.88/lib64' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2 -plugin /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccEJyqAF.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_78b43 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35/lib/../lib64 -L/sw/eb/sw/CUDA/9.2.88/lib64/../lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib -L/sw/eb/sw/binutils/2.35/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../.. CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o CMakeFiles/cmTC_78b43.dir/cmake_device_link.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtend.o /lib/../lib64/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_78b43' '-L/sw/eb/sw/CUDA/9.2.88/lib64/stubs' '-L/sw/eb/sw/CUDA/9.2.88/lib64' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_2c33b' '-L/sw/eb/sw/CUDA/9.2.88/lib64/stubs' '-L/sw/eb/sw/CUDA/9.2.88/lib64' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2 -plugin /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cccPh40S.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_2c33b /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35/lib/../lib64 -L/sw/eb/sw/CUDA/9.2.88/lib64/../lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib -L/sw/eb/sw/binutils/2.35/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../.. CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_2c33b' '-L/sw/eb/sw/CUDA/9.2.88/lib64/stubs' '-L/sw/eb/sw/CUDA/9.2.88/lib64' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
@@ -197,17 +346,17 @@ Parsed CUDA implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_78b43/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_78b43.dir/build.make CMakeFiles/cmTC_78b43.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_2c33b/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_2c33b.dir/build.make CMakeFiles/cmTC_2c33b.dir/build]
   ignore line: [gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp']
-  ignore line: [Building CUDA object CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o]
-  ignore line: [/sw/eb/sw/CUDA/9.2.88/bin/nvcc     -x cu -c /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/share/cmake-3.12/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o]
-  ignore line: [Linking CUDA device code CMakeFiles/cmTC_78b43.dir/cmake_device_link.o]
-  ignore line: [/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78b43.dir/dlink.txt --verbose=1]
-  ignore line: [/sw/eb/sw/CUDA/9.2.88/bin/nvcc    -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o -o CMakeFiles/cmTC_78b43.dir/cmake_device_link.o ]
-  ignore line: [Linking CUDA executable cmTC_78b43]
-  ignore line: [/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78b43.dir/link.txt --verbose=1]
-  ignore line: [/sw/eb/sw/GCCcore/7.3.0/bin/g++  -v CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o CMakeFiles/cmTC_78b43.dir/cmake_device_link.o -o cmTC_78b43  -L"/sw/eb/sw/CUDA/9.2.88/lib64/stubs" -L"/sw/eb/sw/CUDA/9.2.88/lib64" -lcudadevrt -lcudart_static -lrt -lpthread -ldl]
+  ignore line: [Building CUDA object CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o]
+  ignore line: [/sw/eb/sw/CUDA/9.2.88/bin/nvcc     -x cu -c /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/share/cmake-3.12/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o]
+  ignore line: [Linking CUDA device code CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o]
+  ignore line: [/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2c33b.dir/dlink.txt --verbose=1]
+  ignore line: [/sw/eb/sw/CUDA/9.2.88/bin/nvcc    -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o -o CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o ]
+  ignore line: [Linking CUDA executable cmTC_2c33b]
+  ignore line: [/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2c33b.dir/link.txt --verbose=1]
+  ignore line: [/sw/eb/sw/GCCcore/7.3.0/bin/g++  -v CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o -o cmTC_2c33b  -L"/sw/eb/sw/CUDA/9.2.88/lib64/stubs" -L"/sw/eb/sw/CUDA/9.2.88/lib64" -lcudadevrt -lcudart_static -lrt -lpthread -ldl]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/sw/eb/sw/GCCcore/7.3.0/bin/g++]
   ignore line: [COLLECT_LTO_WRAPPER=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper]
@@ -217,13 +366,13 @@ Parsed CUDA implicit link information from above output:
   ignore line: [gcc version 7.3.0 (GCC) ]
   ignore line: [COMPILER_PATH=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/]
   ignore line: [LIBRARY_PATH=/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/binutils/2.35/lib/../lib64/:/sw/eb/sw/CUDA/9.2.88/lib64/../lib64/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/:/sw/eb/sw/binutils/2.35/lib/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8/:/sw/eb/sw/CUDA/9.2.88/lib64/stubs/:/sw/eb/sw/CUDA/9.2.88/lib64/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_78b43' '-L/sw/eb/sw/CUDA/9.2.88/lib64/stubs' '-L/sw/eb/sw/CUDA/9.2.88/lib64' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2 -plugin /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccEJyqAF.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_78b43 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35/lib/../lib64 -L/sw/eb/sw/CUDA/9.2.88/lib64/../lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib -L/sw/eb/sw/binutils/2.35/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../.. CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o CMakeFiles/cmTC_78b43.dir/cmake_device_link.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtend.o /lib/../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_2c33b' '-L/sw/eb/sw/CUDA/9.2.88/lib64/stubs' '-L/sw/eb/sw/CUDA/9.2.88/lib64' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2 -plugin /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cccPh40S.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_2c33b /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35/lib/../lib64 -L/sw/eb/sw/CUDA/9.2.88/lib64/../lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib -L/sw/eb/sw/binutils/2.35/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../.. CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtend.o /lib/../lib64/crtn.o]
     arg [/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccEJyqAF.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cccPh40S.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -235,7 +384,7 @@ Parsed CUDA implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_78b43] ==> ignore
+    arg [cmTC_2c33b] ==> ignore
     arg [/lib/../lib64/crt1.o] ==> ignore
     arg [/lib/../lib64/crti.o] ==> ignore
     arg [/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o] ==> ignore
@@ -265,8 +414,8 @@ Parsed CUDA implicit link information from above output:
     arg [-L/sw/eb/sw/CUDA/9.2.88/lib64/stubs] ==> dir [/sw/eb/sw/CUDA/9.2.88/lib64/stubs]
     arg [-L/sw/eb/sw/CUDA/9.2.88/lib64] ==> dir [/sw/eb/sw/CUDA/9.2.88/lib64]
     arg [-L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../..] ==> dir [/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../..]
-    arg [CMakeFiles/cmTC_78b43.dir/CMakeCUDACompilerABI.cu.o] ==> ignore
-    arg [CMakeFiles/cmTC_78b43.dir/cmake_device_link.o] ==> ignore
+    arg [CMakeFiles/cmTC_2c33b.dir/CMakeCUDACompilerABI.cu.o] ==> ignore
+    arg [CMakeFiles/cmTC_2c33b.dir/cmake_device_link.o] ==> ignore
     arg [-lcudadevrt] ==> lib [cudadevrt]
     arg [-lcudart_static] ==> lib [cudart_static]
     arg [-lrt] ==> lib [rt]
@@ -315,28 +464,28 @@ Parsed CUDA implicit link information from above output:
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_d2747/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_d2747.dir/build.make CMakeFiles/cmTC_d2747.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_abc00/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_abc00.dir/build.make CMakeFiles/cmTC_abc00.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_d2747.dir/testCXXCompiler.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_d2747.dir/testCXXCompiler.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_d2747
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2747.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_d2747.dir/testCXXCompiler.cxx.o  -o cmTC_d2747 
+Building CXX object CMakeFiles/cmTC_abc00.dir/testCXXCompiler.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_abc00.dir/testCXXCompiler.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_abc00
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_abc00.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_abc00.dir/testCXXCompiler.cxx.o  -o cmTC_abc00 
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_37237/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_37237.dir/build.make CMakeFiles/cmTC_37237.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_f7b39/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_f7b39.dir/build.make CMakeFiles/cmTC_f7b39.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o -c /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_37237
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_37237.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++      -v CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_37237 
+Building CXX object CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o -c /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_f7b39
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f7b39.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++      -v CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f7b39 
 Using built-in specs.
 COLLECT_GCC=/sw/eb/sw/GCCcore/7.3.0/bin/c++
 COLLECT_LTO_WRAPPER=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper
@@ -346,9 +495,9 @@ Thread model: posix
 gcc version 7.3.0 (GCC) 
 COMPILER_PATH=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/
 LIBRARY_PATH=/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/binutils/2.35/lib/../lib64/:/sw/eb/sw/CUDA/9.2.88/lib64/../lib64/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/:/sw/eb/sw/binutils/2.35/lib/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8/:/sw/eb/sw/CUDA/9.2.88/lib64/stubs/:/sw/eb/sw/CUDA/9.2.88/lib64/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_37237' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2 -plugin /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc875A5y.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_37237 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35/lib/../lib64 -L/sw/eb/sw/CUDA/9.2.88/lib64/../lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib -L/sw/eb/sw/binutils/2.35/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../.. CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtend.o /lib/../lib64/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_37237' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f7b39' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2 -plugin /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cci05Pcx.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f7b39 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35/lib/../lib64 -L/sw/eb/sw/CUDA/9.2.88/lib64/../lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib -L/sw/eb/sw/binutils/2.35/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../.. CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f7b39' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
@@ -356,14 +505,14 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_37237/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_37237.dir/build.make CMakeFiles/cmTC_37237.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_f7b39/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_f7b39.dir/build.make CMakeFiles/cmTC_f7b39.dir/build]
   ignore line: [gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o -c /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_37237]
-  ignore line: [/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_37237.dir/link.txt --verbose=1]
-  ignore line: [/sw/eb/sw/GCCcore/7.3.0/bin/c++      -v CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_37237 ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o -c /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_f7b39]
+  ignore line: [/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f7b39.dir/link.txt --verbose=1]
+  ignore line: [/sw/eb/sw/GCCcore/7.3.0/bin/c++      -v CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f7b39 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/sw/eb/sw/GCCcore/7.3.0/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper]
@@ -373,13 +522,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 7.3.0 (GCC) ]
   ignore line: [COMPILER_PATH=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/]
   ignore line: [LIBRARY_PATH=/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64/:/sw/eb/sw/binutils/2.35/lib/../lib64/:/sw/eb/sw/CUDA/9.2.88/lib64/../lib64/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/:/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/:/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/:/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/:/sw/eb/sw/binutils/2.35/lib/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8/:/sw/eb/sw/CUDA/9.2.88/lib64/stubs/:/sw/eb/sw/CUDA/9.2.88/lib64/:/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_37237' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2 -plugin /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc875A5y.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_37237 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35/lib/../lib64 -L/sw/eb/sw/CUDA/9.2.88/lib64/../lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib -L/sw/eb/sw/binutils/2.35/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../.. CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtend.o /lib/../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f7b39' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2 -plugin /sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cci05Pcx.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f7b39 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35/lib/../lib64 -L/sw/eb/sw/CUDA/9.2.88/lib64/../lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/cURL/7.60.0-GCCcore-7.3.0/lib -L/sw/eb/sw/bzip2/1.0.6-GCCcore-7.3.0/lib -L/sw/eb/sw/ncurses/6.1-GCCcore-7.3.0/lib -L/sw/eb/sw/zlib/1.2.11-GCCcore-7.3.0/lib -L/sw/eb/sw/binutils/2.35/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/CUDA/9.2.88/lib64/stubs -L/sw/eb/sw/CUDA/9.2.88/lib64 -L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../.. CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtend.o /lib/../lib64/crtn.o]
     arg [/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/sw/eb/sw/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc875A5y.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cci05Pcx.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -391,7 +540,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_37237] ==> ignore
+    arg [cmTC_f7b39] ==> ignore
     arg [/lib/../lib64/crt1.o] ==> ignore
     arg [/lib/../lib64/crti.o] ==> ignore
     arg [/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/crtbegin.o] ==> ignore
@@ -419,7 +568,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/sw/eb/sw/CUDA/9.2.88/lib64/stubs] ==> dir [/sw/eb/sw/CUDA/9.2.88/lib64/stubs]
     arg [-L/sw/eb/sw/CUDA/9.2.88/lib64] ==> dir [/sw/eb/sw/CUDA/9.2.88/lib64]
     arg [-L/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../..] ==> dir [/sw/eb/sw/GCCcore/7.3.0/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../..]
-    arg [CMakeFiles/cmTC_37237.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_f7b39.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -463,14 +612,14 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_44e79/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_44e79.dir/build.make CMakeFiles/cmTC_44e79.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_4c23c/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_4c23c.dir/build.make CMakeFiles/cmTC_4c23c.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_44e79.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -std=c++1z -o CMakeFiles/cmTC_44e79.dir/feature_tests.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_44e79
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_44e79.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_44e79.dir/feature_tests.cxx.o  -o cmTC_44e79 
+Building CXX object CMakeFiles/cmTC_4c23c.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -std=c++1z -o CMakeFiles/cmTC_4c23c.dir/feature_tests.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_4c23c
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4c23c.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_4c23c.dir/feature_tests.cxx.o  -o cmTC_4c23c 
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
@@ -536,14 +685,14 @@ gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cu
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_ad6cb/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_ad6cb.dir/build.make CMakeFiles/cmTC_ad6cb.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_b9515/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_b9515.dir/build.make CMakeFiles/cmTC_b9515.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ad6cb.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -std=c++14 -o CMakeFiles/cmTC_ad6cb.dir/feature_tests.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_ad6cb
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ad6cb.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_ad6cb.dir/feature_tests.cxx.o  -o cmTC_ad6cb 
+Building CXX object CMakeFiles/cmTC_b9515.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -std=c++14 -o CMakeFiles/cmTC_b9515.dir/feature_tests.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_b9515
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9515.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_b9515.dir/feature_tests.cxx.o  -o cmTC_b9515 
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
@@ -609,14 +758,14 @@ gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cu
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_0b568/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_0b568.dir/build.make CMakeFiles/cmTC_0b568.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_572f8/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_572f8.dir/build.make CMakeFiles/cmTC_572f8.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_0b568.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -std=c++11 -o CMakeFiles/cmTC_0b568.dir/feature_tests.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_0b568
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b568.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_0b568.dir/feature_tests.cxx.o  -o cmTC_0b568 
+Building CXX object CMakeFiles/cmTC_572f8.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -std=c++11 -o CMakeFiles/cmTC_572f8.dir/feature_tests.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_572f8
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_572f8.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_572f8.dir/feature_tests.cxx.o  -o cmTC_572f8 
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
@@ -682,14 +831,14 @@ gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cu
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_dd33e/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_dd33e.dir/build.make CMakeFiles/cmTC_dd33e.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_7fbfb/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_7fbfb.dir/build.make CMakeFiles/cmTC_7fbfb.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_dd33e.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -std=c++98 -o CMakeFiles/cmTC_dd33e.dir/feature_tests.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_dd33e
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dd33e.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_dd33e.dir/feature_tests.cxx.o  -o cmTC_dd33e 
+Building CXX object CMakeFiles/cmTC_7fbfb.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -std=c++98 -o CMakeFiles/cmTC_7fbfb.dir/feature_tests.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_7fbfb
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7fbfb.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_7fbfb.dir/feature_tests.cxx.o  -o cmTC_7fbfb 
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
@@ -753,28 +902,28 @@ gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cu
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_32530/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_32530.dir/build.make CMakeFiles/cmTC_32530.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_32a77/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_32a77.dir/build.make CMakeFiles/cmTC_32a77.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_32530.dir/CheckIncludeFile.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_32530.dir/CheckIncludeFile.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
-Linking CXX executable cmTC_32530
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32530.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_32530.dir/CheckIncludeFile.cxx.o  -o cmTC_32530 
+Building CXX object CMakeFiles/cmTC_32a77.dir/CheckIncludeFile.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_32a77.dir/CheckIncludeFile.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTC_32a77
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32a77.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_32a77.dir/CheckIncludeFile.cxx.o  -o cmTC_32a77 
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
 Change Dir: /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_23dee/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_23dee.dir/build.make CMakeFiles/cmTC_23dee.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_69534/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_69534.dir/build.make CMakeFiles/cmTC_69534.dir/build
 gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_23dee.dir/CheckFunctionExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_23dee.dir/CheckFunctionExists.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_23dee
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23dee.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_23dee.dir/CheckFunctionExists.cxx.o  -o cmTC_23dee -lpthread 
+Building CXX object CMakeFiles/cmTC_69534.dir/CheckFunctionExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_69534.dir/CheckFunctionExists.cxx.o -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_69534
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69534.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_69534.dir/CheckFunctionExists.cxx.o  -o cmTC_69534 -lpthread 
 gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/CMakeTmp'
 
 

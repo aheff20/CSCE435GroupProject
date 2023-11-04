@@ -23,11 +23,18 @@ const char* comm_large = "comm_large";
 // CUDA kernel function for bubble sort step
 __global__ void bubble_sort_step(float *dev_values, int size, bool even_phase) {
     unsigned int idx = blockIdx.x * blockDim.x + threadIdx.x;
-    unsigned int i = 2 * idx + (even_phase ? 0 : 1); // This ensures we look at even/odd pairs appropriately
+    unsigned int i = 2 * idx + (even_phase ? 0 : 1); 
 
-    // Make sure we don't read or write out of bounds
-    if (i < size - 1) {
-        if (dev_values[i] > dev_values[i + 1]) {
+    if (even_phase) {
+        // Even phase: Compare elements at even index with the next element
+        if (i < size - 1 - (size % 2) && dev_values[i] > dev_values[i + 1]) {
+            float temp = dev_values[i];
+            dev_values[i] = dev_values[i + 1];
+            dev_values[i + 1] = temp;
+        }
+    } else {
+        // Odd phase: Compare elements at odd index with the next element
+        if (i < size - 1 && dev_values[i] > dev_values[i + 1]) {
             float temp = dev_values[i];
             dev_values[i] = dev_values[i + 1];
             dev_values[i + 1] = temp;
@@ -62,8 +69,8 @@ void bubble_sort(float *values, int size, float *bubble_sort_step_time, float *c
     int blocks = (size + threads - 1) / threads;
 
     // Perform bubble sort with NUM_VALS / 2 phases to ensure sorting
-    for (int i = 0; i < major_step; ++i) {
-        bool even_phase = i % 2 == 0;
+    for (int i = 0; i < size; ++i) {
+        bool even_phase = (i % 2) == 0;
         cudaEventRecord(start);
         bubble_sort_step<<<blocks, threads>>>(dev_values, size, even_phase);
         cudaDeviceSynchronize();
@@ -91,19 +98,9 @@ void bubble_sort(float *values, int size, float *bubble_sort_step_time, float *c
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 4) {
-        fprintf(stderr, "Usage: %s <threads_per_block> <number_of_values> <blocks>\n", argv[0]);
-        exit(1);
-    }
-
     THREADS = atoi(argv[1]);
     NUM_VALS = atoi(argv[2]);
-    BLOCKS = atoi(argv[3]);
-
-    if (NUM_VALS % (THREADS * BLOCKS) != 0) {
-        fprintf(stderr, "Error: <number_of_values> must be a multiple of <threads_per_block> * <blocks>\n");
-        exit(1);
-    }
+    BLOCKS = NUM_VALS / THREADS;
 
     printf("Number of threads per block: %d\n", THREADS);
     printf("Number of values: %d\n", NUM_VALS);
@@ -129,6 +126,14 @@ int main(int argc, char *argv[]) {
     bubble_sort(values, NUM_VALS, &bubble_sort_step_time, &cudaMemcpy_host_to_device_time, &cudaMemcpy_device_to_host_time, &kernel_calls);
     CALI_MARK_END("comp_large");
     CALI_MARK_END("comp");
+
+    bool correct = check_sorted(values,NUM_VALS);
+    if (correct){
+        printf("Array was sorted correctly!");
+    }
+    else{
+         printf("Array was incorrectly sorted!");
+    }
 
     // Output timing information
     printf("Bubble Sort Step Time: %f ms\n", bubble_sort_step_time);
