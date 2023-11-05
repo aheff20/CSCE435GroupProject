@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <algorithm>
+#include <iostream>
 
 
 static float random_float() {
@@ -30,6 +31,7 @@ void array_fill_descending(float *arr, int length) {
 bool check_sorted(const float *arr, int length) {
     for (int i = 1; i < length; ++i) {
         if (arr[i-1] > arr[i]) {
+            std::cout << arr[i-1] << ' '<< arr[i] << ' ';
             return false; 
         }
     }
@@ -42,4 +44,11 @@ void perturb_array(float *arr, int length, float perturbation_factor) {
    
         arr[i] += (random_float() * 2.0f - 1.0f) * perturbation_factor;
     }
+}
+
+void print_array(const float *arr, int length) {
+    for (int i = 0; i < length; ++i) {
+        std::cout << arr[i] << ' ';
+    }
+    std::cout << std::endl; // End the line after printing the array
 }

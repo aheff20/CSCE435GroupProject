@@ -103,14 +103,14 @@ void merge_sort(float *values, float *merge_sort_step_time, float *cudaMemcpy_ho
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 4) {
-        fprintf(stderr, "Usage: %s <threads_per_block> <number_of_values> <blocks>\n", argv[0]);
+    if (argc < 3 ) {
+        fprintf(stderr, "Usage: %s <threads_per_block> <number_of_values> \n", argv[0]);
         exit(1);
     }
 
     THREADS = atoi(argv[1]);
     NUM_VALS = atoi(argv[2]);
-    BLOCKS = atoi(argv[3]);
+    BLOCKS = NUM_VALS / THREADS;
 
     if (NUM_VALS % (THREADS * BLOCKS) != 0) {
         fprintf(stderr, "Error: <number_of_values> must be a multiple of <threads_per_block> * <blocks>\n");
@@ -133,6 +133,7 @@ int main(int argc, char *argv[]) {
     CALI_MARK_BEGIN("data_init");
     array_fill_random(values, NUM_VALS);
     CALI_MARK_END("data_init");
+   // print_array(values, NUM_VALS);
 
     
 
@@ -147,12 +148,12 @@ int main(int argc, char *argv[]) {
 
     bool correct = check_sorted(values,NUM_VALS);
     if (correct){
-        printf("Array was sorted correctly!");
+        printf("Array was sorted correctly! \n");
     }
     else{
-         printf("Array was incorrectly sorted!");
+         printf("Array was incorrectly sorted! \n");
     }
-    
+    print_array(values, NUM_VALS);
 
   
 

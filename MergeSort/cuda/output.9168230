@@ -1,0 +1,17 @@
+
+Inactive Modules:
+  1) UCX/1.9.0     2) numactl/2.0.13
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) binutils/2.35     2) zlib/1.2.11
+
+The following have been reloaded with a version change:
+  1) GCCcore/10.2.0 => GCCcore/7.3.0
+
+Number of threads per block: 64
+Number of values: 65536
+Number of blocks: 1024
+Array was incorrectly sorted!Merge Sort Step Time: 1902.18 ms
+CUDA Memcpy Host to Device Time: 0.20096 ms
+CUDA Memcpy Device to Host Time: 0.111136 ms
+Total Kernel Calls: 65535
