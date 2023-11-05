@@ -78,26 +78,55 @@ int main(int argc, char *argv[])
         array_fill_random(values, numVals);
         CALI_MARK_END(data_init);
 
-        CALI_MARK_BEGIN(comm);
-        // Send parts of the array to worker tasks
-        // ...
-        // Here you would potentially use MPI_Scatter which is a part of "comm_large_MPI_Scatter"
-        CALI_MARK_END(comm);
+        
 
-        CALI_MARK_BEGIN(comm_large_MPI_Gather);
-        // Collect the sorted segments from the worker tasks
-        // ...
-        // Here you would potentially use MPI_Gather which is timed here
-        CALI_MARK_END(comm_large_MPI_Gather);
+        // CALI_MARK_BEGIN(comm_large_MPI_Gather);
+        // // Collect the sorted segments from the worker tasks
+        // // ...
+        // // Here you would potentially use MPI_Gather which is timed here
+        // CALI_MARK_END(comm_large_MPI_Gather);
     }
+
+    int localArraySize = globalArraySize / numProcs;
+    float *localArray = (float*) malloc(localArraySize * sizeof(float));
+    CALI_MARK_BEGIN(comm); 
+    MPI_Scatter(globalArray, localArraySize, MPI_FLOAT, localArray, localArraySize, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    CALI_MARK_END(comm);
+
+     //Merge sort
+   if (id == 0) {
+        double zeroStartTime = MPI_Wtime();
+        // Assuming mergeSort returns a pointer to the sorted array, which is unusual.
+        float *sortedGlobalArray = mergeSort(height, id, localArray, localArraySize, MPI_COMM_WORLD, globalArray);
+        double zeroTotalTime = MPI_Wtime() - zeroStartTime;
+       
+
+        
+       
+        free(localArray);
+        if (sortedGlobalArray != globalArray) {
+            free(sortedGlobalArray);
+        }
+    }
+
+    else {
+            double processStartTime = MPI_Wtime();
+        // As a worker, you do not need to manage the global array.
+        mergeSort(height, id, localArray, localArraySize, MPI_COMM_WORLD, NULL);
+        double processTotalTime = MPI_Wtime() - processStartTime;
+       
+        
+        free(localArray);
+    }
+
 
 
     if (taskid > MASTER)
     {
-        CALI_MARK_BEGIN(comm_MPI_Barrier);
-        // Workers wait for the initial data
-        // Here you might have an MPI_Barrier, if so, it is timed here
-        CALI_MARK_END(comm_MPI_Barrier);
+        // CALI_MARK_BEGIN(comm_MPI_Barrier);
+        // // Workers wait for the initial data
+        // // Here you might have an MPI_Barrier, if so, it is timed here
+        // CALI_MARK_END(comm_MPI_Barrier);
 
         CALI_MARK_BEGIN(comp_large);
         // Receive the segment of the array, sort it, and then send it back
@@ -110,7 +139,10 @@ int main(int argc, char *argv[])
     end3 = MPI_Wtime();
     whole_computation_time = end3 -start3;
 
-       adiak::init(NULL);
+    localTime = MPI_Wtime() - startTime;
+    MPI_Reduce(&localTime, &totalTime, 1, MPI_DOUBLE,MPI_MAX, 0, MPI_COMM_WORLD);
+
+   adiak::init(NULL);
    adiak::user();
    adiak::launchdate();
    adiak::libraries();
@@ -128,6 +160,7 @@ int main(int argc, char *argv[])
 
       MPI_Comm worker_comm;
    MPI_Comm_split(MPI_COMM_WORLD, 1, 1, &worker_comm);
+
 
 
     if (taskid == 0)
