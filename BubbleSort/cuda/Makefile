@@ -150,6 +150,33 @@ bubble_cuda.cu.s:
 	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.s
 .PHONY : bubble_cuda.cu.s
 
+home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o: home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+
+.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o
+
+# target to build an object file
+home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+
+home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i: home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i
+
+# target to preprocess a source file
+home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s: home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+
+.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s
+
+# target to generate assembly for a file
+home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +189,9 @@ help:
 	@echo "... bubble_cuda.o"
 	@echo "... bubble_cuda.i"
 	@echo "... bubble_cuda.s"
+	@echo "... home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o"
+	@echo "... home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i"
+	@echo "... home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s"
 .PHONY : help
 
 

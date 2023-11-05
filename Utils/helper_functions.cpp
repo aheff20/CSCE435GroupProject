@@ -16,6 +16,12 @@ void array_fill_random(float *arr, int length) {
     }
 }
 
+void array_fill_random_no_seed(float *arr, int length) {
+    for (int i = 0; i < length; ++i) {
+        arr[i] = random_float();
+    }
+}
+
 void array_fill_ascending(float *arr, int length) {
     for (int i = 0; i < length; ++i) {
         arr[i] = static_cast<float>(i);

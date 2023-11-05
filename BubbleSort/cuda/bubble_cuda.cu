@@ -11,7 +11,7 @@ int THREADS;
 int BLOCKS;
 int NUM_VALS;
 
-const char* merge_sort_step_region = "merge_sort_step";
+const char* bubble_sort_step_region = "bubble_sort_step";
 const char* cudaMemcpy_host_to_device = "cudaMemcpy_host_to_device";
 const char* cudaMemcpy_device_to_host = "cudaMemcpy_device_to_host";
 
@@ -20,38 +20,35 @@ const char* comp_large = "comp_large";
 const char* comm = "comm";
 const char* comm_large = "comm_large";
 
-__global__ void merge_sort_step(float *dev_values, int size, int width) {
-    unsigned int i = threadIdx.x + blockDim.x * blockIdx.x;
-    unsigned int start = 2 * i * width;
-    
-    if (start < size) {
-        unsigned int middle = min(start + width, size);
-        unsigned int end = min(start + 2 * width, size);
-        float *temp = new float[end - start];
-        
-        unsigned int i = start, j = middle, k = 0;
-        while (i < middle && j < end) {
-            if (dev_values[i] < dev_values[j]) {
-                temp[k++] = dev_values[i++];
-            } else {
-                temp[k++] = dev_values[j++];
-            }
-        }
-        while (i < middle) temp[k++] = dev_values[i++];
-        while (j < end) temp[k++] = dev_values[j++];
+// CUDA kernel function for bubble sort step
+__global__ void bubble_sort_step(float *dev_values, int size, bool even_phase) {
+    unsigned int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    unsigned int i = 2 * idx + (even_phase ? 0 : 1); 
 
-        for (i = start, k = 0; i < end; i++, k++) {
-            dev_values[i] = temp[k];
+    if (even_phase) {
+        // Even phase: Compare elements at even index with the next element
+        if (i < size - 1 - (size % 2) && dev_values[i] > dev_values[i + 1]) {
+            float temp = dev_values[i];
+            dev_values[i] = dev_values[i + 1];
+            dev_values[i + 1] = temp;
         }
-        delete[] temp;
+    } else {
+        // Odd phase: Compare elements at odd index with the next element
+        if (i < size - 1 && dev_values[i] > dev_values[i + 1]) {
+            float temp = dev_values[i];
+            dev_values[i] = dev_values[i + 1];
+            dev_values[i + 1] = temp;
+        }
     }
 }
 
-
-void merge_sort(float *values, int size, float *merge_sort_step_time, float *cudaMemcpy_host_to_device_time, float *cudaMemcpy_device_to_host_time, int *kernel_calls) {
+// Host function to sort an array using bubble sort on the GPU
+void bubble_sort(float *values, int size, float *bubble_sort_step_time, float *cudaMemcpy_host_to_device_time, float *cudaMemcpy_device_to_host_time, int *kernel_calls) {
     float *dev_values;
+    cudaMalloc((void**)&dev_values, size * sizeof(float));
     size_t bytes = size * sizeof(float);
 
+    // Copy data from host to device
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
@@ -65,28 +62,27 @@ void merge_sort(float *values, int size, float *merge_sort_step_time, float *cud
     cudaEventElapsedTime(&milliseconds, start, stop);
     *cudaMemcpy_host_to_device_time += milliseconds;
 
+    // Bubble sort is composed of NUM_VALS / 2 phases
+    int major_step = size / 2; 
+
     int threads = THREADS;
     int blocks = (size + threads - 1) / threads;
 
-    // Assume major_step and minor_step are defined elsewhere
-    CALI_MARK_BEGIN("comp");
-    CALI_MARK_BEGIN("comp_large");
-    for (int i = 0; i < major_step; ++i) {
-        for (int j = 0; j < minor_step; ++j) {
-            cudaEventRecord(start);
-            merge_sort_step<<<blocks, threads>>>(dev_values, size, width);
-            cudaDeviceSynchronize();
-            cudaEventRecord(stop);
-            cudaEventSynchronize(stop);
+    // Perform bubble sort with NUM_VALS / 2 phases to ensure sorting
+    for (int i = 0; i < size; ++i) {
+        bool even_phase = (i % 2) == 0;
+        cudaEventRecord(start);
+        bubble_sort_step<<<blocks, threads>>>(dev_values, size, even_phase);
+        cudaDeviceSynchronize();
+        cudaEventRecord(stop);
+        cudaEventSynchronize(stop);
 
-            cudaEventElapsedTime(&milliseconds, start, stop);
-            *merge_sort_step_time += milliseconds;
-            (*kernel_calls)++;
-        }
+        cudaEventElapsedTime(&milliseconds, start, stop);
+        *bubble_sort_step_time += milliseconds;
+        (*kernel_calls)++;
     }
-    CALI_MARK_END("comp_large");
-    CALI_MARK_END("comp");
 
+    // Copy the sorted array back to the host
     cudaEventRecord(start);
     cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
     cudaEventRecord(stop);
@@ -95,34 +91,20 @@ void merge_sort(float *values, int size, float *merge_sort_step_time, float *cud
     cudaEventElapsedTime(&milliseconds, start, stop);
     *cudaMemcpy_device_to_host_time += milliseconds;
 
+    // Cleanup
     cudaFree(dev_values);
     cudaEventDestroy(start);
     cudaEventDestroy(stop);
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 4) {
-        fprintf(stderr, "Usage: %s <threads_per_block> <number_of_values> <blocks>\n", argv[0]);
-        exit(1);
-    }
-
     THREADS = atoi(argv[1]);
     NUM_VALS = atoi(argv[2]);
-    BLOCKS = atoi(argv[3]);
-
-    if (NUM_VALS % (THREADS * BLOCKS) != 0) {
-        fprintf(stderr, "Error: <number_of_values> must be a multiple of <threads_per_block> * <blocks>\n");
-        exit(1);
-    }
+    BLOCKS = NUM_VALS / THREADS;
 
     printf("Number of threads per block: %d\n", THREADS);
     printf("Number of values: %d\n", NUM_VALS);
     printf("Number of blocks: %d\n", BLOCKS);
-
-    float merge_sort_step_time = 0.0f;
-    float cudaMemcpy_host_to_device_time = 0.0f;
-    float cudaMemcpy_device_to_host_time = 0.0f;
-    int kernel_calls = 0;
 
     float *values = (float*)malloc(NUM_VALS * sizeof(float));
     CALI_CXX_MARK_FUNCTION;
@@ -133,26 +115,33 @@ int main(int argc, char *argv[]) {
     CALI_MARK_END("data_init");
 
     // Declare variables for timing information
-    float merge_sort_step_time = 0.0f;
+    float bubble_sort_step_time = 0.0f;
     float cudaMemcpy_host_to_device_time = 0.0f;
     float cudaMemcpy_device_to_host_time = 0.0f;
     int kernel_calls = 0;
 
-    // Perform merge sort
+    // Perform bubble sort
     CALI_MARK_BEGIN("comp");
     CALI_MARK_BEGIN("comp_large");
-    merge_sort(values, &merge_sort_step_time, &cudaMemcpy_host_to_device_time, &cudaMemcpy_device_to_host_time, &kernel_calls);
+    bubble_sort(values, NUM_VALS, &bubble_sort_step_time, &cudaMemcpy_host_to_device_time, &cudaMemcpy_device_to_host_time, &kernel_calls);
     CALI_MARK_END("comp_large");
     CALI_MARK_END("comp");
 
-  
+    bool correct = check_sorted(values,NUM_VALS);
+    if (correct){
+        printf("Array was sorted correctly!");
+    }
+    else{
+         printf("Array was incorrectly sorted!");
+    }
 
     // Output timing information
-    std::cout << "Merge Sort Step Time: " << merge_sort_step_time << " ms" << std::endl;
-    std::cout << "CUDA Memcpy Host to Device Time: " << cudaMemcpy_host_to_device_time << " ms" << std::endl;
-    std::cout << "CUDA Memcpy Device to Host Time: " << cudaMemcpy_device_to_host_time << " ms" << std::endl;
-    std::cout << "Total Kernel Calls: " << kernel_calls << std::endl;
- // Adiak reporting (similar to previous example)
+    printf("Bubble Sort Step Time: %f ms\n", bubble_sort_step_time);
+    printf("CUDA Memcpy Host to Device Time: %f ms\n", cudaMemcpy_host_to_device_time);
+    printf("CUDA Memcpy Device to Host Time: %f ms\n", cudaMemcpy_device_to_host_time);
+    printf("Total Kernel Calls: %d\n", kernel_calls);
+
+    // Adiak reporting (similar to previous example)
     adiak::init(NULL);
     adiak::user();
     adiak::launchdate();
@@ -162,21 +151,17 @@ int main(int argc, char *argv[]) {
     adiak::value("num_threads_per_block", THREADS);
     adiak::value("num_blocks", BLOCKS);
     adiak::value("num_vals", NUM_VALS);
-    adiak::value("program_name", "cuda_merge_sort");
+    adiak::value("program_name", "cuda_bubble_sort");
     adiak::value("datatype_size", sizeof(float));
-    adiak::value("merge_sort_step_time", merge_sort_step_time);
+    adiak::value("bubble_sort_step_time", bubble_sort_step_time);
     adiak::value("cudaMemcpy_host_to_device_time", cudaMemcpy_host_to_device_time);
     adiak::value("cudaMemcpy_device_to_host_time", cudaMemcpy_device_to_host_time);
 
     // Finalize and clean up
     adiak::fini();
+
     // Deallocate memory
-    delete[] values;
+    free(values);
 
     return 0;
 }
-
-
-
-
-

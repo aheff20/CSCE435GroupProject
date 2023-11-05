@@ -11,11 +11,11 @@ include_directories(${CMAKE_SOURCE_DIR}/../Utils)
 
 set(SOURCE_FILES
     bubble_cuda.cu
-    ${CMAKE_SOURCE_DIR}/../Utils/helper_functions.cpp 
+    ${CMAKE_SOURCE_DIR}/../../Utils/helper_functions.cpp 
 )
 
+add_executable(bubble_cuda ${SOURCE_FILES})
 
-add_executable(bubble_cuda bubble_cuda.cu)
 
 message(STATUS "MPI includes : ${MPI_INCLUDE_PATH}")
 message(STATUS "CUDA includes : ${CUDA_INCLUDE_DIRS}")
