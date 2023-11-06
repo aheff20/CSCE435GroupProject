@@ -1,0 +1,3 @@
+/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/cuda/CMakeFiles/rebuild_cache.dir
+/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/cuda/CMakeFiles/sample_cuda.dir
+/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/cuda/CMakeFiles/edit_cache.dir

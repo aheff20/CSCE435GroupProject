@@ -71,22 +71,19 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
     for (int i = 0; i < numTasks; i++){
         localCounts[i] = 0;
     }
-
+    
     for (int i = 0; i < local_data_size; i++) {
-        // int group = 0;
-        if (values[i] < samples[1]) {
-            localCounts[0]++;
-        } else if (values[i] < samples[2]) {
-            localCounts[1]++;
-        } else if (values[i] < samples[3]) {
-            localCounts[2]++;
-        } else {
-            localCounts[3]++;
+        bool placed = false;
+        for (int k = 1; k < numTasks-1; k++) {
+            if (local_values[i] < samples[k]) {
+                localCounts[k-1]++;
+                placed = true;
+                break;
+            }
         }
-        // while (group < numTasks - 1 && values[i] >= samples[group]) {
-        //     group++;
-        // }
-        // localCounts[group]++;
+        if(!placed){
+            localCounts[numTasks-1]++;
+        }
     }
 
     localDisplacements[0] = 0;
