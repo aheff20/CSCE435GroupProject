@@ -192,6 +192,7 @@ __global__ void partitionAndSample(float* dev_values, int num_blocks, int local_
             for(int i = 0; i < num_blocks; i++) {
                 printf("%i, ", final_value_count[i]);
             }
+            printf("\n\n");
         }
         // send displaced values to other blocks
 
@@ -222,7 +223,7 @@ __global__ void partitionAndSample(float* dev_values, int num_blocks, int local_
 
         if(threadID == 0) {
             for(int i = 0; i < NUM_VALS; i++) {
-                printf("%0.3f, ", dev_values[i]);
+                printf("%0.3f,", dev_values[i]);
             }
             printf("\n\n");
         }

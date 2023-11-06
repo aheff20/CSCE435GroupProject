@@ -1,0 +1,51 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_7464f/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_7464f.dir/build.make CMakeFiles/cmTC_7464f.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7464f.dir/CheckSymbolExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_7464f.dir/CheckSymbolExists.cxx.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_7464f
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7464f.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_7464f.dir/CheckSymbolExists.cxx.o  -o cmTC_7464f 
+CMakeFiles/cmTC_7464f.dir/CheckSymbolExists.cxx.o:CheckSymbolExists.cxx:function main: error: undefined reference to 'pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_7464f] Error 1
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_7464f/fast] Error 2
+
+File /scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_6cf6e/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_6cf6e.dir/build.make CMakeFiles/cmTC_6cf6e.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6cf6e.dir/CheckFunctionExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_6cf6e.dir/CheckFunctionExists.cxx.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_6cf6e
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6cf6e.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_6cf6e.dir/CheckFunctionExists.cxx.o  -o cmTC_6cf6e -lpthreads 
+/sw/eb/sw/binutils/2.35/bin/ld.gold: error: cannot find -lpthreads
+CMakeFiles/cmTC_6cf6e.dir/CheckFunctionExists.cxx.o:CheckFunctionExists.cxx:function main: error: undefined reference to 'pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_6cf6e] Error 1
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_6cf6e/fast] Error 2
+
+

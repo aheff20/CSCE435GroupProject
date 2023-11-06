@@ -1,0 +1,28 @@
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 0 PID 223766 RUNNING AT c262
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 1 PID 223767 RUNNING AT c262
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 2 PID 223768 RUNNING AT c262
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 3 PID 223769 RUNNING AT c262
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+slurmstepd: error: Detected 5 oom-kill event(s) in StepId=9174161.0. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: c262: task 0: Out Of Memory
+I_MPI_JOB_TIMEOUT = -1 second(s): job ending due to startup timeout
+slurmstepd: error: Detected 5 oom-kill event(s) in StepId=9174161.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

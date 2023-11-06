@@ -1,0 +1,3 @@
+/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/rebuild_cache.dir
+/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/bitonic_cuda.dir
+/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/cuda/CMakeFiles/edit_cache.dir
