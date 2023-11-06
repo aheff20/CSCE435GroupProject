@@ -1,0 +1,11 @@
+merge_mpi has started with 32 tasks.
+Initializing arrays...
+The array is correctly sorted.
+******************************************************
+Master Times:
+Whole Computation Time: 0.000000 
+Master Initialization Time: 0.000000 
+Master Send : 0.000000 
+Master Recieve time: 0.000000 
+
+******************************************************
