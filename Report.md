@@ -27,6 +27,79 @@ The project will include the following algorithms and architectures:
 - Quick Sort (MPI on each core)
 
 ## 2b. Psuedocode for each parallel algorithm
+**Bubble Sort:**
+In parallel compution, bubble sort undergoes an adaptation, commonly referred to as the Odd-Even Transposition Sort. This variant is designed to optimize data handling for concurrent operations. The essence of this strategy is to orchestrate the sorting tasks such that they are staggered across different processors, thereby leveraging parallelism.
+
+**MPI:**
+```
+def bubbleSort(values, local_data_size, numTasks, rankid):
+    # Allocate space for the temporary array
+    temp = allocate_float_array(local_data_size)
+
+    # Loop over all phases
+    for phase in range(numTasks):
+        # Determine the neighbor based on the current phase and rank
+        neighbor = (rankid + 1) if (phase + rankid) % 2 == 0 else (rankid - 1)
+
+        # Only proceed if the neighbor is within valid range
+        if 0 <= neighbor < numTasks:
+            # Perform the send and receive operations
+            MPI_Sendrecv(values, neighbor, temp, neighbor)
+
+            # Merge the two sorted lists based on rank comparison
+            if rankid < neighbor:
+                # If the current rank is lower, keep the smaller elements
+                for k in range(local_data_size):
+                    values[k] = min(values, temp, k)
+            else:
+                # If the current rank is higher, keep the larger elements
+                for k in reversed(range(local_data_size)):
+                    values[k] = max(values, temp, k)
+
+    # Deallocate the temporary array after use
+    deallocate(temp)
+```
+
+**CUDA:**
+```
+def bubble_sort_step(dev_values, size, even_phase):
+    idx = compute_global_index()
+    i = 2 * idx + (0 if even_phase else 1)
+
+    if even_phase:
+        # Even phase: Compare elements at even indices
+        if i < size - 1 - (size % 2) and dev_values[i] > dev_values[i + 1]:
+            swap(dev_values[i], dev_values[i + 1])
+    else:
+        # Odd phase: Compare elements at odd indices
+        if i < size - 1 and dev_values[i] > dev_values[i + 1]:
+            swap(dev_values[i], dev_values[i + 1])
+
+def bubble_sort(values, size):
+    dev_values = allocate_device_memory(size)
+
+    # Copy data from host to device
+    copy_host_to_device(values, dev_values)
+
+    # Calculate the number of phases needed
+    major_step = size / 2
+    threads_per_block = determine_threads_per_block()
+    blocks = calculate_number_of_blocks(size, threads_per_block)
+
+    # Perform the sort
+    for i in range(size):
+        even_phase = (i % 2) == 0
+        # Launch the GPU kernel
+        gpu_bubble_sort_step(dev_values, size, even_phase)
+
+    # Copy the sorted array back to the host
+    copy_device_to_host(values, dev_values)
+
+    # Free the device memory
+    free_device_memory(dev_values)
+
+```
+
 - For MPI programs, include MPI calls you will use to coordinate between processes
 - For CUDA programs, indicate which computation will be performed in a CUDA kernel,
   and where you will transfer data to/from GPU
