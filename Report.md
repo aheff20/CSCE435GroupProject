@@ -103,6 +103,8 @@ def bubble_sort(values, size):
 **Merge Sort:**
 
 **MPI:**
+```
+```
 
 **CUDA:**
 ```
@@ -165,6 +167,85 @@ def merge_sort(values):
     # Free the device memory
     free_device_memory(dev_values)
     free_device_memory(temp)
+```
+
+**Sample Sort:**
+
+**MPI:**
+```
+def sampleSort(global_array, values, rankid, local_data_size, numTasks):
+    quicksort(values, local_data_size)
+
+    # Select local samples
+    samples = [values[i * local_data_size / numTasks] for i in range(numTasks)]
+    all_samples = allocate_array(numTasks * numTasks)
+
+    # Synchronize before gathering all samples
+    mpi_barrier()
+
+    # Gather samples at root
+    all_samples = mpi_gather(samples, numTasks, root=0)
+
+    # Root process sorts all samples and selects pivots
+    if rankid == 0:
+        quicksort(all_samples, numTasks * numTasks)
+        for i in range(1, numTasks):
+            samples[i] = all_samples[i * numTasks + numTasks // 2]
+
+    # Broadcast selected pivots to all processes
+    samples = mpi_bcast(samples, numTasks, root=0)
+
+    # Classify local data based on selected pivots
+    localCounts = [0 for _ in range(numTasks)]
+    localDisplacements = [0 for _ in range(numTasks)]
+
+    for value in values:
+        placed = False
+        for k in range(1, numTasks - 1):
+            if value < samples[k]:
+                localCounts[k - 1] += 1
+                placed = True
+                break
+        if not placed:
+            localCounts[numTasks - 1] += 1
+
+    # Calculate local displacements
+    for i in range(1, numTasks):
+        localDisplacements[i] = sum(localCounts[:i])
+
+    # Perform all-to-all communication to share counts
+    extCounts = mpi_alltoall(localCounts)
+
+    # Calculate external displacements
+    extDisplacements = [sum(extCounts[:i]) for i in range(1, numTasks)]
+    extDisplacements.insert(0, 0)
+
+    # Perform a global reduction to get the total counts
+    globalCounts = mpi_allreduce(localCounts, op='sum')
+
+    # Synchronize before the all-to-all communication
+    mpi_barrier()
+
+    # Distribute data based on counts and displacements
+    sortedData = allocate_array(globalCounts[rankid])
+    mpi_alltoallv(values, localCounts, localDisplacements, sortedData, extCounts, extDisplacements)
+
+    # Locally sort the received data
+    quicksort(sortedData, globalCounts[rankid])
+
+    # Calculate global displacements for final gather
+    globalDisplacements = [sum(globalCounts[:i]) for i in range(1, numTasks)]
+    globalDisplacements.insert(0, 0)
+
+    # Synchronize before gathering the sorted data
+    mpi_barrier()
+
+    # Gather the sorted data at the root
+    mpi_gatherv(sortedData, globalCounts[rankid], global_array, globalCounts, globalDisplacements, root=0)
+```
+
+**CUDA:**
+```
 ```
 - For MPI programs, include MPI calls you will use to coordinate between processes
 - For CUDA programs, indicate which computation will be performed in a CUDA kernel,
