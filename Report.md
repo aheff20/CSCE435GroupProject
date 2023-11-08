@@ -28,6 +28,7 @@ The project will include the following algorithms and architectures:
 
 ## 2b. Psuedocode for each parallel algorithm
 **Bubble Sort:**
+
 In parallel compution, bubble sort undergoes an adaptation, commonly referred to as the Odd-Even Transposition Sort. This variant is designed to optimize data handling for concurrent operations. The essence of this strategy is to orchestrate the sorting tasks such that they are staggered across different processors, thereby leveraging parallelism.
 
 **MPI:**
@@ -97,9 +98,74 @@ def bubble_sort(values, size):
 
     # Free the device memory
     free_device_memory(dev_values)
-
 ```
 
+**Merge Sort:**
+
+**MPI:**
+
+**CUDA:**
+```
+def merge_sort_step(dev_values, temp, start, middle, end):
+    i, j, k = start, middle, start
+
+    # Merge the two halves
+    while i < middle and j < end:
+        if dev_values[i] < dev_values[j]:
+            temp[k] = dev_values[i]
+            i += 1
+        else:
+            temp[k] = dev_values[j]
+            j += 1
+        k += 1
+
+    # Copy remaining values from the first half
+    while i < middle:
+        temp[k] = dev_values[i]
+        i += 1
+        k += 1
+
+    # Copy remaining values from the second half
+    while j < end:
+        temp[k] = dev_values[j]
+        j += 1
+        k += 1
+
+    # Copy merged values back to original array
+    for index in range(start, end):
+        dev_values[index] = temp[index]
+
+def merge_sort(values):
+    dev_values, temp = allocate_device_memory(NUM_VALS), allocate_device_memory(NUM_VALS)
+
+    # Copy data from host to device
+    copy_host_to_device(values, dev_values)
+
+    threads_per_block = determine_threads_per_block()
+    blocks = calculate_number_of_blocks()
+
+    # Merge sort with increasing width
+    width = 1
+    while width < NUM_VALS:
+        for i in range(0, NUM_VALS, 2 * width):
+            # Calculate boundaries
+            start = i
+            middle = min(i + width, NUM_VALS)
+            end = min(i + 2 * width, NUM_VALS)
+
+            # Launch the GPU kernel
+            gpu_merge_sort_step(dev_values, temp, start, middle, end)
+            synchronize_gpu()
+
+            width *= 2
+
+    # Copy the sorted array back to the host
+    copy_device_to_host(values, dev_values)
+
+    # Free the device memory
+    free_device_memory(dev_values)
+    free_device_memory(temp)
+```
 - For MPI programs, include MPI calls you will use to coordinate between processes
 - For CUDA programs, indicate which computation will be performed in a CUDA kernel,
   and where you will transfer data to/from GPU
