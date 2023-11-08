@@ -15,10 +15,13 @@ const char* bubble_sort_step_region = "bubble_sort_step";
 const char* cudaMemcpy_host_to_device = "cudaMemcpy_host_to_device";
 const char* cudaMemcpy_device_to_host = "cudaMemcpy_device_to_host";
 
-const char* comp = "comp";
-const char* comp_large = "comp_large";
+const char* main_function = "main";
+const char* data_init = "data_init";
 const char* comm = "comm";
 const char* comm_large = "comm_large";
+const char* comp = "comp";
+const char* comp_large = "comp_large";
+const char* correctness_check = "correctness_check";
 
 // CUDA kernel function for bubble sort step
 __global__ void bubble_sort_step(float *dev_values, int size, bool even_phase) {
@@ -49,17 +52,10 @@ void bubble_sort(float *values, int size, float *bubble_sort_step_time, float *c
     size_t bytes = size * sizeof(float);
 
     // Copy data from host to device
-    cudaEvent_t start, stop;
-    cudaEventCreate(&start);
-    cudaEventCreate(&stop);
 
-    cudaEventRecord(start);
     cudaMemcpy(dev_values, values, bytes, cudaMemcpyHostToDevice);
-    cudaEventRecord(stop);
-    cudaEventSynchronize(stop);
 
     float milliseconds = 0;
-    cudaEventElapsedTime(&milliseconds, start, stop);
     *cudaMemcpy_host_to_device_time += milliseconds;
 
     // Bubble sort is composed of NUM_VALS / 2 phases
@@ -68,36 +64,35 @@ void bubble_sort(float *values, int size, float *bubble_sort_step_time, float *c
     int threads = THREADS;
     int blocks = (size + threads - 1) / threads;
 
+    CALI_MARK_BEGIN(comp);
+    CALI_MARK_BEGIN(comp_large);
     // Perform bubble sort with NUM_VALS / 2 phases to ensure sorting
     for (int i = 0; i < size; ++i) {
         bool even_phase = (i % 2) == 0;
-        cudaEventRecord(start);
         bubble_sort_step<<<blocks, threads>>>(dev_values, size, even_phase);
-        cudaDeviceSynchronize();
-        cudaEventRecord(stop);
-        cudaEventSynchronize(stop);
 
-        cudaEventElapsedTime(&milliseconds, start, stop);
         *bubble_sort_step_time += milliseconds;
         (*kernel_calls)++;
     }
+    CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
 
     // Copy the sorted array back to the host
-    cudaEventRecord(start);
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
     cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
-    cudaEventRecord(stop);
-    cudaEventSynchronize(stop);
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
 
-    cudaEventElapsedTime(&milliseconds, start, stop);
     *cudaMemcpy_device_to_host_time += milliseconds;
 
     // Cleanup
     cudaFree(dev_values);
-    cudaEventDestroy(start);
-    cudaEventDestroy(stop);
 }
 
 int main(int argc, char *argv[]) {
+    CALI_MARK_BEGIN(main_function);
+
     THREADS = atoi(argv[1]);
     NUM_VALS = atoi(argv[2]);
     BLOCKS = NUM_VALS / THREADS;
@@ -120,12 +115,9 @@ int main(int argc, char *argv[]) {
     float cudaMemcpy_device_to_host_time = 0.0f;
     int kernel_calls = 0;
 
-    // Perform bubble sort
-    CALI_MARK_BEGIN("comp");
-    CALI_MARK_BEGIN("comp_large");
     bubble_sort(values, NUM_VALS, &bubble_sort_step_time, &cudaMemcpy_host_to_device_time, &cudaMemcpy_device_to_host_time, &kernel_calls);
-    CALI_MARK_END("comp_large");
-    CALI_MARK_END("comp");
+
+    CALI_MARK_BEGIN(correctness_check);
 
     bool correct = check_sorted(values,NUM_VALS);
     if (correct){
@@ -134,6 +126,8 @@ int main(int argc, char *argv[]) {
     else{
          printf("Array was incorrectly sorted!");
     }
+    
+    CALI_MARK_END(correctness_check);
 
     // Output timing information
     printf("Bubble Sort Step Time: %f ms\n", bubble_sort_step_time);
@@ -162,6 +156,8 @@ int main(int argc, char *argv[]) {
 
     // Deallocate memory
     free(values);
+
+    CALI_MARK_END(main_function);
 
     return 0;
 }
