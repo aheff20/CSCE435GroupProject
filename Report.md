@@ -628,10 +628,9 @@ Each algorithm will have different inputs and be tested at different scales to s
 
 
 ## 3. Project implementation
-Implement your proposed algorithms, and test them starting on a small scale.
-Instrument your code, and turn in at least one Caliper file per algorithm;
-if you have implemented an MPI and a CUDA version of your algorithm,
-turn in a Caliper file for each.
+**STATUS:**
+As of right now, our group has implemented and tested CUDA and MPI algorithms for MergeSort, BubbleSort, and SampleSort. Due to the Grace downtime, we were unable to fully test the QuickSort algorithms or produce .cali files for SampleSort or QuickSort. Looking forwards, we plan on fixing these issues as soon as Grace goes back online and before we begin our performance evaluation.
+
 
 ### 3a. Caliper instrumentation
 Please use the caliper build `/scratch/group/csce435-f23/Caliper/caliper/share/cmake/caliper` 
