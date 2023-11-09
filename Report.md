@@ -104,6 +104,85 @@ def bubble_sort(values, size):
 
 **MPI:**
 ```
+
+
+# Initialize MPI
+initialize_mpi()
+taskid = get_mpi_rank()
+numtasks = get_mpi_size()
+height = calculate_tree_height(numtasks)
+
+# Check command line arguments and assign number of values to sort
+numVals = get_command_line_argument()
+
+# Master Process
+if taskid == MASTER:
+    # Allocate and initialize values array with random floats
+    global_array = allocate_float_array(numVals)
+    array_fill_random(values)
+
+
+    # Scatter values to worker processes
+    MPI_Scatter((values)
+
+# Worker Process
+else:
+    # Allocate local array for sorting
+    localArray = allocate_float_array(localArraySize)
+
+
+
+# Finalize
+# Gather sorted sub-arrays at master process
+if taskid == MASTER:
+    # Merge Sort
+    # Perform local sort and merge operations
+    sorted_values = merge_sort_recursive(tree_height, taskid, local_array,global_array)
+    
+
+    # Check if the final array is sorted
+    check_if_array_is_sorted(global_array)
+
+    # Record computation times and print
+    print_computation_times()
+
+# Finalize MPI and clean up resources
+MPI_Finalize();
+
+def merge_sort_recursive(tree_height, taskid, local_array):
+    current_depth = 0
+    sorted_subarray = sort(local_array)  # Perform an initial local sort
+
+    while current_depth < tree_height:
+        parent_id = taskid bitwise_and (bitwise_not(1 left_shift current_depth))
+        
+        if parent_id == taskid:
+            # This is a left child or the root
+            right_child_id = taskid bitwise_or (1 left_shift current_depth)
+            
+            # Receive a sorted sub-array from the right child
+            received_array = MPI_Recv(right_child_id)
+            
+            # Merge the sorted sub-array with the current sorted sub-array
+            merged_array = merge(sorted_subarray, received_array)
+            
+            # Prepare for the next level
+            sorted_subarray = merged_array
+            increase the size of subarray to reflect merged size
+            
+            current_depth += 1
+        else:
+            # This is a right child, send sorted sub-array to the parent
+            MPI_Send(sorted_subarray, parent_id)
+            break  # Exit the loop since the right child's job is done
+
+    # If this is the root process, copy the sorted array to the full array
+    if taskid == 0:
+        full_array = copy(sorted_subarray)
+
+    return full_array
+
+
 ```
 
 **CUDA:**
