@@ -27,6 +27,226 @@ The project will include the following algorithms and architectures:
 - Quick Sort (MPI on each core)
 
 ## 2b. Psuedocode for each parallel algorithm
+**Bubble Sort:**
+
+In parallel compution, bubble sort undergoes an adaptation, commonly referred to as the Odd-Even Transposition Sort. This variant is designed to optimize data handling for concurrent operations. The essence of this strategy is to orchestrate the sorting tasks such that they are staggered across different processors, thereby leveraging parallelism.
+
+**MPI:**
+```
+def bubbleSort(values, local_data_size, numTasks, rankid):
+    # Allocate space for the temporary array
+    temp = allocate_float_array(local_data_size)
+
+    # Loop over all phases
+    for phase in range(numTasks):
+        # Determine the neighbor based on the current phase and rank
+        neighbor = (rankid + 1) if (phase + rankid) % 2 == 0 else (rankid - 1)
+
+        # Only proceed if the neighbor is within valid range
+        if 0 <= neighbor < numTasks:
+            # Perform the send and receive operations
+            MPI_Sendrecv(values, neighbor, temp, neighbor)
+
+            # Merge the two sorted lists based on rank comparison
+            if rankid < neighbor:
+                # If the current rank is lower, keep the smaller elements
+                for k in range(local_data_size):
+                    values[k] = min(values, temp, k)
+            else:
+                # If the current rank is higher, keep the larger elements
+                for k in reversed(range(local_data_size)):
+                    values[k] = max(values, temp, k)
+
+    # Deallocate the temporary array after use
+    deallocate(temp)
+```
+
+**CUDA:**
+```
+def bubble_sort_step(dev_values, size, even_phase):
+    idx = compute_global_index()
+    i = 2 * idx + (0 if even_phase else 1)
+
+    if even_phase:
+        # Even phase: Compare elements at even indices
+        if i < size - 1 - (size % 2) and dev_values[i] > dev_values[i + 1]:
+            swap(dev_values[i], dev_values[i + 1])
+    else:
+        # Odd phase: Compare elements at odd indices
+        if i < size - 1 and dev_values[i] > dev_values[i + 1]:
+            swap(dev_values[i], dev_values[i + 1])
+
+def bubble_sort(values, size):
+    dev_values = allocate_device_memory(size)
+
+    # Copy data from host to device
+    copy_host_to_device(values, dev_values)
+
+    # Calculate the number of phases needed
+    major_step = size / 2
+    threads_per_block = determine_threads_per_block()
+    blocks = calculate_number_of_blocks(size, threads_per_block)
+
+    # Perform the sort
+    for i in range(size):
+        even_phase = (i % 2) == 0
+        # Launch the GPU kernel
+        gpu_bubble_sort_step(dev_values, size, even_phase)
+
+    # Copy the sorted array back to the host
+    copy_device_to_host(values, dev_values)
+
+    # Free the device memory
+    free_device_memory(dev_values)
+```
+
+**Merge Sort:**
+
+**MPI:**
+```
+```
+
+**CUDA:**
+```
+def merge_sort_step(dev_values, temp, start, middle, end):
+    i, j, k = start, middle, start
+
+    # Merge the two halves
+    while i < middle and j < end:
+        if dev_values[i] < dev_values[j]:
+            temp[k] = dev_values[i]
+            i += 1
+        else:
+            temp[k] = dev_values[j]
+            j += 1
+        k += 1
+
+    # Copy remaining values from the first half
+    while i < middle:
+        temp[k] = dev_values[i]
+        i += 1
+        k += 1
+
+    # Copy remaining values from the second half
+    while j < end:
+        temp[k] = dev_values[j]
+        j += 1
+        k += 1
+
+    # Copy merged values back to original array
+    for index in range(start, end):
+        dev_values[index] = temp[index]
+
+def merge_sort(values):
+    dev_values, temp = allocate_device_memory(NUM_VALS), allocate_device_memory(NUM_VALS)
+
+    # Copy data from host to device
+    copy_host_to_device(values, dev_values)
+
+    threads_per_block = determine_threads_per_block()
+    blocks = calculate_number_of_blocks()
+
+    # Merge sort with increasing width
+    width = 1
+    while width < NUM_VALS:
+        for i in range(0, NUM_VALS, 2 * width):
+            # Calculate boundaries
+            start = i
+            middle = min(i + width, NUM_VALS)
+            end = min(i + 2 * width, NUM_VALS)
+
+            # Launch the GPU kernel
+            gpu_merge_sort_step(dev_values, temp, start, middle, end)
+            synchronize_gpu()
+
+            width *= 2
+
+    # Copy the sorted array back to the host
+    copy_device_to_host(values, dev_values)
+
+    # Free the device memory
+    free_device_memory(dev_values)
+    free_device_memory(temp)
+```
+
+**Sample Sort:**
+
+**MPI:**
+```
+def sampleSort(global_array, values, rankid, local_data_size, numTasks):
+    quicksort(values, local_data_size)
+
+    # Select local samples
+    samples = [values[i * local_data_size / numTasks] for i in range(numTasks)]
+    all_samples = allocate_array(numTasks * numTasks)
+
+    # Synchronize before gathering all samples
+    mpi_barrier()
+
+    # Gather samples at root
+    all_samples = mpi_gather(samples, numTasks, root=0)
+
+    # Root process sorts all samples and selects pivots
+    if rankid == 0:
+        quicksort(all_samples, numTasks * numTasks)
+        for i in range(1, numTasks):
+            samples[i] = all_samples[i * numTasks + numTasks // 2]
+
+    # Broadcast selected pivots to all processes
+    samples = mpi_bcast(samples, numTasks, root=0)
+
+    # Classify local data based on selected pivots
+    localCounts = [0 for _ in range(numTasks)]
+    localDisplacements = [0 for _ in range(numTasks)]
+
+    for value in values:
+        placed = False
+        for k in range(1, numTasks - 1):
+            if value < samples[k]:
+                localCounts[k - 1] += 1
+                placed = True
+                break
+        if not placed:
+            localCounts[numTasks - 1] += 1
+
+    # Calculate local displacements
+    for i in range(1, numTasks):
+        localDisplacements[i] = sum(localCounts[:i])
+
+    # Perform all-to-all communication to share counts
+    extCounts = mpi_alltoall(localCounts)
+
+    # Calculate external displacements
+    extDisplacements = [sum(extCounts[:i]) for i in range(1, numTasks)]
+    extDisplacements.insert(0, 0)
+
+    # Perform a global reduction to get the total counts
+    globalCounts = mpi_allreduce(localCounts, op='sum')
+
+    # Synchronize before the all-to-all communication
+    mpi_barrier()
+
+    # Distribute data based on counts and displacements
+    sortedData = allocate_array(globalCounts[rankid])
+    mpi_alltoallv(values, localCounts, localDisplacements, sortedData, extCounts, extDisplacements)
+
+    # Locally sort the received data
+    quicksort(sortedData, globalCounts[rankid])
+
+    # Calculate global displacements for final gather
+    globalDisplacements = [sum(globalCounts[:i]) for i in range(1, numTasks)]
+    globalDisplacements.insert(0, 0)
+
+    # Synchronize before gathering the sorted data
+    mpi_barrier()
+
+    # Gather the sorted data at the root
+    mpi_gatherv(sortedData, globalCounts[rankid], global_array, globalCounts, globalDisplacements, root=0)
+```
+
+**CUDA:**
+```
+```
 - For MPI programs, include MPI calls you will use to coordinate between processes
 - For CUDA programs, indicate which computation will be performed in a CUDA kernel,
   and where you will transfer data to/from GPU
