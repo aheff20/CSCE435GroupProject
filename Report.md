@@ -419,12 +419,83 @@ def sampleSort(global_array, values, rankid, local_data_size, numTasks):
 
 **MPI:**
 ```
-    
+    quickSort():
+    //Find the partner process for the current process based on rank
+    int partnerID = find_partner()
+    float* values_to_keep = new float[local_data_size]
+    float* values_to_send = new float[local_data_size]
+    int number_of_values_to_send = 0
+    int number_of_values_to_keep = 0
+
+    //Seperate the values into those to keep and those send, based on smaller/larger than the chosen pivot in the array
+    if(partnerID > rankid):
+        for (int i = 0 i < local_data_size i++) :
+            if(local_values[i] >= pivot) :
+                values_to_send[number_of_values_to_send] = local_values[i]
+                number_of_values_to_send++
+             else :
+                values_to_keep[number_of_values_to_keep] = local_values[i]
+                number_of_values_to_keep++
+     else:
+        for i in range local_data_size :
+            if(local_values[i] < pivot) :
+                values_to_send[number_of_values_to_send] = local_values[i]
+                number_of_values_to_send++
+             else :
+                values_to_keep[number_of_values_to_keep] = local_values[i]
+                number_of_values_to_keep++
+
+    global_values_to_send[partnerID] = number_of_values_to_send
+    //Synchronize all processes to ensure that all have completed their partitioning before proceeding.
+    MPI_Barrier(MPI_COMM_WORLD)
+    float* values_to_recv = new float[global_values_to_send[rankid]]
+    // Synchronize all processes again before starting the exchange of values.
+    MPI_Barrier(MPI_COMM_WORLD)
+    //Send the partitioned values to the partner process.
+    MPI_Send(values_to_send, number_of_values_to_send, MPI_FLOAT, partnerID, 0, MPI_COMM_WORLD)
+    //Receive the partitioned values from the partner process.
+    MPI_Recv(values_to_recv, global_values_to_send[rankid], MPI_FLOAT, partnerID, MPI_COMM_WORLD, MPI_STATUS_IGNORE)
+    float* new_local_values = new float[global_values_to_send[rankid] + number_of_values_to_keep]
+
+    //Merge the received values and the values to keep into a new array for further sorting.
+    for i in range global_values_to_send[rankid]:
+        new_local_values[i] = values_to_recv[i]
+
+    for i in range number_of_values_to_keep:
+        new_local_values[i + global_values_to_send[rankid]] = values_to_keep[i]
+
+    // Synchronize all processes to ensure all exchanges are complete before proceeding.
+    MPI_Barrier(MPI_COMM_WORLD)
+    //Recursively call quickSort to continue sorting the newly formed array.
+    quickSort(new_local_values, global_values_to_send[rankid] + number_of_values_to_keep, pivot, rankid)
+
+main():
+    global_values_to_send = (int*)malloc(numTasks * sizeof(int))    
+    // Initialize the MPI environment.
+    MPI_Init(&argc,&argv)
+    //Get the current process's ID within the group of processes
+    MPI_Comm_rank(MPI_COMM_WORLD,&rankid)
+    //Get the total number of processes running in parallel.
+    MPI_Comm_size(MPI_COMM_WORLD,&numTasks)
+
+    int local_data_size = data_size / numTasks
+    float *local_values = (float*)malloc(local_data_size * sizeof(float))
+    array_fill_random_no_seed(local_values, local_data_size)
+    //Ensure all processes have completed data initialization before proceeding.
+    MPI_Barrier(MPI_COMM_WORLD)
+    float pivot
+    // Process 0 select the first pivot and then broadcast to each of the other processes
+    if (rankid == 0) :  
+        pivot = select_pivot(local_values, local_data_size)
+    MPI_Bcast(pivot, 1, MPI_FLOAT, 0, MPI_COMM_WORLD)
+    MPI_Barrier(MPI_COMM_WORLD)
+    quickSort(local_values, local_data_size, pivot, 1, rankid)
+    MPI_Finalize()
 ```
 **CUDA:**
 ```
     __device__ partition():
-//This function divides swaps elements based on the chosen partition point (the median)
+//This function swaps elements based on the chosen partition point (the median)
     while (left <= right):
         while (data[left] < pivot) left++
         while (data[right] > pivot) right--
@@ -470,13 +541,9 @@ quicksort():
 }
 
 main:
-    BLOCKS = NUM_VALS / THREADS
     float *values = (float*) malloc(NUM_VALS * sizeof(float))
     array_fill(values, NUM_VALS)
     quicksort(values, NUM_VALS)
-    free(values)
-    mgr.stop()
-    mgr.flush()
 ```
 
 - For MPI programs, include MPI calls you will use to coordinate between processes
