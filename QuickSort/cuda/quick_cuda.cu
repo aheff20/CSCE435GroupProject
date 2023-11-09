@@ -24,9 +24,11 @@ void print_elapsed(clock_t start, clock_t stop){
 
 void array_fill(float *arr, int length){
     srand(time(NULL));
+    CALI_MARK_BEGIN(comp_small);
     for (int i = 0; i < length; ++i) {
         arr[i] = (float)rand() / (float)RAND_MAX;
     }
+     CALI_MARK_END(comp_small);
  }
 
 __device__ void swap(float *a, float *b) {
@@ -73,12 +75,20 @@ __global__ void quicksort_kernel(float *data, int left, int right) {
 void quicksort(float *data, int n) {
     float *d_data;
     cudaMalloc(&d_data, n * sizeof(float));
-    cudaMemcpy(d_data, data, n * sizeof(float), cudaMemcpyHostToDevice);
 
+    CALI_MARK_BEGIN(comm_small);
+    cudaMemcpy(d_data, data, n * sizeof(float), cudaMemcpyHostToDevice);
+    CALI_MARK_END(comm_small);
+
+    CALI_MARK_BEGIN(comp_large);
     quicksort_kernel<<<BLOCKS, THREADS>>>(d_data, 0, n - 1);
+    CALI_MARK_END(comp_large);
+
     cudaDeviceSynchronize();
 
+    CALI_MARK_BEGIN(comm_large);
     cudaMemcpy(data, d_data, n * sizeof(float), cudaMemcpyDeviceToHost);
+    CALI_MARK_END(comm_large);
     cudaFree(d_data);
 }
 
