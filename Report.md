@@ -20,11 +20,13 @@ Our group will communicate with each other through the Group Chat we have create
 The project will include the following algorithms and architectures:
 
 - Merge Sort (CUDA)
-- Merge Sort (MPI on each core)
+- Merge Sort (MPI)
 - Bubble Sort (CUDA)
-- Bubble Sort (MPI on each core)
+- Bubble Sort (MPI)
 - Quick Sort (CUDA)
-- Quick Sort (MPI on each core)
+- Quick Sort (MPI)
+- Sample Sort (CUDA)
+- Sample Sort (MPI)
 
 ## 2b. Psuedocode for each parallel algorithm
 **Bubble Sort:**
@@ -246,6 +248,93 @@ def sampleSort(global_array, values, rankid, local_data_size, numTasks):
 
 **CUDA:**
 ```
+    __global__ partitionAndSample():
+        // responsible for sorting data from the blocks partition and sampling it
+        for i in range(local_chunk):
+            for j in range(start_offset, end_offset):
+                if(dev_values[j] > dev_values[j+1]):
+                    swap()
+        
+        for i in range(num_of_samples):
+            all_samples[thread_offset] = local_values[sample_offset]
+    
+    __global__ findDisplacements():
+        // responsible for find what values in a block need to be sent elsewhere and where to send them
+        for i in range(local_chunk):
+            for k in range(num_blocks):
+                if(local_values[i] < pivots[k]):
+                    localCounts[k]++
+
+        for i in range(num_blocks):
+            sum = 0
+            for k in range(i-1, 0, -1):
+                sum += localCounts[k]
+            localDisplacements[i] = sum
+
+        for i in range(num_blocks):
+            incoming_value_count[thread_offset] = localCounts[i] // incoming_value_count = float[num_blocks*num_samples], a global variable
+            displacements[thread_offset] = localDisplacements[i] // displacements = float[num_blocks*num_samples], a global variable
+
+    __global__ sendDisplacedValues():
+        // responsible for sending values to their final block
+        for i in range(num_blocks):
+            for k in range(displacements[thread_offset], incoming_value_count[thread_offset]):
+                offset = k - displacement[thread_offset]
+
+                for j in range(threadID):
+                    offset += incoming_value_count[j*num_blocks+i]
+
+                if i > 0:
+                    for n in range(i):
+                        offset += final_value_count[n]
+
+                final_sorted_values[offset] = local_values[k] // final_sorted_values is an empty array of size NUM_VALS
+
+    __global__ finalSort():
+        // each process sorts its last partition
+        for i in range(final_value_count[threadID]):
+            for j in range(final_value_count[threadID]-i-1):
+                if(final_local_values[j] > final_local_values[j+1]):
+                    swap()
+        
+        for i in range(final_value_count[threadID]):
+            final_sorted_values[offset] = final_local_values[i]
+
+    sample_sort(values):
+        local_chunk = NUM_VALS / BLOCKS
+        
+        cudaMalloc(all_samples, BLOCKS*num_of_samples*sizeof(float))
+        cudaMalloc(dev_values, NUM_VALS*sizeof(float))
+
+        cudaMemcpy(dev_values, values, NUM_VALS*sizeof(float), HostToDevice)
+
+        partitionAndSample<<<blocks, threads>>>()
+
+        cudaDeviceSynchronize();
+
+        float* final_samples;
+        cudaMemcpy(final_samples, all_samples, BLOCKS*num_of_samples*sizeof(float), DeviceToHost);
+
+        sort(final_samples)
+        find_pivots(final_samples);
+
+        cudaMemcpy(final_pivots, pivots, BLOCKS-1 * sizeof(float), HostToDevice);
+
+        findDisplacements<<<blocks, threads>>>();
+
+        cudaDeviceSynchronize();
+
+        sendDisplacedValues<<<blocks, threads>>>();
+
+        cudaDeviceSynchronize();
+
+        finalSort<<<blocks, threads>>>();
+
+        cudaDeviceSynchronize();
+
+        cudaMemcpy(values, final_sorted_values, NUM_VALS, DeviceToHost);
+
+
 ```
 - For MPI programs, include MPI calls you will use to coordinate between processes
 - For CUDA programs, indicate which computation will be performed in a CUDA kernel,
