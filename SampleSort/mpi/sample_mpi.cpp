@@ -9,6 +9,15 @@
 #include <adiak.hpp>
 #include "../../Utils/helper_functions.h"
 
+const char* data_init = "data_init";
+const char* sample_sort_region = "sample_sort_region";
+const char* comp_small = "comp_small";
+const char* comp_large = "comp_large";
+const char* comm_small = "comm_small";
+const char* comm_large = "comm_large";
+const char* correctness_check = "correctness_check";
+const char* barrier = "mpi_barrier";
+
 int compare (const void * a, const void * b)
 {
     float fa = *(const float*) a;
@@ -33,26 +42,37 @@ void print_iarray(int* array, int size) {
 
 void sampleSort(float *global_array, float *values, int rankid, int local_data_size, int numTasks) {
 
+    CALI_MARK_BEGIN(comp_large);
     qsort(values, local_data_size, sizeof(float), compare);
+    CALI_MARK_END(comp_large);
 
     float *samples = (float*)malloc(numTasks * sizeof(float));
+
+    CALI_MARK_BEGIN(comp_small);
     for (int i = 0; i < numTasks; i++){
         samples[i] = values[i * local_data_size / numTasks];
     }
+    CALI_MARK_END(comp_small);
 
     float *all_samples = (float*)malloc(numTasks*numTasks * sizeof(float));
 
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
 
+    CALI_MARK_BEGIN(comm_small);
     MPI_Gather(samples, numTasks, MPI_FLOAT, all_samples, numTasks, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    CALI_MARK_END(comm_small);
 
     // at rank 0, grab all the different samples and choose pivots
     if (rankid == 0) {
+        CALI_MARK_BEGIN(comp_small);
         qsort(all_samples, numTasks * numTasks, sizeof(float), compare);
         for (int i = 1; i < numTasks; ++i) {
             // choose pivots
             samples[i] = all_samples[i * numTasks + numTasks / 2];
         }
+        CALI_MARK_END(comp_small);
 
         // print_array(values, local_data_size);
         // print_array(all_samples, numTasks * numTasks);
@@ -61,13 +81,16 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
 
     }
 
+    CALI_MARK_BEGIN(comm_small);
     MPI_Bcast(samples, numTasks, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    CALI_MARK_END(comm_small);
 
     // the samples array now contains the pivots for sorting (ignore index 0 in the array)
 
     int *localCounts = (int*)malloc(numTasks * sizeof(int));
     int *localDisplacements = (int*)malloc(numTasks * sizeof(int));
 
+    CALI_MARK_BEGIN(comp_large);
     for (int i = 0; i < numTasks; i++){
         localCounts[i] = 0;
     }
@@ -94,11 +117,17 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
         }
         localDisplacements[i] = sum;
     }
+    CALI_MARK_END(comp_large);
 
     int *extCounts = (int*)malloc(numTasks * sizeof(int));
+
+    CALI_MARK_BEGIN(comm_small);
     MPI_Alltoall(localCounts, 1, MPI_INT, extCounts, 1, MPI_INT, MPI_COMM_WORLD);
+    CALI_MARK_END(comm_small);
 
     int *extDisplacements = (int*)malloc(numTasks * sizeof(int));
+
+    CALI_MARK_BEGIN(comp_small);
     extDisplacements[0] = 0;
     for (int i = 1; i < numTasks; i++){
         int sum = 0;
@@ -107,10 +136,14 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
         }
         extDisplacements[i] = sum;
     }
+    CALI_MARK_END(comp_small);
 
 
     int *globalCounts = (int*)malloc(numTasks * sizeof(int));
+
+    CALI_MARK_BEGIN(comm_small);
     MPI_Allreduce(localCounts, globalCounts, numTasks, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+    CALI_MARK_END(comm_small);
 
     // if(rankid == 0) {
     //     // print_iarray(localCounts, numTasks);
@@ -123,15 +156,23 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
     //     printf("############################\n");
     // }
 
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
 
     float *sortedData = (float*)malloc(globalCounts[rankid] * sizeof(float));
-    MPI_Alltoallv(values, localCounts, localDisplacements, MPI_FLOAT, sortedData, extCounts, extDisplacements, MPI_FLOAT, MPI_COMM_WORLD);
 
+    CALI_MARK_BEGIN(comm_large);
+    MPI_Alltoallv(values, localCounts, localDisplacements, MPI_FLOAT, sortedData, extCounts, extDisplacements, MPI_FLOAT, MPI_COMM_WORLD);
+    CALI_MARK_END(comm_large);
+
+    CALI_MARK_BEGIN(comp_large);
     qsort(sortedData, globalCounts[rankid], sizeof(float), compare);
+    CALI_MARK_END(comp_large);
     // print_array(sortedData,  globalCounts[rankid]);
 
     int *globalDisplacements = (int*)malloc(numTasks * sizeof(int));
+    CALI_MARK_BEGIN(comp_small);
     globalDisplacements[0] = 0;
     for (int i = 1; i < numTasks; i++){
         int sum = 0;
@@ -140,10 +181,15 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
         }
         globalDisplacements[i] = sum;
     }
+    CALI_MARK_END(comp_small);
 
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
 
+    CALI_MARK_BEGIN(comm_large);
     MPI_Gatherv(sortedData, globalCounts[rankid], MPI_FLOAT, global_array, globalCounts, globalDisplacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    CALI_MARK_END(comm_large);
 
     // if(rankid == 0){
     //     printf("############################\n");
@@ -186,15 +232,23 @@ int main(int argc, char** argv) {
     int local_data_size = data_size / numTasks;
     float *values = (float*)malloc(local_data_size * sizeof(float));
 
+    CALI_MARK_BEGIN(data_init);
     array_fill_random_no_seed(values, local_data_size);
+    CALI_MARK_END(data_init);
 
+    CALI_MARK_BEGIN(sample_sort_region);
     sampleSort(global_array, values, rankid, local_data_size, numTasks);
+    CALI_MARK_END(sample_sort_region);
 
-    bool correct = check_sorted(global_array, data_size);
 
+    
     MPI_Finalize();
 
     if (rankid == 0) {
+        CALI_MARK_BEGIN(correctness_check);
+        bool correct = check_sorted(global_array, data_size);
+        CALI_MARK_END(sample_sort_region);
+
         if (correct){
             printf("Array was sorted correctly!");
         }
@@ -203,6 +257,22 @@ int main(int argc, char** argv) {
         }
     }
     
+    if(rankid == 0) {
+        adiak::init(NULL);
+        adiak::launchdate();    // launch date of the job
+        adiak::libraries();     // Libraries used
+        adiak::cmdline();       // Command line used to launch the job
+        adiak::clustername();   // Name of the cluster
+        adiak::value("Algorithm", "SampleSort"); // The name of the algorithm you are using (e.g., "MergeSort", "BitonicSort")
+        adiak::value("ProgrammingModel", "MPI"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
+        adiak::value("Datatype", float); // The datatype of input elements (e.g., double, int, float)
+        adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
+        adiak::value("InputSize", NUM_VALS); // The number of elements in input dataset (1000)
+        adiak::value("InputType", inputType); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
+        adiak::value("num_threads", numTasks); // The number of CUDA or OpenMP threads
+        adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
+        adiak::value("implementation_source", "Handwritten") // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
+    }
 
 
     return 0;
