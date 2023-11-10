@@ -34,7 +34,7 @@ void print_array(float* array, int size) {
     printf("\n\n");
 }
 
-void select_pivots(float* samples, float* pivots, int samples_size, int num_of_samples) {
+void select_pivots(float* all_samples, float* pivots, int samples_size, int num_of_samples) {
     for (int i = num_of_samples; i < samples_size; i += num_of_samples) {
         pivots[(i/num_of_samples)-1] = all_samples[i];
     }
@@ -68,7 +68,7 @@ __global__ void partitionAndSample(float* dev_values, int num_vals, int local_ch
 
         // Select samples and place in all samples 
         for (int i = 0; i < num_of_samples; i++){
-            all_samples[i + threadID * num_of_samples] = local_values[i * local_chunk / num_of_samples];
+            all_samples[i + threadID * num_of_samples] = dev_values[start + i * local_chunk / num_of_samples];
         }
     }
 }
@@ -131,7 +131,7 @@ __global__ void findDisplacements(float* dev_values, int num_vals, int num_block
 
 }
 
-__global__ void sendDisplacedValues(float* final_sorted_values, float* dev_values, int num_vals, int num_blocks, int local_chunk, int *incoming_value_count, int *displacements, int *final_value_count){
+__global__ void sendDisplacedValues(float* final_unsorted_values, float* dev_values, int num_vals, int num_blocks, int local_chunk, int *incoming_value_count, int *displacements, int *final_value_count){
     int threadID = threadIdx.x + blockDim.x * blockIdx.x;
     int start = threadID * local_chunk;
 
@@ -157,8 +157,7 @@ __global__ void sendDisplacedValues(float* final_sorted_values, float* dev_value
                         offset += final_value_count[n];
                     }
                 }            
-
-                final_sorted_values[offset] = local_values[k];
+                final_unsorted_values[offset] = local_values[k];
 
             }
         
@@ -168,7 +167,7 @@ __global__ void sendDisplacedValues(float* final_sorted_values, float* dev_value
 }
 
 
-__global__ void finalSort(float *final_sorted_values, int num_vals, int local_chunk, int *final_value_count) {
+__global__ void finalSort(float *final_sorted_values, float* final_unsorted_values, int num_vals, int local_chunk, int *final_value_count) {
     int threadID = threadIdx.x + blockDim.x * blockIdx.x;
     int start = threadID * local_chunk;
 
@@ -183,7 +182,7 @@ __global__ void finalSort(float *final_sorted_values, int num_vals, int local_ch
 
         // Grab values from partition
         for(int i = idx; i < idx + final_value_count[threadID]; i++) {
-            final_local_values[i - idx] = final_sorted_values[i];
+            final_local_values[i - idx] = final_unsorted_values[i];
         }
 
         // Sort values locally
@@ -221,6 +220,8 @@ void sample_sort(float* values, int *kernel_calls) {
     float *all_samples;
     cudaMalloc((void**)&all_samples, BLOCKS * num_of_samples * sizeof(float));
 
+    dim3 blocks(BLOCKS,1); 
+    dim3 threads(THREADS,1);
     
     // Partition data, sort it locally, and select samples
     CALI_MARK_BEGIN(comp_large);
@@ -272,7 +273,7 @@ void sample_sort(float* values, int *kernel_calls) {
     CALI_MARK_END(comm_small);
 
     int* final_value_count;
-    cudaMalloc((void**)&displacements, BLOCKS * sizeof(int));
+    cudaMalloc((void**)&final_value_count, BLOCKS * sizeof(int));
 
     int* final_counts = (int*)malloc(BLOCKS * sizeof(int));
 
@@ -284,26 +285,29 @@ void sample_sort(float* values, int *kernel_calls) {
     cudaMemcpy(final_value_count, final_counts, BLOCKS*sizeof(int), cudaMemcpyHostToDevice);
     CALI_MARK_END(comm_small);
 
-    float *final_sorted_values;
-    cudaMalloc((void**)&final_sorted_values, NUM_VALS*sizeof(float));
+    float *final_unsorted_values;
+    cudaMalloc((void**)&final_unsorted_values, NUM_VALS*sizeof(float));
 
     CALI_MARK_BEGIN(comp_large);
     // send displaced values to other blocks
-    sendDisplacedValues<<<blocks, threads>>>(final_sorted_values, dev_values, NUM_VALS, BLOCKS, local_chunk, incoming_value_count, displacements, final_value_count);
+    sendDisplacedValues<<<blocks, threads>>>(final_unsorted_values, dev_values, NUM_VALS, BLOCKS, local_chunk, incoming_value_count, displacements, final_value_count);
     CALI_MARK_END(comp_large);
 
     cudaDeviceSynchronize();
 
+    float *final_sorted_values;
+    cudaMalloc((void**)&final_sorted_values, NUM_VALS*sizeof(float));
+
     CALI_MARK_BEGIN(comp_large);
     // final sort each partition
-    finalSort<<<blocks, threads>>>(final_sorted_values, NUM_VALS, local_chunk, final_value_count);
+    finalSort<<<blocks, threads>>>(final_sorted_values, final_unsorted_values, NUM_VALS, local_chunk, final_value_count);
     CALI_MARK_END(comp_large);
 
     cudaDeviceSynchronize();
 
     CALI_MARK_BEGIN(comm_large);
     // Collect the final sorted array back into values
-    cudaMemcpy(values, final_sorted_values, NUM_VALS, cudaMemcpyDeviceToHost);
+    cudaMemcpy(values, final_sorted_values, NUM_VALS*sizeof(float), cudaMemcpyDeviceToHost);
     CALI_MARK_END(comm_large);
 
     // Free data from device
@@ -314,6 +318,7 @@ void sample_sort(float* values, int *kernel_calls) {
     cudaFree(final_pivots);
     cudaFree(all_samples);
     cudaFree(final_sorted_values);
+    cudaFree(final_unsorted_values);
 
 }
 
@@ -348,12 +353,6 @@ int main(int argc, char *argv[]) {
     array_fill_random(values, NUM_VALS);
     CALI_MARK_END(data_init);
 
-    printf("###########################################################\n");
-    printf("ARRAY:\n");
-    print_array(values, NUM_VALS);
-    printf("###########################################################\n\n");
-
-
     CALI_MARK_BEGIN(sample_sort_region);
     sample_sort(values, &kernel_calls);
     CALI_MARK_END(sample_sort_region);
@@ -375,13 +374,13 @@ int main(int argc, char *argv[]) {
     adiak::clustername();   // Name of the cluster
     adiak::value("Algorithm", "SampleSort"); // The name of the algorithm you are using (e.g., "MergeSort", "BitonicSort")
     adiak::value("ProgrammingModel", "CUDA"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
-    adiak::value("Datatype", float); // The datatype of input elements (e.g., double, int, float)
+    adiak::value("Datatype", 4); // The datatype of input elements (e.g., double, int, float)
     adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
     adiak::value("InputSize", NUM_VALS); // The number of elements in input dataset (1000)
     adiak::value("InputType", inputType); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
     adiak::value("num_threads", THREADS); // The number of CUDA or OpenMP threads
     adiak::value("num_blocks", BLOCKS); // The number of CUDA blocks 
     adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
-    adiak::value("implementation_source", "Handwritten") // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
+    adiak::value("implementation_source", "Handwritten"); // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
 
 }
