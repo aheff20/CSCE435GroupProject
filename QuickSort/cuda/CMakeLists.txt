@@ -13,7 +13,7 @@ set(SOURCE_FILES
     ${CMAKE_SOURCE_DIR}/../../Utils/helper_functions.cpp 
 )
 
-add_executable(quick quick_sort.cu)
+add_executable(quick_cuda quick_cuda.cu)
 
 message(STATUS "MPI includes : ${MPI_INCLUDE_PATH}")
 message(STATUS "CUDA includes : ${CUDA_INCLUDE_DIRS}")
@@ -24,5 +24,5 @@ include_directories(${CUDA_INCLUDE_DIRS})
 include_directories(${caliper_INCLUDE_DIR})
 include_directories(${adiak_INCLUDE_DIRS})
 
-target_link_libraries(quick PRIVATE MPI::MPI_CXX)
-target_link_libraries(quick PRIVATE caliper)
+target_link_libraries(quick_cuda PRIVATE MPI::MPI_CXX)
+target_link_libraries(quick_cuda PRIVATE caliper)
