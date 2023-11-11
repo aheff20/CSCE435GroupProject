@@ -3,6 +3,7 @@
 #include <time.h>
 #include <mpi.h>
 #include <string>
+#include <algorithm>
 
 #include <caliper/cali.h>
 #include <caliper/cali-manager.h>
@@ -38,29 +39,14 @@ void print_iarray(int* array, int size) {
     printf("\n");
 }
 
-void localBubbleSort(float *values, int size) {
-    int i, j;
-    for (i = 0; i < size-1; i++) {
-        for (j = 0; j < size-i-1; j++) {
-            if (values[j] > values[j+1]) {
-                float temp = values[j];
-                values[j] = values[j+1];
-                values[j+1] = temp;
-            }
-        }
-    }
-}
-
 void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
-    float *temp = (float*)malloc(local_data_size * sizeof(float));
-
     CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_large);
 
+    auto *temp = new float[local_data_size];
+    auto *merged = new float[local_data_size *  2];
+
     for (int phase = 0; phase < numTasks; phase++) {
-        MPI_Status status;
-        
-        // Determine the neighbor for the current phase
         int neighbor;
         if (phase % 2 == 0) { // Even phase
             neighbor = (rankid % 2 == 0) ? rankid + 1 : rankid - 1;
@@ -68,46 +54,37 @@ void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
             neighbor = (rankid % 2 != 0) ? rankid + 1 : rankid - 1;
         }
 
-        CALI_MARK_END(comp_large);
-    	CALI_MARK_END(comp);
-
         CALI_MARK_BEGIN(comm);
     	CALI_MARK_BEGIN(comm_large);
 
         // Avoid out-of-bounds ranks
         if (neighbor >= 0 && neighbor < numTasks) {
             // Send and receive values
-            MPI_Sendrecv(values, local_data_size, MPI_FLOAT, neighbor, 0,
-                         temp, local_data_size, MPI_FLOAT, neighbor, 0,
-                         MPI_COMM_WORLD, &status);
+            if (rankid % 2 == 0) {
+                MPI_Send(values, local_data_size, MPI_INT, neighbor, 0, MPI_COMM_WORLD);
+                MPI_Recv(temp, local_data_size, MPI_INT, neighbor, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            } else {
+                MPI_Recv(temp, local_data_size, MPI_INT, neighbor, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+                MPI_Send(values, local_data_size, MPI_INT, neighbor, 0, MPI_COMM_WORLD);
+            }
+
 
             CALI_MARK_END(comm_large);
     	    CALI_MARK_END(comm);
 
-            CALI_MARK_BEGIN(comp);
-            CALI_MARK_BEGIN(comp_large);
+            qsort(merged, (local_data_size *  2), sizeof(int), compare);
 
-            // Merge two sorted blocks: values and temp
-            if (rankid < neighbor) {
-                // Keep smaller values in 'values'
-                for (int i = 0, j = 0, k = 0; k < local_data_size; k++) {
-                    values[k] = (j == local_data_size || (i < local_data_size && values[i] < temp[j])) ? values[i++] : temp[j++];
-                }
-            } else {
-                // Keep larger values in 'values'
-                for (int i = local_data_size - 1, j = local_data_size - 1, k = local_data_size - 1; k >= 0; k--) {
-                    values[k] = (j == -1 || (i >= 0 && values[i] >= temp[j])) ? values[i--] : temp[j--];
-                }
-            }
+            auto midPoint = merged + local_data_size;
+            if (rankid < neighbor)
+                std::copy(merged, midPoint, values);
+            else
+                std::copy(midPoint, merged + (local_data_size *  2), values);
         }
     }
     
     CALI_MARK_END(comp_large);
     CALI_MARK_END(comp);
-
-    free(temp);
 }
-
 
 int main(int argc, char** argv) {
     CALI_CXX_MARK_FUNCTION;

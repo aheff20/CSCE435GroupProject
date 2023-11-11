@@ -17,6 +17,8 @@ mpi.h
 -
 string
 -
+algorithm
+-
 caliper/cali.h
 -
 caliper/cali-manager.h

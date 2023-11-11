@@ -1,0 +1,3 @@
+== CALIPER: Stack value mismatch: Trying to end region=comp_large but current value is region=comm_large
+== CALIPER: Stack value mismatch: Trying to end region=comp_large but current value is region=comm_large
+Array was sorted correctly!
