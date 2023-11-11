@@ -46,7 +46,7 @@ __global__ void bubble_sort_step(float *dev_values, int size, bool even_phase) {
 }
 
 // Host function to sort an array using bubble sort on the GPU
-void bubble_sort(float *values, int size, float *bubble_sort_step_time, float *cudaMemcpy_host_to_device_time, float *cudaMemcpy_device_to_host_time, int *kernel_calls) {
+void bubbleSort(float *values, int size, int *kernel_calls) {
     float *dev_values;
     cudaMalloc((void**)&dev_values, size * sizeof(float));
     size_t bytes = size * sizeof(float);
@@ -55,23 +55,16 @@ void bubble_sort(float *values, int size, float *bubble_sort_step_time, float *c
 
     cudaMemcpy(dev_values, values, bytes, cudaMemcpyHostToDevice);
 
-    float milliseconds = 0;
-    *cudaMemcpy_host_to_device_time += milliseconds;
-
-    // Bubble sort is composed of NUM_VALS / 2 phases
-    int major_step = size / 2; 
-
     int threads = THREADS;
     int blocks = (size + threads - 1) / threads;
 
     CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_large);
-    // Perform bubble sort with NUM_VALS / 2 phases to ensure sorting
+    
     for (int i = 0; i < size; ++i) {
         bool even_phase = (i % 2) == 0;
         bubble_sort_step<<<blocks, threads>>>(dev_values, size, even_phase);
 
-        *bubble_sort_step_time += milliseconds;
         (*kernel_calls)++;
     }
     CALI_MARK_END(comp_large);
@@ -83,8 +76,6 @@ void bubble_sort(float *values, int size, float *bubble_sort_step_time, float *c
     cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
     CALI_MARK_END(comm_large);
     CALI_MARK_END(comm);
-
-    *cudaMemcpy_device_to_host_time += milliseconds;
 
     // Cleanup
     cudaFree(dev_values);
@@ -110,12 +101,9 @@ int main(int argc, char *argv[]) {
     CALI_MARK_END("data_init");
 
     // Declare variables for timing information
-    float bubble_sort_step_time = 0.0f;
-    float cudaMemcpy_host_to_device_time = 0.0f;
-    float cudaMemcpy_device_to_host_time = 0.0f;
     int kernel_calls = 0;
 
-    bubble_sort(values, NUM_VALS, &bubble_sort_step_time, &cudaMemcpy_host_to_device_time, &cudaMemcpy_device_to_host_time, &kernel_calls);
+    bubbleSort(values, NUM_VALS, &kernel_calls);
 
     CALI_MARK_BEGIN(correctness_check);
 
@@ -130,9 +118,6 @@ int main(int argc, char *argv[]) {
     CALI_MARK_END(correctness_check);
 
     // Output timing information
-    printf("Bubble Sort Step Time: %f ms\n", bubble_sort_step_time);
-    printf("CUDA Memcpy Host to Device Time: %f ms\n", cudaMemcpy_host_to_device_time);
-    printf("CUDA Memcpy Device to Host Time: %f ms\n", cudaMemcpy_device_to_host_time);
     printf("Total Kernel Calls: %d\n", kernel_calls);
 
     // Adiak reporting (similar to previous example)
@@ -147,9 +132,6 @@ int main(int argc, char *argv[]) {
     adiak::value("num_vals", NUM_VALS);
     adiak::value("program_name", "cuda_bubble_sort");
     adiak::value("datatype_size", sizeof(float));
-    adiak::value("bubble_sort_step_time", bubble_sort_step_time);
-    adiak::value("cudaMemcpy_host_to_device_time", cudaMemcpy_host_to_device_time);
-    adiak::value("cudaMemcpy_device_to_host_time", cudaMemcpy_device_to_host_time);
 
     // Finalize and clean up
     adiak::fini();
