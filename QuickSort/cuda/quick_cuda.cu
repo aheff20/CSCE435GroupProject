@@ -11,6 +11,7 @@
 int THREADS;
 int BLOCKS;
 int NUM_VALS;
+#define MAX_DEPTH 500
 const char* quick_sort_region = "quick_sort_region";
 const char* comp_small = "comp_small";
 const char* comp_large = "comp_large";
@@ -31,108 +32,88 @@ void array_fill(float *arr, int length){
      CALI_MARK_END(comp_small);
  }
 
-__device__ void swap(float *a, float *b) {
-    float t = *a;
-    *a = *b;
-    *b = t;
+__device__ float selectPivot(float* array, int size, curandState_t* state) {
+    float idx = curand(state) % size;
+    return array[idx];
 }
 
-__device__ int partition(float *data, int left, int right, float pivot) {
+__global__ void setupRandom(curandState_t* state, unsigned long seed) {
+    int id = threadIdx.x;
+    curand_init(seed, id, 0, &state[id]);
+}
+
+__global__ void parallelQuicksort(float* array, int size, curandState_t* states, int numThreads, int depth) {
+   __shared__ float sharedPivot;
+    int blockId = blockIdx.x;
+    int threadId = threadIdx.x;
+    int globalId = blockId * blockDim.x + threadId;
+
+    // Calculate the portion of the array this thread will handle
+    int chunkSize = size / (gridDim.x * blockDim.x);
+    int start = globalId * chunkSize;
+    int end = start + chunkSize - 1;
+    if (globalId == (gridDim.x * blockDim.x) - 1) {
+        end = size - 1; 
+    }
+
+    //Pivot selection and broadcasting
+    if (threadId == 0) {
+        sharedPivot = selectPivot(array, size, &states[id]);
+    }
+    __syncthreads(); //Ensure pivot selection is complete
+
+    //Partitioning the array
+    int left = start;
+    int right = end;
     while (left <= right) {
-        while (data[left] < pivot) left++;
-        while (data[right] > pivot) right--;
-        if (left <= right) {
-            swap(&data[left], &data[right]);
+        while (left <= right && array[left] <= sharedPivot) {
+            left++;
+        }
+        while (left <= right && array[right] > sharedPivot) {
+            right--;
+        }
+        if (left < right) {
+            int temp = array[left];
+            array[left] = array[right];
+            array[right] = temp;
             left++;
             right--;
         }
     }
-    return left;
+    __syncthreads(); //Ensure all threads have finished partitioning
+
+    // Exchange partitions among threads
+if (threadId < numThreads / 2) {
+    int partner = numThreads - 1 - id;
+
+    int sendSize = left - start; // Number of elements smaller than the pivot
+    int receiveSize; // Number of elements larger than the pivot, but I can't access the partner thread's data
+    
+    // Perform the exchange
+    for (int i = 0; i < min(sendSize, receiveSize); ++i) {
+        // Exchange elements at corresponding positions
+        float temp = array[start + i];
+        array[start + i] = array[partner * chunkSize + i];
+        array[partner * chunkSize + i] = temp;
+    }
 }
+    __syncthreads(); //Ensure all exchanges are complete
 
-
-__device__ void quicksort_recursive(float *data, int left, int right, float pivot) {
-     if (left < right) {
-        int pivot_index = partition(data, left, right, pivot);
-        if (pivot_index > left) {
-            quicksort_recursive(data, left, pivot_index - 1, pivot);
+    //Recursive step
+    if (depth < MAX_DEPTH) {
+        int mid = (start + end) / 2;
+        if (start < mid) {
+            parallelQuicksort<<<BLOCKS, numThreads>>>(array, mid - start, states, numThreads, depth + 1);
         }
-        if (pivot_index < right) {
-            quicksort_recursive(data, pivot_index + 1, right, pivot);
+        if (mid + 1 < end) {
+            parallelQuicksort<<<BLOCKS, numThreads>>>(array, end - mid, states, numThreads, depth + 1);
         }
     }
+    
+    //Final quicksort of each thread's list
+    //Each thread sorts its own portion of the array.
 }
 
-__global__ void quicksort_kernel(float *data, int *leftIndices, int *rightIndices, int pivot, int blockId) {
-    __shared__ int newLeftIndex, newRightIndex;
-
-    int blockStart = leftIndices[blockId];
-    int blockEnd = rightIndices[blockId];
-    int threadIndex = blockStart + threadIdx.x;
-
-    if (threadIndex <= blockEnd) {
-        quicksort_recursive(data, blockStart, blockEnd, pivot);
-    }
-
-    // Assuming partitioning done correctly
-    if (threadIdx.x == 0) {
-        newLeftIndex = blockStart; 
-        newRightIndex = blockEnd; 
-    }
-
-    __syncthreads();
-
-    if (threadIdx.x == 0) {
-        leftIndices[blockId] = newLeftIndex;
-        rightIndices[blockId] = newRightIndex;
-    }
-}
-
-void quicksort(float *data, int n) {
-    float *d_data;
-    cudaMalloc(&d_data, n * sizeof(float));
-    cudaMemcpy(d_data, data, n * sizeof(float), cudaMemcpyHostToDevice);
-
-    int *leftIndices = (int*)malloc(BLOCKS * sizeof(int));
-    int *rightIndices = (int*)malloc(BLOCKS * sizeof(int));
-    int *d_leftIndices, *d_rightIndices;
-    cudaMalloc(&d_leftIndices, BLOCKS * sizeof(int));
-    cudaMalloc(&d_rightIndices, BLOCKS * sizeof(int));
-
-    for (int i = 0; i < BLOCKS; ++i) {
-        leftIndices[i] = 0;
-        rightIndices[i] = n - 1;
-    }
-
-    cudaMemcpy(d_leftIndices, leftIndices, BLOCKS * sizeof(int), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_rightIndices, rightIndices, BLOCKS * sizeof(int), cudaMemcpyHostToDevice);
-
-    bool sorted = false;
-    while (!sorted) {
-        sorted = true;
-
-        for (int i = 0; i < BLOCKS; ++i) {
-            if (leftIndices[i] < rightIndices[i]) {
-                sorted = false;
-                float pivot = data[(leftIndices[i] + rightIndices[i]) / 2];
-                quicksort_kernel<<<BLOCKS, THREADS>>>(d_data, d_leftIndices, d_rightIndices, pivot, i);
-                cudaDeviceSynchronize();
-            }
-        }
-
-        cudaMemcpy(leftIndices, d_leftIndices, BLOCKS * sizeof(int), cudaMemcpyDeviceToHost);
-        cudaMemcpy(rightIndices, d_rightIndices, BLOCKS * sizeof(int), cudaMemcpyDeviceToHost);
-    }
-
-    cudaMemcpy(data, d_data, n * sizeof(float), cudaMemcpyDeviceToHost);
-
-    cudaFree(d_data);
-    cudaFree(d_leftIndices);
-    cudaFree(d_rightIndices);
-
-    free(leftIndices);
-    free(rightIndices);
-}
 
 int main(int argc, char **argv) {
     if (argc != 3) {
@@ -149,16 +130,38 @@ int main(int argc, char **argv) {
 
     clock_t start, stop;
 
+    //Allocate memory for the array on host
     float *values = (float*) malloc(NUM_VALS * sizeof(float));
     array_fill(values, NUM_VALS);
 
+    //Allocate memory on the device rather than host
+    float *d_array;
+    cudaMalloc(&d_array, NUM_VALS * sizeof(float));
+    cudaMemcpy(d_array, values, NUM_VALS * sizeof(float), cudaMemcpyHostToDevice);
+
+    //Setup for random number generation in kernel
+    curandState_t *d_states;
+    cudaMalloc(&d_states, numThreads * sizeof(curandState_t));
+    setupRandom<<<1, numThreads>>>(d_states, time(NULL)); // Setup kernel for random number generation
+
     start = clock();
-    quicksort(values, NUM_VALS);
+    parallelQuicksort<<<BLOCKS, numThreads>>>(d_array, NUM_VALS, d_states, numThreads, 0);
     stop = clock();
+
+    cudaDeviceSynchronize();
+
+    //Copy the sorted array back to host
+    cudaMemcpy(values, d_array, NUM_VALS * sizeof(float), cudaMemcpyDeviceToHost);
 
     print_elapsed(start, stop);
 
+    // Free device memory
+    cudaFree(d_array);
+    cudaFree(d_states);
+
+    // Free host memory
     free(values);
+
 
     mgr.stop();
     mgr.flush();
