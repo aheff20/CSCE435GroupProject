@@ -51,45 +51,87 @@ __device__ int partition(float *data, int left, int right, float pivot) {
 }
 
 
-__device__ void quicksort_recursive(float *data, int left, int right) {
-    if (left < right) {
-        float pivot = data[(left + right) / 2];
+__device__ void quicksort_recursive(float *data, int left, int right, float pivot) {
+     if (left < right) {
         int pivot_index = partition(data, left, right, pivot);
-
         if (pivot_index > left) {
-            quicksort_recursive(data, left, pivot_index - 1);
+            quicksort_recursive(data, left, pivot_index - 1, pivot);
         }
         if (pivot_index < right) {
-            quicksort_recursive(data, pivot_index + 1, right);
+            quicksort_recursive(data, pivot_index + 1, right, pivot);
         }
     }
 }
 
-__global__ void quicksort_kernel(float *data, int left, int right) {
-    int i = left + blockIdx.x * blockDim.x + threadIdx.x;
-    if (i <= right) {
-        quicksort_recursive(data, left, right);
+__global__ void quicksort_kernel(float *data, int *leftIndices, int *rightIndices, int pivot, int blockId) {
+    __shared__ int newLeftIndex, newRightIndex;
+
+    int blockStart = leftIndices[blockId];
+    int blockEnd = rightIndices[blockId];
+    int threadIndex = blockStart + threadIdx.x;
+
+    if (threadIndex <= blockEnd) {
+        quicksort_recursive(data, blockStart, blockEnd, pivot);
+    }
+
+    // Assuming partitioning done correctly
+    if (threadIdx.x == 0) {
+        newLeftIndex = blockStart; 
+        newRightIndex = blockEnd; 
+    }
+
+    __syncthreads();
+
+    if (threadIdx.x == 0) {
+        leftIndices[blockId] = newLeftIndex;
+        rightIndices[blockId] = newRightIndex;
     }
 }
 
 void quicksort(float *data, int n) {
     float *d_data;
     cudaMalloc(&d_data, n * sizeof(float));
-
-    CALI_MARK_BEGIN(comm_small);
     cudaMemcpy(d_data, data, n * sizeof(float), cudaMemcpyHostToDevice);
-    CALI_MARK_END(comm_small);
 
-    CALI_MARK_BEGIN(comp_large);
-    quicksort_kernel<<<BLOCKS, THREADS>>>(d_data, 0, n - 1);
-    CALI_MARK_END(comp_large);
+    int *leftIndices = (int*)malloc(BLOCKS * sizeof(int));
+    int *rightIndices = (int*)malloc(BLOCKS * sizeof(int));
+    int *d_leftIndices, *d_rightIndices;
+    cudaMalloc(&d_leftIndices, BLOCKS * sizeof(int));
+    cudaMalloc(&d_rightIndices, BLOCKS * sizeof(int));
 
-    cudaDeviceSynchronize();
+    for (int i = 0; i < BLOCKS; ++i) {
+        leftIndices[i] = 0;
+        rightIndices[i] = n - 1;
+    }
 
-    CALI_MARK_BEGIN(comm_large);
+    cudaMemcpy(d_leftIndices, leftIndices, BLOCKS * sizeof(int), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_rightIndices, rightIndices, BLOCKS * sizeof(int), cudaMemcpyHostToDevice);
+
+    bool sorted = false;
+    while (!sorted) {
+        sorted = true;
+
+        for (int i = 0; i < BLOCKS; ++i) {
+            if (leftIndices[i] < rightIndices[i]) {
+                sorted = false;
+                float pivot = data[(leftIndices[i] + rightIndices[i]) / 2];
+                quicksort_kernel<<<BLOCKS, THREADS>>>(d_data, d_leftIndices, d_rightIndices, pivot, i);
+                cudaDeviceSynchronize();
+            }
+        }
+
+        cudaMemcpy(leftIndices, d_leftIndices, BLOCKS * sizeof(int), cudaMemcpyDeviceToHost);
+        cudaMemcpy(rightIndices, d_rightIndices, BLOCKS * sizeof(int), cudaMemcpyDeviceToHost);
+    }
+
     cudaMemcpy(data, d_data, n * sizeof(float), cudaMemcpyDeviceToHost);
-    CALI_MARK_END(comm_large);
+
     cudaFree(d_data);
+    cudaFree(d_leftIndices);
+    cudaFree(d_rightIndices);
+
+    free(leftIndices);
+    free(rightIndices);
 }
 
 int main(int argc, char **argv) {
@@ -126,7 +168,7 @@ int main(int argc, char **argv) {
     adiak::libraries();     // Libraries used
     adiak::cmdline();       // Command line used to launch the job
     adiak::clustername();   // Name of the cluster
-    adiak::value("Algorithm", algorithm); // The name of the algorithm you are using (e.g., "MergeSort", "BitonicSort")
+    adiak::value("Algorithm", "Quicksort"); // The name of the algorithm you are using (e.g., "MergeSort", "BitonicSort")
     adiak::value("ProgrammingModel", "CUDA"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
     adiak::value("Datatype", "float"); // The datatype of input elements (e.g., double, int, float)
     adiak::value("SizeOfDatatype", "4"); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
@@ -135,8 +177,8 @@ int main(int argc, char **argv) {
     adiak::value("num_procs", "0"); // The number of processors (MPI ranks)
     adiak::value("num_threads", THREADS); // The number of CUDA or OpenMP threads
     adiak::value("num_blocks", BLOCKS); // The number of CUDA blocks 
-    adiak::value("group_num", "0"); // The number of your group (integer, e.g., 1, 10)
-    adiak::value("implementation_source", "online") // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
+    adiak::value("group_num", "1"); // The number of your group (integer, e.g., 1, 10)
+    adiak::value("implementation_source", "online"); // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
 
     return 0;
 }
