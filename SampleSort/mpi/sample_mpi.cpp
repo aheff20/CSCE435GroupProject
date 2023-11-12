@@ -40,34 +40,34 @@ void print_iarray(int* array, int size) {
 }
 
 
-void sampleSort(float *global_array, float *values, int rankid, int local_data_size, int numTasks) {
+void sampleSort(float *global_array, float *values, int rankid, int local_data_size, int numTasks, int num_of_samples) {
 
     CALI_MARK_BEGIN(comp_large);
     qsort(values, local_data_size, sizeof(float), compare);
     CALI_MARK_END(comp_large);
 
-    float *samples = (float*)malloc(numTasks * sizeof(float));
+    float *samples = (float*)malloc(num_of_samples * sizeof(float));
 
     CALI_MARK_BEGIN(comp_small);
-    for (int i = 0; i < numTasks; i++){
-        samples[i] = values[i * local_data_size / numTasks];
+    for (int i = 0; i < num_of_samples; i++){
+        samples[i] = values[i * local_data_size / num_of_samples];
     }
     CALI_MARK_END(comp_small);
 
-    float *all_samples = (float*)malloc(numTasks*numTasks * sizeof(float));
+    float *all_samples = (float*)malloc(num_of_samples*numTasks * sizeof(float));
 
     CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
     CALI_MARK_END(barrier);
 
     CALI_MARK_BEGIN(comm_small);
-    MPI_Gather(samples, numTasks, MPI_FLOAT, all_samples, numTasks, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    MPI_Gather(samples, num_of_samples, MPI_FLOAT, all_samples, num_of_samples, MPI_FLOAT, 0, MPI_COMM_WORLD);
     CALI_MARK_END(comm_small);
 
     // at rank 0, grab all the different samples and choose pivots
     if (rankid == 0) {
         CALI_MARK_BEGIN(comp_small);
-        qsort(all_samples, numTasks * numTasks, sizeof(float), compare);
+        qsort(all_samples, num_of_samples * numTasks, sizeof(float), compare);
         for (int i = 1; i < numTasks; ++i) {
             // choose pivots
             samples[i] = all_samples[i * numTasks + numTasks / 2];
@@ -206,6 +206,8 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
 
 int main(int argc, char** argv) {
     CALI_CXX_MARK_FUNCTION;
+    cali::ConfigManager mgr;
+    mgr.start();
 
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <num_values> <num_processes>\n", argv[0]);
@@ -228,21 +230,25 @@ int main(int argc, char** argv) {
         MPI_Abort(MPI_COMM_WORLD, rc);
         exit(1);
     }
+
+    if(rankid == 0) {
+        fprintf("Num vals: %i\n", data_size);
+        printf("Num tasks: %i\n", numTasks);
+    }
     
     int local_data_size = data_size / numTasks;
     float *values = (float*)malloc(local_data_size * sizeof(float));
+    int num_of_samples = numTasks > local_chunk ? local_chunk / 2 : numTasks;
 
     CALI_MARK_BEGIN(data_init);
     array_fill_random_no_seed(values, local_data_size);
     CALI_MARK_END(data_init);
 
     CALI_MARK_BEGIN(sample_sort_region);
-    sampleSort(global_array, values, rankid, local_data_size, numTasks);
+    sampleSort(global_array, values, rankid, local_data_size, numTasks, num_of_samples);
     CALI_MARK_END(sample_sort_region);
 
-
     
-    MPI_Finalize();
 
     if (rankid == 0) {
         CALI_MARK_BEGIN(correctness_check);
@@ -256,6 +262,11 @@ int main(int argc, char** argv) {
             printf("Array was incorrectly sorted!");
         }
     }
+
+    free(values);
+    free(global_array);
+
+   
     
     if(rankid == 0) {
         adiak::init(NULL);
@@ -274,6 +285,10 @@ int main(int argc, char** argv) {
         adiak::value("implementation_source", "Handwritten") // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
     }
 
+    mgr.stop();
+    mgr.flush();
+    
+    MPI_Finalize();
 
     return 0;
 }
