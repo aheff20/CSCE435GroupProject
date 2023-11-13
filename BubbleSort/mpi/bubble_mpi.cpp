@@ -123,7 +123,7 @@ int main(int argc, char** argv) {
     }
 
     int data_size = atoi(argv[1]);
-    std::string inputType = argv[2];
+    std::string input_type = argv[2];
 
     int	numTasks,
         rankid,
@@ -145,13 +145,13 @@ int main(int argc, char** argv) {
     float *values = (float*)malloc(local_data_size * sizeof(float));
 
     CALI_MARK_BEGIN(data_init);
-    if (inputType == "Sorted") {
+    if (input_type == "Sorted") {
         array_fill_ascending(values, local_data_size);
-    } else if (inputType == "ReverseSorted") {
+    } else if (input_type == "ReverseSorted") {
         array_fill_descending(values, local_data_size);
-    } else if (inputType == "Random") {
+    } else if (input_type == "Random") {
         array_fill_random_no_seed(values, local_data_size);
-    } else if (inputType == "Perturbed") {
+    } else if (input_type == "Perturbed") {
         array_fill_ascending(values, local_data_size); // First fill with sorted data
         perturb_array(values, local_data_size, 0.01);  // Then perturb
     }
@@ -182,34 +182,22 @@ int main(int argc, char** argv) {
     free(global_array);
 
     if(rankid == 0){
-        const char* algorithm = "Bubble sort";
-		const char* programmingModel = "MPI";
-		const char* datatype = "float";
-		int sizeOfDatatype = sizeof(float);
-		int inputSize = data_size;
-		const char* inputType = "Random";
-		int num_procs = numTasks;
-		const char* num_threads = "N/A";
-		const char* num_blocks = "N/A";
-		int group_number = 1;
-		const char* implementation_source = "Online/AI";
-
 		adiak::init(NULL);
 		adiak::launchdate();    // launch date of the job
 		adiak::libraries();     // Libraries used
 		adiak::cmdline();       // Command line used to launch the job
 		adiak::clustername();   // Name of the cluster
-		adiak::value("Algorithm", algorithm); // The name of the algorithm you are using (e.g., "MergeSort", "BitonicSort")
-		adiak::value("ProgrammingModel", programmingModel); // e.g., "MPI", "CUDA", "MPIwithCUDA"
-		adiak::value("Datatype", datatype); // The datatype of input elements (e.g., double, int, float)
-		adiak::value("SizeOfDatatype", sizeOfDatatype); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
-		adiak::value("InputSize", inputSize); // The number of elements in input dataset (1000)
-		adiak::value("InputType", inputType); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
-		adiak::value("num_procs", num_procs); // The number of processors (MPI ranks)
-		adiak::value("num_threads", num_threads); // The number of CUDA or OpenMP threads
-		adiak::value("num_blocks", num_blocks); // The number of CUDA blocks 
-		adiak::value("group_num", group_number); // The number of your group (integer, e.g., 1, 10)
-		adiak::value("implementation_source", implementation_source); // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
+		adiak::value("Algorithm", "BubbleSort"); // The name of the algorithm you are using (e.g., "MergeSort", "BitonicSort")
+		adiak::value("ProgrammingModel", "MPI"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
+		adiak::value("Datatype", "float"); // The datatype of input elements (e.g., double, int, float)
+		adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
+		adiak::value("InputSize", data_size); // The number of elements in input dataset (1000)
+		adiak::value("InputType", input_type); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
+		adiak::value("num_procs", numTasks); // The number of processors (MPI ranks)
+		adiak::value("num_threads", "N/A"); // The number of CUDA or OpenMP threads
+		adiak::value("num_blocks", "N/A"); // The number of CUDA blocks 
+		adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
+		adiak::value("implementation_source", "Online/AI"); // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
     }
 
     MPI_Finalize();
