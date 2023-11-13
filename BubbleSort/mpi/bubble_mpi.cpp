@@ -10,7 +10,6 @@
 #include <adiak.hpp>
 #include "../../Utils/helper_functions.h"
 
-const char* main_function = "main";
 const char* data_init = "data_init";
 const char* comm = "comm";
 const char* comm_large = "comm_large";
@@ -116,7 +115,7 @@ void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
 }
 
 int main(int argc, char** argv) {
-    // CALI_CXX_MARK_FUNCTION;
+    CALI_CXX_MARK_FUNCTION;
 
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <num_values> <num_processes>\n", argv[0]);
@@ -143,8 +142,6 @@ int main(int argc, char** argv) {
         MPI_Abort(MPI_COMM_WORLD, rc);
         exit(1);
     }
-
-    CALI_MARK_BEGIN(main_function);
     
     int local_data_size = data_size / numTasks;
     float *values = (float*)malloc(local_data_size * sizeof(float));
@@ -176,8 +173,6 @@ int main(int argc, char** argv) {
 
     free(values);
     free(global_array);
-
-    CALI_MARK_END(main_function);
 
     if(rankid == 0){
         const char* algorithm = "Bubble sort";
