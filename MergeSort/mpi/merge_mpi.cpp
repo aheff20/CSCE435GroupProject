@@ -26,7 +26,7 @@ int height = 0;
 
 MPI_Status status;
 // Define Caliper region names
-const char *main = "main";
+const char *main_time = "main_time";
 const char *comm = "comm";
 const char *comm_MPI_Barrier = "comm_MPI_Barrier";
 const char *comm_large = "comm_large";
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     CALI_CXX_MARK_FUNCTION;
     cali::ConfigManager mgr;
     mgr.start();
-    CALI_MARK_BEGIN(main);
+    CALI_MARK_BEGIN(main_time);
     int numVals;
     if (argc == 2)
     {
@@ -160,7 +160,7 @@ int main(int argc, char *argv[])
         printf("\n******************************************************\n");
 
         // Add values to Adiak
-        adiak::value("MPI_Reduce-whole_computation_time", main);
+        adiak::value("MPI_Reduce-whole_computation_time", main_time);
         adiak::value("MPI_Reduce-master_initialization_time", data_init);
         adiak::value("MPI_Reduce-master_send_time", comm);
         adiak::value("MPI_Reduce-master_receive_time", comm_large_MPI_Gather);
@@ -195,7 +195,7 @@ int main(int argc, char *argv[])
 
         free(values);
     }
-    CALI_MARK_END(main);
+    CALI_MARK_END(main_time);
     mgr.stop();
     mgr.flush();
 
