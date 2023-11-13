@@ -117,21 +117,19 @@ void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
 int main(int argc, char** argv) {
     CALI_CXX_MARK_FUNCTION;
 
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s <num_values> <num_processes>\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "Usage: %s <num_values> <num_procs> <input_type>\n", argv[0]);
         exit(1);
     }
+
     int data_size = atoi(argv[1]);
+    std::string inputType = argv[2];
 
     int	numTasks,
         rankid,
         rc;
 
-    float *global_array = nullptr;
-
-    if (rankid == 0) {
-        global_array = (float*)malloc(data_size * sizeof(float));
-    }
+    float *global_array = (float*)malloc(data_size * sizeof(float));
 
     MPI_Init(&argc,&argv);
     MPI_Comm_rank(MPI_COMM_WORLD,&rankid);
@@ -147,7 +145,16 @@ int main(int argc, char** argv) {
     float *values = (float*)malloc(local_data_size * sizeof(float));
 
     CALI_MARK_BEGIN(data_init);
-    array_fill_random_no_seed(values, local_data_size);
+    if (inputType == "Sorted") {
+        array_fill_ascending(values, local_data_size);
+    } else if (inputType == "ReverseSorted") {
+        array_fill_descending(values, local_data_size);
+    } else if (inputType == "Random") {
+        array_fill_random_no_seed(values, local_data_size);
+    } else if (inputType == "Perturbed") {
+        array_fill_ascending(values, local_data_size); // First fill with sorted data
+        perturb_array(values, local_data_size, 0.01);  // Then perturb
+    }
     CALI_MARK_END(data_init);
 
     // localBubbleSort(values, local_data_size);
