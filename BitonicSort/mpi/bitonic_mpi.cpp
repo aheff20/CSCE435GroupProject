@@ -31,7 +31,7 @@ int array_size;
 
 MPI_Status status;
 // Define Caliper region names
-const char *main = "main";
+const char *main_region = "main";
 const char *comm = "comm";
 const char *comm_MPI_Barrier = "comm_MPI_Barrier";
 const char *comm_large = "comm_large";
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     CALI_CXX_MARK_FUNCTION;
     cali::ConfigManager mgr;
     mgr.start();
-    CALI_MARK_BEGIN(main);
+    CALI_MARK_BEGIN(main_region);
 
     int numVals;
     if (argc == 2)
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
     local_array = (float *)malloc(array_size * sizeof(float));
     if (taskid == MASTER)
     {
-        global_array = (float *)malloc(global_size * sizeof(float));
+        global_array = (float *)malloc(numVals * sizeof(float));
     }
     CALI_MARK_BEGIN(data_init);
     array_fill_random(local_array, array_size);
@@ -99,11 +99,11 @@ int main(int argc, char *argv[])
         {
             if (((taskid >> (i + 1)) % 2 == 0 && (taskid >> j) % 2 == 0) || ((taskid >> (i + 1)) % 2 != 0 && (taskid >> j) % 2 != 0))
             {
-                Low(j);
+                low_bit(j);
             }
             else
             {
-                High(j);
+                high_bit(j);
             }
         }
     }
@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    CALI_MARK_END(main);
+    CALI_MARK_END(main_region);
 
     free(local_array);
     if (taskid == MASTER)
@@ -156,12 +156,12 @@ void high_bit(int stage_bit)
     // Allocate buffers for send and receive
     float *receive_buffer = (float *)malloc((array_size + 1) * sizeof(float));
     int receive_count;
-    MPI_Recv(&partner_max, 1, MPI_FLOAT, process_rank ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&partner_max, 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
     // Prepare send buffer
     int send_count = 0;
     float *send_buffer = (float *)malloc((array_size + 1) * sizeof(float));
-    MPI_Send(&local_array[0], 1, MPI_FLOAT, process_rank ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
+    MPI_Send(&local_array[0], 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
 
     // Populate send buffer with values less than partner's max
     for (i = 0; i < array_size; i++)
@@ -178,10 +178,10 @@ void high_bit(int stage_bit)
     }
 
     // Exchange data with partner process
-    MPI_Recv(receive_buffer, array_size, MPI_FLOAT, process_rank ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(receive_buffer, array_size, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     receive_count = (int)receive_buffer[0];
     send_buffer[0] = (float)send_count;
-    MPI_Send(send_buffer, send_count + 1, MPI_FLOAT, process_rank ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
+    MPI_Send(send_buffer, send_count + 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
 
     // Merge received values
     for (i = 1; i <= receive_count; i++)
@@ -197,7 +197,7 @@ void high_bit(int stage_bit)
     }
 
     // Sort the updated local array
-    qsort(local_array, array_size, sizeof(float), Comparison);
+    qsort(local_array, array_size, sizeof(float), compare_floats);
     free(send_buffer);
     free(receive_buffer);
 }
@@ -210,11 +210,11 @@ void low_bit(int stage_bit)
     // Allocate buffers for send and receive
     float *send_buffer = (float *)malloc((array_size + 1) * sizeof(float));
     int send_count = 0;
-    MPI_Send(&local_array[array_size - 1], 1, MPI_FLOAT, process_rank ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
+    MPI_Send(&local_array[array_size - 1], 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
 
     int receive_count;
     float *receive_buffer = (float *)malloc((array_size + 1) * sizeof(float));
-    MPI_Recv(&partner_min, 1, MPI_FLOAT, process_rank ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(&partner_min, 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
     // Populate send buffer with values greater than partner's min
     for (i = array_size - 1; i >= 0; i--)
@@ -231,8 +231,8 @@ void low_bit(int stage_bit)
     }
 
     send_buffer[0] = (float)send_count;
-    MPI_Send(send_buffer, send_count + 1, MPI_FLOAT, process_rank ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
-    MPI_Recv(receive_buffer, array_size, MPI_FLOAT, process_rank ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Send(send_buffer, send_count + 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
+    MPI_Recv(receive_buffer, array_size, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
     // Merge received values
     receive_count = (int)receive_buffer[0];
@@ -249,7 +249,7 @@ void low_bit(int stage_bit)
     }
 
     // Sort the updated local array
-    qsort(local_array, array_size, sizeof(float), Comparison);
+    qsort(local_array, array_size, sizeof(float), compare_floats);
     free(send_buffer);
     free(receive_buffer);
 };

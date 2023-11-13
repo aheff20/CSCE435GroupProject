@@ -157,17 +157,15 @@ typesCaliper.h
 /scratch/group/csce435-f23/Caliper/caliper/include/caliper/typesCaliper.h
 
 /scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/mpi/bitonic_mpi.cpp
-stdlib.h
--
+mpi.h
+/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/mpi/mpi.h
 stdio.h
 -
-time.h
+stdlib.h
 -
-mpi.h
+limits.h
 -
-string
--
-cmath
+math.h
 -
 caliper/cali.h
 -
