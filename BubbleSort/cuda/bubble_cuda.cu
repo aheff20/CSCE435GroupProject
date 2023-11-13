@@ -11,10 +11,6 @@ int THREADS;
 int BLOCKS;
 int NUM_VALS;
 
-const char* bubble_sort_step_region = "bubble_sort_step";
-const char* cudaMemcpy_host_to_device = "cudaMemcpy_host_to_device";
-const char* cudaMemcpy_device_to_host = "cudaMemcpy_device_to_host";
-
 const char* main_function = "main";
 const char* data_init = "data_init";
 const char* comm = "comm";
@@ -52,8 +48,11 @@ void bubbleSort(float *values, int size, int *kernel_calls) {
     size_t bytes = size * sizeof(float);
 
     // Copy data from host to device
-
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
     cudaMemcpy(dev_values, values, bytes, cudaMemcpyHostToDevice);
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
 
     int threads = THREADS;
     int blocks = (size + threads - 1) / threads;
@@ -64,6 +63,7 @@ void bubbleSort(float *values, int size, int *kernel_calls) {
     for (int i = 0; i < size; ++i) {
         bool even_phase = (i % 2) == 0;
         bubble_sort_step<<<blocks, threads>>>(dev_values, size, even_phase);
+        cudaDeviceSynchronize();
 
         (*kernel_calls)++;
     }
@@ -83,7 +83,6 @@ void bubbleSort(float *values, int size, int *kernel_calls) {
 
 int main(int argc, char *argv[]) {
     CALI_MARK_BEGIN(main_function);
-
     THREADS = atoi(argv[1]);
     NUM_VALS = atoi(argv[2]);
     BLOCKS = NUM_VALS / THREADS;
@@ -93,7 +92,7 @@ int main(int argc, char *argv[]) {
     printf("Number of blocks: %d\n", BLOCKS);
 
     float *values = (float*)malloc(NUM_VALS * sizeof(float));
-    CALI_CXX_MARK_FUNCTION;
+    // CALI_CXX_MARK_FUNCTION;
 
     // Initialize data
     CALI_MARK_BEGIN("data_init");
@@ -103,11 +102,15 @@ int main(int argc, char *argv[]) {
     // Declare variables for timing information
     int kernel_calls = 0;
 
+    CALI_MARK_BEGIN(comp);
+    CALI_MARK_BEGIN(comp_large);
     bubbleSort(values, NUM_VALS, &kernel_calls);
+    CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
 
     CALI_MARK_BEGIN(correctness_check);
 
-    bool correct = check_sorted(values,NUM_VALS);
+    bool correct = check_sorted(values, NUM_VALS);
     if (correct){
         printf("Array was sorted correctly!");
     }
