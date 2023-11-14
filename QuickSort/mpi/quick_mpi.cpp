@@ -11,13 +11,21 @@
 #include "../../Utils/helper_functions.h"
 
 const char* data_init = "data_init";
-const char* quick_sort_region = "quick_sort_region";
+const char* comp = "comp";
+const char* comm = "comm";
 const char* comp_small = "comp_small";
 const char* comp_large = "comp_large";
 const char* comm_small = "comm_small";
 const char* comm_large = "comm_large";
 const char* correctness_check = "correctness_check";
-const char* barrier = "mpi_barrier";
+const char* barrier = "MPI_Barrier";
+const char* mpi_send_region = "MPI_Send";
+const char* mpi_recv_region = "MPI_Recv";
+const char* mpi_gather_region = "MPI_Gather";
+const char* mpi_allgather_region = "MPI_Allgather";
+const char* mpi_scatter_region = "MPI_Scatter";
+const char* mpi_bcast_region = "MPI_Bcast";
+const char* mpi_gatherv_region = "MPI_Gatherv";
 
 int	numTasks,
     rankid,
@@ -84,25 +92,40 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
 
     if(depth >= (int)log2(numTasks)) {
         
+        CALI_MARK_BEGIN(comp);
+        CALI_MARK_BEGIN(comp_large);
         qsort(local_values, local_data_size, sizeof(float), compare);
+        CALI_MARK_END(comp_large);
+        CALI_MARK_END(comp);
+        
         
         int *global_counts = (int*)malloc(numTasks * sizeof(int));;
 
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(barrier);
         MPI_Barrier(MPI_COMM_WORLD);
+        CALI_MARK_END(barrier);
+        CALI_MARK_END(comm);
         
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(comm_small);
+        CALI_MARK_BEGIN(mpi_allgather_region);
         MPI_Allgather(&local_data_size, 1, MPI_INT, global_counts, 1, MPI_INT, MPI_COMM_WORLD);
+        CALI_MARK_END(mpi_allgather_region);
+        CALI_MARK_END(comm_small);
+        CALI_MARK_END(comm);
+        
 
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(barrier);
         MPI_Barrier(MPI_COMM_WORLD);
-
-        if(rankid==0) {
-            printf("FINAL COUNTS PER PROCESS:\n");
-            for(int i = 0 ;i < numTasks; i++) {
-                printf("%i,", global_counts[i]);
-            }
-            printf("\n\n");
-        }
+        CALI_MARK_END(barrier);
+        CALI_MARK_END(comm);
 
         int *global_displacements = (int*)malloc(numTasks * sizeof(int));
+        
+        CALI_MARK_BEGIN(comp);
+        CALI_MARK_BEGIN(comp_small);
         global_displacements[0] = 0;
         for (int i = 1; i < numTasks; i++){
             int sum = 0;
@@ -111,26 +134,48 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
             }
             global_displacements[i] = sum;
         }
+        CALI_MARK_END(comp_small);
+        CALI_MARK_END(comp);
 
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(comm_large);
+        CALI_MARK_BEGIN(mpi_gatherv_region);
         MPI_Gatherv(local_values, local_data_size, MPI_FLOAT, global_array, global_counts, global_displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
+        CALI_MARK_END(mpi_gatherv_region);
+        CALI_MARK_END(comm_large);
+        CALI_MARK_END(comm);
 
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(barrier);
         MPI_Barrier(MPI_COMM_WORLD);
+        CALI_MARK_END(barrier);
+        CALI_MARK_END(comm);
 
         free(global_displacements);
         free(global_counts);
 
-        MPI_Barrier(MPI_COMM_WORLD);        
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(barrier);
+        MPI_Barrier(MPI_COMM_WORLD);
+        CALI_MARK_END(barrier);
+        CALI_MARK_END(comm);      
         
         return;
     }
 
+    CALI_MARK_BEGIN(comp);
+    CALI_MARK_BEGIN(comp_small);
     int partnerID = find_partner(rankid, depth);
+    CALI_MARK_END(comp_small);
+    CALI_MARK_END(comp);
 
     float* values_to_keep = new float[local_data_size];
     float* values_to_send = new float[local_data_size];
     int number_of_values_to_send = 0;
     int number_of_values_to_keep = 0;
 
+    CALI_MARK_BEGIN(comp);
+    CALI_MARK_BEGIN(comp_large);
     if(partnerID > rankid) {
         for (int i = 0; i < local_data_size; i++) {
             if(local_values[i] >= pivot) {
@@ -152,31 +197,64 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
             }
         }
     }
+    CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
 
     int *global_values_to_send = (int*)malloc(numTasks * sizeof(int));
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
 
-    MPI_Allgather(&number_of_values_to_send, 1, MPI_INT, global_values_to_send, 1, MPI_INT, MPI_COMM_WORLD);    
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_small);
+    CALI_MARK_BEGIN(mpi_allgather_region);
+    MPI_Allgather(&number_of_values_to_send, 1, MPI_INT, global_values_to_send, 1, MPI_INT, MPI_COMM_WORLD);
+    CALI_MARK_END(mpi_allgather_region);
+    CALI_MARK_END(comm_small);
+    CALI_MARK_END(comm);
+
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
 
     float* values_to_recv = new float[global_values_to_send[partnerID]];
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
+    CALI_MARK_BEGIN(mpi_send_region);
     MPI_Send(values_to_send, number_of_values_to_send, MPI_FLOAT, partnerID, 0, MPI_COMM_WORLD);
+    CALI_MARK_END(mpi_send_region);
+    CALI_MARK_BEGIN(mpi_recv_region);
     MPI_Recv(values_to_recv, global_values_to_send[partnerID], MPI_FLOAT, partnerID, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    CALI_MARK_END(mpi_recv_region);
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
 
     free(values_to_send);
 
     float* new_local_values = new float[global_values_to_send[partnerID] + number_of_values_to_keep];
+    CALI_MARK_BEGIN(comp);
+    CALI_MARK_BEGIN(comp_large);
     for (int i = 0; i < global_values_to_send[partnerID]; i++){
         new_local_values[i] = values_to_recv[i];
     }
     for (int i = 0; i < number_of_values_to_keep; i++) {
         new_local_values[i + global_values_to_send[partnerID]] = values_to_keep[i];
     }
+    CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
 
     if(number_of_values_to_keep > 0) {
         free(values_to_keep);
@@ -187,21 +265,54 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
 
     int new_local_size = number_of_values_to_keep + global_values_to_send[partnerID];
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
+
 
     if(depth+1 < (int)log2(numTasks)) {
         if(select_next_pivot(rankid, depth+1)) {
+
+            CALI_MARK_BEGIN(comp);
+            CALI_MARK_BEGIN(comp_small);
             pivot = select_pivot(new_local_values, new_local_size);
+            CALI_MARK_END(comp_small);
+            CALI_MARK_END(comp);
+
             for(int i = rankid + 1; i <  rankid + 2*numTasks/(2*pow(2,depth+1)); i++) {
+                CALI_MARK_BEGIN(comm);
+                CALI_MARK_BEGIN(comm_small);
+                CALI_MARK_BEGIN(mpi_send_region);
                 MPI_Send(&pivot, 1, MPI_FLOAT, i, 0, MPI_COMM_WORLD);
+                CALI_MARK_END(mpi_send_region);
+                CALI_MARK_END(comm_small);
+                CALI_MARK_END(comm);
             }
         } else {
+            CALI_MARK_BEGIN(comp);
+            CALI_MARK_BEGIN(comp_small);
             int source = determine_source(rankid, depth+1);
+            CALI_MARK_END(comp_small);
+            CALI_MARK_END(comp);
+            
+
+            CALI_MARK_BEGIN(comm);
+            CALI_MARK_BEGIN(comm_small);
+            CALI_MARK_BEGIN(mpi_recv_region);
             MPI_Recv(&pivot, 1, MPI_FLOAT, source, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            CALI_MARK_END(mpi_recv_region);
+            CALI_MARK_END(comm_small);
+            CALI_MARK_END(comm);
         }
     }
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
 
     quickSort_step(new_local_values, new_local_size, pivot, depth + 1, rankid);
 
@@ -248,27 +359,60 @@ int main(int argc, char** argv) {
     int local_data_size = data_size / numTasks;
     float *local_values = (float*)malloc(local_data_size * sizeof(float));
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
+    CALI_MARK_BEGIN(mpi_scatter_region);
     MPI_Scatter(global_array, local_data_size, MPI_FLOAT, local_values, local_data_size, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    CALI_MARK_END(mpi_scatter_region);
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
 
     float pivot;
     // Process 0 select the first pivot and then broadcast to each of the other processes
     if (rankid == 0) {
         
+        CALI_MARK_BEGIN(comp);
+        CALI_MARK_BEGIN(comp_small);
         pivot = select_pivot(local_values, local_data_size);
+        CALI_MARK_END(comp_small);
+        CALI_MARK_END(comp);
 
     }
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_small);
+    CALI_MARK_BEGIN(mpi_bcast_region);
     MPI_Bcast(&pivot, 1, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    CALI_MARK_END(mpi_bcast_region);
+    CALI_MARK_END(comm_small);
+    CALI_MARK_END(comm);
+    
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
 
     quickSort_step(local_values, local_data_size, pivot, 0, rankid);
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
 
     free(local_values);
 
@@ -287,7 +431,12 @@ int main(int argc, char** argv) {
         free(global_array);
     }
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
+
 
     if(rankid == 0) {
         adiak::init(NULL);
