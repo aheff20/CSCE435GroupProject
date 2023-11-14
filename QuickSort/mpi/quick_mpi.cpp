@@ -24,8 +24,6 @@ int	numTasks,
     rc;
 
 float *global_array;
-int *global_values_to_send;
-int *global_counts;
 
 int compare (const void * a, const void * b)
 {
@@ -88,6 +86,8 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
         
         qsort(local_values, local_data_size, sizeof(float), compare);
         
+        int *global_counts = (int*)malloc(numTasks * sizeof(int));;
+
         MPI_Barrier(MPI_COMM_WORLD);
         
         MPI_Allgather(&local_data_size, 1, MPI_INT, global_counts, 1, MPI_INT, MPI_COMM_WORLD);
@@ -113,7 +113,11 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
         }
 
         MPI_Gatherv(local_values, local_data_size, MPI_FLOAT, global_array, global_counts, global_displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
+
+        MPI_Barrier(MPI_COMM_WORLD);
+
         free(global_displacements);
+        free(global_counts);
 
         MPI_Barrier(MPI_COMM_WORLD);        
         
@@ -148,6 +152,8 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
             }
         }
     }
+
+    int *global_values_to_send = (int*)malloc(numTasks * sizeof(int));
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -187,12 +193,10 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
         if(select_next_pivot(rankid, depth+1)) {
             pivot = select_pivot(new_local_values, new_local_size);
             for(int i = rankid + 1; i <  rankid + 2*numTasks/(2*pow(2,depth+1)); i++) {
-                // printf("DEPTH=%i : P%i am sending pivot to P%i!\n", depth+1, rankid, i);
                 MPI_Send(&pivot, 1, MPI_FLOAT, i, 0, MPI_COMM_WORLD);
             }
         } else {
             int source = determine_source(rankid, depth+1);
-            // printf("DEPTH=%i : P%i my source is P%i!\n", depth+1, rankid, source);
             MPI_Recv(&pivot, 1, MPI_FLOAT, source, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         }
     }
@@ -201,9 +205,8 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
 
     quickSort_step(new_local_values, new_local_size, pivot, depth + 1, rankid);
 
-    if(new_local_size > 0) {
-        free(new_local_values);
-    }
+    free(new_local_values);
+    free(global_values_to_send);
     
 
 }
@@ -221,8 +224,6 @@ int main(int argc, char** argv) {
     
     int data_size = atoi(argv[1]);
 
-    global_values_to_send = (int*)malloc(numTasks * sizeof(int));
-    global_counts = (int*)malloc(numTasks * sizeof(int)); 
     global_array = (float*)malloc(data_size * sizeof(float));
 
     CALI_MARK_BEGIN(data_init);
@@ -248,11 +249,6 @@ int main(int argc, char** argv) {
     float *local_values = (float*)malloc(local_data_size * sizeof(float));
 
     MPI_Scatter(global_array, local_data_size, MPI_FLOAT, local_values, local_data_size, MPI_FLOAT, 0, MPI_COMM_WORLD);
-
-    // Each process generate part of the array
-    // CALI_MARK_BEGIN(data_init);
-    // array_fill_random_no_seed(local_values, local_data_size);
-    // CALI_MARK_END(data_init);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -288,27 +284,7 @@ int main(int argc, char** argv) {
             printf("Array was incorrectly sorted!\n");
         }
 
-        for(int i = 0; i < data_size; i++) {
-            printf("%0.3f,", global_array[i]);
-        }
-        printf("\n");
-        for(int i = 0; i < numTasks; i++) {
-            printf("%i,", global_counts[i]);
-        }
-        printf("\n");
-        for(int i = 0; i < numTasks; i++) {
-            printf("%i,", global_values_to_send[i]);
-        }
-        printf("\n");
-
         free(global_array);
-        printf("FREED GLOBAL ARRAY!\n");
-
-        free(global_counts);
-        printf("FREED GLOBAL COUNTS!\n");
-
-        free(global_values_to_send);
-        printf("FREED GLOBAL VALUES TO SEND!\n");
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
