@@ -7,14 +7,6 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-<<<<<<< HEAD
-  "CMakeFiles/3.12.1/CMakeCCompiler.cmake"
-  "CMakeFiles/3.12.1/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.12.1/CMakeSystem.cmake"
-  "CMakeFiles/FindMPI/test_mpi.cpp"
-  "CMakeLists.txt"
-=======
->>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
   "/scratch/group/csce435-f23/Adiak/adiak/lib/cmake/adiak/adiak-config-version.cmake"
   "/scratch/group/csce435-f23/Adiak/adiak/lib/cmake/adiak/adiak-config.cmake"
   "/scratch/group/csce435-f23/Adiak/adiak/lib/cmake/adiak/adiak-targets-noconfig.cmake"
@@ -22,18 +14,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/scratch/group/csce435-f23/Caliper/caliper/share/cmake/caliper/caliper-config.cmake"
   "/scratch/group/csce435-f23/Caliper/caliper/share/cmake/caliper/caliper-targets-noconfig.cmake"
   "/scratch/group/csce435-f23/Caliper/caliper/share/cmake/caliper/caliper-targets.cmake"
-<<<<<<< HEAD
-=======
   "CMakeFiles/3.12.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.12.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.12.1/CMakeSystem.cmake"
   "CMakeFiles/FindMPI/test_mpi.cpp"
-  "CMakeFiles/feature_tests.c"
-  "CMakeFiles/feature_tests.cxx"
   "CMakeLists.txt"
-  "/sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCCompiler.cmake.in"
-  "/sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCCompilerABI.c"
->>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
   "/sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCInformation.cmake"
   "/sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCXXInformation.cmake"
   "/sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCommonLanguageInclude.cmake"
