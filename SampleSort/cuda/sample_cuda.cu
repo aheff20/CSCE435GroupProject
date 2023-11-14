@@ -228,6 +228,8 @@ void sample_sort(float* values, int *kernel_calls) {
     partitionAndSample<<<blocks, threads>>>(dev_values, NUM_VALS, local_chunk, all_samples, num_of_samples);
     CALI_MARK_END(comp_large);
 
+  
+
     cudaDeviceSynchronize();
 
     // Collect all the samples

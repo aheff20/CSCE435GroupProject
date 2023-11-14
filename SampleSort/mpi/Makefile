@@ -48,10 +48,10 @@ RM = /sw/eb/sw/CMake/3.12.1/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi
+CMAKE_SOURCE_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi
+CMAKE_BINARY_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/CMakeFiles /home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,32 +123,32 @@ sample_mpi/fast:
 	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/build
 .PHONY : sample_mpi/fast
 
-home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.o: home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.o
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
 
-.PHONY : home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.o
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o
 
 # target to build an object file
-home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.o:
-	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.o
-.PHONY : home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.o
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
 
-home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.i: home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.i
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-.PHONY : home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.i
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i
 
 # target to preprocess a source file
-home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.i:
-	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.i
-.PHONY : home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.i
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.s: home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.s
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
-.PHONY : home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.s
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s
 
 # target to generate assembly for a file
-home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.s:
-	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.s
-.PHONY : home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.s
+home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
+.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
 sample_mpi.o: sample_mpi.cpp.o
 
@@ -186,9 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... sample_mpi"
-	@echo "... home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.o"
-	@echo "... home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.i"
-	@echo "... home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.s"
+	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o"
+	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i"
+	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s"
 	@echo "... sample_mpi.o"
 	@echo "... sample_mpi.i"
 	@echo "... sample_mpi.s"

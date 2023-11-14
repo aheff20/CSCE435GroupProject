@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp
+/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp
 stdlib.h
 -
 stdio.h
@@ -24,9 +24,9 @@ caliper/cali-manager.h
 adiak.hpp
 -
 ../../Utils/helper_functions.h
-/home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.h
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
 
-/home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.h
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
 vector
 -
 

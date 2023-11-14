@@ -3,7 +3,7 @@
 #include <time.h>
 #include <algorithm>
 #include <iostream>
-
+// #include <vector>
 
 static float random_float() {
     return static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
@@ -58,3 +58,16 @@ void print_array(const float *arr, int length) {
     }
     std::cout << std::endl; // End the line after printing the array
 }
+
+
+// void array_fill_random_descending(float *arr, int length) {
+//     // First, fill the array with random values
+//     for (int i = 0; i < length; ++i) {
+//         arr[i] = random_float();
+//     }
+
+//     // Then sort the array in descending order using std::sort and a lambda function
+//     std::sort(arr, arr + length, [](float a, float b) {
+//         return a > b; // Sorting in descending order
+//     });
+// }

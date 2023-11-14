@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/../Utils -I/scratch/group/csce435-f23/Adiak/adiak/include -isystem /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include -isystem /scratch/group/csce435-f23/Caliper/caliper/include 
+CXX_INCLUDES = -I/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/../Utils -I/scratch/group/csce435-f23/Adiak/adiak/include -isystem /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include -isystem /scratch/group/csce435-f23/Caliper/caliper/include 
 
