@@ -172,8 +172,12 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
         new_local_values[i + global_values_to_send[partnerID]] = values_to_keep[i];
     }
 
-    free(values_to_keep);
-    free(values_to_recv);
+    if(number_of_values_to_keep > 0) {
+        free(values_to_keep);
+    }
+    if(global_values_to_send[partnerID] > 0) {
+        free(values_to_recv);
+    }
 
     int new_local_size = number_of_values_to_keep + global_values_to_send[partnerID];
 
@@ -197,7 +201,10 @@ void quickSort_step(float* local_values, int local_data_size, float pivot, int d
 
     quickSort_step(new_local_values, new_local_size, pivot, depth + 1, rankid);
 
-    free(new_local_values);
+    if(new_local_size > 0) {
+        free(new_local_values);
+    }
+    
 
 }
 
@@ -219,7 +226,7 @@ int main(int argc, char** argv) {
     global_array = (float*)malloc(data_size * sizeof(float));
 
     CALI_MARK_BEGIN(data_init);
-    array_fill_ascending(global_array, data_size);
+    array_fill_random_no_seed(global_array, data_size);
     CALI_MARK_END(data_init);
 
     MPI_Init(&argc,&argv);
@@ -265,6 +272,8 @@ int main(int argc, char** argv) {
 
     quickSort_step(local_values, local_data_size, pivot, 0, rankid);
 
+    MPI_Barrier(MPI_COMM_WORLD);
+
     free(local_values);
 
     if (rankid == 0) {
@@ -273,15 +282,36 @@ int main(int argc, char** argv) {
         CALI_MARK_END(correctness_check);
 
         if (correct){
-            printf("Array was sorted correctly!");
+            printf("Array was sorted correctly!\n");
         }
         else{
-            printf("Array was incorrectly sorted!");
+            printf("Array was incorrectly sorted!\n");
         }
+
+        for(int i = 0; i < data_size; i++) {
+            printf("%0.3f,", global_array[i]);
+        }
+        printf("\n");
+        for(int i = 0; i < numTasks; i++) {
+            printf("%i,", global_counts[i]);
+        }
+        printf("\n");
+        for(int i = 0; i < numTasks; i++) {
+            printf("%i,", global_values_to_send[i]);
+        }
+        printf("\n");
+
         free(global_array);
-        // free(global_counts);
+        printf("FREED GLOBAL ARRAY!\n");
+
+        free(global_counts);
+        printf("FREED GLOBAL COUNTS!\n");
+
         free(global_values_to_send);
+        printf("FREED GLOBAL VALUES TO SEND!\n");
     }
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     if(rankid == 0) {
         adiak::init(NULL);
