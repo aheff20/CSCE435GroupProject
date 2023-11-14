@@ -24,7 +24,6 @@ const char* mpi_alltoallv_region = "MPI_Alltoallv";
 const char* mpi_allreduce_region = "MPI_Allreduce";
 const char* correctness_check = "correctness_check";
 const char* barrier = "MPI_Barrier";
-const char* mpi_scatter_region = "MPI_Scatter";
 
 int compare (const void * a, const void * b)
 {
@@ -93,12 +92,6 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
         }
         CALI_MARK_END(comp_small);
         CALI_MARK_END(comp);
-
-        // print_array(values, local_data_size);
-        // print_array(all_samples, numTasks * numTasks);
-        // print_array(samples, numTasks);
-
-
     }
 
     CALI_MARK_BEGIN(comm);
@@ -255,32 +248,6 @@ int main(int argc, char** argv) {
     float *global_array = (float*)malloc(data_size * sizeof(float));
     std::string inputTypeString;
     
-    CALI_MARK_BEGIN(data_init);
-    switch(inputType) {
-        case 0:
-            array_fill_random_no_seed(global_array, data_size);
-            inputTypeString = "Random";
-            break;
-        case 1:
-            array_fill_descending(global_array, data_size);
-            inputTypeString = "ReverseSorted";
-            break;
-        case 2:
-            array_fill_ascending(global_array, data_size);
-            inputTypeString = "Sorted";
-            break;
-        case 3:
-            array_fill_ascending(global_array, data_size);
-            perturb_array(global_array, data_size, 0.01);
-            inputTypeString = "1%perturbed";
-            break;
-        default:
-            array_fill_random_no_seed(global_array, data_size);
-            inputTypeString = "Random";
-            break;
-    }
-    CALI_MARK_END(data_init);
-
     MPI_Init(&argc,&argv);
     MPI_Comm_rank(MPI_COMM_WORLD,&rankid);
     MPI_Comm_size(MPI_COMM_WORLD,&numTasks);
@@ -300,13 +267,53 @@ int main(int argc, char** argv) {
     float *values = (float*)malloc(local_data_size * sizeof(float));
     int num_of_samples = numTasks > local_data_size ? local_data_size / 2 : numTasks;
 
-    CALI_MARK_BEGIN(comm);
-    CALI_MARK_BEGIN(comm_large);
-    CALI_MARK_BEGIN(mpi_scatter_region);
-    MPI_Scatter(global_array, local_data_size, MPI_FLOAT, values, local_data_size, MPI_FLOAT, 0, MPI_COMM_WORLD);
-    CALI_MARK_END(mpi_scatter_region);
-    CALI_MARK_END(comm_large);
-    CALI_MARK_END(comm);
+    CALI_MARK_BEGIN(data_init);
+    switch(inputType) {
+        case 0:
+            array_fill_random_no_seed(values, local_data_size);
+            inputTypeString = "Random";
+            break;
+        case 1:
+            array_fill_descending_local(values, local_data_size, rankid, data_size);
+            inputTypeString = "ReverseSorted";
+            break;
+        case 2:
+            array_fill_ascending_local(values, local_data_size, rankid);
+            inputTypeString = "Sorted";
+            break;
+        case 3:
+            array_fill_ascending_local(values, local_data_size, rankid);
+            perturb_array(values, local_data_size, 0.01);
+            inputTypeString = "1%perturbed";
+            break;
+        default:
+            array_fill_random_no_seed(values, local_data_size);
+            inputTypeString = "Random";
+            break;
+    }
+    CALI_MARK_END(data_init);
+
+    if(rankid == 0){
+        print_array(values, local_data_size);
+        printf("\n");
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rankid == 1){
+        print_array(values, local_data_size);
+        printf("\n");
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rankid == 2){
+        print_array(values, local_data_size);
+        printf("\n");
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rankid == 3){
+        print_array(values, local_data_size);
+        printf("\n");
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+    
 
     sampleSort(global_array, values, rankid, local_data_size, numTasks, num_of_samples);
 

@@ -34,6 +34,22 @@ void array_fill_descending(float *arr, int length) {
     }
 }
 
+void array_fill_ascending_local(float *arr, int length, int rankid) {
+    int offset = rankid*length;
+    for (int i = offset; i < length + offset; ++i) {
+        arr[i-offset] = static_cast<float>(i);
+    }
+}
+
+void array_fill_descending_local(float *arr, int length, int rankid, int total_length) {
+    int offset = rankid*length;
+    int counter = 0;
+    for (int i = total_length-offset-1; i > total_length - length - offset-1; i--) {
+        arr[counter] = static_cast<float>(i);
+        counter++;
+    }
+}
+
 bool check_sorted(const float *arr, int length) {
     for (int i = 1; i < length; ++i) {
         if (arr[i-1] > arr[i]) {
