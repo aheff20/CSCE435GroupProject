@@ -59,10 +59,17 @@ RM = /sw/eb/sw/CMake/3.12.1/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi
+=======
+CMAKE_SOURCE_DIR = /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 
 #=============================================================================
 # Target rules for target CMakeFiles/sample_mpi.dir
@@ -71,7 +78,11 @@ CMAKE_BINARY_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSor
 CMakeFiles/sample_mpi.dir/all:
 	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/depend
 	$(MAKE) -f CMakeFiles/sample_mpi.dir/build.make CMakeFiles/sample_mpi.dir/build
+<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles --progress-num=1,2,3 "Built target sample_mpi"
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles --progress-num=1,2,3 "Built target sample_mpi"
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 .PHONY : CMakeFiles/sample_mpi.dir/all
 
 # Include target in all.
@@ -81,9 +92,15 @@ all: CMakeFiles/sample_mpi.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/sample_mpi.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sample_mpi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sample_mpi.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles 0
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 .PHONY : CMakeFiles/sample_mpi.dir/rule
 
 # Convenience name for target.

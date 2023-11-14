@@ -43,10 +43,17 @@ RM = /sw/eb/sw/CMake/3.12.1/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi
+=======
+CMAKE_SOURCE_DIR = /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sample_mpi.dir/depend.make
@@ -59,6 +66,7 @@ include CMakeFiles/sample_mpi.dir/flags.make
 
 CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o: CMakeFiles/sample_mpi.dir/flags.make
 CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o: sample_mpi.cpp
+<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o"
 	/sw/eb/sw/GCCcore/10.2.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o -c /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp
 
@@ -82,17 +90,50 @@ CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Uti
 CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s"
 	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp -o CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp
+
+CMakeFiles/sample_mpi.dir/sample_mpi.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sample_mpi.dir/sample_mpi.cpp.i"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp > CMakeFiles/sample_mpi.dir/sample_mpi.cpp.i
+
+CMakeFiles/sample_mpi.dir/sample_mpi.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample_mpi.dir/sample_mpi.cpp.s"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp -o CMakeFiles/sample_mpi.dir/sample_mpi.cpp.s
+
+CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o: CMakeFiles/sample_mpi.dir/flags.make
+CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o: /scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp
+
+CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.i"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp > CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.s"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp -o CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.s
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 
 # Object files for target sample_mpi
 sample_mpi_OBJECTS = \
 "CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o" \
+<<<<<<< HEAD
 "CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+=======
+"CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 
 # External object files for target sample_mpi
 sample_mpi_EXTERNAL_OBJECTS =
 
 sample_mpi: CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o
+<<<<<<< HEAD
 sample_mpi: CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
+=======
+sample_mpi: CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 sample_mpi: CMakeFiles/sample_mpi.dir/build.make
 sample_mpi: /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
 sample_mpi: /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so
@@ -101,7 +142,11 @@ sample_mpi: /lib64/librt.so
 sample_mpi: /lib64/libpthread.so
 sample_mpi: /lib64/libdl.so
 sample_mpi: CMakeFiles/sample_mpi.dir/link.txt
+<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable sample_mpi"
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable sample_mpi"
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sample_mpi.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -114,6 +159,10 @@ CMakeFiles/sample_mpi.dir/clean:
 .PHONY : CMakeFiles/sample_mpi.dir/clean
 
 CMakeFiles/sample_mpi.dir/depend:
+<<<<<<< HEAD
 	cd /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi /home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/CMakeFiles/sample_mpi.dir/DependInfo.cmake --color=$(COLOR)
+=======
+	cd /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles/sample_mpi.dir/DependInfo.cmake --color=$(COLOR)
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 .PHONY : CMakeFiles/sample_mpi.dir/depend
 

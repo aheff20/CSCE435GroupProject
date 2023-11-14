@@ -17,38 +17,19 @@ const char* comp = "comp";
 const char* comp_large = "comp_large";
 const char* correctness_check = "correctness_check";
 
-int compare (const void * a, const void * b)
-{
+int compare (const void * a, const void * b) {
     return ( *(float*)a - *(float*)b );
 }
 
-// void print_array(float* array, int size) {
-//     for (int i = 0; i < size; i++){
-//         printf("%0.3f,", array[i]);
-//     }
-//     printf("\n");
-// }
-
-// void print_iarray(int* array, int size) {
-//     for (int i = 0; i < size; i++){
-//         printf("%i,", array[i]);
-//     }
-//     printf("\n");
-// }
-
 int getNeighbor(int phase, int rank) {
     int neighbor;
-
-    /* if it's an even phase */
     if (phase % 2 == 0) {
-        /* if we are an even process */
         if (rank % 2 == 0) {
             neighbor = rank + 1;
         } else {
             neighbor = rank - 1;
         }
     } else {
-        /* it's an odd phase - do the opposite */
         if (rank % 2 == 0) {
             neighbor = rank - 1;
         } else {
@@ -85,6 +66,7 @@ void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
             MPI_Recv(temp, local_data_size, MPI_FLOAT, neighbor, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             MPI_Send(values, local_data_size, MPI_FLOAT, neighbor, 0, MPI_COMM_WORLD);
         }
+        // MPI_Sendrecv_replace(values, local_data_size, MPI_FLOAT, neighbor, 0, neighbor, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
         CALI_MARK_END(comm_large);
         CALI_MARK_END(comm);
@@ -117,6 +99,14 @@ void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
 int main(int argc, char** argv) {
     CALI_CXX_MARK_FUNCTION;
 
+    int	numTasks,
+    rankid,
+    rc;
+
+    MPI_Init(&argc,&argv);
+    MPI_Comm_rank(MPI_COMM_WORLD,&rankid);
+    MPI_Comm_size(MPI_COMM_WORLD,&numTasks);
+
     if (argc < 3) {
         fprintf(stderr, "Usage: %s <num_values> <num_procs> <input_type>\n", argv[0]);
         exit(1);
@@ -125,15 +115,10 @@ int main(int argc, char** argv) {
     int data_size = atoi(argv[1]);
     std::string input_type = argv[2];
 
-    int	numTasks,
-        rankid,
-        rc;
-
-    float *global_array = (float*)malloc(data_size * sizeof(float));
-
-    MPI_Init(&argc,&argv);
-    MPI_Comm_rank(MPI_COMM_WORLD,&rankid);
-    MPI_Comm_size(MPI_COMM_WORLD,&numTasks);
+    float *global_array = nullptr;
+    if (rankid == 0) {
+        global_array = (float*)malloc(data_size * sizeof(float));
+    }
 
     if (numTasks < 2 ) {
         printf("Need at least two MPI tasks. Quitting...\n");
@@ -161,25 +146,29 @@ int main(int argc, char** argv) {
 
     bubbleSort(values, local_data_size, numTasks, rankid);
 
-    MPI_Gather(values, local_data_size, MPI_FLOAT, global_array, local_data_size, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    MPI_Gather(values, local_data_size, MPI_FLOAT, 
+           (rankid == 0) ? global_array : values, 
+           local_data_size, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
     // print_array(global_array, data_size);
 
-    CALI_MARK_BEGIN(correctness_check);
+
     
     if (rankid == 0) {
+        CALI_MARK_BEGIN(correctness_check);
         bool correct = check_sorted(global_array, data_size);
         if (correct) {
             printf("Array was sorted correctly!\n");
         } else {
             printf("Array was incorrectly sorted!\n");
         }
+        CALI_MARK_END(correctness_check);
+        free(global_array);
     }
 
-    CALI_MARK_END(correctness_check);
+    printf(input_type)
 
     free(values);
-    free(global_array);
 
     if(rankid == 0){
 		adiak::init(NULL);

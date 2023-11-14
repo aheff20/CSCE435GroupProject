@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi
+=======
+# Install script for directory: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +49,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "/home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

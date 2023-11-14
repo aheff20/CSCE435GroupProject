@@ -13,11 +13,13 @@ int NUM_VALS;
 int inputType = 0;
 
 const char* data_init = "data_init";
-const char* sample_sort_region = "sample_sort_region";
+const char* comm = "comm";
+const char* comp = "comp";
 const char* comp_small = "comp_small";
 const char* comp_large = "comp_large";
 const char* comm_small = "comm_small";
 const char* comm_large = "comm_large";
+const char* cudaMemcpy_region = "cudaMemcpy";
 const char* correctness_check = "correctness_check";
 
 int compare (const void * a, const void * b)
@@ -213,9 +215,13 @@ void sample_sort(float* values, int *kernel_calls) {
     size_t bytes = NUM_VALS * sizeof(float);
     cudaMalloc((void**)&dev_values, bytes);
 
+    CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_large);
+    CALI_MARK_BEGIN(cudaMemcpy_region);
     cudaMemcpy(dev_values, values, bytes, cudaMemcpyHostToDevice);
+    CALI_MARK_END(cudaMemcpy_region);
     CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
 
     float *all_samples;
     cudaMalloc((void**)&all_samples, BLOCKS * num_of_samples * sizeof(float));
@@ -224,9 +230,11 @@ void sample_sort(float* values, int *kernel_calls) {
     dim3 threads(THREADS,1);
     
     // Partition data, sort it locally, and select samples
+    CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_large);
     partitionAndSample<<<blocks, threads>>>(dev_values, NUM_VALS, local_chunk, all_samples, num_of_samples);
     CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
 
   
 
@@ -235,24 +243,34 @@ void sample_sort(float* values, int *kernel_calls) {
     // Collect all the samples
     float *final_samples = (float*)malloc(BLOCKS * num_of_samples * sizeof(float));
 
+    CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_small);
+    CALI_MARK_BEGIN(cudaMemcpy_region);
     cudaMemcpy(final_samples, all_samples, BLOCKS * num_of_samples * sizeof(float), cudaMemcpyDeviceToHost);
+    CALI_MARK_END(cudaMemcpy_region);
     CALI_MARK_END(comm_small);
+    CALI_MARK_END(comm);
 
 
     float* pivots = (float*)malloc((BLOCKS-1) * sizeof(float));
+    CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_small);
     // Sort all the samples, select pivots, and communicate back to devices
     qsort(final_samples, BLOCKS*num_of_samples, sizeof(float), compare);    
     select_pivots(final_samples, pivots, BLOCKS*num_of_samples, num_of_samples);
     CALI_MARK_END(comp_small);
+    CALI_MARK_END(comp);
 
     float *final_pivots;
     cudaMalloc((void**)&final_pivots, (BLOCKS-1) * sizeof(float));
 
+    CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_small);
+    CALI_MARK_BEGIN(cudaMemcpy_region);
     cudaMemcpy(final_pivots, pivots, (BLOCKS-1) * sizeof(float), cudaMemcpyHostToDevice);
+    CALI_MARK_END(cudaMemcpy_region);
     CALI_MARK_END(comm_small);
+    CALI_MARK_END(comm);
 
     // Count displaced values 
     int* incoming_value_count;
@@ -261,56 +279,76 @@ void sample_sort(float* values, int *kernel_calls) {
     int* displacements;
     cudaMalloc((void**)&displacements, BLOCKS * BLOCKS * sizeof(int));
 
+    CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_large);
     findDisplacements<<<blocks, threads>>>(dev_values, NUM_VALS, BLOCKS, local_chunk, final_pivots, incoming_value_count, displacements);
     CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
 
     cudaDeviceSynchronize();
 
     // Find out how many values will be in each block and communicate back to device
     int* incoming_values = (int*)malloc(BLOCKS * BLOCKS * sizeof(int));
 
+    CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_small);
+    CALI_MARK_BEGIN(cudaMemcpy_region);
     cudaMemcpy(incoming_values, incoming_value_count, BLOCKS*BLOCKS*sizeof(int), cudaMemcpyDeviceToHost);
+    CALI_MARK_END(cudaMemcpy_region);
     CALI_MARK_END(comm_small);
+    CALI_MARK_END(comm);
 
     int* final_value_count;
     cudaMalloc((void**)&final_value_count, BLOCKS * sizeof(int));
 
     int* final_counts = (int*)malloc(BLOCKS * sizeof(int));
 
+    CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_small);
     compute_final_counts(incoming_values, final_counts, BLOCKS);
     CALI_MARK_END(comp_small);
+    CALI_MARK_END(comp);
 
+    CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_small);
+    CALI_MARK_BEGIN(cudaMemcpy_region);
     cudaMemcpy(final_value_count, final_counts, BLOCKS*sizeof(int), cudaMemcpyHostToDevice);
+    CALI_MARK_END(cudaMemcpy_region);
     CALI_MARK_END(comm_small);
+    CALI_MARK_END(comm);
 
     float *final_unsorted_values;
     cudaMalloc((void**)&final_unsorted_values, NUM_VALS*sizeof(float));
 
+    CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_large);
     // send displaced values to other blocks
     sendDisplacedValues<<<blocks, threads>>>(final_unsorted_values, dev_values, NUM_VALS, BLOCKS, local_chunk, incoming_value_count, displacements, final_value_count);
     CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
 
     cudaDeviceSynchronize();
 
     float *final_sorted_values;
     cudaMalloc((void**)&final_sorted_values, NUM_VALS*sizeof(float));
 
+    CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_large);
     // final sort each partition
     finalSort<<<blocks, threads>>>(final_sorted_values, final_unsorted_values, NUM_VALS, local_chunk, final_value_count);
     CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
 
     cudaDeviceSynchronize();
 
+    CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_large);
+    CALI_MARK_BEGIN(cudaMemcpy_region);
     // Collect the final sorted array back into values
     cudaMemcpy(values, final_sorted_values, NUM_VALS*sizeof(float), cudaMemcpyDeviceToHost);
+    CALI_MARK_END(cudaMemcpy_region);
     CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
 
     // Free data from device
     cudaFree(dev_values);
@@ -355,13 +393,12 @@ int main(int argc, char *argv[]) {
     array_fill_random(values, NUM_VALS);
     CALI_MARK_END(data_init);
 
-    CALI_MARK_BEGIN(sample_sort_region);
     sample_sort(values, &kernel_calls);
-    CALI_MARK_END(sample_sort_region);
 
     CALI_MARK_BEGIN(correctness_check);
     bool correct = check_sorted(values,NUM_VALS);
     CALI_MARK_END(correctness_check);
+
     if (correct){
         printf("Array was sorted correctly!");
     }
