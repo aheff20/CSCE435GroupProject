@@ -35,6 +35,7 @@ const char *comm_large_MPI_Scatter = "comm_large_MPI_Scatter";
 const char *comp = "comp";
 const char *comp_large = "comp_large";
 const char *data_init = "data_init";
+const char *type_of_input;  
 
 void merge(const float *leftArray, int leftSize, const float *rightArray, int rightSize, float *mergedArray);
 int compare_floats(const void *a, const void *b);
@@ -47,13 +48,13 @@ int main(int argc, char *argv[])
     mgr.start();
     CALI_MARK_BEGIN(main_time);
     int numVals;
-    if (argc == 2)
+    if (argc == 3)
     {
         numVals = atoi(argv[1]);
     }
     else
     {
-        fprintf(stderr, "\nUsage: %s <number_of_values>\n", argv[0]);
+        fprintf(stderr, "\nUsage: %s<num_procs> <number_of_values>\n", argv[0]);
         return EXIT_FAILURE;
     }
 
@@ -85,6 +86,31 @@ int main(int argc, char *argv[])
         double start, end;
         start = MPI_Wtime();
         CALI_MARK_BEGIN(data_init);
+
+        
+        // Initialize data
+        char method = argv[2][0]; 
+            switch (method) {
+            case 's': // Sorted
+                array_fill_ascending(values, numVals);
+                type_of_input = "sorted_array";
+                break;
+            case 'r': // Reverse Sorted
+                array_fill_descending(values, numVals);
+                type_of_input = "reversed_array";
+                break;
+            case 'a': // almost sorted  (perturbed)
+                array_fill_ascending(values, numVals);
+                perturb_array(values, numVals, 0.01);
+                type_of_input = "perturbed_array";
+                break;
+            case 'p': // Random (default)
+            default:
+                array_fill_random(values, numVals);
+                type_of_input = "random_array";
+        }
+
+
         array_fill_random(values, numVals);
         CALI_MARK_END(data_init);
         end = MPI_Wtime();
@@ -134,16 +160,8 @@ int main(int argc, char *argv[])
     localTime = MPI_Wtime() - startTime;
     MPI_Reduce(&localTime, &totalTime, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
 
-    adiak::init(NULL);
-    adiak::user();
-    adiak::launchdate();
-    adiak::libraries();
-    adiak::cmdline();
-    adiak::clustername();
-    adiak::value("num_procs", numtasks);
-    adiak::value("num_vals", numVals);
-    adiak::value("program_name", "merge_sort_mpi");
-    adiak::value("array_datatype_size", sizeof(double));
+    
+    
 
     // MPI_Comm worker_comm;
     // MPI_Comm_split(MPI_COMM_WORLD, 1, 1, &worker_comm);
@@ -160,10 +178,26 @@ int main(int argc, char *argv[])
         printf("\n******************************************************\n");
 
         // Add values to Adiak
+            adiak::init(NULL);
+        adiak::user();
+        adiak::launchdate();
+        adiak::libraries();
+        adiak::cmdline();
+        adiak::clustername();
+        adiak::value("num_procs", numtasks);
+         adiak::value("InputSize", numVals); // The number of elements in input dataset (1000)
+        adiak::value("program_name", "merge_sort_mpi");
+        adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
+        adiak::value("InputType", type_of_input);
+        adiak::value("Algorithm", "Merge_sort");
+        adiak::value("ProgrammingModel", "MPI"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
         adiak::value("MPI_Reduce-whole_computation_time", main_time);
         adiak::value("MPI_Reduce-master_initialization_time", data_init);
         adiak::value("MPI_Reduce-master_send_time", comm);
         adiak::value("MPI_Reduce-master_receive_time", comm_large_MPI_Gather);
+        adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
+
+    
 
         mtype = FROM_WORKER;
         MPI_Recv(&comm_MPI_Barrier, 1, MPI_DOUBLE, 1, mtype, MPI_COMM_WORLD, &status);
@@ -195,6 +229,7 @@ int main(int argc, char *argv[])
 
         free(values);
     }
+    
     CALI_MARK_END(main_time);
     mgr.stop();
     mgr.flush();

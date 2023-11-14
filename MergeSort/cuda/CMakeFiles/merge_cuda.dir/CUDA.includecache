@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu
+/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu
 stdlib.h
 -
 stdio.h
@@ -20,9 +20,9 @@ caliper/cali-manager.h
 adiak.hpp
 -
 ../../Utils/helper_functions.h
-/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.h
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
 
-/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.h
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
 vector
 -
 

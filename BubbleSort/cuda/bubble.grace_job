@@ -21,12 +21,14 @@
 
 num_threads=$1
 num_vals=$2
+input_type=$3
+
 #
 module load CUDA                #load CUDA module
 module load intel/2020b
 module load GCCcore/7.3.0
 #
 
-CALI_CONFIG="spot(output=t${num_threads}-v${num_vals}.cali), \
+CALI_CONFIG="spot(output=t${num_threads}-v${num_vals}-${input_type}.cali), \
     cuda.gputime" \
-./bubble_cuda $num_threads $num_vals
+./bubble_cuda $num_threads $num_vals $input_type

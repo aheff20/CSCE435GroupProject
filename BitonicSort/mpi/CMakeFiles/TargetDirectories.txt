@@ -1,3 +1,3 @@
-/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/rebuild_cache.dir
-/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/edit_cache.dir
-/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/bitonic_mpi.dir
+/home/miguelgi347/Final_project/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/rebuild_cache.dir
+/home/miguelgi347/Final_project/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/edit_cache.dir
+/home/miguelgi347/Final_project/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/bitonic_mpi.dir

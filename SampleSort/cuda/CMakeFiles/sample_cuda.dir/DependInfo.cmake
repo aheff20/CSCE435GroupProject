@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CUDA
-  "/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/cuda/sample_cuda.cu" "/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/cuda/CMakeFiles/sample_cuda.dir/sample_cuda.cu.o"
+  "/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/cuda/sample_cuda.cu" "/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/cuda/CMakeFiles/sample_cuda.dir/sample_cuda.cu.o"
   )
 set(CMAKE_CUDA_COMPILER_ID "NVIDIA")
 
@@ -17,7 +17,7 @@ set(CMAKE_CUDA_TARGET_INCLUDE_PATH
   "/scratch/group/csce435-f23/Caliper/caliper/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp" "/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/cuda/CMakeFiles/sample_cuda.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+  "/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp" "/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/cuda/CMakeFiles/sample_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

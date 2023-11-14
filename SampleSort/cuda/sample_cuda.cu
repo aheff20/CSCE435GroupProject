@@ -236,6 +236,8 @@ void sample_sort(float* values, int *kernel_calls) {
     CALI_MARK_END(comp_large);
     CALI_MARK_END(comp);
 
+  
+
     cudaDeviceSynchronize();
 
     // Collect all the samples

@@ -6,6 +6,26 @@
 
 #IncludeRegexTransform: 
 
+/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/cuda/sample_cuda.cu
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+caliper/cali.h
+-
+caliper/cali-manager.h
+-
+adiak.hpp
+-
+../../Utils/helper_functions.h
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
+
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
+vector
+-
+
 /scratch/group/csce435-f23/Adiak/adiak/include/adiak.h
 stddef.h
 -
@@ -155,24 +175,4 @@ stdbool.h
 -
 typesCaliper.h
 /scratch/group/csce435-f23/Caliper/caliper/include/caliper/typesCaliper.h
-
-/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/cuda/sample_cuda.cu
-stdlib.h
--
-stdio.h
--
-time.h
--
-caliper/cali.h
--
-caliper/cali-manager.h
--
-adiak.hpp
--
-../../Utils/helper_functions.h
-/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.h
-
-/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.h
-vector
--
 

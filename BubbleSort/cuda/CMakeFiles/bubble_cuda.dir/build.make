@@ -43,10 +43,10 @@ RM = /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda
+CMAKE_SOURCE_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda
+CMAKE_BINARY_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda
 
 # Include any dependencies generated for this target.
 include CMakeFiles/bubble_cuda.dir/depend.make
@@ -59,8 +59,8 @@ include CMakeFiles/bubble_cuda.dir/flags.make
 
 CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o: CMakeFiles/bubble_cuda.dir/flags.make
 CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o: bubble_cuda.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o"
-	/sw/eb/sw/CUDA/9.2.88/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/bubble_cuda.cu -o CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o"
+	/sw/eb/sw/CUDA/9.2.88/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda/bubble_cuda.cu -o CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o
 
 CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.i"
@@ -70,29 +70,29 @@ CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o: CMakeFiles/bubble_cuda.dir/flags.make
-CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o: /home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
-	/sw/eb/sw/GCCcore/7.3.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o -c /home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp
+CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o: CMakeFiles/bubble_cuda.dir/flags.make
+CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o: /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+	/sw/eb/sw/GCCcore/7.3.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o -c /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp
 
-CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i"
-	/sw/eb/sw/GCCcore/7.3.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp > CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i"
+	/sw/eb/sw/GCCcore/7.3.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp > CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s"
-	/sw/eb/sw/GCCcore/7.3.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp -o CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s"
+	/sw/eb/sw/GCCcore/7.3.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp -o CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
 # Object files for target bubble_cuda
 bubble_cuda_OBJECTS = \
 "CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o" \
-"CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+"CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
 
 # External object files for target bubble_cuda
 bubble_cuda_EXTERNAL_OBJECTS =
 
 CMakeFiles/bubble_cuda.dir/cmake_device_link.o: CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o
-CMakeFiles/bubble_cuda.dir/cmake_device_link.o: CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+CMakeFiles/bubble_cuda.dir/cmake_device_link.o: CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
 CMakeFiles/bubble_cuda.dir/cmake_device_link.o: CMakeFiles/bubble_cuda.dir/build.make
 CMakeFiles/bubble_cuda.dir/cmake_device_link.o: /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
 CMakeFiles/bubble_cuda.dir/cmake_device_link.o: /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so
@@ -101,7 +101,7 @@ CMakeFiles/bubble_cuda.dir/cmake_device_link.o: /lib64/librt.so
 CMakeFiles/bubble_cuda.dir/cmake_device_link.o: /lib64/libpthread.so
 CMakeFiles/bubble_cuda.dir/cmake_device_link.o: /lib64/libdl.so
 CMakeFiles/bubble_cuda.dir/cmake_device_link.o: CMakeFiles/bubble_cuda.dir/dlink.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CUDA device code CMakeFiles/bubble_cuda.dir/cmake_device_link.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CUDA device code CMakeFiles/bubble_cuda.dir/cmake_device_link.o"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bubble_cuda.dir/dlink.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -112,13 +112,13 @@ CMakeFiles/bubble_cuda.dir/build: CMakeFiles/bubble_cuda.dir/cmake_device_link.o
 # Object files for target bubble_cuda
 bubble_cuda_OBJECTS = \
 "CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o" \
-"CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+"CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
 
 # External object files for target bubble_cuda
 bubble_cuda_EXTERNAL_OBJECTS =
 
 bubble_cuda: CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o
-bubble_cuda: CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+bubble_cuda: CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
 bubble_cuda: CMakeFiles/bubble_cuda.dir/build.make
 bubble_cuda: /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
 bubble_cuda: /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so
@@ -128,7 +128,7 @@ bubble_cuda: /lib64/libpthread.so
 bubble_cuda: /lib64/libdl.so
 bubble_cuda: CMakeFiles/bubble_cuda.dir/cmake_device_link.o
 bubble_cuda: CMakeFiles/bubble_cuda.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable bubble_cuda"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable bubble_cuda"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bubble_cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -141,6 +141,6 @@ CMakeFiles/bubble_cuda.dir/clean:
 .PHONY : CMakeFiles/bubble_cuda.dir/clean
 
 CMakeFiles/bubble_cuda.dir/depend:
-	cd /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/bubble_cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda /home/miguelgi347/Final_project/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/bubble_cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/bubble_cuda.dir/depend
 

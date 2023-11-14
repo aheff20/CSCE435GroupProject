@@ -6,6 +6,33 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
+/home/miguelgi347/Final_project/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+mpi.h
+-
+string
+-
+caliper/cali.h
+-
+caliper/cali-manager.h
+-
+adiak.hpp
+-
+../../Utils/helper_functions.h
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
+
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
+vector
+-
+
+=======
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
 /scratch/group/csce435-f23/Adiak/adiak/include/adiak.h
 stddef.h
 -

@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o"
+<<<<<<< HEAD
+  "CMakeFiles/sample_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+=======
   "CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+>>>>>>> a9bab3df16a3260d70f0c6dacb86ca73adf179a3
   "sample_mpi.pdb"
   "sample_mpi"
 )
