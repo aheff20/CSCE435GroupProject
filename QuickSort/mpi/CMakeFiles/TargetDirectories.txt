@@ -1,0 +1,3 @@
+/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/rebuild_cache.dir
+/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/edit_cache.dir
+/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/quick_mpi.dir

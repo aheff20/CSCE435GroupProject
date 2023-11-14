@@ -1,4 +1,4 @@
-The system is: Linux - 3.10.0-1160.83.1.el7.x86_64 - x86_64
+The system is: Linux - 3.10.0-1160.102.1.el7.x86_64 - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /sw/eb/sw/GCCcore/10.2.0/bin/cc 
 Build flags: 
@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/3.12.1/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/3.12.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /sw/eb/sw/GCCcore/10.2.0/bin/c++ 
@@ -23,33 +23,33 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/3.12.1/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/3.12.1/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_3786e/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_3786e.dir/build.make CMakeFiles/cmTC_3786e.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_3786e.dir/testCCompiler.c.o
-/sw/eb/sw/GCCcore/10.2.0/bin/cc    -o CMakeFiles/cmTC_3786e.dir/testCCompiler.c.o   -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_3786e
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3786e.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/cc      -rdynamic CMakeFiles/cmTC_3786e.dir/testCCompiler.c.o  -o cmTC_3786e 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_e99f7/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_e99f7.dir/build.make CMakeFiles/cmTC_e99f7.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e99f7.dir/testCCompiler.c.o
+/sw/eb/sw/GCCcore/10.2.0/bin/cc    -o CMakeFiles/cmTC_e99f7.dir/testCCompiler.c.o   -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_e99f7
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e99f7.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/cc      -rdynamic CMakeFiles/cmTC_e99f7.dir/testCCompiler.c.o  -o cmTC_e99f7 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_4f8cf/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_4f8cf.dir/build.make CMakeFiles/cmTC_4f8cf.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o
-/sw/eb/sw/GCCcore/10.2.0/bin/cc    -o CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o   -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_4f8cf
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4f8cf.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/cc     -v -rdynamic CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o  -o cmTC_4f8cf 
+Run Build Command:"/usr/bin/gmake" "cmTC_add81/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_add81.dir/build.make CMakeFiles/cmTC_add81.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o
+/sw/eb/sw/GCCcore/10.2.0/bin/cc    -o CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o   -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_add81
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_add81.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/cc     -v -rdynamic CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o  -o cmTC_add81 
 Using built-in specs.
 COLLECT_GCC=/sw/eb/sw/GCCcore/10.2.0/bin/cc
 COLLECT_LTO_WRAPPER=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper
@@ -61,24 +61,24 @@ Supported LTO compression algorithms: zlib
 gcc version 10.2.0 (GCC) 
 COMPILER_PATH=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/
 LIBRARY_PATH=/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64/:/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/:/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/:/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8/:/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_4f8cf' '-mtune=generic' '-march=x86-64'
- /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3TKw8u.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_4f8cf /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64 -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_4f8cf' '-mtune=generic' '-march=x86-64'
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_add81' '-mtune=generic' '-march=x86-64'
+ /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6HoFsc.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_add81 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64 -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_add81' '-mtune=generic' '-march=x86-64'
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_4f8cf/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_4f8cf.dir/build.make CMakeFiles/cmTC_4f8cf.dir/build]
-  ignore line: [gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/sw/eb/sw/GCCcore/10.2.0/bin/cc    -o CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o   -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_4f8cf]
-  ignore line: [/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4f8cf.dir/link.txt --verbose=1]
-  ignore line: [/sw/eb/sw/GCCcore/10.2.0/bin/cc     -v -rdynamic CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o  -o cmTC_4f8cf ]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_add81/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_add81.dir/build.make CMakeFiles/cmTC_add81.dir/build]
+  ignore line: [gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/sw/eb/sw/GCCcore/10.2.0/bin/cc    -o CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o   -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_add81]
+  ignore line: [/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_add81.dir/link.txt --verbose=1]
+  ignore line: [/sw/eb/sw/GCCcore/10.2.0/bin/cc     -v -rdynamic CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o  -o cmTC_add81 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/sw/eb/sw/GCCcore/10.2.0/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper]
@@ -90,13 +90,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 10.2.0 (GCC) ]
   ignore line: [COMPILER_PATH=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/]
   ignore line: [LIBRARY_PATH=/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64/:/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/:/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/:/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8/:/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_4f8cf' '-mtune=generic' '-march=x86-64']
-  link line: [ /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3TKw8u.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_4f8cf /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64 -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_add81' '-mtune=generic' '-march=x86-64']
+  link line: [ /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6HoFsc.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_add81 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64 -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o]
     arg [/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc3TKw8u.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc6HoFsc.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -109,7 +109,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_4f8cf] ==> ignore
+    arg [cmTC_add81] ==> ignore
     arg [/lib/../lib64/crt1.o] ==> ignore
     arg [/lib/../lib64/crti.o] ==> ignore
     arg [/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o] ==> ignore
@@ -132,7 +132,7 @@ Parsed C implicit link information from above output:
     arg [-L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8] ==> dir [/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8]
     arg [-L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib] ==> dir [/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib]
     arg [-L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..] ==> dir [/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..]
-    arg [CMakeFiles/cmTC_4f8cf.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_add81.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -173,17 +173,17 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_6b0df/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_6b0df.dir/build.make CMakeFiles/cmTC_6b0df.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_6b0df.dir/feature_tests.c.o
-/sw/eb/sw/GCCcore/10.2.0/bin/cc   -std=c11 -o CMakeFiles/cmTC_6b0df.dir/feature_tests.c.o   -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.c
-Linking C executable cmTC_6b0df
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b0df.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/cc      -rdynamic CMakeFiles/cmTC_6b0df.dir/feature_tests.c.o  -o cmTC_6b0df 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_7b4e5/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_7b4e5.dir/build.make CMakeFiles/cmTC_7b4e5.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7b4e5.dir/feature_tests.c.o
+/sw/eb/sw/GCCcore/10.2.0/bin/cc   -std=c11 -o CMakeFiles/cmTC_7b4e5.dir/feature_tests.c.o   -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.c
+Linking C executable cmTC_7b4e5
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b4e5.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/cc      -rdynamic CMakeFiles/cmTC_7b4e5.dir/feature_tests.c.o  -o cmTC_7b4e5 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -193,17 +193,17 @@ gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/Quic
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_c8893/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_c8893.dir/build.make CMakeFiles/cmTC_c8893.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c8893.dir/feature_tests.c.o
-/sw/eb/sw/GCCcore/10.2.0/bin/cc   -std=c99 -o CMakeFiles/cmTC_c8893.dir/feature_tests.c.o   -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.c
-Linking C executable cmTC_c8893
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8893.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/cc      -rdynamic CMakeFiles/cmTC_c8893.dir/feature_tests.c.o  -o cmTC_c8893 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_45efe/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_45efe.dir/build.make CMakeFiles/cmTC_45efe.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_45efe.dir/feature_tests.c.o
+/sw/eb/sw/GCCcore/10.2.0/bin/cc   -std=c99 -o CMakeFiles/cmTC_45efe.dir/feature_tests.c.o   -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.c
+Linking C executable cmTC_45efe
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45efe.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/cc      -rdynamic CMakeFiles/cmTC_45efe.dir/feature_tests.c.o  -o cmTC_45efe 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -213,17 +213,17 @@ gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/Quic
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_6bb67/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_6bb67.dir/build.make CMakeFiles/cmTC_6bb67.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_6bb67.dir/feature_tests.c.o
-/sw/eb/sw/GCCcore/10.2.0/bin/cc   -std=c90 -o CMakeFiles/cmTC_6bb67.dir/feature_tests.c.o   -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.c
-Linking C executable cmTC_6bb67
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6bb67.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/cc      -rdynamic CMakeFiles/cmTC_6bb67.dir/feature_tests.c.o  -o cmTC_6bb67 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_1c316/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_1c316.dir/build.make CMakeFiles/cmTC_1c316.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1c316.dir/feature_tests.c.o
+/sw/eb/sw/GCCcore/10.2.0/bin/cc   -std=c90 -o CMakeFiles/cmTC_1c316.dir/feature_tests.c.o   -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.c
+Linking C executable cmTC_1c316
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c316.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/cc      -rdynamic CMakeFiles/cmTC_1c316.dir/feature_tests.c.o  -o cmTC_1c316 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -231,30 +231,30 @@ gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/Quic
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_c0e15/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_c0e15.dir/build.make CMakeFiles/cmTC_c0e15.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_c0e15.dir/testCXXCompiler.cxx.o
-/sw/eb/sw/GCCcore/10.2.0/bin/c++     -o CMakeFiles/cmTC_c0e15.dir/testCXXCompiler.cxx.o -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_c0e15
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c0e15.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_c0e15.dir/testCXXCompiler.cxx.o  -o cmTC_c0e15 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_809b8/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_809b8.dir/build.make CMakeFiles/cmTC_809b8.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_809b8.dir/testCXXCompiler.cxx.o
+/sw/eb/sw/GCCcore/10.2.0/bin/c++     -o CMakeFiles/cmTC_809b8.dir/testCXXCompiler.cxx.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_809b8
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_809b8.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_809b8.dir/testCXXCompiler.cxx.o  -o cmTC_809b8 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_f6e1a/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_f6e1a.dir/build.make CMakeFiles/cmTC_f6e1a.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o
-/sw/eb/sw/GCCcore/10.2.0/bin/c++     -o CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_f6e1a
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f6e1a.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/c++      -v -rdynamic CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f6e1a 
+Run Build Command:"/usr/bin/gmake" "cmTC_3126a/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_3126a.dir/build.make CMakeFiles/cmTC_3126a.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o
+/sw/eb/sw/GCCcore/10.2.0/bin/c++     -o CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_3126a
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3126a.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/c++      -v -rdynamic CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_3126a 
 Using built-in specs.
 COLLECT_GCC=/sw/eb/sw/GCCcore/10.2.0/bin/c++
 COLLECT_LTO_WRAPPER=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper
@@ -266,24 +266,24 @@ Supported LTO compression algorithms: zlib
 gcc version 10.2.0 (GCC) 
 COMPILER_PATH=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/
 LIBRARY_PATH=/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64/:/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/:/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/:/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8/:/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_f6e1a' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAIB97x.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f6e1a /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64 -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_f6e1a' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_3126a' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccvmEptk.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3126a /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64 -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_3126a' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_f6e1a/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_f6e1a.dir/build.make CMakeFiles/cmTC_f6e1a.dir/build]
-  ignore line: [gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/sw/eb/sw/GCCcore/10.2.0/bin/c++     -o CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_f6e1a]
-  ignore line: [/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f6e1a.dir/link.txt --verbose=1]
-  ignore line: [/sw/eb/sw/GCCcore/10.2.0/bin/c++      -v -rdynamic CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f6e1a ]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_3126a/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_3126a.dir/build.make CMakeFiles/cmTC_3126a.dir/build]
+  ignore line: [gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/sw/eb/sw/GCCcore/10.2.0/bin/c++     -o CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_3126a]
+  ignore line: [/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3126a.dir/link.txt --verbose=1]
+  ignore line: [/sw/eb/sw/GCCcore/10.2.0/bin/c++      -v -rdynamic CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_3126a ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/sw/eb/sw/GCCcore/10.2.0/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper]
@@ -295,13 +295,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 10.2.0 (GCC) ]
   ignore line: [COMPILER_PATH=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/]
   ignore line: [LIBRARY_PATH=/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64/:/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64/:/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/:/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/:/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/:/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/:/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8/:/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/:/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_f6e1a' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAIB97x.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f6e1a /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64 -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_3126a' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2 -plugin /sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so -plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccvmEptk.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3126a /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib/../lib64 -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/../lib64 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0 -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/eb/sw/zlib/1.2.11-intel-2020b/lib -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/mkl/lib/intel64 -L/sw/eb/sw/imkl/2020.4.304-iimpi-2020b/lib/intel64 -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release -L/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib -L/sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib -L/sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib -L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8 -L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib -L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../.. CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o /lib/../lib64/crtn.o]
     arg [/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/sw/eb/sw/GCCcore/10.2.0/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccAIB97x.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccvmEptk.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -314,7 +314,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_f6e1a] ==> ignore
+    arg [cmTC_3126a] ==> ignore
     arg [/lib/../lib64/crt1.o] ==> ignore
     arg [/lib/../lib64/crti.o] ==> ignore
     arg [/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o] ==> ignore
@@ -337,7 +337,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8] ==> dir [/sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8]
     arg [-L/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib] ==> dir [/sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib]
     arg [-L/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..] ==> dir [/sw/eb/sw/GCCcore/10.2.0/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../..]
-    arg [CMakeFiles/cmTC_f6e1a.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_3126a.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -374,17 +374,17 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++2a] compiler features compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_b0407/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_b0407.dir/build.make CMakeFiles/cmTC_b0407.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b0407.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++2a -o CMakeFiles/cmTC_b0407.dir/feature_tests.cxx.o -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_b0407
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0407.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_b0407.dir/feature_tests.cxx.o  -o cmTC_b0407 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_377cd/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_377cd.dir/build.make CMakeFiles/cmTC_377cd.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_377cd.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++2a -o CMakeFiles/cmTC_377cd.dir/feature_tests.cxx.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_377cd
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_377cd.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_377cd.dir/feature_tests.cxx.o  -o cmTC_377cd 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -447,17 +447,17 @@ gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/Quic
 
 
 Detecting CXX [-std=c++17] compiler features compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_e4789/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_e4789.dir/build.make CMakeFiles/cmTC_e4789.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_e4789.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++17 -o CMakeFiles/cmTC_e4789.dir/feature_tests.cxx.o -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_e4789
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e4789.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_e4789.dir/feature_tests.cxx.o  -o cmTC_e4789 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_33979/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_33979.dir/build.make CMakeFiles/cmTC_33979.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_33979.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++17 -o CMakeFiles/cmTC_33979.dir/feature_tests.cxx.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_33979
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_33979.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_33979.dir/feature_tests.cxx.o  -o cmTC_33979 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -520,17 +520,17 @@ gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/Quic
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_d2633/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_d2633.dir/build.make CMakeFiles/cmTC_d2633.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_d2633.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++14 -o CMakeFiles/cmTC_d2633.dir/feature_tests.cxx.o -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_d2633
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2633.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_d2633.dir/feature_tests.cxx.o  -o cmTC_d2633 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_be65d/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_be65d.dir/build.make CMakeFiles/cmTC_be65d.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_be65d.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++14 -o CMakeFiles/cmTC_be65d.dir/feature_tests.cxx.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_be65d
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be65d.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_be65d.dir/feature_tests.cxx.o  -o cmTC_be65d 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -593,17 +593,17 @@ gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/Quic
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_962f7/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_962f7.dir/build.make CMakeFiles/cmTC_962f7.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_962f7.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++11 -o CMakeFiles/cmTC_962f7.dir/feature_tests.cxx.o -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_962f7
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_962f7.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_962f7.dir/feature_tests.cxx.o  -o cmTC_962f7 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_a3251/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_a3251.dir/build.make CMakeFiles/cmTC_a3251.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a3251.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++11 -o CMakeFiles/cmTC_a3251.dir/feature_tests.cxx.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_a3251
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3251.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_a3251.dir/feature_tests.cxx.o  -o cmTC_a3251 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -666,17 +666,17 @@ gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/Quic
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_ee11d/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_ee11d.dir/build.make CMakeFiles/cmTC_ee11d.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ee11d.dir/feature_tests.cxx.o
-/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++98 -o CMakeFiles/cmTC_ee11d.dir/feature_tests.cxx.o -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_ee11d
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee11d.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_ee11d.dir/feature_tests.cxx.o  -o cmTC_ee11d 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_16490/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_16490.dir/build.make CMakeFiles/cmTC_16490.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_16490.dir/feature_tests.cxx.o
+/sw/eb/sw/GCCcore/10.2.0/bin/c++    -std=c++98 -o CMakeFiles/cmTC_16490.dir/feature_tests.cxx.o -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_16490
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_16490.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/c++       -rdynamic CMakeFiles/cmTC_16490.dir/feature_tests.cxx.o  -o cmTC_16490 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -737,30 +737,30 @@ gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/Quic
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
 Determining if the include file pthread.h exists passed with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_84af5/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_84af5.dir/build.make CMakeFiles/cmTC_84af5.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_84af5.dir/CheckIncludeFile.c.o
-/sw/eb/sw/GCCcore/10.2.0/bin/cc    -o CMakeFiles/cmTC_84af5.dir/CheckIncludeFile.c.o   -c /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_84af5
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84af5.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/cc      CMakeFiles/cmTC_84af5.dir/CheckIncludeFile.c.o  -o cmTC_84af5 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_a551b/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_a551b.dir/build.make CMakeFiles/cmTC_a551b.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a551b.dir/CheckIncludeFile.c.o
+/sw/eb/sw/GCCcore/10.2.0/bin/cc    -o CMakeFiles/cmTC_a551b.dir/CheckIncludeFile.c.o   -c /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a551b
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a551b.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/cc      CMakeFiles/cmTC_a551b.dir/CheckIncludeFile.c.o  -o cmTC_a551b 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
-Change Dir: /scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_09031/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_09031.dir/build.make CMakeFiles/cmTC_09031.dir/build
-gmake[1]: Entering directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_09031.dir/CheckFunctionExists.c.o
-/sw/eb/sw/GCCcore/10.2.0/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_09031.dir/CheckFunctionExists.c.o   -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CheckFunctionExists.c
-Linking C executable cmTC_09031
-/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09031.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/10.2.0/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_09031.dir/CheckFunctionExists.c.o  -o cmTC_09031 -lpthread 
-gmake[1]: Leaving directory `/scratch/user/jamesevans25/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/gmake" "cmTC_8d34b/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_8d34b.dir/build.make CMakeFiles/cmTC_8d34b.dir/build
+gmake[1]: Entering directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8d34b.dir/CheckFunctionExists.c.o
+/sw/eb/sw/GCCcore/10.2.0/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_8d34b.dir/CheckFunctionExists.c.o   -c /sw/eb/sw/CMake/3.12.1/share/cmake-3.12/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8d34b
+/sw/eb/sw/CMake/3.12.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8d34b.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/10.2.0/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_8d34b.dir/CheckFunctionExists.c.o  -o cmTC_8d34b -lpthread 
+gmake[1]: Leaving directory `/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/CMakeTmp'
 
 
