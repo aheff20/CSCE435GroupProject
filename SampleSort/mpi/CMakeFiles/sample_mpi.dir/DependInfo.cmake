@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp" "/home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/CMakeFiles/sample_mpi.dir/home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.o"
-  "/home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp" "/home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o"
+  "/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/sample_mpi.cpp" "/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o"
+  "/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp" "/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

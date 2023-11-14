@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/sample_mpi.dir/sample_mpi.cpp.o"
-  "CMakeFiles/sample_mpi.dir/home/aidan.heffron/CSCE435/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+  "CMakeFiles/sample_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o"
   "sample_mpi.pdb"
   "sample_mpi"
 )

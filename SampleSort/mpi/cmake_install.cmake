@@ -1,4 +1,4 @@
-# Install script for directory: /home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi
+# Install script for directory: /scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/aidan.heffron/CSCE435/CSCE435GroupProject/SampleSort/mpi/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/scratch/user/aidan.heffron/CSCE435GroupProject/SampleSort/mpi/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
