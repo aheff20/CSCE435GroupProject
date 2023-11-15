@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Array of input sizes (2^16, 2^18, ..., 2^28)
-inputSizes=(65536)
+inputSizes=(1048576)
 
 # Array of CUDA threads (64, 128, ..., 4096)
-mpiProcs=(256)
+mpiProcs=(1024)
 
 inputTypes=("Sorted" "ReverseSorted" "Random" "Perturbed")
 

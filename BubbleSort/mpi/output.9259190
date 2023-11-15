@@ -1,2 +1,0 @@
-srun: error: eio_message_socket_accept: slurm_receive_msg[127.0.0.1:47260]: Insane message length
-Array was sorted correctly!
