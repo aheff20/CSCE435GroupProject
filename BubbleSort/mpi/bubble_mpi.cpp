@@ -13,9 +13,14 @@
 const char* data_init = "data_init";
 const char* comm = "comm";
 const char* comm_large = "comm_large";
+const char* comm_small = "comm_small";
 const char* comp = "comp";
 const char* comp_large = "comp_large";
 const char* correctness_check = "correctness_check";
+const char* mpi_send_region = "MPI_Send";
+const char* mpi_recv_region = "MPI_Recv";
+const char* mpi_gather_region = "MPI_Gather";
+const char* barrier = "MPI_Barrier";
 
 int compare (const void * a, const void * b) {
     return ( *(float*)a - *(float*)b );
@@ -40,8 +45,6 @@ int getNeighbor(int phase, int rank) {
 }
 
 void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
-    CALI_MARK_BEGIN(comp);
-    CALI_MARK_BEGIN(comp_large);
 
     std::sort(values, values + local_data_size); // Sort local data
 
@@ -60,11 +63,19 @@ void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
 
         // Correct the MPI data types
         if (rankid % 2 == 0) {
+            CALI_MARK_BEGIN(mpi_send_region);
             MPI_Send(values, local_data_size, MPI_FLOAT, neighbor, 0, MPI_COMM_WORLD);
+            CALI_MARK_END(mpi_send_region);
+            CALI_MARK_BEGIN(mpi_recv_region);
             MPI_Recv(temp, local_data_size, MPI_FLOAT, neighbor, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            CALI_MARK_END(mpi_recv_region);
         } else {
+            CALI_MARK_BEGIN(mpi_recv_region);
             MPI_Recv(temp, local_data_size, MPI_FLOAT, neighbor, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            CALI_MARK_END(mpi_recv_region);
+            CALI_MARK_BEGIN(mpi_send_region);
             MPI_Send(values, local_data_size, MPI_FLOAT, neighbor, 0, MPI_COMM_WORLD);
+            CALI_MARK_END(mpi_send_region);
         }
         // MPI_Sendrecv_replace(values, local_data_size, MPI_FLOAT, neighbor, 0, neighbor, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
@@ -91,9 +102,6 @@ void bubbleSort(float *values, int local_data_size, int numTasks, int rankid) {
 
     delete[] temp;
     delete[] merged;
-
-    CALI_MARK_END(comp_large);
-    CALI_MARK_END(comp);
 }
 
 int main(int argc, char** argv) {
@@ -142,13 +150,24 @@ int main(int argc, char** argv) {
     }
     CALI_MARK_END(data_init);
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
+    MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
     // localBubbleSort(values, local_data_size);
 
     bubbleSort(values, local_data_size, numTasks, rankid);
 
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_small);
+    CALI_MARK_BEGIN(mpi_gather_region);
     MPI_Gather(values, local_data_size, MPI_FLOAT, 
            (rankid == 0) ? global_array : values, 
            local_data_size, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    CALI_MARK_END(mpi_gather_region);
+    CALI_MARK_END(comm_small);
+    CALI_MARK_END(comm);
 
     // print_array(global_array, data_size);
 
