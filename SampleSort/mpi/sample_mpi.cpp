@@ -293,26 +293,11 @@ int main(int argc, char** argv) {
     }
     CALI_MARK_END(data_init);
 
-    if(rankid == 0){
-        print_array(values, local_data_size);
-        printf("\n");
-    }
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
-    if(rankid == 1){
-        print_array(values, local_data_size);
-        printf("\n");
-    }
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(rankid == 2){
-        print_array(values, local_data_size);
-        printf("\n");
-    }
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(rankid == 3){
-        print_array(values, local_data_size);
-        printf("\n");
-    }
-    MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
     
 
     sampleSort(global_array, values, rankid, local_data_size, numTasks, num_of_samples);
