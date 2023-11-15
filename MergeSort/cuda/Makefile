@@ -48,10 +48,10 @@ RM = /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda
+CMAKE_SOURCE_DIR = /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda
+CMAKE_BINARY_DIR = /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -150,32 +150,32 @@ merge_cuda.cu.s:
 	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/merge_cuda.cu.s
 .PHONY : merge_cuda.cu.s
 
-scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o: scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.o: scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
 
-.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.o
 
 # target to build an object file
-scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o:
-	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
-.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
 
-scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i: scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.i: scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.i
 
 # target to preprocess a source file
-scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i:
-	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
-.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s: scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.s: scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
-.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.s
 
 # target to generate assembly for a file
-scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s:
-	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
-.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
 # Help Target
 help:
@@ -189,9 +189,9 @@ help:
 	@echo "... merge_cuda.o"
 	@echo "... merge_cuda.i"
 	@echo "... merge_cuda.s"
-	@echo "... scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o"
-	@echo "... scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i"
-	@echo "... scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s"
+	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.o"
+	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.i"
+	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.s"
 .PHONY : help
 
 

@@ -6,11 +6,9 @@
 
 #IncludeRegexTransform: 
 
-<<<<<<< HEAD
-=======
-/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp
 helper_functions.h
-/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.h
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.h
 stdlib.h
 -
 time.h
@@ -20,8 +18,7 @@ algorithm
 iostream
 -
 
-/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.h
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.h
 vector
 -
 
->>>>>>> f22877e498ad4ad8f88e0db1e0db3fb499b8d66d

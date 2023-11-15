@@ -1,0 +1,15 @@
+[1700069477.187019] [c172:98302:0]        dc_mlx5.c:330  UCX  ERROR mlx5dv_create_qp(mlx5_0:1, DCI): failed: Cannot allocate memory
+[1700069477.200086] [c172:98300:0]        dc_mlx5.c:330  UCX  ERROR mlx5dv_create_qp(mlx5_0:1, DCI): failed: Cannot allocate memory
+[1700069477.207044] [c172:98264:0]       ib_iface.c:914  UCX  ERROR iface=0x27d3020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.207490] [c172:98274:0]       ib_iface.c:914  UCX  ERROR iface=0x2640020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.211487] [c172:98441:0]       ib_iface.c:914  UCX  ERROR iface=0x151d020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.218600] [c172:98256:0]       ib_iface.c:914  UCX  ERROR iface=0x1bd1020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.218779] [c172:98296:0]       ib_iface.c:914  UCX  ERROR iface=0x21cc020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.223293] [c172:98273:0]       ib_iface.c:914  UCX  ERROR iface=0xf78020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.263020] [c172:98284:0]       ib_iface.c:914  UCX  ERROR iface=0x2119e50: failed to create RC QP TX wr:256 sge:3 inl:64 resp:64 RX wr:0 sge:1 resp:64: Cannot allocate memory
+[1700069477.284302] [c172:98270:0]        dc_mlx5.c:330  UCX  ERROR mlx5dv_create_qp(mlx5_0:1, DCI): failed: Cannot allocate memory
+Abort(1615503) on node 124 (rank 124 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(136)........: 
+MPID_Init(1149)..............: 
+MPIDI_OFI_mpi_init_hook(1555): 
+create_endpoint(2199)........: OFI endpoint open failed (ofi_init.c:2199:create_endpoint:Input/output error)

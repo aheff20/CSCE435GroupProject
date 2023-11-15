@@ -28,8 +28,8 @@ MPI_Status status;
 // Define Caliper region names
 // const char *main_time = "main_time";
 const char* comp_small = "comp_small";
-const char* comp_small = "comp_small";
 const char *comm = "comm";
+const char *comm_small = "comm_small";
 const char *comm_MPI_Barrier = "comm_MPI_Barrier";
 const char *comm_large = "comm_large";
 const char *comm_large_MPI_Gather = "comm_large_MPI_Gather";

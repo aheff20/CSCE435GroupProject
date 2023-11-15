@@ -1,0 +1,13 @@
+[1700069477.192902] [c172:98341:0]       ib_iface.c:914  UCX  ERROR iface=0x2894020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.210649] [c172:98237:0]       ib_iface.c:914  UCX  ERROR iface=0xbf5020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.221026] [c172:98250:0]       ib_iface.c:914  UCX  ERROR iface=0xde6020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.222771] [c172:98199:0]       ib_iface.c:914  UCX  ERROR iface=0xaa6020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.357428] [c172:98249:0]   ib_mlx5dv_md.c:823  UCX  ERROR ibv_create_cq() failed: Invalid argument
+[1700069477.363896] [c172:98232:0]   ib_mlx5dv_md.c:823  UCX  ERROR ibv_create_cq() failed: Invalid argument
+[1700069477.371859] [c172:98334:0]   ib_mlx5dv_md.c:823  UCX  ERROR ibv_create_cq() failed: Invalid argument
+[1700069477.372162] [c172:98206:0]   ib_mlx5dv_md.c:823  UCX  ERROR ibv_create_cq() failed: Invalid argument
+Abort(1615503) on node 216 (rank 216 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(136)........: 
+MPID_Init(1149)..............: 
+MPIDI_OFI_mpi_init_hook(1555): 
+create_endpoint(2199)........: OFI endpoint open failed (ofi_init.c:2199:create_endpoint:Invalid argument)
