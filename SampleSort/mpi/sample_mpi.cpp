@@ -92,12 +92,6 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
         }
         CALI_MARK_END(comp_small);
         CALI_MARK_END(comp);
-
-        // print_array(values, local_data_size);
-        // print_array(all_samples, numTasks * numTasks);
-        // print_array(samples, numTasks);
-
-
     }
 
     CALI_MARK_BEGIN(comm);
@@ -180,17 +174,6 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
     CALI_MARK_END(comm_small);
     CALI_MARK_END(comm);
 
-    // if(rankid == 0) {
-    //     // print_iarray(localCounts, numTasks);
-    //     printf("############################\n");
-    //     print_iarray(localCounts, numTasks);
-    //     print_iarray(localDisplacements, numTasks);
-    //     print_iarray(extCounts, numTasks);
-    //     print_iarray(extDisplacements, numTasks);
-    //     print_iarray(globalCounts, numTasks);
-    //     printf("############################\n");
-    // }
-
     CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(barrier);
     MPI_Barrier(MPI_COMM_WORLD);
@@ -241,15 +224,6 @@ void sampleSort(float *global_array, float *values, int rankid, int local_data_s
     CALI_MARK_END(mpi_gatherv_region);
     CALI_MARK_END(comm_large);
     CALI_MARK_END(comm);
-
-    // if(rankid == 0){
-    //     printf("############################\n");
-    //     printf("FINAL ARRAY\n");
-    //     print_array(global_array, local_data_size * numTasks);
-    //     printf("############################\n");
-
-    // }
-
     
 
 }
@@ -260,18 +234,20 @@ int main(int argc, char** argv) {
     cali::ConfigManager mgr;
     mgr.start();
 
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s <num_values> <num_processes>\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "Usage: %s <num_values> <num_processes> <inputType>\n", argv[0]);
         exit(1);
     }
     int data_size = atoi(argv[1]);
+    int inputType = atoi(argv[2]);
 
     int	numTasks,
         rankid,
         rc;
 
     float *global_array = (float*)malloc(data_size * sizeof(float));
-
+    std::string inputTypeString;
+    
     MPI_Init(&argc,&argv);
     MPI_Comm_rank(MPI_COMM_WORLD,&rankid);
     MPI_Comm_size(MPI_COMM_WORLD,&numTasks);
@@ -292,8 +268,37 @@ int main(int argc, char** argv) {
     int num_of_samples = numTasks > local_data_size ? local_data_size / 2 : numTasks;
 
     CALI_MARK_BEGIN(data_init);
-    array_fill_random_no_seed(values, local_data_size);
+    switch(inputType) {
+        case 0:
+            array_fill_random_no_seed(values, local_data_size);
+            inputTypeString = "Random";
+            break;
+        case 1:
+            array_fill_descending_local(values, local_data_size, rankid, data_size);
+            inputTypeString = "ReverseSorted";
+            break;
+        case 2:
+            array_fill_ascending_local(values, local_data_size, rankid);
+            inputTypeString = "Sorted";
+            break;
+        case 3:
+            array_fill_ascending_local(values, local_data_size, rankid);
+            perturb_array(values, local_data_size, 0.01);
+            inputTypeString = "1%perturbed";
+            break;
+        default:
+            array_fill_random_no_seed(values, local_data_size);
+            inputTypeString = "Random";
+            break;
+    }
     CALI_MARK_END(data_init);
+
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(barrier);
+    MPI_Barrier(MPI_COMM_WORLD);
+    CALI_MARK_END(barrier);
+    CALI_MARK_END(comm);
+    
 
     sampleSort(global_array, values, rankid, local_data_size, numTasks, num_of_samples);
 
@@ -312,8 +317,6 @@ int main(int argc, char** argv) {
 
     free(values);
     free(global_array);
-
-   
     
     if(rankid == 0) {
         adiak::init(NULL);
@@ -326,7 +329,7 @@ int main(int argc, char** argv) {
         adiak::value("Datatype", "float"); // The datatype of input elements (e.g., double, int, float)
         adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
         adiak::value("InputSize", data_size); // The number of elements in input dataset (1000)
-        adiak::value("InputType", "Random"); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
+        adiak::value("InputType", inputTypeString); 
         adiak::value("num_threads", numTasks); // The number of CUDA or OpenMP threads
         adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
         adiak::value("implementation_source", "Handwritten"); // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").

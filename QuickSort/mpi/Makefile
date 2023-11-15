@@ -48,10 +48,17 @@ RM = /sw/eb/sw/CMake/3.12.1/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi
+=======
+CMAKE_SOURCE_DIR = /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +87,15 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi/CMakeFiles /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi/CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/progress.marks
+	$(MAKE) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles 0
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9
 .PHONY : all
 
 # The main clean target
@@ -123,6 +136,7 @@ quick_mpi/fast:
 	$(MAKE) -f CMakeFiles/quick_mpi.dir/build.make CMakeFiles/quick_mpi.dir/build
 .PHONY : quick_mpi/fast
 
+<<<<<<< HEAD
 home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
 
 .PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o
@@ -150,6 +164,8 @@ home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s:
 	$(MAKE) -f CMakeFiles/quick_mpi.dir/build.make CMakeFiles/quick_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
 .PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
+=======
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9
 quick_mpi.o: quick_mpi.cpp.o
 
 .PHONY : quick_mpi.o
@@ -177,6 +193,36 @@ quick_mpi.cpp.s:
 	$(MAKE) -f CMakeFiles/quick_mpi.dir/build.make CMakeFiles/quick_mpi.dir/quick_mpi.cpp.s
 .PHONY : quick_mpi.cpp.s
 
+<<<<<<< HEAD
+=======
+scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.o: scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o
+
+.PHONY : scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.o
+
+# target to build an object file
+scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/quick_mpi.dir/build.make CMakeFiles/quick_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o
+.PHONY : scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o
+
+scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.i: scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+.PHONY : scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.i
+
+# target to preprocess a source file
+scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/quick_mpi.dir/build.make CMakeFiles/quick_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.i
+.PHONY : scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.s: scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.s
+
+.PHONY : scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.s
+
+# target to generate assembly for a file
+scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/quick_mpi.dir/build.make CMakeFiles/quick_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.s
+.PHONY : scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.s
+
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +232,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... quick_mpi"
+<<<<<<< HEAD
 	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o"
 	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i"
 	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s"
 	@echo "... quick_mpi.o"
 	@echo "... quick_mpi.i"
 	@echo "... quick_mpi.s"
+=======
+	@echo "... quick_mpi.o"
+	@echo "... quick_mpi.i"
+	@echo "... quick_mpi.s"
+	@echo "... scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.o"
+	@echo "... scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.i"
+	@echo "... scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.s"
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9
 .PHONY : help
 
 

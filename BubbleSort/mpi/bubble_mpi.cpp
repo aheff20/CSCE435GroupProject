@@ -131,13 +131,13 @@ int main(int argc, char** argv) {
 
     CALI_MARK_BEGIN(data_init);
     if (input_type == "Sorted") {
-        array_fill_ascending(values, local_data_size);
+        array_fill_ascending_local(values, local_data_size, rankid);
     } else if (input_type == "ReverseSorted") {
-        array_fill_descending(values, local_data_size);
+        array_fill_descending_local(values, local_data_size, rankid, data_size);
     } else if (input_type == "Random") {
         array_fill_random_no_seed(values, local_data_size);
     } else if (input_type == "Perturbed") {
-        array_fill_ascending(values, local_data_size); // First fill with sorted data
+        array_fill_ascending_local(values, local_data_size, rankid); // First fill with sorted data
         perturb_array(values, local_data_size, 0.01);  // Then perturb
     }
     CALI_MARK_END(data_init);

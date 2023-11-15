@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/rebuild_cache.dir
 /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/edit_cache.dir
 /home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/quick_mpi.dir
+=======
+/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/rebuild_cache.dir
+/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/edit_cache.dir
+/scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/CMakeFiles/quick_mpi.dir
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9

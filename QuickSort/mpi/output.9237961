@@ -1,0 +1,410 @@
+Num vals: 512
+Num tasks: 16
+FINAL COUNTS PER PROCESS:
+28,1,0,1,0,0,0,1,254,1,0,1,127,1,64,33,
+
+Array was sorted correctly!*** Error in `./quick_mpi': free(): invalid next size (fast): 0x000000000062d6b0 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81329)[0x2af5a3d10329]
+./quick_mpi[0x402dc0]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x2af5a3cb1555]
+./quick_mpi[0x401f89]
+======= Memory map: ========
+00400000-00405000 r-xp 00000000 fd0:3bab4 414338711908631010             /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/quick_mpi
+00405000-00406000 rwxp 00004000 fd0:3bab4 414338711908631010             /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/quick_mpi
+00406000-00407000 rw-p 00005000 fd0:3bab4 414338711908631010             /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/quick_mpi
+00554000-00eb7000 rw-p 00000000 00:00 0                                  [heap]
+2af5a15f9000-2af5a161b000 r-xp 00000000 00:25 76744                      /usr/lib64/ld-2.17.so
+2af5a161b000-2af5a161e000 rw-p 00000000 00:00 0 
+2af5a161e000-2af5a1629000 r-xp 00000000 fd0:3bab4 144115507698604079     /sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/libnuma.so.1.0.0
+2af5a1629000-2af5a162a000 rwxp 0000a000 fd0:3bab4 144115507698604079     /sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/libnuma.so.1.0.0
+2af5a162a000-2af5a162b000 rw-p 0000b000 fd0:3bab4 144115507698604079     /sw/eb/sw/numactl/2.0.13-GCCcore-10.2.0/lib/libnuma.so.1.0.0
+2af5a162b000-2af5a162c000 r--s 00500000 00:05 13390                      /dev/infiniband/uverbs0
+2af5a162c000-2af5a162d000 r--s 00700000 00:05 13390                      /dev/infiniband/uverbs0
+2af5a162d000-2af5a162e000 rw-p 00000000 00:00 0 
+2af5a162e000-2af5a1801000 r-xp 00000000 fd0:3bab4 144115507681903533     /sw/eb/sw/GCCcore/10.2.0/lib64/libstdc++.so.6.0.28
+2af5a1801000-2af5a180b000 r--p 001d2000 fd0:3bab4 144115507681903533     /sw/eb/sw/GCCcore/10.2.0/lib64/libstdc++.so.6.0.28
+2af5a180b000-2af5a180c000 rwxp 001dc000 fd0:3bab4 144115507681903533     /sw/eb/sw/GCCcore/10.2.0/lib64/libstdc++.so.6.0.28
+2af5a180c000-2af5a1810000 rwxp 001dd000 fd0:3bab4 144115507681903533     /sw/eb/sw/GCCcore/10.2.0/lib64/libstdc++.so.6.0.28
+2af5a1810000-2af5a1816000 rwxp 00000000 00:00 0 
+2af5a1816000-2af5a181a000 rw-p 00000000 00:00 0 
+2af5a181a000-2af5a181b000 rwxp 00021000 00:25 76744                      /usr/lib64/ld-2.17.so
+2af5a181b000-2af5a181c000 rw-p 00022000 00:25 76744                      /usr/lib64/ld-2.17.so
+2af5a181c000-2af5a181d000 rw-p 00000000 00:00 0 
+2af5a181d000-2af5a1a5b000 r--p 00000000 fd0:3bab4 414338424414235165     /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
+2af5a1a5b000-2af5a1ca6000 r-xp 0023e000 fd0:3bab4 414338424414235165     /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
+2af5a1ca6000-2af5a1d9e000 r--p 00489000 fd0:3bab4 414338424414235165     /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
+2af5a1d9e000-2af5a1d9f000 ---p 00581000 fd0:3bab4 414338424414235165     /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
+2af5a1d9f000-2af5a1da5000 r--p 00581000 fd0:3bab4 414338424414235165     /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
+2af5a1da5000-2af5a1dc2000 rwxp 00587000 fd0:3bab4 414338424414235165     /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
+2af5a1dc2000-2af5a1dcc000 rwxp 00000000 00:00 0 
+2af5a1dcc000-2af5a1dea000 rwxp 00000000 fd0:3bab4 144115509141443583     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12.0.0
+2af5a1dea000-2af5a1df0000 rwxp 0001e000 fd0:3bab4 144115509141443583     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12.0.0
+2af5a1df0000-2af5a1fe9000 ---p 00024000 fd0:3bab4 144115509141443583     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12.0.0
+2af5a1fe9000-2af5a1fea000 rwxp 0001d000 fd0:3bab4 144115509141443583     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12.0.0
+2af5a1fea000-2af5a1feb000 rwxp 0001e000 fd0:3bab4 144115509141443583     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12.0.0
+2af5a1feb000-2af5a1fec000 rw-p 0001f000 fd0:3bab4 144115509141443583     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12.0.0
+2af5a1fec000-2af5a2e21000 r-xp 00000000 fd0:3bab4 144115509141443596     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/libmpi.so.12.0.0
+2af5a2e21000-2af5a3021000 ---p 00e35000 fd0:3bab4 144115509141443596     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/libmpi.so.12.0.0
+2af5a3021000-2af5a302e000 r--p 00e35000 fd0:3bab4 144115509141443596     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/libmpi.so.12.0.0
+2af5a302e000-2af5a3032000 rwxp 00e42000 fd0:3bab4 144115509141443596     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/libmpi.so.12.0.0
+2af5a3032000-2af5a3043000 rw-p 00e46000 fd0:3bab4 144115509141443596     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/libmpi.so.12.0.0
+2af5a3043000-2af5a334c000 rw-p 00000000 00:00 0 
+2af5a334c000-2af5a3353000 r-xp 00000000 00:25 77123                      /usr/lib64/librt-2.17.so
+2af5a3353000-2af5a3552000 ---p 00007000 00:25 77123                      /usr/lib64/librt-2.17.so
+2af5a3552000-2af5a3553000 r--p 00006000 00:25 77123                      /usr/lib64/librt-2.17.so
+2af5a3553000-2af5a3554000 rwxp 00007000 00:25 77123                      /usr/lib64/librt-2.17.so
+2af5a3554000-2af5a356b000 r-xp 00000000 00:25 77115                      /usr/lib64/libpthread-2.17.so
+2af5a356b000-2af5a376a000 ---p 00017000 00:25 77115                      /usr/lib64/libpthread-2.17.so
+2af5a376a000-2af5a376b000 r--p 00016000 00:25 77115                      /usr/lib64/libpthread-2.17.so
+2af5a376b000-2af5a376c000 rwxp 00017000 00:25 77115                      /usr/lib64/libpthread-2.17.so
+2af5a376c000-2af5a3770000 rw-p 00000000 00:00 0 
+2af5a3770000-2af5a3772000 r-xp 00000000 00:25 76781                      /usr/lib64/libdl-2.17.so
+2af5a3772000-2af5a3972000 ---p 00002000 00:25 76781                      /usr/lib64/libdl-2.17.so
+2af5a3972000-2af5a3973000 r--p 00002000 00:25 76781                      /usr/lib64/libdl-2.17.so
+2af5a3973000-2af5a3974000 rwxp 00003000 00:25 76781                      /usr/lib64/libdl-2.17.so
+2af5a3974000-2af5a3a75000 r-xp 00000000 00:25 76785                      /usr/lib64/libm-2.17.so
+2af5a3a75000-2af5a3c74000 ---p 00101000 00:25 76785                      /usr/lib64/libm-2.17.so
+2af5a3c74000-2af5a3c75000 r--p 00100000 00:25 76785                      /usr/lib64/libm-2.17.so
+2af5a3c75000-2af5a3c76000 rwxp 00101000 00:25 76785                      /usr/lib64/libm-2.17.so
+2af5a3c76000-2af5a3c8d000 r-xp 00000000 fd0:3bab4 144115507681902696     /sw/eb/sw/GCCcore/10.2.0/lib64/libgcc_s.so.1
+2af5a3c8d000-2af5a3c8e000 rwxp 00016000 fd0:3bab4 144115507681902696     /sw/eb/sw/GCCcore/10.2.0/lib64/libgcc_s.so.1
+2af5a3c8e000-2af5a3c8f000 rw-p 00017000 fd0:3bab4 144115507681902696     /sw/eb/sw/GCCcore/10.2.0/lib64/libgcc_s.so.1
+2af5a3c8f000-2af5a3d84000 r-xp 00000000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a3d84000-2af5a3d85000 r-xp 000f5000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a3d85000-2af5a3d87000 r-xp 000f6000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a3d87000-2af5a3d89000 r-xp 000f8000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a3d89000-2af5a3d8e000 r-xp 000fa000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a3d8e000-2af5a3d90000 r-xp 000ff000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a3d90000-2af5a3e53000 r-xp 00101000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a3e53000-2af5a4052000 ---p 001c4000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a4052000-2af5a4056000 r--p 001c3000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a4056000-2af5a4057000 rwxp 001c7000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a4057000-2af5a4058000 rw-p 001c8000 00:25 76769                      /usr/lib64/libc-2.17.so
+2af5a4058000-2af5a405d000 rw-p 00000000 00:00 0 
+2af5a405d000-2af5a46aa000 r-xp 00000000 fd0:3bab4 144123701187684174     /sw/eb/sw/CUDA/12.2.2/extras/CUPTI/lib64/libcupti.so.2023.2.2
+2af5a46aa000-2af5a48a9000 ---p 0064d000 fd0:3bab4 144123701187684174     /sw/eb/sw/CUDA/12.2.2/extras/CUPTI/lib64/libcupti.so.2023.2.2
+2af5a48a9000-2af5a48f6000 r--p 0064c000 fd0:3bab4 144123701187684174     /sw/eb/sw/CUDA/12.2.2/extras/CUPTI/lib64/libcupti.so.2023.2.2
+2af5a48f6000-2af5a48f8000 rwxp 00699000 fd0:3bab4 144123701187684174     /sw/eb/sw/CUDA/12.2.2/extras/CUPTI/lib64/libcupti.so.2023.2.2
+2af5a48f8000-2af5a498b000 rw-p 0069b000 fd0:3bab4 144123701187684174     /sw/eb/sw/CUDA/12.2.2/extras/CUPTI/lib64/libcupti.so.2023.2.2
+2af5a498b000-2af5a49c5000 rw-p 00000000 00:00 0 
+2af5a49c5000-2af5a4a15000 r-xp 00000000 fd0:3bab4 144115508369723158     /sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpapi.so.6.0.0.0
+2af5a4a15000-2af5a4a16000 rwxp 0004f000 fd0:3bab4 144115508369723158     /sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpapi.so.6.0.0.0
+2af5a4a16000-2af5a4a17000 rwxp 00050000 fd0:3bab4 144115508369723158     /sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpapi.so.6.0.0.0
+2af5a4a17000-2af5a4a20000 rw-p 00051000 fd0:3bab4 144115508369723158     /sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpapi.so.6.0.0.0
+2af5a4a20000-2af5a4a25000 rw-p 00000000 00:00 0 
+2af5a4a25000-2af5a4a64000 r-xp 00000000 fd0:3bab4 144115509141443614     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/libfabric.so.1
+2af5a4a64000-2af5a4c64000 ---p 0003f000 fd0:3bab4 144115509141443614     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/libfabric.so.1
+2af5a4c64000-2af5a4c65000 rwxp 0003f000 fd0:3bab4 144115509141443614     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/libfabric.so.1
+2af5a4c65000-2af5a4c67000 rw-p 00040000 fd0:3bab4 144115509141443614     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/libfabric.so.1
+2af5a4c67000-2af5a4c69000 r-xp 00000000 00:25 76745                      /usr/lib64/libutil-2.17.so
+2af5a4c69000-2af5a4e68000 ---p 00002000 00:25 76745                      /usr/lib64/libutil-2.17.so
+2af5a4e68000-2af5a4e69000 r--p 00001000 00:25 76745                      /usr/lib64/libutil-2.17.so
+2af5a4e69000-2af5a4e6a000 rwxp 00002000 00:25 76745                      /usr/lib64/libutil-2.17.so
+2af5a4e6a000-2af5a4fd9000 r-xp 00000000 fd0:3bab4 144115508369723051     /sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpfm.so.4.10.1
+2af5a4fd9000-2af5a506d000 r--p 0016e000 fd0:3bab4 144115508369723051     /sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpfm.so.4.10.1
+2af5a506d000-2af5a506e000 rwxp 00202000 fd0:3bab4 144115508369723051     /sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpfm.so.4.10.1
+2af5a506e000-2af5a50cd000 rw-p 00203000 fd0:3bab4 144115508369723051     /sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpfm.so.4.10.1
+2af5a50cd000-2af5a5468000 rw-p 00000000 00:00 0 
+2af5a5468000-2af6462df000 rw-s 00000000 00:13 3537422                    /dev/shm/Intel_MPI_nyDumS (deleted)
+2af6462df000-2af64631c000 r-xp 00000000 fd0:3bab4 144115509141443620     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libshm-fi.so
+2af64631c000-2af64651b000 ---p 0003d000 fd0:3bab4 144115509141443620     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libshm-fi.so
+2af64651b000-2af64651c000 rwxp 0003c000 fd0:3bab4 144115509141443620     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libshm-fi.so
+2af64651c000-2af64651e000 rw-p 0003d000 fd0:3bab4 144115509141443620     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libshm-fi.so
+2af64651e000-2af646558000 r-xp 00000000 fd0:3bab4 144115509141443617     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libmlx-fi.so
+2af646558000-2af646757000 ---p 0003a000 fd0:3bab4 144115509141443617     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libmlx-fi.so
+2af646757000-2af646758000 rwxp 00039000 fd0:3bab4 144115509141443617     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libmlx-fi.so
+2af646758000-2af64675a000 rw-p 0003a000 fd0:3bab4 144115509141443617     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libmlx-fi.so
+2af64675a000-2af6467b7000 r-xp 00000000 fd0:3bab4 144115507698604243     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucp.so.0.0.0
+2af6467b7000-2af6467b8000 rwxp 0005c000 fd0:3bab4 144115507698604243     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucp.so.0.0.0
+2af6467b8000-2af6467ba000 rwxp 0005d000 fd0:3bab4 144115507698604243     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucp.so.0.0.0
+2af6467ba000-2af6467bb000 rw-p 0005f000 fd0:3bab4 144115507698604243     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucp.so.0.0.0
+2af6467bb000-2af6467be000 r--p 00000000 fd0:3bab4 144117269255967983     /sw/eb/sw/zlib/1.2.11-intel-2020b/lib/libz.so.1.2.11
+2af6467be000-2af6467d2000 r-xp 00003000 fd0:3bab4 144117269255967983     /sw/eb/sw/zlib/1.2.11-intel-2020b/lib/libz.so.1.2.11
+2af6467d2000-2af6467da000 r--p 00017000 fd0:3bab4 144117269255967983     /sw/eb/sw/zlib/1.2.11-intel-2020b/lib/libz.so.1.2.11
+2af6467da000-2af6467db000 r--p 0001e000 fd0:3bab4 144117269255967983     /sw/eb/sw/zlib/1.2.11-intel-2020b/lib/libz.so.1.2.11
+2af6467db000-2af6467dc000 rwxp 0001f000 fd0:3bab4 144117269255967983     /sw/eb/sw/zlib/1.2.11-intel-2020b/lib/libz.so.1.2.11
+2af6467dc000-2af646808000 r-xp 00000000 fd0:3bab4 144115507698604211     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libuct.so.0.0.0
+2af646808000-2af646809000 rwxp 0002b000 fd0:3bab4 144115507698604211     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libuct.so.0.0.0
+2af646809000-2af64680b000 rwxp 0002c000 fd0:3bab4 144115507698604211     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libuct.so.0.0.0
+2af64680b000-2af64680d000 rw-p 0002e000 fd0:3bab4 144115507698604211     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libuct.so.0.0.0
+2af64680d000-2af646849000 r-xp 00000000 fd0:3bab4 144115507698604139     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucs.so.0.0.0
+2af646849000-2af64684a000 rwxp 0003b000 fd0:3bab4 144115507698604139     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucs.so.0.0.0
+2af64684a000-2af64684c000 rwxp 0003c000 fd0:3bab4 144115507698604139     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucs.so.0.0.0
+2af64684c000-2af64684d000 rw-p 0003e000 fd0:3bab4 144115507698604139     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucs.so.0.0.0
+2af64684d000-2af646851000 rw-p 00000000 00:00 0 
+2af646851000-2af646865000 r-xp 00000000 fd0:3bab4 144115507698604127     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucm.so.0.0.0
+2af646865000-2af646866000 ---p 00014000 fd0:3bab4 144115507698604127     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucm.so.0.0.0
+2af646866000-2af646867000 rwxp 00014000 fd0:3bab4 144115507698604127     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucm.so.0.0.0
+2af646867000-2af646868000 rw-p 00015000 fd0:3bab4 144115507698604127     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/libucm.so.0.0.0
+2af646868000-2af646869000 rw-p 00000000 00:00 0 
+2af646869000-2af646984000 r-xp 00000000 fd0:3bab4 144115507681905209     /sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/libbfd-2.35.so
+2af646984000-2af646993000 r--p 0011a000 fd0:3bab4 144115507681905209     /sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/libbfd-2.35.so
+2af646993000-2af646994000 rwxp 00129000 fd0:3bab4 144115507681905209     /sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/libbfd-2.35.so
+2af646994000-2af646998000 rwxp 0012a000 fd0:3bab4 144115507681905209     /sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/libbfd-2.35.so
+2af646998000-2af64699b000 rw-p 0012e000 fd0:3bab4 144115507681905209     /sw/eb/sw/binutils/2.35-GCCcore-10.2.0/lib/libbfd-2.35.so
+2af64699b000-2af64699f000 rw-p 00000000 00:00 0 
+2af64699f000-2af646da8000 r-xp 00000000 fd0:3bab4 144115509141440471     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libimf.so
+2af646da8000-2af646fa8000 ---p 00409000 fd0:3bab4 144115509141440471     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libimf.so
+2af646fa8000-2af646fae000 r--p 00409000 fd0:3bab4 144115509141440471     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libimf.so
+2af646fae000-2af646faf000 rwxp 0040f000 fd0:3bab4 144115509141440471     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libimf.so
+2af646faf000-2af647022000 rw-p 00410000 fd0:3bab4 144115509141440471     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libimf.so
+2af647022000-2af64886e000 r-xp 00000000 fd0:3bab4 144115509141440487     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libsvml.so
+2af64886e000-2af648a6d000 ---p 0184c000 fd0:3bab4 144115509141440487     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libsvml.so
+2af648a6d000-2af648abb000 r--p 0184b000 fd0:3bab4 144115509141440487     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libsvml.so
+2af648abb000-2af648abc000 rwxp 01899000 fd0:3bab4 144115509141440487     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libsvml.so
+2af648abc000-2af648abe000 r--p 0189a000 fd0:3bab4 144115509141440487     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libsvml.so
+2af648abe000-2af648af2000 rw-p 0189c000 fd0:3bab4 144115509141440487     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libsvml.so
+2af648af2000-2af648c49000 r-xp 00000000 fd0:3bab4 144115509141440479     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libirng.so
+2af648c49000-2af648e49000 ---p 00157000 fd0:3bab4 144115509141440479     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libirng.so
+2af648e49000-2af648e4a000 rwxp 00157000 fd0:3bab4 144115509141440479     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libirng.so
+2af648e4a000-2af648e5d000 rw-p 00158000 fd0:3bab4 144115509141440479     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libirng.so
+2af648e5d000-2af648ed1000 r-xp 00000000 fd0:3bab4 144115509141440473     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libintlc.so.5
+2af648ed1000-2af6490d1000 ---p 00074000 fd0:3bab4 144115509141440473     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libintlc.so.5
+2af6490d1000-2af6490d2000 rwxp 00074000 fd0:3bab4 144115509141440473     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libintlc.so.5
+2af6490d2000-2af6490d3000 rwxp 00075000 fd0:3bab4 144115509141440473     /sw/eb/sw/iccifort/2020.4.304/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libintlc.so.5
+2af6490d3000-2af6490f8000 rw-p 00000000 00:00 0 
+2af6490f8000-2af649145000 r-xp 00000000 fd0:3bab4 144115509141443623     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libverbs-fi.so
+2af649145000-2af649344000 ---p 0004d000 fd0:3bab4 144115509141443623     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libverbs-fi.so
+2af649344000-2af649345000 rw-p 0004c000 fd0:3bab4 144115509141443623     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libverbs-fi.so
+2af649345000-2af649346000 rwxp 0004d000 fd0:3bab4 144115509141443623     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libverbs-fi.so
+2af649346000-2af649348000 rw-p 0004e000 fd0:3bab4 144115509141443623     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libverbs-fi.so
+2af649348000-2af649349000 -w-s 00900000 00:05 13390                      /dev/infiniband/uverbs0
+2af649349000-2af64934a000 -w-s 00901000 00:05 13390                      /dev/infiniband/uverbs0
+2af64934a000-2af64934d000 r-xp 00000000 fd0:3bab4 144115507698604237     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_cma.so.0.0.0
+2af64934d000-2af64934e000 ---p 00003000 fd0:3bab4 144115507698604237     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_cma.so.0.0.0
+2af64934e000-2af64934f000 rwxp 00003000 fd0:3bab4 144115507698604237     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_cma.so.0.0.0
+2af64934f000-2af649350000 rw-p 00004000 fd0:3bab4 144115507698604237     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_cma.so.0.0.0
+2af649350000-2af649351000 r--s 00500000 00:05 13390                      /dev/infiniband/uverbs0
+2af649351000-2af649352000 r--s 00700000 00:05 13390                      /dev/infiniband/uverbs0
+2af649352000-2af649353000 -w-s 00900000 00:05 13390                      /dev/infiniband/uverbs0
+2af649353000-2af649356000 rw-s 00000000 00:13 3545460                    /dev/shm/ucx_shm_posix_257e7d03 (deleted)
+2af649356000-2af649357000 -w-s 00901000 00:05 13390                      /dev/infiniband/uverbs0
+2af649357000-2af64936f000 r-xp 00000000 00:25 80906                      /usr/lib64/librdmacm.so.1.3.43.0
+2af64936f000-2af64956e000 ---p 00018000 00:25 80906                      /usr/lib64/librdmacm.so.1.3.43.0
+2af64956e000-2af64956f000 r--p 00017000 00:25 80906                      /usr/lib64/librdmacm.so.1.3.43.0
+2af64956f000-2af649570000 rwxp 00018000 00:25 80906                      /usr/lib64/librdmacm.so.1.3.43.0
+2af649570000-2af649571000 rw-p 00000000 00:00 0 
+2af649571000-2af64958f000 r-xp 00000000 00:25 81100                      /usr/lib64/libibverbs.so.1.14.43.0
+2af64958f000-2af64978e000 ---p 0001e000 00:25 81100                      /usr/lib64/libibverbs.so.1.14.43.0
+2af64978e000-2af64978f000 r--p 0001d000 00:25 81100                      /usr/lib64/libibverbs.so.1.14.43.0
+2af64978f000-2af649790000 rwxp 0001e000 00:25 81100                      /usr/lib64/libibverbs.so.1.14.43.0
+2af649790000-2af649791000 rwxp 00000000 00:25 78143                      /usr/lib64/libnl-3.so.200.23.0
+2af649791000-2af6497ae000 r-xp 00001000 00:25 78143                      /usr/lib64/libnl-3.so.200.23.0
+2af6497ae000-2af6499ae000 ---p 0001e000 00:25 78143                      /usr/lib64/libnl-3.so.200.23.0
+2af6499ae000-2af6499b0000 r--p 0001e000 00:25 78143                      /usr/lib64/libnl-3.so.200.23.0
+2af6499b0000-2af6499b1000 rwxp 00020000 00:25 78143                      /usr/lib64/libnl-3.so.200.23.0
+2af6499b1000-2af6499b2000 rwxp 00000000 00:25 77468                      /usr/lib64/libnl-route-3.so.200.23.0
+2af6499b2000-2af649a15000 r-xp 00001000 00:25 77468                      /usr/lib64/libnl-route-3.so.200.23.0
+2af649a15000-2af649c14000 ---p 00064000 00:25 77468                      /usr/lib64/libnl-route-3.so.200.23.0
+2af649c14000-2af649c17000 r--p 00063000 00:25 77468                      /usr/lib64/libnl-route-3.so.200.23.0
+2af649c17000-2af649c1a000 rwxp 00066000 00:25 77468                      /usr/lib64/libnl-route-3.so.200.23.0
+2af649c1a000-2af649c1c000 rw-p 00069000 00:25 77468                      /usr/lib64/libnl-route-3.so.200.23.0
+2af649c1c000-2af649c1e000 rw-p 00000000 00:00 0 
+2af649c1e000-2af649c8e000 r-xp 00000000 00:25 83865                      /usr/lib64/libmlx5.so.1.24.43.0
+2af649c8e000-2af649e8e000 ---p 00070000 00:25 83865                      /usr/lib64/libmlx5.so.1.24.43.0
+2af649e8e000-2af649e8f000 r--p 00070000 00:25 83865                      /usr/lib64/libmlx5.so.1.24.43.0
+2af649e8f000-2af649e90000 rwxp 00071000 00:25 83865                      /usr/lib64/libmlx5.so.1.24.43.0
+2af649e90000-2af649e91000 rwxp 00000000 00:00 0 
+2af649e91000-2af649e93000 rw-p 00000000 00:00 0 
+2af649e93000-2af649f03000 r-xp 00000000 fd0:3bab4 144115509141443618     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libpsmx2-fi.so
+2af649f03000-2af64a102000 ---p 00070000 fd0:3bab4 144115509141443618     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libpsmx2-fi.so
+2af64a102000-2af64a103000 rwxp 0006f000 fd0:3bab4 144115509141443618     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libpsmx2-fi.so
+2af64a103000-2af64a108000 rw-p 00070000 fd0:3bab4 144115509141443618     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libpsmx2-fi.so
+2af64a108000-2af64a10c000 rw-p 00000000 00:00 0 
+2af64a10c000-2af64a118000 r-xp 00000000 fd0:3bab4 144115507698604231     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_rdmacm.so.0.0.0
+2af64a118000-2af64a119000 ---p 0000c000 fd0:3bab4 144115507698604231     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_rdmacm.so.0.0.0
+2af64a119000-2af64a11a000 rwxp 0000c000 fd0:3bab4 144115507698604231     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_rdmacm.so.0.0.0
+2af64a11a000-2af64a11b000 rw-p 0000d000 fd0:3bab4 144115507698604231     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_rdmacm.so.0.0.0
+2af64a11b000-2af64a17d000 r-xp 00000000 00:25 78201                      /usr/lib64/libpsm2.so.2.1
+2af64a17d000-2af64a37d000 ---p 00062000 00:25 78201                      /usr/lib64/libpsm2.so.2.1
+2af64a37d000-2af64a37e000 r--p 00062000 00:25 78201                      /usr/lib64/libpsm2.so.2.1
+2af64a37e000-2af64a37f000 rwxp 00063000 00:25 78201                      /usr/lib64/libpsm2.so.2.1
+2af64a37f000-2af64a381000 rw-p 00000000 00:00 0 
+2af64a381000-2af64a3d3000 r-xp 00000000 fd0:3bab4 144115509141443621     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libsockets-fi.so
+2af64a3d3000-2af64a5d3000 ---p 00052000 fd0:3bab4 144115509141443621     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libsockets-fi.so
+2af64a5d3000-2af64a5d4000 rwxp 00052000 fd0:3bab4 144115509141443621     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libsockets-fi.so
+2af64a5d4000-2af64a5d6000 rw-p 00053000 fd0:3bab4 144115509141443621     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libsockets-fi.so
+2af64a5d6000-2af64a621000 r-xp 00000000 fd0:3bab4 144115509141443619     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/librxm-fi.so
+2af64a621000-2af64a821000 ---p 0004b000 fd0:3bab4 144115509141443619     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/librxm-fi.so
+2af64a821000-2af64a822000 rwxp 0004b000 fd0:3bab4 144115509141443619     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/librxm-fi.so
+2af64a822000-2af64a824000 rw-p 0004c000 fd0:3bab4 144115509141443619     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/librxm-fi.so
+2af64a824000-2af64a85e000 r-xp 00000000 fd0:3bab4 144115509141443622     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libtcp-fi.so
+2af64a85e000-2af64aa5e000 ---p 0003a000 fd0:3bab4 144115509141443622     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libtcp-fi.so
+2af64aa5e000-2af64aa5f000 rwxp 0003a000 fd0:3bab4 144115509141443622     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libtcp-fi.so
+2af64aa5f000-2af64aa61000 rw-p 0003b000 fd0:3bab4 144115509141443622     /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/prov/libtcp-fi.so
+2af64aa61000-2af64aac9000 r-xp 00000000 fd0:3bab4 144115507698604225     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_ib.so.0.0.0
+2af64aac9000-2af64aaca000 ---p 00068000 fd0:3bab4 144115507698604225     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_ib.so.0.0.0
+2af64aaca000-2af64aacb000 rwxp 00068000 fd0:3bab4 144115507698604225     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_ib.so.0.0.0
+2af64aacb000-2af64aace000 rwxp 00069000 fd0:3bab4 144115507698604225     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_ib.so.0.0.0
+2af64aace000-2af64aad1000 rw-p 0006c000 fd0:3bab4 144115507698604225     /sw/eb/sw/UCX/1.9.0-GCCcore-10.2.0/lib/ucx/libuct_ib.so.0.0.0
+2af64aad1000-2af64aeea000 rw-s 00000000 00:13 3545462                    /dev/shm/ucx_shm_posix_5edc1fa0 (deleted)
+2af64aeea000-2af64aeed000 rw-s 00000000 00:01 1245292                    /SYSV00000000 (deleted)
+2af64aeed000-2af64b306000 rw-s 00000000 00:01 1245293                    /SYSV00000000 (deleted)
+2af64b306000-2af64b307000 ---p 00000000 00:00 0 
+2af64b307000-2af64b609000 rw-p 00000000 00:00 0 
+2af64b609000-2af64b60a000 rw-s 00800000 00:05 13390                      /dev/infiniband/uverbs0
+2af64b60a000-2af64b70c000 rw-p 00000000 00:00 0 
+2af64b70c000-2af64b70d000 -w-s 00902000 00:05 13390                      /dev/infiniband/uverbs0
+2af64b70d000-2af64b70e000 -w-s 00903000 00:05 13390                      /dev/infiniband/uverbs0
+2af64b70e000-2af64b70f000 -w-s 00904000 00:05 13390                      /dev/infiniband/uverbs0
+2af64b70f000-2af64b710000 -w-s 00905000 00:05 13390                      /dev/infiniband/uverbs0
+2af64b710000-2af64b711000 -w-s 00906000 00:05 13390                      /dev/infiniband/uverbs0
+2af64b711000-2af64b800000 rw-p 00000000 00:00 0 
+2af64b800000-2af64de00000 rw-p 00000000 00:00 0 
+2af64de00000-2af64df37000 rw-p 00000000 00:00 0 
+2af64df37000-2af64df38000 -w-s 00907000 00:05 13390                      /dev/infiniband/uverbs0
+2af64df38000-2af64dfbd000 rw-p 00000000 00:00 0 
+2af64dfbd000-2af64dfbe000 -w-s 00908000 00:05 13390                      /dev/infiniband/uverbs0
+2af64dfbe000-2af64e044000 rw-p 00000000 00:00 0 
+2af64e048000-2af64e088000 rw-p 00000000 00:00 0 
+2af64e088000-2af64e08b000 rw-s 00000000 00:13 3545460                    /dev/shm/ucx_shm_posix_257e7d03 (deleted)
+2af64e08b000-2af64e08d000 rw-p 00000000 00:00 0 
+2af64e08d000-2af64e090000 rw-s 00000000 00:01 1245292                    /SYSV00000000 (deleted)
+2af64e090000-2af64e091000 -w-s 00909000 00:05 13390                      /dev/infiniband/uverbs0
+2af64e091000-2af64e200000 rw-p 00000000 00:00 0 
+2af64e200000-2af64e800000 rw-p 00000000 00:00 0 
+2af64e800000-2af64ea00000 rw-p 00000000 00:00 0 
+2af64ea00000-2af651000000 rw-p 00000000 00:00 0 
+2af651000000-2af651093000 rw-p 00000000 00:00 0 
+2af651093000-2af651096000 rw-s 00000000 00:13 3545607                    /dev/shm/ucx_shm_posix_2862e974 (deleted)
+2af651096000-2af651099000 rw-s 00000000 00:01 1245305                    /SYSV00000000 (deleted)
+2af651099000-2af65109c000 rw-s 00000000 00:13 3545434                    /dev/shm/ucx_shm_posix_2c85c229 (deleted)
+2af65109c000-2af65109f000 rw-s 00000000 00:01 1245280                    /SYSV00000000 (deleted)
+2af65109f000-2af6510a2000 rw-s 00000000 00:13 3545622                    /dev/shm/ucx_shm_posix_5b3cc8e5 (deleted)
+2af6510a2000-2af6510a5000 rw-s 00000000 00:01 1245304                    /SYSV00000000 (deleted)
+2af6510a5000-2af6510a8000 rw-s 00000000 00:13 3545711                    /dev/shm/ucx_shm_posix_7176fa1a (deleted)
+2af6510a8000-2af6510ab000 rw-s 00000000 00:01 1245314                    /SYSV00000000 (deleted)
+2af6510ab000-2af6510ae000 rw-s 00000000 00:13 3545916                    /dev/shm/ucx_shm_posix_411834ef (deleted)
+2af6510ae000-2af6510b1000 rw-s 00000000 00:01 1245318                    /SYSV00000000 (deleted)
+2af6510b1000-2af6510b4000 rw-s 00000000 00:13 3545424                    /dev/shm/ucx_shm_posix_49fa3cb (deleted)
+2af6510b4000-2af6510b7000 rw-s 00000000 00:01 1245282                    /SYSV00000000 (deleted)
+2af6510b7000-2af6510ba000 rw-s 00000000 00:13 3545714                    /dev/shm/ucx_shm_posix_701c3b98 (deleted)
+2af6510ba000-2af6510bd000 rw-s 00000000 00:01 1245312                    /SYSV00000000 (deleted)
+2af6510bd000-2af6510c0000 rw-s 00000000 00:13 3545468                    /dev/shm/ucx_shm_posix_7f4f94cc (deleted)
+2af6510c0000-2af6510c3000 rw-s 00000000 00:01 1245298                    /SYSV00000000 (deleted)
+2af6510c3000-2af6510c6000 rw-s 00000000 00:13 3545420                    /dev/shm/ucx_shm_posix_584b79e1 (deleted)
+2af6510c6000-2af6510c9000 rw-s 00000000 00:01 1245278                    /SYSV00000000 (deleted)
+2af6510c9000-2af6510cc000 rw-s 00000000 00:13 3545402                    /dev/shm/ucx_shm_posix_668d64be (deleted)
+2af6510cc000-2af6510cf000 rw-s 00000000 00:01 1245296                    /SYSV00000000 (deleted)
+2af6510cf000-2af6510d2000 rw-s 00000000 00:13 3545448                    /dev/shm/ucx_shm_posix_73149dc9 (deleted)
+2af6510d2000-2af6510d5000 rw-s 00000000 00:01 1245288                    /SYSV00000000 (deleted)
+2af6510d5000-2af6510d8000 rw-s 00000000 00:13 3545430                    /dev/shm/ucx_shm_posix_5f81a73e (deleted)
+2af6510d8000-2af6510db000 rw-s 00000000 00:01 1245276                    /SYSV00000000 (deleted)
+2af6510db000-2af6510de000 rw-s 00000000 00:13 3545440                    /dev/shm/ucx_shm_posix_67011266 (deleted)
+2af6510de000-2af6510e1000 rw-s 00000000 00:01 1245284                    /SYSV00000000 (deleted)
+2af6510e1000-2af6510e4000 rw-s 00000000 00:13 3545474                    /dev/shm/ucx_shm_posix_6937f550 (deleted)
+2af6510e4000-2af6510e7000 rw-s 00000000 00:01 1245300                    /SYSV00000000 (deleted)
+2af6510e7000-2af6510ea000 rw-s 00000000 00:13 3545788                    /dev/shm/ucx_shm_posix_508ee788 (deleted)
+2af6510ea000-2af6510ed000 rw-s 00000000 00:01 1245316                    /SYSV00000000 (deleted)
+2af6510ed000-2af6510f5000 rw-p 00000000 00:00 0 
+2af6510f5000-2af65150e000 rw-s 00000000 00:13 3545609                    /dev/shm/ucx_shm_posix_2950c6e6 (deleted)
+2af65150e000-2af651927000 rw-s 00000000 00:13 3545491                    /dev/shm/ucx_shm_posix_72c6fe81 (deleted)
+2af654000000-2af654200000 rw-p 00000000 00:00 0 
+2af654200000-2af655600000 rw-p 00000000 00:00 0 
+2af655600000-2af655621000 rw-p 00000000 00:00 0 
+2af655621000-2af658000000 ---p 00000000 00:00 0 
+2af658000000-2af658021000 rw-p 00000000 00:00 0 
+2af658021000-2af65c000000 ---p 00000000 00:00 0 
+7f0000000000-7f0003000000 rw-p 00000000 00:00 0 
+7f1000000000-7f1000200000 rw-p 00000000 00:00 0 
+7f2000000000-7f2002200000 rw-p 00000000 00:00 0 
+7ffde5e2a000-7ffde5e53000 rw-p 00000000 00:00 0                          [stack]
+7ffde5ff2000-7ffde5ff4000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 0 PID 39751 RUNNING AT c279
+=   KILLED BY SIGNAL: 6 (Aborted)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 1 PID 39752 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 2 PID 39753 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 3 PID 39754 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 4 PID 39755 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 5 PID 39756 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 6 PID 39757 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 7 PID 39758 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 8 PID 39759 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 9 PID 39760 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 10 PID 39761 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 11 PID 39762 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 12 PID 39763 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 13 PID 39764 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 14 PID 39765 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 15 PID 39766 RUNNING AT c279
+=   KILLED BY SIGNAL: 9 (Killed)
+===================================================================================
