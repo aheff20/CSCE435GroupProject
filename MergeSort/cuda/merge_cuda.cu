@@ -12,12 +12,14 @@ int BLOCKS;
 int NUM_VALS;
 
 
-const char* main_time = "main_time";
+// const char* main_time = "main_time";
 const char* data_init = "data_init";
 const char* comp = "comp";
+const char* comp_small = "comp_small";
 const char* comp_large = "comp_large";
 const char* comm = "comm";
 const char* comm_large = "comm_large";
+const char* comm_small = "comm_small";
 const char* correctness_check = "correctness_check";
 
 
@@ -116,6 +118,19 @@ void merge_sort(float *values) {
     cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
      CALI_MARK_END(comm_large);
     CALI_MARK_END(comm);
+
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_small);
+    CALI_MARK_END(comm_small);
+    CALI_MARK_END(comm);
+
+
+
+    CALI_MARK_BEGIN(comp);
+    CALI_MARK_BEGIN(comp_small);
+    CALI_MARK_END(comp_small);
+    CALI_MARK_END(comp);
+
  
 
     cudaFree(dev_values);
@@ -133,7 +148,7 @@ int main(int argc, char *argv[]) {
 // printf("Max grid dimensions: x = %d, y = %d, z = %d\n", prop.maxGridSize[0], prop.maxGridSize[1], prop.maxGridSize[2]);
 
 
-    CALI_MARK_BEGIN(main_time);
+    // CALI_MARK_BEGIN(main_time);
     if (argc < 4 ) {
         fprintf(stderr, "Usage: %s <threads_per_block> <number_of_values> <method (s/r/a/p)>\n", argv[0]);
         exit(1);
@@ -243,7 +258,7 @@ int main(int argc, char *argv[]) {
 
     // Finalize and clean up
     adiak::fini();
-    CALI_MARK_END(main_time);
+    // CALI_MARK_END(main_time);
     mgr.stop();
     mgr.flush();
 

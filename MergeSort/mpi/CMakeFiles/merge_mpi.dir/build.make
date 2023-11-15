@@ -43,10 +43,10 @@ RM = /sw/eb/sw/CMake/3.12.1/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi
+CMAKE_SOURCE_DIR = /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi
+CMAKE_BINARY_DIR = /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi
 
 # Include any dependencies generated for this target.
 include CMakeFiles/merge_mpi.dir/depend.make
@@ -59,40 +59,40 @@ include CMakeFiles/merge_mpi.dir/flags.make
 
 CMakeFiles/merge_mpi.dir/merge_mpi.cpp.o: CMakeFiles/merge_mpi.dir/flags.make
 CMakeFiles/merge_mpi.dir/merge_mpi.cpp.o: merge_mpi.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/merge_mpi.dir/merge_mpi.cpp.o"
-	/sw/eb/sw/GCCcore/10.2.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/merge_mpi.dir/merge_mpi.cpp.o -c /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/merge_mpi.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/merge_mpi.dir/merge_mpi.cpp.o"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/merge_mpi.dir/merge_mpi.cpp.o -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/merge_mpi.cpp
 
 CMakeFiles/merge_mpi.dir/merge_mpi.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/merge_mpi.dir/merge_mpi.cpp.i"
-	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/merge_mpi.cpp > CMakeFiles/merge_mpi.dir/merge_mpi.cpp.i
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/merge_mpi.cpp > CMakeFiles/merge_mpi.dir/merge_mpi.cpp.i
 
 CMakeFiles/merge_mpi.dir/merge_mpi.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/merge_mpi.dir/merge_mpi.cpp.s"
-	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/merge_mpi.cpp -o CMakeFiles/merge_mpi.dir/merge_mpi.cpp.s
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/merge_mpi.cpp -o CMakeFiles/merge_mpi.dir/merge_mpi.cpp.s
 
-CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o: CMakeFiles/merge_mpi.dir/flags.make
-CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o: /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
-	/sw/eb/sw/GCCcore/10.2.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o -c /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp
+CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o: CMakeFiles/merge_mpi.dir/flags.make
+CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp
 
-CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i"
-	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp > CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
+CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp > CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s"
-	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp -o CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
+CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s"
+	/sw/eb/sw/GCCcore/10.2.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp -o CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
 # Object files for target merge_mpi
 merge_mpi_OBJECTS = \
 "CMakeFiles/merge_mpi.dir/merge_mpi.cpp.o" \
-"CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+"CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o"
 
 # External object files for target merge_mpi
 merge_mpi_EXTERNAL_OBJECTS =
 
 merge_mpi: CMakeFiles/merge_mpi.dir/merge_mpi.cpp.o
-merge_mpi: CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
+merge_mpi: CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
 merge_mpi: CMakeFiles/merge_mpi.dir/build.make
 merge_mpi: /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
 merge_mpi: /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so
@@ -101,7 +101,7 @@ merge_mpi: /lib64/librt.so
 merge_mpi: /lib64/libpthread.so
 merge_mpi: /lib64/libdl.so
 merge_mpi: CMakeFiles/merge_mpi.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable merge_mpi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable merge_mpi"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/merge_mpi.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -114,6 +114,6 @@ CMakeFiles/merge_mpi.dir/clean:
 .PHONY : CMakeFiles/merge_mpi.dir/clean
 
 CMakeFiles/merge_mpi.dir/depend:
-	cd /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/CMakeFiles/merge_mpi.dir/DependInfo.cmake --color=$(COLOR)
+	cd /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/CMakeFiles/merge_mpi.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/merge_mpi.dir/depend
 
