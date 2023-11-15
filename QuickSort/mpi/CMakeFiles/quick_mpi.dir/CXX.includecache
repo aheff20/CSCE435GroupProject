@@ -6,6 +6,47 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
+/home/miguelgi347/Final_project/CSCE435GroupProject/QuickSort/mpi/quick_mpi.cpp
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+mpi.h
+-
+string
+-
+cmath
+-
+caliper/cali.h
+-
+caliper/cali-manager.h
+-
+adiak.hpp
+-
+../../Utils/helper_functions.h
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
+
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp
+helper_functions.h
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
+stdlib.h
+-
+time.h
+-
+algorithm
+-
+iostream
+-
+
+/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.h
+vector
+-
+
+=======
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9
 /scratch/group/csce435-f23/Adiak/adiak/include/adiak.h
 stddef.h
 -
@@ -156,6 +197,8 @@ stdbool.h
 typesCaliper.h
 /scratch/group/csce435-f23/Caliper/caliper/include/caliper/typesCaliper.h
 
+<<<<<<< HEAD
+=======
 /scratch/user/aidan.heffron/CSCE435GroupProject/QuickSort/mpi/quick_mpi.cpp
 stdlib.h
 -
@@ -194,6 +237,7 @@ iostream
 vector
 -
 
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9
 /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include/mpi.h
 stddef.h
 -
