@@ -4,7 +4,7 @@
 inputSizes=(65536 262144 1048576 4194304 16777216 67108864 268435456)
 
 # Array of CUDA threads (64, 128, ..., 4096)4 128 256 512 1024
-cudaThreads=( 4 128 256 512 1024)
+cudaThreads=(64 128 256 512 1024)
 methods=('s' 'r' 'a' 'p')
 
 # Iterate over each input size

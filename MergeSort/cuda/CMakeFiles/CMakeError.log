@@ -1,21 +1,21 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_693e8/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_693e8.dir/build.make CMakeFiles/cmTC_693e8.dir/build
-gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_693e8.dir/CheckSymbolExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_693e8.dir/CheckSymbolExists.cxx.o -c /home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-Linking CXX executable cmTC_693e8
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_693e8.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_693e8.dir/CheckSymbolExists.cxx.o  -o cmTC_693e8 
-CMakeFiles/cmTC_693e8.dir/CheckSymbolExists.cxx.o:CheckSymbolExists.cxx:function main: error: undefined reference to 'pthread_create'
+Run Build Command:"/usr/bin/gmake" "cmTC_0f347/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_0f347.dir/build.make CMakeFiles/cmTC_0f347.dir/build
+gmake[1]: Entering directory `/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0f347.dir/CheckSymbolExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_0f347.dir/CheckSymbolExists.cxx.o -c /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_0f347
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f347.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_0f347.dir/CheckSymbolExists.cxx.o  -o cmTC_0f347 
+CMakeFiles/cmTC_0f347.dir/CheckSymbolExists.cxx.o:CheckSymbolExists.cxx:function main: error: undefined reference to 'pthread_create'
 collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_693e8] Error 1
-gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_693e8/fast] Error 2
+gmake[1]: *** [cmTC_0f347] Error 1
+gmake[1]: Leaving directory `/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_0f347/fast] Error 2
 
-File /home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+File /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
 /* */
 #include <pthread.h>
 
@@ -31,174 +31,21 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
+Change Dir: /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_1c72b/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_1c72b.dir/build.make CMakeFiles/cmTC_1c72b.dir/build
-gmake[1]: Entering directory `/home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_1c72b.dir/CheckFunctionExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1c72b.dir/CheckFunctionExists.cxx.o -c /home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_1c72b
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c72b.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_1c72b.dir/CheckFunctionExists.cxx.o  -o cmTC_1c72b -lpthreads 
+Run Build Command:"/usr/bin/gmake" "cmTC_1f9e6/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_1f9e6.dir/build.make CMakeFiles/cmTC_1f9e6.dir/build
+gmake[1]: Entering directory `/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1f9e6.dir/CheckFunctionExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1f9e6.dir/CheckFunctionExists.cxx.o -c /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_1f9e6
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f9e6.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_1f9e6.dir/CheckFunctionExists.cxx.o  -o cmTC_1f9e6 -lpthreads 
 /sw/eb/sw/binutils/2.35/bin/ld.gold: error: cannot find -lpthreads
-CMakeFiles/cmTC_1c72b.dir/CheckFunctionExists.cxx.o:CheckFunctionExists.cxx:function main: error: undefined reference to 'pthread_create'
+CMakeFiles/cmTC_1f9e6.dir/CheckFunctionExists.cxx.o:CheckFunctionExists.cxx:function main: error: undefined reference to 'pthread_create'
 collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_1c72b] Error 1
-gmake[1]: Leaving directory `/home/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_1c72b/fast] Error 2
-
-
-Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/gmake" "cmTC_8f9fd/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_8f9fd.dir/build.make CMakeFiles/cmTC_8f9fd.dir/build
-gmake[1]: Entering directory `/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_8f9fd.dir/CheckSymbolExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_8f9fd.dir/CheckSymbolExists.cxx.o -c /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-Linking CXX executable cmTC_8f9fd
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8f9fd.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_8f9fd.dir/CheckSymbolExists.cxx.o  -o cmTC_8f9fd 
-CMakeFiles/cmTC_8f9fd.dir/CheckSymbolExists.cxx.o:CheckSymbolExists.cxx:function main: error: undefined reference to 'pthread_create'
-collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_8f9fd] Error 1
-gmake[1]: Leaving directory `/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_8f9fd/fast] Error 2
-
-File /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
-/* */
-#include <pthread.h>
-
-int main(int argc, char** argv)
-{
-  (void)argv;
-#ifndef pthread_create
-  return ((int*)(&pthread_create))[argc];
-#else
-  (void)argc;
-  return 0;
-#endif
-}
-
-Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/gmake" "cmTC_d3415/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_d3415.dir/build.make CMakeFiles/cmTC_d3415.dir/build
-gmake[1]: Entering directory `/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_d3415.dir/CheckFunctionExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d3415.dir/CheckFunctionExists.cxx.o -c /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_d3415
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d3415.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_d3415.dir/CheckFunctionExists.cxx.o  -o cmTC_d3415 -lpthreads 
-/sw/eb/sw/binutils/2.35/bin/ld.gold: error: cannot find -lpthreads
-CMakeFiles/cmTC_d3415.dir/CheckFunctionExists.cxx.o:CheckFunctionExists.cxx:function main: error: undefined reference to 'pthread_create'
-collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_d3415] Error 1
-gmake[1]: Leaving directory `/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_d3415/fast] Error 2
-
-
-Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/gmake" "cmTC_c8953/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_c8953.dir/build.make CMakeFiles/cmTC_c8953.dir/build
-gmake[1]: Entering directory `/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_c8953.dir/CheckSymbolExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_c8953.dir/CheckSymbolExists.cxx.o -c /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-Linking CXX executable cmTC_c8953
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8953.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_c8953.dir/CheckSymbolExists.cxx.o  -o cmTC_c8953 
-CMakeFiles/cmTC_c8953.dir/CheckSymbolExists.cxx.o:CheckSymbolExists.cxx:function main: error: undefined reference to 'pthread_create'
-collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_c8953] Error 1
-gmake[1]: Leaving directory `/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_c8953/fast] Error 2
-
-File /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
-/* */
-#include <pthread.h>
-
-int main(int argc, char** argv)
-{
-  (void)argv;
-#ifndef pthread_create
-  return ((int*)(&pthread_create))[argc];
-#else
-  (void)argc;
-  return 0;
-#endif
-}
-
-Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/gmake" "cmTC_86478/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_86478.dir/build.make CMakeFiles/cmTC_86478.dir/build
-gmake[1]: Entering directory `/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_86478.dir/CheckFunctionExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_86478.dir/CheckFunctionExists.cxx.o -c /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_86478
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_86478.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_86478.dir/CheckFunctionExists.cxx.o  -o cmTC_86478 -lpthreads 
-/sw/eb/sw/binutils/2.35/bin/ld.gold: error: cannot find -lpthreads
-CMakeFiles/cmTC_86478.dir/CheckFunctionExists.cxx.o:CheckFunctionExists.cxx:function main: error: undefined reference to 'pthread_create'
-collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_86478] Error 1
-gmake[1]: Leaving directory `/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_86478/fast] Error 2
-
-
-Determining if the pthread_create exist failed with the following output:
-Change Dir: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/gmake" "cmTC_f51b2/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_f51b2.dir/build.make CMakeFiles/cmTC_f51b2.dir/build
-gmake[1]: Entering directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_f51b2.dir/CheckSymbolExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_f51b2.dir/CheckSymbolExists.cxx.o -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-Linking CXX executable cmTC_f51b2
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f51b2.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_f51b2.dir/CheckSymbolExists.cxx.o  -o cmTC_f51b2 
-CMakeFiles/cmTC_f51b2.dir/CheckSymbolExists.cxx.o:CheckSymbolExists.cxx:function main: error: undefined reference to 'pthread_create'
-collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_f51b2] Error 1
-gmake[1]: Leaving directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_f51b2/fast] Error 2
-
-File /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
-/* */
-#include <pthread.h>
-
-int main(int argc, char** argv)
-{
-  (void)argv;
-#ifndef pthread_create
-  return ((int*)(&pthread_create))[argc];
-#else
-  (void)argc;
-  return 0;
-#endif
-}
-
-Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
-
-Run Build Command:"/usr/bin/gmake" "cmTC_6d34a/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_6d34a.dir/build.make CMakeFiles/cmTC_6d34a.dir/build
-gmake[1]: Entering directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_6d34a.dir/CheckFunctionExists.cxx.o
-/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_6d34a.dir/CheckFunctionExists.cxx.o -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_6d34a
-/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d34a.dir/link.txt --verbose=1
-/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_6d34a.dir/CheckFunctionExists.cxx.o  -o cmTC_6d34a -lpthreads 
-/sw/eb/sw/binutils/2.35/bin/ld.gold: error: cannot find -lpthreads
-CMakeFiles/cmTC_6d34a.dir/CheckFunctionExists.cxx.o:CheckFunctionExists.cxx:function main: error: undefined reference to 'pthread_create'
-collect2: error: ld returned 1 exit status
-gmake[1]: *** [cmTC_6d34a] Error 1
-gmake[1]: Leaving directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
-gmake: *** [cmTC_6d34a/fast] Error 2
+gmake[1]: *** [cmTC_1f9e6] Error 1
+gmake[1]: Leaving directory `/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_1f9e6/fast] Error 2
 
 
