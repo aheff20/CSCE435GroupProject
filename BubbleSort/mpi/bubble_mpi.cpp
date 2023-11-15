@@ -166,7 +166,7 @@ int main(int argc, char** argv) {
         free(global_array);
     }
 
-    printf(input_type)
+    // printf(input_type)
 
     free(values);
 
