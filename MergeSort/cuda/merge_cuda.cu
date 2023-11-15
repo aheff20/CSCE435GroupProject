@@ -225,12 +225,18 @@ int main(int argc, char *argv[]) {
     adiak::libraries();
     adiak::cmdline();
     adiak::clustername();
-    adiak::value("num_threads_per_block", THREADS);
-    adiak::value("num_blocks", BLOCKS);
-    adiak::value("num_vals", NUM_VALS);
-    adiak::value("program_name", "cuda_merge_sort");
-    adiak::value("datatype_size", sizeof(float));
-    adiak::value("type_of_input", type_of_input);
+     adiak::value("Algorithm", "MergeSort"); // The name of the algorithm you are using (e.g., "MergeSort", "BitonicSort")
+      adiak::value("ProgrammingModel", "CUDA"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
+    adiak::value("Datatype", "float"); // The datatype of input elements (e.g., double, int, float)
+    adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
+    adiak::value("InputSize", NUM_VALS); // The number of elements in input dataset (1000)
+    adiak::value("InputType", type_of_input); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
+    adiak::value("num_procs", 1); // The number of processors (MPI ranks)
+    adiak::value("num_threads", THREADS); // The number of CUDA or OpenMP threads
+    adiak::value("num_blocks", BLOCKS); // The number of CUDA blocks 
+    adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
+    adiak::value("implementation_source", "Online/AI"); // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten")
+
     // adiak::value("main_time", main);
     // adiak::value("cudaMemcpy_host_to_device_time", cudaMemcpy_host_to_device_time);
     // adiak::value("cudaMemcpy_device_to_host_time", cudaMemcpy_device_to_host_time);

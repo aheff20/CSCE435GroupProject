@@ -429,6 +429,11 @@ int main(int argc, char** argv) {
         }
 
         free(global_array);
+<<<<<<< HEAD
+       // free(global_counts);
+        free(global_values_to_send);
+=======
+>>>>>>> 3c5df38653ba4aff0ae8300bbb0e76c71a2606a9
     }
 
     CALI_MARK_BEGIN(comm);
