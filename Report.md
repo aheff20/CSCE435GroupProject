@@ -626,4 +626,14 @@ Each algorithm will have different inputs and be tested at different scales to s
 ## 3. Project implementation
 **STATUS:**
 
-As of right now, our group has implemented and tested CUDA and MPI algorithms for MergeSort, BubbleSort, and SampleSort. Due to the Grace downtime, we were unable to fully test the QuickSort algorithms or produce .cali files for SampleSort or QuickSort. Looking forwards, we plan on fixing these issues as soon as Grace goes back online and before we begin our performance evaluation.
+As of right now, our group has implemented and tested CUDA and MPI algorithms for MergeSort, BubbleSort, and SampleSort.
+
+## 4. Performance Evaluation
+
+### Strong Scaling our Algorithms
+
+Randomized Input Graphs:
+
+![sample_mpi_strong_random](../Graphs/sample_mpi_strong_random.png) 
+
+### Weak Scaling our Algorithms
