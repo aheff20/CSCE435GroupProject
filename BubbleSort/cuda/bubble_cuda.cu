@@ -16,6 +16,7 @@ const char* comm = "comm";
 const char* comm_large = "comm_large";
 const char* comp = "comp";
 const char* comp_large = "comp_large";
+const char* cudaMemcpy_region = "cudaMemcpy";
 const char* correctness_check = "correctness_check";
 
 // CUDA kernel function for bubble sort step
@@ -76,7 +77,9 @@ int main(int argc, char *argv[]) {
 
     CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_large);
+    CALI_MARK_BEGIN(cudaMemcpy_region);
     cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
+    CALI_MARK_END(cudaMemcpy_region);
     CALI_MARK_END(comm_large);
     CALI_MARK_END(comm);
 

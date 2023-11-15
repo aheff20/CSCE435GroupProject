@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o"
-  "CMakeFiles/bubble_cuda.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+  "CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
   "CMakeFiles/bubble_cuda.dir/cmake_device_link.o"
   "bubble_cuda.pdb"
   "bubble_cuda"
