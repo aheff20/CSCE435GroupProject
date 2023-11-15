@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CUDA
-  "/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/bubble_cuda.cu" "/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o"
+  "/scratch/user/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/bubble_cuda.cu" "/scratch/user/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.o"
   )
 set(CMAKE_CUDA_COMPILER_ID "NVIDIA")
 
@@ -17,7 +17,7 @@ set(CMAKE_CUDA_TARGET_INCLUDE_PATH
   "/scratch/group/csce435-f23/Caliper/caliper/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp" "/home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+  "/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp" "/scratch/user/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/bubble_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

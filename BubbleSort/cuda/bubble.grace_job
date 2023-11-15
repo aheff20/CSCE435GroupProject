@@ -28,7 +28,7 @@ module load CUDA                #load CUDA module
 module load intel/2020b
 module load GCCcore/7.3.0
 #
-
-CALI_CONFIG="spot(output=t${num_threads}-v${num_vals}-${input_type}.cali), \
+ 
+CALI_CONFIG="spot(output=weakOuts/${input_type}/v${num_vals}/bubble_cuda_t${num_threads}-v${num_vals}-${input_type}.cali), \
     cuda.gputime" \
 ./bubble_cuda $num_threads $num_vals $input_type

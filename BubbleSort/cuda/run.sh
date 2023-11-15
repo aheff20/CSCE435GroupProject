@@ -2,11 +2,11 @@
 
 # Array of input sizes (2^16, 2^18, ..., 2^28)
 # inputSizes=(65536 262144 1048576 4194304 16777216 67108864 268435456)
-inputSizes=(65536 262144 1048576 4194304 16777216 67108864)
+inputSizes=(1048576)
 
 # Array of CUDA threads (64, 128, ..., 4096)
 # cudaThreads=(64 128 256 512 1024)
-cudaThreads=(64 128 256 512 1024 2048 4096)
+cudaThreads=(512 1024 2048 4096)
 
 inputTypes=("Sorted" "ReverseSorted" "Random" "Perturbed")
 

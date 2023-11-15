@@ -48,10 +48,10 @@ RM = /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda
+CMAKE_SOURCE_DIR = /scratch/user/jfquismorio/CSCE435GroupProject/BubbleSort/cuda
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda
+CMAKE_BINARY_DIR = /scratch/user/jfquismorio/CSCE435GroupProject/BubbleSort/cuda
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles /scratch/user/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/jfquismorio/CSCE435GroupProject/BubbleSort/cuda/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -150,32 +150,32 @@ bubble_cuda.cu.s:
 	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/bubble_cuda.cu.s
 .PHONY : bubble_cuda.cu.s
 
-home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o: home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o: scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
 
-.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o
+.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o
 
 # target to build an object file
-home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o:
-	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
-.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
 
-home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i: home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i: scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i
+.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i
 
 # target to preprocess a source file
-home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i:
-	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
-.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s: home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s: scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
-.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s
+.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s
 
 # target to generate assembly for a file
-home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s:
-	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
-.PHONY : home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/bubble_cuda.dir/build.make CMakeFiles/bubble_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+.PHONY : scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
 # Help Target
 help:
@@ -189,9 +189,9 @@ help:
 	@echo "... bubble_cuda.o"
 	@echo "... bubble_cuda.i"
 	@echo "... bubble_cuda.s"
-	@echo "... home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o"
-	@echo "... home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i"
-	@echo "... home/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s"
+	@echo "... scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.o"
+	@echo "... scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.i"
+	@echo "... scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.s"
 .PHONY : help
 
 
