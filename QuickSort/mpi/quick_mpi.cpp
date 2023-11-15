@@ -279,7 +279,7 @@ int main(int argc, char** argv) {
             printf("Array was incorrectly sorted!");
         }
         free(global_array);
-        // free(global_counts);
+       // free(global_counts);
         free(global_values_to_send);
     }
 

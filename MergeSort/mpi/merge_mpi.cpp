@@ -82,7 +82,8 @@ int main(int argc, char *argv[])
         values = (float *)malloc(numVals * sizeof(float)); // ss
 
         printf("merge_mpi has started with %d tasks.\n", numtasks);
-        printf("Initializing arrays...\n");
+        printf("merge_mpi has started with %d num vals.\n", numVals);
+        printf("Initializing array...\n");
         double start, end;
         start = MPI_Wtime();
         CALI_MARK_BEGIN(data_init);
@@ -111,8 +112,11 @@ int main(int argc, char *argv[])
         }
 
 
+
+
         array_fill_random(values, numVals);
         CALI_MARK_END(data_init);
+        printf("Initialized %s  array\n",type_of_input);
         end = MPI_Wtime();
         master_initialization_time = end - start;
 
@@ -185,17 +189,23 @@ int main(int argc, char *argv[])
         adiak::cmdline();
         adiak::clustername();
         adiak::value("num_procs", numtasks);
-         adiak::value("InputSize", numVals); // The number of elements in input dataset (1000)
-        adiak::value("program_name", "merge_sort_mpi");
+        adiak::value("InputSize", numVals); // The number of elements in input dataset (1000)
+        adiak::value("Algorithm", "merge_sort");
+        adiak::value("Datatype", "float"); // The datatype of input elements (e.g., double, int, float)
         adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
         adiak::value("InputType", type_of_input);
-        adiak::value("Algorithm", "Merge_sort");
         adiak::value("ProgrammingModel", "MPI"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
         adiak::value("MPI_Reduce-whole_computation_time", main_time);
         adiak::value("MPI_Reduce-master_initialization_time", data_init);
         adiak::value("MPI_Reduce-master_send_time", comm);
         adiak::value("MPI_Reduce-master_receive_time", comm_large_MPI_Gather);
         adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
+        adiak::value("InputSize", numVals); // The number of elements in input dataset (1000)
+        adiak::value("InputType", type_of_input); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
+        adiak::value("num_threads", "N/A"); // The number of CUDA or OpenMP threads
+        adiak::value("num_blocks", "N/A"); // The number of CUDA blocks 
+        adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
+        adiak::value("implementation_source", "Online/AI"); // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten")
 
     
 
