@@ -48,10 +48,10 @@ RM = /sw/eb/sw/CMake/3.12.1/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi
+CMAKE_SOURCE_DIR = /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi
+CMAKE_BINARY_DIR = /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/CMakeFiles /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/CMakeFiles /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/mpi/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/mpi/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,33 +123,6 @@ merge_mpi/fast:
 	$(MAKE) -f CMakeFiles/merge_mpi.dir/build.make CMakeFiles/merge_mpi.dir/build
 .PHONY : merge_mpi/fast
 
-home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
-
-.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o
-
-# target to build an object file
-home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o:
-	$(MAKE) -f CMakeFiles/merge_mpi.dir/build.make CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
-.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o
-
-home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
-
-.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i
-
-# target to preprocess a source file
-home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i:
-	$(MAKE) -f CMakeFiles/merge_mpi.dir/build.make CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
-.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.i
-
-home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s: home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
-
-.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s
-
-# target to generate assembly for a file
-home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s:
-	$(MAKE) -f CMakeFiles/merge_mpi.dir/build.make CMakeFiles/merge_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
-.PHONY : home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.s
-
 merge_mpi.o: merge_mpi.cpp.o
 
 .PHONY : merge_mpi.o
@@ -177,6 +150,33 @@ merge_mpi.cpp.s:
 	$(MAKE) -f CMakeFiles/merge_mpi.dir/build.make CMakeFiles/merge_mpi.dir/merge_mpi.cpp.s
 .PHONY : merge_mpi.cpp.s
 
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.o: scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
+
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.o
+
+# target to build an object file
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/merge_mpi.dir/build.make CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
+
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.i: scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.i
+
+# target to preprocess a source file
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/merge_mpi.dir/build.make CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i
+
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.s: scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s
+
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.s
+
+# target to generate assembly for a file
+scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/merge_mpi.dir/build.make CMakeFiles/merge_mpi.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s
+.PHONY : scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... merge_mpi"
-	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.o"
-	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.i"
-	@echo "... home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.s"
 	@echo "... merge_mpi.o"
 	@echo "... merge_mpi.i"
 	@echo "... merge_mpi.s"
+	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.o"
+	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.i"
+	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.s"
 .PHONY : help
 
 

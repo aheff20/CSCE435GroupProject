@@ -26,7 +26,9 @@ int height = 0;
 
 MPI_Status status;
 // Define Caliper region names
-const char *main_time = "main_time";
+// const char *main_time = "main_time";
+const char* comp_small = "comp_small";
+const char* comp_small = "comp_small";
 const char *comm = "comm";
 const char *comm_MPI_Barrier = "comm_MPI_Barrier";
 const char *comm_large = "comm_large";
@@ -46,7 +48,7 @@ int main(int argc, char *argv[])
     CALI_CXX_MARK_FUNCTION;
     cali::ConfigManager mgr;
     mgr.start();
-    CALI_MARK_BEGIN(main_time);
+    // CALI_MARK_BEGIN(main_time);
     int numVals;
     if (argc == 3)
     {
@@ -150,6 +152,16 @@ int main(int argc, char *argv[])
 
     else
     {
+         CALI_MARK_BEGIN(comp);
+        CALI_MARK_BEGIN(comp_small);
+        CALI_MARK_END(comp_small);
+        CALI_MARK_END(comp);
+
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(comm_small);
+        CALI_MARK_END(comm_small);
+        CALI_MARK_END(comm);
+
         double processStartTime = MPI_Wtime();
         // As a worker, you do not need to manage the global array.
         mergeSortRecursive(height, taskid, localArray, localArraySize, MPI_COMM_WORLD, NULL);
@@ -195,7 +207,7 @@ int main(int argc, char *argv[])
         adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
         adiak::value("InputType", type_of_input);
         adiak::value("ProgrammingModel", "MPI"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
-        adiak::value("MPI_Reduce-whole_computation_time", main_time);
+        // adiak::value("MPI_Reduce-whole_computation_time", main_time);
         adiak::value("MPI_Reduce-master_initialization_time", data_init);
         adiak::value("MPI_Reduce-master_send_time", comm);
         adiak::value("MPI_Reduce-master_receive_time", comm_large_MPI_Gather);
@@ -240,7 +252,7 @@ int main(int argc, char *argv[])
         free(values);
     }
     
-    CALI_MARK_END(main_time);
+    // CALI_MARK_END(main_time);
     mgr.stop();
     mgr.flush();
 
