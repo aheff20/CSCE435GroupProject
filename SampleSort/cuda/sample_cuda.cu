@@ -369,8 +369,8 @@ void sample_sort(float* values, int *kernel_calls) {
 int main(int argc, char *argv[]) {
     CALI_CXX_MARK_FUNCTION;
 
-    if (argc < 3) {
-        fprintf(stderr, "Usage: %s <threads_per_block> <number_of_values>\n", argv[0]);
+    if (argc < 4) {
+        fprintf(stderr, "Usage: %s <threads_per_block> <number_of_values> <inputType>\n", argv[0]);
         exit(1);
     }
 
@@ -388,9 +388,32 @@ int main(int argc, char *argv[]) {
 
     int kernel_calls = 0;
     float *values = (float*)malloc(NUM_VALS * sizeof(float));
+    std::string inputTypeString;
     
     CALI_MARK_BEGIN(data_init);
-    array_fill_random(values, NUM_VALS);
+    switch(inputType) {
+        case 0:
+            array_fill_random_no_seed(values, NUM_VALS);
+            inputTypeString = "Random";
+            break;
+        case 1:
+            array_fill_descending(values, NUM_VALS);
+            inputTypeString = "ReverseSorted";
+            break;
+        case 2:
+            array_fill_ascending(values, NUM_VALS);
+            inputTypeString = "Sorted";
+            break;
+        case 3:
+            array_fill_ascending(values, NUM_VALS);
+            perturb_array(values, NUM_VALS, 0.01);
+            inputTypeString = "1%perturbed";
+            break;
+        default:
+            array_fill_random_no_seed(values, NUM_VALS);
+            inputTypeString = "Random";
+            break;
+    }
     CALI_MARK_END(data_init);
 
     sample_sort(values, &kernel_calls);
@@ -416,7 +439,7 @@ int main(int argc, char *argv[]) {
     adiak::value("Datatype", 4); // The datatype of input elements (e.g., double, int, float)
     adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
     adiak::value("InputSize", NUM_VALS); // The number of elements in input dataset (1000)
-    adiak::value("InputType", inputType); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
+    adiak::value("InputType", inputTypeString); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"
     adiak::value("num_threads", THREADS); // The number of CUDA or OpenMP threads
     adiak::value("num_blocks", BLOCKS); // The number of CUDA blocks 
     adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
