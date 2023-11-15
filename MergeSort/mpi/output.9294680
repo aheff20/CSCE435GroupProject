@@ -1,0 +1,8 @@
+[1700069477.212443] [c172:97961:0]        dc_mlx5.c:330  UCX  ERROR mlx5dv_create_qp(mlx5_0:1, DCI): failed: Cannot allocate memory
+[1700069477.219935] [c172:98002:0]       ib_iface.c:914  UCX  ERROR iface=0xa69020: failed to create UD QP TX wr:256 sge:2 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Cannot allocate memory
+[1700069477.338281] [c172:97978:0]   ib_mlx5dv_md.c:823  UCX  ERROR ibv_create_cq() failed: Invalid argument
+Abort(1615503) on node 8 (rank 8 in comm 0): Fatal error in PMPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(136)........: 
+MPID_Init(1149)..............: 
+MPIDI_OFI_mpi_init_hook(1555): 
+create_endpoint(2199)........: OFI endpoint open failed (ofi_init.c:2199:create_endpoint:Input/output error)

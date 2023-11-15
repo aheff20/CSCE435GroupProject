@@ -7,11 +7,11 @@ CUDA_FLAGS =   -std=c++11
 
 CUDA_DEFINES = 
 
-CUDA_INCLUDES = -I/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/../Utils -I/scratch/group/csce435-f23/Adiak/adiak/include -isystem=/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include -isystem=/scratch/group/csce435-f23/Caliper/caliper/include 
+CUDA_INCLUDES = -I/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/../Utils -I/scratch/group/csce435-f23/Adiak/adiak/include -isystem=/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include -isystem=/scratch/group/csce435-f23/Caliper/caliper/include 
 
 CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/../Utils -I/scratch/group/csce435-f23/Adiak/adiak/include -isystem /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include -isystem /scratch/group/csce435-f23/Caliper/caliper/include 
+CXX_INCLUDES = -I/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/../Utils -I/scratch/group/csce435-f23/Adiak/adiak/include -isystem /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include -isystem /scratch/group/csce435-f23/Caliper/caliper/include 
 
