@@ -1,3 +1,3 @@
-/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/rebuild_cache.dir
-/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/merge_cuda.dir
-/home/miguelgi347/Final_project/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/edit_cache.dir
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/rebuild_cache.dir
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/merge_cuda.dir
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/edit_cache.dir

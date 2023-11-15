@@ -6,3 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp
+helper_functions.h
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.h
+stdlib.h
+-
+time.h
+-
+algorithm
+-
+iostream
+-
+
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.h
+vector
+-
+
