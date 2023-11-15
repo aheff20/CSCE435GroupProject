@@ -23,11 +23,11 @@ __rec=node,id=89,attr=10,data=65,parent=88
 __rec=node,id=90,attr=8,data=min#min#aggregate.slot,parent=89
 __rec=node,id=15,attr=8,data=spot.channel,parent=12
 __rec=node,id=107,attr=15,data=regionprofile
-__rec=ctx,ref=107,attr=74=77=80=84=82=87=90,data=0.338816=0.338816=0.338816=0.338816=1=0.338816=0
+__rec=ctx,ref=107,attr=74=77=80=84=82=87=90,data=0.347542=0.347542=0.347542=0.347542=1=0.347542=0
 __rec=node,id=37,attr=10,data=276,parent=3
 __rec=node,id=38,attr=8,data=region,parent=37
 __rec=node,id=39,attr=38,data=data_init
-__rec=ctx,ref=39=107,attr=74=77=80=84=82=87=90,data=0.382920=0.382920=0.382920=0.382920=1=0.382920=1
+__rec=ctx,ref=39=107,attr=74=77=80=84=82=87=90,data=0.386190=0.386190=0.386190=0.386190=1=0.386190=1
 __rec=node,id=44,attr=38,data=comm
 __rec=node,id=93,attr=13,data=Avg GPU time/rank,parent=71
 __rec=node,id=94,attr=10,data=65,parent=93
@@ -43,19 +43,19 @@ __rec=node,id=103,attr=8,data=max#iscale#cupti.activity.duration,parent=102
 __rec=node,id=104,attr=13,data=Total GPU time,parent=71
 __rec=node,id=105,attr=10,data=65,parent=104
 __rec=node,id=106,attr=8,data=sum#iscale#cupti.activity.duration,parent=105
-__rec=ctx,ref=44=107,attr=74=77=80=84=82=87=95=97=96=100=103=106=90,data=0.030193=0.030193=0.030193=0.030193=1=0.030193=0.029402=0.029402=1=0.029402=0.029402=0.029402=2
+__rec=ctx,ref=44=107,attr=74=77=80=84=82=87=95=97=96=100=103=106=90,data=0.028868=0.028868=0.028868=0.028868=1=0.028868=0.028151=0.028151=1=0.028151=0.028151=0.028151=2
 __rec=node,id=45,attr=38,data=comm_large,parent=44
-__rec=ctx,ref=45=107,attr=74=77=80=84=82=87=95=97=96=100=103=106=90,data=0.030071=0.030071=0.030071=0.030071=1=0.030071=0.029402=0.029402=1=0.029402=0.029402=0.029402=3
+__rec=ctx,ref=45=107,attr=74=77=80=84=82=87=95=97=96=100=103=106=90,data=0.028761=0.028761=0.028761=0.028761=1=0.028761=0.028151=0.028151=1=0.028151=0.028151=0.028151=3
 __rec=node,id=46,attr=38,data=comp
-__rec=ctx,ref=46=107,attr=74=77=80=84=82=87=95=97=96=100=103=106=90,data=6.038347=6.038347=6.038347=6.038347=1=6.038347=6.037704=6.037704=1=6.037704=6.037704=6.037704=4
+__rec=ctx,ref=46=107,attr=74=77=80=84=82=87=95=97=96=100=103=106=90,data=6.091309=6.091309=6.091309=6.091309=1=6.091309=6.090760=6.090760=1=6.090760=6.090760=6.090760=4
 __rec=node,id=47,attr=38,data=comp_large,parent=46
-__rec=ctx,ref=47=107,attr=74=77=80=84=82=87=95=97=96=100=103=106=90,data=6.038280=6.038280=6.038280=6.038280=1=6.038280=6.037704=6.037704=1=6.037704=6.037704=6.037704=5
+__rec=ctx,ref=47=107,attr=74=77=80=84=82=87=95=97=96=100=103=106=90,data=6.091255=6.091255=6.091255=6.091255=1=6.091255=6.090760=6.090760=1=6.090760=6.090760=6.090760=5
 __rec=node,id=48,attr=38,data=comm_small,parent=44
-__rec=ctx,ref=48=107,attr=74=77=80=84=82=87=90,data=0.000015=0.000015=0.000015=0.000015=1=0.000015=6
+__rec=ctx,ref=48=107,attr=74=77=80=84=82=87=90,data=0.000013=0.000013=0.000013=0.000013=1=0.000013=6
 __rec=node,id=49,attr=38,data=comp_small,parent=46
-__rec=ctx,ref=49=107,attr=74=77=80=84=82=87=90,data=0.000007=0.000007=0.000007=0.000007=1=0.000007=7
+__rec=ctx,ref=49=107,attr=74=77=80=84=82=87=90,data=0.000006=0.000006=0.000006=0.000006=1=0.000006=7
 __rec=node,id=50,attr=38,data=correctness_check
-__rec=ctx,ref=50=107,attr=74=77=80=84=82=87=90,data=0.048510=0.048510=0.048510=0.048510=1=0.048510=8
+__rec=ctx,ref=50=107,attr=74=77=80=84=82=87=90,data=0.048585=0.048585=0.048585=0.048585=1=0.048585=8
 __rec=node,id=180,attr=10,data=512,parent=3
 __rec=node,id=186,attr=8,data=spot.channels,parent=180
 __rec=node,id=185,attr=8,data=spot.options,parent=180
@@ -129,7 +129,7 @@ __rec=node,id=161,attr=158,data=true,parent=160
 __rec=node,id=162,attr=157,data=true,parent=161
 __rec=node,id=163,attr=156,data=sorted_cali/t1024-v16777216-fa.cali,parent=162
 __rec=node,id=164,attr=155,data=miguelgi347,parent=163
-__rec=node,id=165,attr=152,data=1700064208,parent=164
+__rec=node,id=165,attr=152,data=1700073296,parent=164
 __rec=node,id=166,attr=147,data=[/scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/libmpi.so.12\,/lib64/librt.so.1\,/lib64/libpthread.so.0\,/lib64/libdl.so.2\,/sw/eb/sw/GCCcore/7.3.0/lib64/libstdc++.so.6\,/lib64/libm.so.6\,/sw/eb/sw/GCCcore/7.3.0/lib64/libgcc_s.so.1\,/lib64/libc.so.6\,/sw/eb/sw/CUDA/12.2.2/extras/CUPTI/lib64/libcupti.so.12\,/sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpapi.so.6.0\,/lib64/ld-linux-x86-64.so.2\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/libfabric.so.1\,/lib64/libutil.so.1\,/sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpfm.so.4\,/lib64/libcuda.so.1\,/lib64/libnvidia-ptxjitcompiler.so.1\,/lib64/libnss_files.so.2],parent=165
 __rec=node,id=167,attr=142,data=[./merge_cuda\,1024\,16777216\,a],parent=166
 __rec=node,id=168,attr=137,data=g,parent=167
