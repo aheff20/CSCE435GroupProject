@@ -1,0 +1,7 @@
+merge_mpi has started with 256 tasks.
+merge_mpi has started with 268435456 num vals.
+Initializing array...
+Initialized reversed_array  array
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 9298510.0 ON c249 CANCELLED AT 2023-11-15T14:14:14 ***
+slurmstepd: error: *** JOB 9298510 ON c249 CANCELLED AT 2023-11-15T14:14:14 ***

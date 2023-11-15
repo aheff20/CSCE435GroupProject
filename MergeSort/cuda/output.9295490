@@ -8,3 +8,7 @@ Due to MODULEPATH changes, the following have been reloaded:
 The following have been reloaded with a version change:
   1) GCCcore/10.2.0 => GCCcore/7.3.0
 
+Number of threads per block: 1024
+Number of values: 268435456
+Number of blocks: 262144
+Array was sorted correctly! 
