@@ -30,6 +30,7 @@ const char* comm = "comm";
 const char* comm_large = "comm_large";
 const char* comm_small = "comm_small";
 const char* correctness_check = "correctness_check";
+const char* cudaMemcpy_region = "cudaMemcpy";
 
 void print_elapsed(clock_t start, clock_t stop)
 {
@@ -82,17 +83,27 @@ void bitonic_sort(float *values)
   
   int j, k;
   
+  CALI_MARK_BEGIN(comp);
+  CALI_MARK_BEGIN(comp_large);
   /* Major step */
   for (k = 2; k <= NUM_VALS; k <<= 1) {
     /* Minor step */
     for (j=k>>1; j>0; j=j>>1) {
       bitonic_sort_step<<<blocks, threads>>>(dev_values, j, k);
-      bitonic_step_count++;
+      // bitonic_step_count++;
     }
   }
+  CALI_MARK_END(comp_large);
+  CALI_MARK_END(comp);
   cudaDeviceSynchronize();
 
+  CALI_MARK_BEGIN(comm);
+  CALI_MARK_BEGIN(comm_large);
+  CALI_MARK_BEGIN(cudaMemcpy_region);
   cudaMemcpy(values, dev_values, size, cudaMemcpyDeviceToHost);
+  CALI_MARK_END(cudaMemcpy_region);
+  CALI_MARK_END(comm_large);
+  CALI_MARK_END(comm);
   
   cudaFree(dev_values);
 }
@@ -115,6 +126,7 @@ int main(int argc, char *argv[])
   printf("Number of blocks: %d\n", BLOCKS);
 
   float *values = (float*) malloc( NUM_VALS * sizeof(float));
+  std::string type_of_input;
 
   CALI_MARK_BEGIN(data_init);
   char method = argv[3][0]; 
@@ -142,6 +154,7 @@ int main(int argc, char *argv[])
   
   bitonic_sort(values); 
 
+  CALI_MARK_BEGIN(correctness_check);
   bool correct = check_sorted(values,NUM_VALS);
     if (correct){
         printf("Array was sorted correctly! \n");
@@ -149,6 +162,7 @@ int main(int argc, char *argv[])
     else{
         printf("Array was incorrectly sorted! \n");
     }
+  CALI_MARK_END(correctness_check);
 
   adiak::init(NULL);
   adiak::user();
