@@ -630,6 +630,7 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 ## 4. Performance Evaluation
 
+## MPI
 ### Strong Scaling our Algorithms
 
 #### Randomized Input Graphs:
@@ -648,6 +649,10 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 ![sample_mpi_strong_perturbed](./Graphs/sample_mpi_strong_perturbed.png) ![bubble_mpi_strong_perturbed](./Graphs/bubble_mpi_strong_perturbed.png) ![merge_mpi_strong_perturbed](./Graphs/mergesort_mpi_strong_perturbed.png) 
 
+
+
+
+
 ### Weak Scaling our Algorithms
 
 #### Randomized Input Graphs:
@@ -665,6 +670,43 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 #### 1%Perturbed Input Graphs:
 
 ![sample_mpi_weak_perturbed](./Graphs/sample_mpi_weak_perturbed.png) ![bubble_mpi_weak_perturbed](./Graphs/bubble_mpi_weak_perturbed.png) ![merge_mpi_weak_perturbed](./Graphs/mergesort_mpi_weak_perturbed.png) 
+
+
+---
+## CUDA
+
+### Strong Scaling our Algorithms
+
+##### Randomized Input Graphs:
+![sample_cuda_strong_random](./Graphs/sample_cuda_strong_random.png) ![bubble_cuda_strong_random](./Graphs/bubble_cuda_strong_random.png) ![merge_cuda_strong_random](./Graphs/mergesort_cuda_strong_random.png)
+
+##### Sorted Input Graphs:
+![sample_cuda_strong_sorted](./Graphs/sample_cuda_strong_sorted.png) ![bubble_cuda_strong_sorted](./Graphs/bubble_cuda_strong_sorted.png) ![merge_cuda_strong_sorted](./Graphs/mergesort_cuda_strong_sorted.png)
+
+##### Reverse Sorted Input Graphs:
+![sample_cuda_strong_reverse](./Graphs/sample_cuda_strong_reverse.png) ![bubble_cuda_strong_reverse](./Graphs/bubble_cuda_strong_reverse.png) ![merge_cuda_strong_reverse](./Graphs/mergesort_cuda_strong_reverse.png)
+
+##### 1% Perturbed Input Graphs:
+![sample_cuda_strong_perturbed](./Graphs/sample_cuda_strong_perturbed.png) ![bubble_cuda_strong_perturbed](./Graphs/bubble_cuda_strong_perturbed.png) ![merge_cuda_strong_perturbed](./Graphs/mergesort_cuda_strong_perturbed.png)
+
+
+### Weak Scaling our Algorithms
+
+##### Randomized Input Graphs:
+![sample_cuda_weak_random](./Graphs/sample_cuda_weak_random.png) ![bubble_cuda_weak_random](./Graphs/bubble_cuda_weak_random.png) ![merge_cuda_weak_random](./Graphs/mergesort_cuda_weak_random.png)
+
+##### Sorted Input Graphs:
+![sample_cuda_weak_sorted](./Graphs/sample_cuda_weak_sorted.png) ![bubble_cuda_weak_sorted](./Graphs/bubble_cuda_weak_sorted.png) ![merge_cuda_weak_sorted](./Graphs/mergesort_cuda_weak_sorted.png)
+
+##### Reverse Sorted Input Graphs:
+![sample_cuda_weak_reverse](./Graphs/sample_cuda_weak_reverse.png) ![bubble_cuda_weak_reverse](./Graphs/bubble_cuda_weak_reverse.png) ![merge_cuda_weak_reverse](./Graphs/mergesort_cuda_weak_reverse.png)
+
+##### 1% Perturbed Input Graphs:
+![sample_cuda_weak_perturbed](./Graphs/sample_cuda_weak_perturbed.png) ![bubble_cuda_weak_perturbed](./Graphs/bubble_cuda_weak_perturbed.png) ![merge_cuda_weak_perturbed](./Graphs/mergesort_cuda_weak_perturbed.png)
+
+
+
+
 
 ### Analysis
 
