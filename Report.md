@@ -668,3 +668,20 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 ### Analysis
 
+#### Effect of input type
+In all of our algorithms, we see that the input type does not drammatically increase the average time it takes to sort the overall array. This is because the way in which we each implemented our algorithms, regardless of how it is sorted at the beginning, the algorithms still go through the entire array, making comparisons and swapping values as they would with random inputs. Perhaps we could have added more checks into our algorithm to save time if the array was already sorted, but that was overlooked in the original implementation.
+
+#### Strong scaling in MPI
+All of our algorithms tend to scale well when the problem size is kept constant. At this point, we tested strong scaling for our MPI implementations by having them sort 2^20 values with different numbers of processors. The graphs indicate that as the number of processors grows exponentially, the time it takes to sort raises more linerally, what you would expect for strong scaling.
+
+#### Strong scaling in CUDA
+For our CUDA implementations, we had our algorithms sort 2^16 values with different numbers of threads per block. We can see that as the number of threads increases, the time it takes to sort the array tends to decrease faster and faster. This is because more threads are working together to piece together the sorted array.
+
+#### Weak scaling in MPI
+All of our algorithms also responded well to weak scaling. To test this for MPI, we kept at a constant 128 processors and increased the input size of the array. As the input size grew exponentially, the time it took to sort the array did not grow as exponentially.
+
+#### Weak scaling in CUDA
+For CUDA, we kept at a constant 2048 threads and increased the input size of the array. As the Input size increases exponentially, the time it takes to sort the array also increases, however much slower. 
+
+#### Communication Performance
+In all of our algorithms, communication plays a huge role in the overall performance, as much of the time waiting to hear from different proceses can slow down the overall process. For example, in the Sample Sort CUDA implementation, comm_small is always implemented on the CPU while the comm_large portions are implemented in the GPU. This causes a bottleneck for the overall algorithm and makes comm_small generally higher than comm_large. 
