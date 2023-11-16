@@ -632,8 +632,39 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 ### Strong Scaling our Algorithms
 
-Randomized Input Graphs:
+#### Randomized Input Graphs:
 
 ![sample_mpi_strong_random](../Graphs/sample_mpi_strong_random.png) 
 
+#### Sorted Input Graphs:
+
+![sample_mpi_strong_sorted](../Graphs/sample_mpi_strong_sorted.png) 
+
+#### Reverse Sorted Input Graphs:
+
+![sample_mpi_strong_reverse](../Graphs/sample_mpi_strong_reverse.png) 
+
+#### 1%Perturbed Input Graphs:
+
+![sample_mpi_strong_perturbed](../Graphs/sample_mpi_strong_perturbed.png) 
+
 ### Weak Scaling our Algorithms
+
+#### Randomized Input Graphs:
+
+![sample_mpi_weak_random](../Graphs/sample_mpi_weak_random.png) 
+
+#### Sorted Input Graphs:
+
+![sample_mpi_weak_sorted](../Graphs/sample_mpi_weak_sorted.png) 
+
+#### Reverse Sorted Input Graphs:
+
+![sample_mpi_weak_reverse](../Graphs/sample_mpi_weak_reverse.png) 
+
+#### 1%Perturbed Input Graphs:
+
+![sample_mpi_weak_perturbed](../Graphs/sample_mpi_weak_perturbed.png) 
+
+### Analysis
+
