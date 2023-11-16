@@ -23,6 +23,6 @@ type=$3
 module load intel/2020b       # load Intel software stack
 module load CMake/3.12.1
 
-CALI_CONFIG="spot(output=p${processes}-a${array_size}-t${type}.cali, \
+CALI_CONFIG="spot(output=cali_recent_2/p${processes}-a${array_size}-t${type}.cali, \
     time.variance)" \
 mpirun -np $processes ./merge_mpi $array_size $type

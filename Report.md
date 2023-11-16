@@ -626,4 +626,108 @@ Each algorithm will have different inputs and be tested at different scales to s
 ## 3. Project implementation
 **STATUS:**
 
-As of right now, our group has implemented and tested CUDA and MPI algorithms for MergeSort, BubbleSort, and SampleSort. Due to the Grace downtime, we were unable to fully test the QuickSort algorithms or produce .cali files for SampleSort or QuickSort. Looking forwards, we plan on fixing these issues as soon as Grace goes back online and before we begin our performance evaluation.
+As of right now, our group has implemented and tested CUDA and MPI algorithms for MergeSort, BubbleSort, and SampleSort.
+
+## 4. Performance Evaluation
+
+## MPI
+### Strong Scaling our Algorithms
+
+#### Randomized Input Graphs:
+
+![sample_mpi_strong_random](./Graphs/sample_mpi_strong_random.png) ![bubble_mpi_strong_random](./Graphs/bubble_mpi_strong_random.png) ![merge_mpi_strong_random](./Graphs/mergesort_mpi_strong_random.png) 
+
+#### Sorted Input Graphs:
+
+![sample_mpi_strong_sorted](./Graphs/sample_mpi_strong_sorted.png) ![bubble_mpi_strong_sorted](./Graphs/bubble_mpi_strong_sorted.png) ![merge_mpi_strong_sorted](./Graphs/mergesort_mpi_strong_sorted.png) 
+
+#### Reverse Sorted Input Graphs:
+
+![sample_mpi_strong_reverse](./Graphs/sample_mpi_strong_reverse.png) ![bubble_mpi_strong_reverse](./Graphs/bubble_mpi_strong_reverse.png) ![merge_mpi_strong_reverse](./Graphs/mergesort_mpi_strong_reverse.png) 
+
+#### 1%Perturbed Input Graphs:
+
+![sample_mpi_strong_perturbed](./Graphs/sample_mpi_strong_perturbed.png) ![bubble_mpi_strong_perturbed](./Graphs/bubble_mpi_strong_perturbed.png) ![merge_mpi_strong_perturbed](./Graphs/mergesort_mpi_strong_perturbed.png) 
+
+
+
+
+
+### Weak Scaling our Algorithms
+
+#### Randomized Input Graphs:
+
+![sample_mpi_weak_random](./Graphs/sample_mpi_weak_random.png) ![bubble_mpi_weak_random](./Graphs/bubble_mpi_weak_random.png) ![merge_mpi_weak_random](./Graphs/mergesort_mpi_weak_random.png) 
+
+#### Sorted Input Graphs:
+
+![sample_mpi_weak_sorted](./Graphs/sample_mpi_weak_sorted.png) ![bubble_mpi_weak_sorted](./Graphs/bubble_mpi_weak_sorted.png) ![merge_mpi_weak_sorted](./Graphs/mergesort_mpi_weak_sorted.png)
+
+#### Reverse Sorted Input Graphs:
+
+![sample_mpi_weak_reverse](./Graphs/sample_mpi_weak_reverse.png) ![bubble_mpi_weak_reverse](./Graphs/bubble_mpi_weak_reverse.png) ![merge_mpi_weak_reverse](./Graphs/mergesort_mpi_weak_reverse.png) 
+
+#### 1%Perturbed Input Graphs:
+
+![sample_mpi_weak_perturbed](./Graphs/sample_mpi_weak_perturbed.png) ![bubble_mpi_weak_perturbed](./Graphs/bubble_mpi_weak_perturbed.png) ![merge_mpi_weak_perturbed](./Graphs/mergesort_mpi_weak_perturbed.png) 
+
+
+---
+## CUDA
+
+### Strong Scaling our Algorithms
+
+##### Randomized Input Graphs:
+![sample_cuda_strong_random](./Graphs/sample_cuda_strong_random.png) ![bubble_cuda_strong_random](./Graphs/bubble_cuda_strong_random.png) ![merge_cuda_strong_random](./Graphs/mergesort_cuda_strong_random.png)
+
+##### Sorted Input Graphs:
+![sample_cuda_strong_sorted](./Graphs/sample_cuda_strong_sorted.png) ![bubble_cuda_strong_sorted](./Graphs/bubble_cuda_strong_sorted.png) ![merge_cuda_strong_sorted](./Graphs/mergesort_cuda_strong_sorted.png)
+
+##### Reverse Sorted Input Graphs:
+![sample_cuda_strong_reverse](./Graphs/sample_cuda_strong_reverse.png) ![bubble_cuda_strong_reverse](./Graphs/bubble_cuda_strong_reverse.png) ![merge_cuda_strong_reverse](./Graphs/mergesort_cuda_strong_reverse.png)
+
+##### 1% Perturbed Input Graphs:
+![sample_cuda_strong_perturbed](./Graphs/sample_cuda_strong_perturbed.png) ![bubble_cuda_strong_perturbed](./Graphs/bubble_cuda_strong_perturbed.png) ![merge_cuda_strong_perturbed](./Graphs/mergesort_cuda_strong_perturbed.png)
+
+
+### Weak Scaling our Algorithms
+
+##### Randomized Input Graphs:
+![sample_cuda_weak_random](./Graphs/sample_cuda_weak_random.png) ![bubble_cuda_weak_random](./Graphs/bubble_cuda_weak_random.png) ![merge_cuda_weak_random](./Graphs/mergesort_cuda_weak_random.png)
+
+##### Sorted Input Graphs:
+![sample_cuda_weak_sorted](./Graphs/sample_cuda_weak_sorted.png) ![bubble_cuda_weak_sorted](./Graphs/bubble_cuda_weak_sorted.png) ![merge_cuda_weak_sorted](./Graphs/mergesort_cuda_weak_sorted.png)
+
+##### Reverse Sorted Input Graphs:
+![sample_cuda_weak_reverse](./Graphs/sample_cuda_weak_reverse.png) ![bubble_cuda_weak_reverse](./Graphs/bubble_cuda_weak_reverse.png) ![merge_cuda_weak_reverse](./Graphs/mergesort_cuda_weak_reverse.png)
+
+##### 1% Perturbed Input Graphs:
+![sample_cuda_weak_perturbed](./Graphs/sample_cuda_weak_perturbed.png) ![bubble_cuda_weak_perturbed](./Graphs/bubble_cuda_weak_perturbed.png) ![merge_cuda_weak_perturbed](./Graphs/mergesort_cuda_weak_perturbed.png)
+
+
+
+
+
+### Analysis
+
+#### Effect of input type
+In all of our algorithms, we see that the input type does not dramatically increase the average time it takes to sort the overall array. This is because the way in which we each implemented our algorithms, regardless of how it is sorted at the beginning, the algorithms still go through the entire array, making comparisons and swapping values as they would with random inputs. Perhaps we could have added more checks into our algorithm to save time if the array was already sorted, but that was overlooked in the original implementation.
+
+#### Strong scaling in MPI
+All of our algorithms tend to scale well when the problem size is kept constant. At this point, we tested strong scaling for our MPI implementations by having them sort 2^20 values with different numbers of processors. The graphs indicate that as the number of processors grows exponentially, the time it takes to sort increases linearly, which is expected for strong scaling.
+
+As expected, the computational time ('comp') decreases as we increase the number of processes, aligning with the principles of strong scaling where the work per process reduces, ideally leading to a reduction in execution time. However, our communication times ('comm', 'comm_small', 'comm_large') do not consistently reduce and sometimes increase, likely due to overhead from more intensive inter-process communication. This suggests that while our algorithmic optimizations are effective to a point, there are diminishing returns on scaling due to inherent communication complexities that become prominent as the number of processes grows.
+
+#### Strong scaling in CUDA
+For our CUDA implementations, we had our algorithms sort 2^16 values with different numbers of threads per block. We can see that as the number of threads increases, the time it takes to sort the array tends to decrease faster and faster. This is because more threads are working together to piece together the sorted array.
+
+#### Weak scaling in MPI
+All of our algorithms also responded well to weak scaling. To test this for MPI, we kept at a constant 128 processors and increased the input size of the array. As the input size grew exponentially, the time it took to sort the array did not grow as exponentially.
+
+The graphs show that as the input size grows, the computation time ('comp') generally increases, which is a natural outcome given the larger data set each process is handling. However, we observe that the communication times ('comm', 'comm_small', 'comm_large') also increase, suggesting that our implementations experience some inefficiency due to communication overhead. This implies that while our algorithms scale with increasing data sizes, there are challenges to address in terms of communication efficiency to improve scalability further.
+
+#### Weak scaling in CUDA
+For CUDA, we kept at a constant 2048 threads and increased the input size of the array. As the Input size increases exponentially, the time it takes to sort the array also increases, however much slower. 
+
+#### Communication Performance
+In all of our algorithms, communication plays a huge role in the overall performance, as much of the time waiting to hear from different proceses can slow down the overall process. For example, in the Sample Sort CUDA implementation, comm_small is always implemented on the CPU while the comm_large portions are implemented in the GPU. This causes a bottleneck for the overall algorithm and makes comm_small generally higher than comm_large. 
