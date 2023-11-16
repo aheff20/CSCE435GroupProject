@@ -28,6 +28,8 @@ const char* comm_large = "comm_large";
 const char* mpi_gather_region = "MPI_Gather";
 
 const char* mpi_bcast_region = "MPI_Bcast";
+const char* mpi_recv_region = "MPI_Recv";
+const char* mpi_send_region = "MPI_Send";
 const char* correctness_check = "correctness_check";
 
 const char* sortOptions[3] = {"random", "sorted", "reverse_sorted"};
@@ -84,31 +86,69 @@ float *tempData;
 void exchangeAndSort(float *data, int count, int proc1, int proc2, int descOrder,int seqNo) {
   if (proc1 != processId && proc2 != processId) return;
 
+  CALI_MARK_BEGIN(comp);
+  CALI_MARK_BEGIN(comp_large);
   memcpy(tempData, data, count*sizeof(float));
+  CALI_MARK_END(comp_large);
+  CALI_MARK_END(comp);
 
   MPI_Status status;
 
   int otherProc = proc1==processId ? proc2 : proc1;
   if (proc1 == processId) {
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
+    CALI_MARK_BEGIN(mpi_send_region);
     MPI_Send(data, count, MPI_FLOAT, otherProc, seqNo, MPI_COMM_WORLD);
+    CALI_MARK_END(mpi_send_region);
+    CALI_MARK_BEGIN(mpi_recv_region);
     MPI_Recv(&tempData[count], count, MPI_FLOAT, otherProc, seqNo, MPI_COMM_WORLD, &status);
+    CALI_MARK_END(mpi_recv_region);
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
+
   }
   else {
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
+    CALI_MARK_BEGIN(mpi_recv_region);
     MPI_Recv(&tempData[count], count, MPI_FLOAT, otherProc, seqNo, MPI_COMM_WORLD, &status);
+    CALI_MARK_END(mpi_recv_region);
+    CALI_MARK_BEGIN(mpi_send_region);
     MPI_Send(data, count, MPI_FLOAT, otherProc, seqNo, MPI_COMM_WORLD);
+    CALI_MARK_END(mpi_send_region);
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
   }
 
   if (descOrder) {
+    CALI_MARK_BEGIN(comp);
+    CALI_MARK_BEGIN(comp_large);
     qsort(tempData, count*2, sizeof(float), sortDesc);
+    CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
   }
   else {
+    CALI_MARK_BEGIN(comp);
+    CALI_MARK_BEGIN(comp_large);
     qsort(tempData, count*2, sizeof(float), sortAsc);
+    CALI_MARK_END(comp_large);
+    CALI_MARK_END(comp);
   }
 
-  if (proc1 == processId)
+  if (proc1 == processId){
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
     memcpy(data, tempData, count*sizeof(float));
-  else
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
+  }else{
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
     memcpy(data, &tempData[count], count*sizeof(float));
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
+  }
 }
 
 void bitonicMergeSort(float *data, int count) {
@@ -123,9 +163,9 @@ void bitonicMergeSort(float *data, int count) {
     for(int j=i; j >= 1; j--) {
       seqNo++;
       for(int proc=0; proc < totalProcesses; proc += powerOf2j) {
-	for(int k=0; k < powerOf2j/2; k++) {
-	  exchangeAndSort(data, count, proc+k, proc+k+powerOf2j/2, ((proc+k) % (powerOf2*2) >= powerOf2),seqNo);
-	}
+        for(int k=0; k < powerOf2j/2; k++) {
+          exchangeAndSort(data, count, proc+k, proc+k+powerOf2j/2, ((proc+k) % (powerOf2*2) >= powerOf2),seqNo);
+        }
       }
       powerOf2j /= 2;
     }
@@ -162,11 +202,8 @@ int main(int argc, char *argv[]) {
   CALI_MARK_END(data_init);
   print_array(data, arraySize);
 
-  CALI_MARK_BEGIN(comp);
-  CALI_MARK_BEGIN(comp_large);
+
   bitonicMergeSort(data, arraySize);
-  CALI_MARK_END(comp_large);
-  CALI_MARK_END(comp);
 
   float * allData = NULL;
   if (processId == 0) {
