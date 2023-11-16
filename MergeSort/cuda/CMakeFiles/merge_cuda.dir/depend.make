@@ -19,8 +19,8 @@ CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: /scratch/group/csce435-f23/Caliper/ca
 CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: /scratch/group/csce435-f23/Caliper/caliper/include/caliper/typesCaliper.h
 CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: /scratch/group/csce435-f23/Caliper/caliper/include/caliper/wrapConfigManager.h
 CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: merge_cuda.cu
-CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.h
+CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: /scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.h
 
-CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp
-CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.h
+CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o: /scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp
+CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o: /scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.h
 
