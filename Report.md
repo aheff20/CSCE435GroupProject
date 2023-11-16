@@ -635,19 +635,19 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 #### Randomized Input Graphs:
 
-![sample_mpi_strong_random](./Graphs/sample_mpi_strong_random.png) ![bubble_mpi_strong_random](./Graphs/bubble_mpi_strong_random.png) ![merge_mpi_strong_random](./Graphs/mergesort_mpi_strong_random.png) 
+![sample_mpi_strong_random](./Graphs/sample_mpi_strong_random.png) ![bubble_mpi_strong_random](./Graphs/bubble_mpi_strong_random.png) ![merge_mpi_strong_random](./Graphs/mergesort_mpi_strong_random.png) ![bitonic_mpi_strong_random](./Graphs/bitonic_mpi_strong_random.png)
 
 #### Sorted Input Graphs:
 
-![sample_mpi_strong_sorted](./Graphs/sample_mpi_strong_sorted.png) ![bubble_mpi_strong_sorted](./Graphs/bubble_mpi_strong_sorted.png) ![merge_mpi_strong_sorted](./Graphs/mergesort_mpi_strong_sorted.png) 
+![sample_mpi_strong_sorted](./Graphs/sample_mpi_strong_sorted.png) ![bubble_mpi_strong_sorted](./Graphs/bubble_mpi_strong_sorted.png) ![merge_mpi_strong_sorted](./Graphs/mergesort_mpi_strong_sorted.png) ![bitonic_mpi_strong_sorted](./Graphs/bitonic_mpi_strong_sorted.png)
 
 #### Reverse Sorted Input Graphs:
 
-![sample_mpi_strong_reverse](./Graphs/sample_mpi_strong_reverse.png) ![bubble_mpi_strong_reverse](./Graphs/bubble_mpi_strong_reverse.png) ![merge_mpi_strong_reverse](./Graphs/mergesort_mpi_strong_reverse.png) 
+![sample_mpi_strong_reverse](./Graphs/sample_mpi_strong_reverse.png) ![bubble_mpi_strong_reverse](./Graphs/bubble_mpi_strong_reverse.png) ![merge_mpi_strong_reverse](./Graphs/mergesort_mpi_strong_reverse.png) ![bitonic_mpi_strong_reverse](./Graphs/bitonic_mpi_strong_reverse.png)
 
 #### 1%Perturbed Input Graphs:
 
-![sample_mpi_strong_perturbed](./Graphs/sample_mpi_strong_perturbed.png) ![bubble_mpi_strong_perturbed](./Graphs/bubble_mpi_strong_perturbed.png) ![merge_mpi_strong_perturbed](./Graphs/mergesort_mpi_strong_perturbed.png) 
+![sample_mpi_strong_perturbed](./Graphs/sample_mpi_strong_perturbed.png) ![bubble_mpi_strong_perturbed](./Graphs/bubble_mpi_strong_perturbed.png) ![merge_mpi_strong_perturbed](./Graphs/mergesort_mpi_strong_perturbed.png) ![bitonic_mpi_strong_perturbed](./Graphs/bitonic_mpi_strong_perturbed.png)
 
 
 
@@ -657,19 +657,19 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 #### Randomized Input Graphs:
 
-![sample_mpi_weak_random](./Graphs/sample_mpi_weak_random.png) ![bubble_mpi_weak_random](./Graphs/bubble_mpi_weak_random.png) ![merge_mpi_weak_random](./Graphs/mergesort_mpi_weak_random.png) 
+![sample_mpi_weak_random](./Graphs/sample_mpi_weak_random.png) ![bubble_mpi_weak_random](./Graphs/bubble_mpi_weak_random.png) ![merge_mpi_weak_random](./Graphs/mergesort_mpi_weak_random.png) ![bitonic_mpi_weak_random](./Graphs/bitonic_mpi_weak_random.png)
 
 #### Sorted Input Graphs:
 
-![sample_mpi_weak_sorted](./Graphs/sample_mpi_weak_sorted.png) ![bubble_mpi_weak_sorted](./Graphs/bubble_mpi_weak_sorted.png) ![merge_mpi_weak_sorted](./Graphs/mergesort_mpi_weak_sorted.png)
+![sample_mpi_weak_sorted](./Graphs/sample_mpi_weak_sorted.png) ![bubble_mpi_weak_sorted](./Graphs/bubble_mpi_weak_sorted.png) ![merge_mpi_weak_sorted](./Graphs/mergesort_mpi_weak_sorted.png) ![bitonic_mpi_weak_sorted](./Graphs/bitonic_mpi_weak_sorted.png)
 
 #### Reverse Sorted Input Graphs:
 
-![sample_mpi_weak_reverse](./Graphs/sample_mpi_weak_reverse.png) ![bubble_mpi_weak_reverse](./Graphs/bubble_mpi_weak_reverse.png) ![merge_mpi_weak_reverse](./Graphs/mergesort_mpi_weak_reverse.png) 
+![sample_mpi_weak_reverse](./Graphs/sample_mpi_weak_reverse.png) ![bubble_mpi_weak_reverse](./Graphs/bubble_mpi_weak_reverse.png) ![merge_mpi_weak_reverse](./Graphs/mergesort_mpi_weak_reverse.png) ![bitonic_mpi_weak_reverse](./Graphs/bitonic_mpi_weak_reverse.png)
 
 #### 1%Perturbed Input Graphs:
 
-![sample_mpi_weak_perturbed](./Graphs/sample_mpi_weak_perturbed.png) ![bubble_mpi_weak_perturbed](./Graphs/bubble_mpi_weak_perturbed.png) ![merge_mpi_weak_perturbed](./Graphs/mergesort_mpi_weak_perturbed.png) 
+![sample_mpi_weak_perturbed](./Graphs/sample_mpi_weak_perturbed.png) ![bubble_mpi_weak_perturbed](./Graphs/bubble_mpi_weak_perturbed.png) ![merge_mpi_weak_perturbed](./Graphs/mergesort_mpi_weak_perturbed.png) ![bitonic_mpi_weak_perturbed](./Graphs/bitonic_mpi_weak_perturbed.png)
 
 
 ---
