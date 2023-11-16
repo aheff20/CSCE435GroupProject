@@ -1,255 +1,222 @@
-#include "mpi.h"
+#include <caliper/cali.h>
+#include <caliper/cali-manager.h>
+#include <adiak.hpp>
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
-#include <math.h>
+#include <string.h>
+#include <time.h>
+#include "mpi.h"
+
 #include <caliper/cali.h>
 #include <caliper/cali-manager.h>
 #include <adiak.hpp>
 #include "../../Utils/helper_functions.h"
 
-void high_bit(int bit);
-void low_bit(int bit);
-int compare_floats(const void *a, const void *b);
+int totalValues;
+int sortType;
+int totalProcesses, processId;
 
-#define MASTER 0      /* taskid of first task */
-#define FROM_MASTER 1 /* setting a message type */
-#define FROM_WORKER 2 /* setting a message type */
+const char* data_init = "data_init";
+const char* comp = "comp";
+const char* comm = "comm";
 
-int numtasks,   /* number of tasks in partition */
-    taskid,     /* a task identifier */
-    numworkers, /* number of worker tasks */
-    source,     /* task id of message source */
-    dest,       /* task id of message destination */
-    mtype;      /* message type */
+const char* comp_small = "comp_small";
+const char* comp_large = "comp_large";
 
-double whole_computation_time, master_initialization_time = 0;
+const char* comm_small = "comm_small";
+const char* comm_large = "comm_large";
+const char* mpi_gather_region = "MPI_Gather";
 
-float *local_array;
-float *global_array;
-int array_size;
+const char* mpi_bcast_region = "MPI_Bcast";
+const char* correctness_check = "correctness_check";
 
-MPI_Status status;
-// Define Caliper region names
-const char *main_region = "main";
-const char *comm = "comm";
-const char *comm_MPI_Barrier = "comm_MPI_Barrier";
-const char *comm_large = "comm_large";
-const char *comm_large_MPI_Gather = "comm_large_MPI_Gather";
-const char *comm_large_MPI_Scatter = "comm_large_MPI_Scatter";
-const char *comp = "comp";
-const char *comp_large = "comp_large";
-const char *data_init = "data_init";
+const char* sortOptions[3] = {"random", "sorted", "reverse_sorted"};
 
-int main(int argc, char *argv[])
-{
-    CALI_CXX_MARK_FUNCTION;
-    cali::ConfigManager mgr;
-    mgr.start();
-    CALI_MARK_BEGIN(main_region);
-
-    int numVals;
-    if (argc == 2)
-    {
-        numVals = atoi(argv[1]);
+float *createArray(int size, int start, int type) {
+    float *data = (float *)malloc(sizeof(float) * size);
+    switch (type) {
+        case 0:
+            array_fill_random_no_seed(data, size);
+            break;
+        case 1:
+            array_fill_descending_local(data, size, processId, totalValues);
+            break;
+        case 2:
+            array_fill_ascending_local(data, size, processId);
+            break;
+        case 3:
+            array_fill_ascending_local(data, size, processId);
+            perturb_array(data, size, 0.01);
+            break;
+        default:
+            array_fill_random_no_seed(data, size);
+            break;
     }
+    return data;
+}
+
+void print_array(float* array, int size) {
+    for (int i = 0; i < size; i++){
+        printf("%0.3f,", array[i]);
+    }
+    printf("\n");
+}
+
+int sortDesc(const void *a, const void *b) {
+    float first = *((float *)a);
+    float second = *((float *)b);
+    if (first < second) return 1;
+    if (first > second) return -1;
+    return 0;
+}
+
+int sortAsc(const void *a, const void *b) {
+    float first = *((float *)a);
+    float second = *((float *)b);
+    if (first < second) return -1;
+    if (first > second) return 1;
+    return 0;
+}
+
+
+float *tempData;
+
+void exchangeAndSort(float *data, int count, int proc1, int proc2, int descOrder,int seqNo) {
+  if (proc1 != processId && proc2 != processId) return;
+
+  memcpy(tempData, data, count*sizeof(float));
+
+  MPI_Status status;
+
+  int otherProc = proc1==processId ? proc2 : proc1;
+  if (proc1 == processId) {
+    MPI_Send(data, count, MPI_FLOAT, otherProc, seqNo, MPI_COMM_WORLD);
+    MPI_Recv(&tempData[count], count, MPI_FLOAT, otherProc, seqNo, MPI_COMM_WORLD, &status);
+  }
+  else {
+    MPI_Recv(&tempData[count], count, MPI_FLOAT, otherProc, seqNo, MPI_COMM_WORLD, &status);
+    MPI_Send(data, count, MPI_FLOAT, otherProc, seqNo, MPI_COMM_WORLD);
+  }
+
+  if (descOrder) {
+    qsort(tempData, count*2, sizeof(float), sortDesc);
+  }
+  else {
+    qsort(tempData, count*2, sizeof(float), sortAsc);
+  }
+
+  if (proc1 == processId)
+    memcpy(data, tempData, count*sizeof(float));
+  else
+    memcpy(data, &tempData[count], count*sizeof(float));
+}
+
+void bitonicMergeSort(float *data, int count) {
+  tempData = (float *) malloc(sizeof(float) * count * 2);
+
+  int logN = totalProcesses;
+  int powerOf2 = 2;
+  int seqNo = 0;
+
+  for(int i=1; logN > 1 ; i++) {
+    int powerOf2j = powerOf2;
+    for(int j=i; j >= 1; j--) {
+      seqNo++;
+      for(int proc=0; proc < totalProcesses; proc += powerOf2j) {
+	for(int k=0; k < powerOf2j/2; k++) {
+	  exchangeAndSort(data, count, proc+k, proc+k+powerOf2j/2, ((proc+k) % (powerOf2*2) >= powerOf2),seqNo);
+	}
+      }
+      powerOf2j /= 2;
+    }
+    powerOf2 *= 2;
+    logN /= 2;
+  }
+
+  free(tempData);
+}
+
+int main(int argc, char *argv[]) {
+  CALI_CXX_MARK_FUNCTION;
+  int arraySize;
+  long int retVal;
+  int nameLen;
+  char hostName[MPI_MAX_PROCESSOR_NAME];
+
+  MPI_Init(&argc, &argv);
+
+  MPI_Comm_size(MPI_COMM_WORLD, &totalProcesses);
+  MPI_Comm_rank(MPI_COMM_WORLD, &processId);
+  MPI_Get_processor_name(hostName, &nameLen);
+
+  cali::ConfigManager configManager;
+  configManager.start();
+
+  totalValues = atoi(argv[1]);
+  sortType = atoi(argv[2]);
+  arraySize = totalValues / totalProcesses;
+
+  int start = processId*arraySize;
+  CALI_MARK_BEGIN(data_init);
+  float * data = createArray(arraySize, start, sortType);
+  CALI_MARK_END(data_init);
+  print_array(data, arraySize);
+
+  CALI_MARK_BEGIN(comp);
+  CALI_MARK_BEGIN(comp_large);
+  bitonicMergeSort(data, arraySize);
+  CALI_MARK_END(comp_large);
+  CALI_MARK_END(comp);
+
+  float * allData = NULL;
+  if (processId == 0) {
+    allData = (float *) malloc(arraySize * totalProcesses * sizeof(float));
+  }
+
+  CALI_MARK_BEGIN(comm);
+  CALI_MARK_BEGIN(comm_large);
+  CALI_MARK_BEGIN(mpi_gather_region);
+  MPI_Gather(data, arraySize, MPI_FLOAT, allData, arraySize, MPI_FLOAT, 0, MPI_COMM_WORLD);
+  CALI_MARK_END(mpi_gather_region);
+  CALI_MARK_END(comm_large);
+  CALI_MARK_END(comm);
+  
+  if (processId == 0) {
+    CALI_MARK_BEGIN(correctness_check);
+    int sortedCorrectly = check_sorted(allData, arraySize * totalProcesses);
+    if (sortedCorrectly)
+      printf("Successfully sorted!\n");
     else
-    {
-        fprintf(stderr, "\nUsage: %s <number_of_values>\n", argv[0]);
-        return EXIT_FAILURE;
-    }
+      printf("Error: data not sorted.\n");
+    CALI_MARK_END(correctness_check);
+    
+    print_array(allData, arraySize * totalProcesses);
 
-    // Initialize MPI and determine rank and size
-    MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &taskid);
-    MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
+    free(allData);
 
-    float *values = (float *)malloc(numVals * sizeof(float));
+    adiak::init(NULL);
+    adiak::launchdate();
+    adiak::libraries();
+    adiak::cmdline();
+    adiak::clustername();
+    adiak::value("Algorithm", "bitonic_sort");
+    adiak::value("ProgrammingModel", "MPI");
+    adiak::value("Datatype", "float");
+    adiak::value("SizeOfDatatype", sizeof(float));
+    adiak::value("InputSize", totalValues);
+    adiak::value("InputType", sortOptions[sortType-1]);
+    adiak::value("num_procs", totalProcesses);
+    adiak::value("group_num", 1);
+    adiak::value("implementation_source", "Online");
+    adiak::value("correctness", sortedCorrectly);
 
-    if (numtasks < 2)
-    {
-        fprintf(stderr, "Need at least two MPI tasks. Quitting...\n");
-        MPI_Finalize();
-        free(values);
-        return EXIT_FAILURE;
-    }
+  }
+  
+  free(data);
 
-    // data initalizationn
+  configManager.stop();
+  configManager.flush();
 
-    array_size = numVals / numtasks;
-
-    local_array = (float *)malloc(array_size * sizeof(float));
-    if (taskid == MASTER)
-    {
-        global_array = (float *)malloc(numVals * sizeof(float));
-    }
-    CALI_MARK_BEGIN(data_init);
-    array_fill_random(local_array, array_size);
-    CALI_MARK_END(data_init);
-    // MP baried
-    MPI_Barrier(MPI_COMM_WORLD);
-    int proc_step = (int)(log2(numtasks));
-    // local sort  in owrker
-    qsort(local_array, array_size, sizeof(float), compare_floats);
-
-    // iteratue over stages, porcesses, and cal high or low
-    for (int i = 0; i < proc_step; i++)
-    {
-        for (int j = i; j >= 0; j--)
-        {
-            if (((taskid >> (i + 1)) % 2 == 0 && (taskid >> j) % 2 == 0) || ((taskid >> (i + 1)) % 2 != 0 && (taskid >> j) % 2 != 0))
-            {
-                low_bit(j);
-            }
-            else
-            {
-                high_bit(j);
-            }
-        }
-    }
-
-    // mpi GATHER for local to global::
-    MPI_Gather(local_array, array_size, MPI_FLOAT, global_array, array_size, MPI_FLOAT, MASTER, MPI_COMM_WORLD);
-
-    if (taskid == MASTER)
-    {
-
-        int is_correct = check_sorted(global_array, numVals);
-        if (is_correct)
-        {
-            printf("The array is correctly sorted.\n");
-        }
-        else
-        {
-            printf("Error: The array is not correctly sorted.\n");
-        }
-    }
-
-    CALI_MARK_END(main_region);
-
-    free(local_array);
-    if (taskid == MASTER)
-    {
-        free(global_array);
-    }
-    MPI_Finalize();
-
-    return 0;
+  MPI_Finalize();
+  return 0;
 }
-
-int compare_floats(const void *a, const void *b)
-{
-    float arg1 = *(const float *)a;
-    float arg2 = *(const float *)b;
-    if (arg1 < arg2)
-        return -1;
-    if (arg1 > arg2)
-        return 1;
-    return 0;
-}
-
-void high_bit(int stage_bit)
-{
-    int i;
-    float partner_max;
-
-    // Allocate buffers for send and receive
-    float *receive_buffer = (float *)malloc((array_size + 1) * sizeof(float));
-    int receive_count;
-    MPI_Recv(&partner_max, 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-    // Prepare send buffer
-    int send_count = 0;
-    float *send_buffer = (float *)malloc((array_size + 1) * sizeof(float));
-    MPI_Send(&local_array[0], 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
-
-    // Populate send buffer with values less than partner's max
-    for (i = 0; i < array_size; i++)
-    {
-        if (local_array[i] < partner_max)
-        {
-            send_buffer[send_count + 1] = local_array[i];
-            send_count++;
-        }
-        else
-        {
-            break;
-        }
-    }
-
-    // Exchange data with partner process
-    MPI_Recv(receive_buffer, array_size, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    receive_count = (int)receive_buffer[0];
-    send_buffer[0] = (float)send_count;
-    MPI_Send(send_buffer, send_count + 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
-
-    // Merge received values
-    for (i = 1; i <= receive_count; i++)
-    {
-        if (receive_buffer[i] > local_array[0])
-        {
-            local_array[0] = receive_buffer[i];
-        }
-        else
-        {
-            break;
-        }
-    }
-
-    // Sort the updated local array
-    qsort(local_array, array_size, sizeof(float), compare_floats);
-    free(send_buffer);
-    free(receive_buffer);
-}
-
-void low_bit(int stage_bit)
-{
-    int i;
-    float partner_min;
-
-    // Allocate buffers for send and receive
-    float *send_buffer = (float *)malloc((array_size + 1) * sizeof(float));
-    int send_count = 0;
-    MPI_Send(&local_array[array_size - 1], 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
-
-    int receive_count;
-    float *receive_buffer = (float *)malloc((array_size + 1) * sizeof(float));
-    MPI_Recv(&partner_min, 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-    // Populate send buffer with values greater than partner's min
-    for (i = array_size - 1; i >= 0; i--)
-    {
-        if (local_array[i] > partner_min)
-        {
-            send_buffer[send_count + 1] = local_array[i];
-            send_count++;
-        }
-        else
-        {
-            break;
-        }
-    }
-
-    send_buffer[0] = (float)send_count;
-    MPI_Send(send_buffer, send_count + 1, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD);
-    MPI_Recv(receive_buffer, array_size, MPI_FLOAT, taskid ^ (1 << stage_bit), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-    // Merge received values
-    receive_count = (int)receive_buffer[0];
-    for (i = 1; i <= receive_count; i++)
-    {
-        if (local_array[array_size - 1] < receive_buffer[i])
-        {
-            local_array[array_size - 1] = receive_buffer[i];
-        }
-        else
-        {
-            break;
-        }
-    }
-
-    // Sort the updated local array
-    qsort(local_array, array_size, sizeof(float), compare_floats);
-    free(send_buffer);
-    free(receive_buffer);
-};
