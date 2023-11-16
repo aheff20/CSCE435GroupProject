@@ -669,16 +669,20 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 ### Analysis
 
 #### Effect of input type
-In all of our algorithms, we see that the input type does not drammatically increase the average time it takes to sort the overall array. This is because the way in which we each implemented our algorithms, regardless of how it is sorted at the beginning, the algorithms still go through the entire array, making comparisons and swapping values as they would with random inputs. Perhaps we could have added more checks into our algorithm to save time if the array was already sorted, but that was overlooked in the original implementation.
+In all of our algorithms, we see that the input type does not dramatically increase the average time it takes to sort the overall array. This is because the way in which we each implemented our algorithms, regardless of how it is sorted at the beginning, the algorithms still go through the entire array, making comparisons and swapping values as they would with random inputs. Perhaps we could have added more checks into our algorithm to save time if the array was already sorted, but that was overlooked in the original implementation.
 
 #### Strong scaling in MPI
-All of our algorithms tend to scale well when the problem size is kept constant. At this point, we tested strong scaling for our MPI implementations by having them sort 2^20 values with different numbers of processors. The graphs indicate that as the number of processors grows exponentially, the time it takes to sort raises more linerally, what you would expect for strong scaling.
+All of our algorithms tend to scale well when the problem size is kept constant. At this point, we tested strong scaling for our MPI implementations by having them sort 2^20 values with different numbers of processors. The graphs indicate that as the number of processors grows exponentially, the time it takes to sort increases linearly, which is expected for strong scaling.
+
+As expected, the computational time ('comp') decreases as we increase the number of processes, aligning with the principles of strong scaling where the work per process reduces, ideally leading to a reduction in execution time. However, our communication times ('comm', 'comm_small', 'comm_large') do not consistently reduce and sometimes increase, likely due to overhead from more intensive inter-process communication. This suggests that while our algorithmic optimizations are effective to a point, there are diminishing returns on scaling due to inherent communication complexities that become prominent as the number of processes grows.
 
 #### Strong scaling in CUDA
 For our CUDA implementations, we had our algorithms sort 2^16 values with different numbers of threads per block. We can see that as the number of threads increases, the time it takes to sort the array tends to decrease faster and faster. This is because more threads are working together to piece together the sorted array.
 
 #### Weak scaling in MPI
 All of our algorithms also responded well to weak scaling. To test this for MPI, we kept at a constant 128 processors and increased the input size of the array. As the input size grew exponentially, the time it took to sort the array did not grow as exponentially.
+
+The graphs show that as the input size grows, the computation time ('comp') generally increases, which is a natural outcome given the larger data set each process is handling. However, we observe that the communication times ('comm', 'comm_small', 'comm_large') also increase, suggesting that our implementations experience some inefficiency due to communication overhead. This implies that while our algorithms scale with increasing data sizes, there are challenges to address in terms of communication efficiency to improve scalability further.
 
 #### Weak scaling in CUDA
 For CUDA, we kept at a constant 2048 threads and increased the input size of the array. As the Input size increases exponentially, the time it takes to sort the array also increases, however much slower. 
