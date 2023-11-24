@@ -81,51 +81,94 @@ __global__ void findDisplacements(float* dev_values, int num_vals, int num_block
     int threadID = threadIdx.x + blockDim.x * blockIdx.x;
     int start = threadID * local_chunk;
 
+    // if(threadID == 0) {
+    //     printf("DEV VALUES:\n");
+    //     for(int i = 0; i < num_vals; i++) {
+    //         printf("%0.3f,", dev_values[i]);
+    //     }
+    //     printf("\n\n");
+    // }
+
     if (start < num_vals) {
         // Grab data from partition
-        float* local_values = new float[local_chunk];
-        for (int i = start; i < start + local_chunk; i++) {
-            local_values[i - start] = dev_values[i];
-        }
-
-        // Init local counters
-        int *localCounts = new int[num_blocks];
-        int *localDisplacements = new int[num_blocks];
+        // float* local_values = new float[local_chunk];
+        // for (int i = start; i < start + local_chunk; i++) {
+        //     local_values[i - start] = dev_values[i];
+        // }
 
         for (int i = 0; i < num_blocks; i++){
-            localCounts[i] = 0;
+            incoming_value_count[i + threadID * num_blocks] = 0;
         }
 
         // Determine where each value in the partion should go based off pivots
-        for (int i = 0; i < local_chunk; i++) {
+        for (int i = start; i < start + local_chunk; i++) {
             bool placed = false;
             for (int k = 0; k < num_blocks-1; k++) {
-                if (local_values[i] < pivots[k]) {
-                    localCounts[k]++;
+                if (dev_values[i] < pivots[k]) {
+                    incoming_value_count[k + threadID * num_blocks]++;
                     placed = true;
                     break;
                 }
             }
             if(!placed){
-                localCounts[num_blocks-1]++;
+                incoming_value_count[threadID * num_blocks + num_blocks-1]++;
             }
         }
         
         // Calculate displacements from local counts
-        localDisplacements[0] = 0;
+        displacements[threadID*num_blocks] = 0;
         for (int i = 1; i < num_blocks; i++){
             int sum = 0;
             for (int k = i-1; k >= 0; k--){
-                sum += localCounts[k];
+                sum += incoming_value_count[k + threadID*num_blocks];
             }
-            localDisplacements[i] = sum;
+            displacements[i+threadID*num_blocks] = sum;
         }
 
         // Place local values into global arrays
-        for(int i = 0; i < num_blocks; i++){
-            incoming_value_count[i + threadID * num_blocks] = localCounts[i];
-            displacements[i + threadID * num_blocks] = localDisplacements[i];
-        }
+        // for(int i = 0; i < num_blocks; i++){
+        //     incoming_value_count[i + threadID * num_blocks] = localCounts[i];
+        //     displacements[i + threadID * num_blocks] = localDisplacements[i];
+        // }
+
+        // // Init local counters
+        // int *localCounts = new int[num_blocks];
+        // int *localDisplacements = new int[num_blocks];
+
+        // for (int i = 0; i < num_blocks; i++){
+        //     localCounts[i] = 0;
+        // }
+
+        // // Determine where each value in the partion should go based off pivots
+        // for (int i = 0; i < local_chunk; i++) {
+        //     bool placed = false;
+        //     for (int k = 0; k < num_blocks-1; k++) {
+        //         if (local_values[i] < pivots[k]) {
+        //             localCounts[k]++;
+        //             placed = true;
+        //             break;
+        //         }
+        //     }
+        //     if(!placed){
+        //         localCounts[num_blocks-1]++;
+        //     }
+        // }
+        
+        // // Calculate displacements from local counts
+        // localDisplacements[0] = 0;
+        // for (int i = 1; i < num_blocks; i++){
+        //     int sum = 0;
+        //     for (int k = i-1; k >= 0; k--){
+        //         sum += localCounts[k];
+        //     }
+        //     localDisplacements[i] = sum;
+        // }
+
+        // // Place local values into global arrays
+        // for(int i = 0; i < num_blocks; i++){
+        //     incoming_value_count[i + threadID * num_blocks] = localCounts[i];
+        //     displacements[i + threadID * num_blocks] = localDisplacements[i];
+        // }
         
     
     }
@@ -137,12 +180,20 @@ __global__ void sendDisplacedValues(float* final_unsorted_values, float* dev_val
     int threadID = threadIdx.x + blockDim.x * blockIdx.x;
     int start = threadID * local_chunk;
 
+    // if(threadID == 0) {
+    //     printf("DISPLACEMENTS:\n");
+    //     for(int i = 0; i < num_blocks*num_blocks; i++) {
+    //         printf("%i,", displacements[i]);
+    //     }
+    //     printf("\n\n");
+    // }
+
     if (start < num_vals) {
-        // Grab data from partition
-        float* local_values = new float[local_chunk];
-        for (int i = start; i < start + local_chunk; i++) {
-            local_values[i - start] = dev_values[i];
-        }
+
+        // float* local_values = new float[local_chunk];
+        // for (int i = start; i < start + local_chunk; i++) {
+        //     local_values[i - start] = dev_values[i];
+        // }
 
         for(int i = 0; i < num_blocks; i++){
 
@@ -159,11 +210,38 @@ __global__ void sendDisplacedValues(float* final_unsorted_values, float* dev_val
                         offset += final_value_count[n];
                     }
                 }            
-                final_unsorted_values[offset] = local_values[k];
+                final_unsorted_values[offset] = dev_values[k + threadID*local_chunk];
 
             }
         
         }
+
+        // Grab data from partition
+        // float* local_values = new float[local_chunk];
+        // for (int i = start; i < start + local_chunk; i++) {
+        //     local_values[i - start] = dev_values[i];
+        // }
+
+        // for(int i = 0; i < num_blocks; i++){
+
+        //     for(int k = displacements[i + threadID*num_blocks]; k < displacements[i + threadID*num_blocks] + incoming_value_count[i + threadID*num_blocks]; k++){ 
+
+        //         int offset = k - displacements[i + threadID*num_blocks];
+
+        //         for(int j = 0; j < threadID; j++){
+        //             offset += incoming_value_count[j*num_blocks+i];
+        //         }       
+                
+        //         if(i > 0) {
+        //             for (int n = 0; n < i; n++){
+        //                 offset += final_value_count[n];
+        //             }
+        //         }            
+        //         final_unsorted_values[offset] = local_values[k];
+
+        //     }
+        
+        // }
 
     }
 }
@@ -173,8 +251,45 @@ __global__ void finalSort(float *final_sorted_values, float* final_unsorted_valu
     int threadID = threadIdx.x + blockDim.x * blockIdx.x;
     int start = threadID * local_chunk;
 
+    // if(threadID==0) {
+    //     printf("UNSORTED VALUES:\n");
+    //     for(int i = 0; i < num_vals; i++) {
+    //         printf("%0.3f,", final_unsorted_values[i]);
+    //     }
+    //     printf("\n");
+    // }
+
     if (start < num_vals) {
 
+        //float *final_local_values = new float[final_value_count[threadID]];
+
+        int idx = 0;
+        for(int i = 0; i < threadID; i++){
+            idx += final_value_count[i];
+        }
+
+        // Grab values from partition
+        // for(int i = idx; i < idx + final_value_count[threadID]; i++) {
+        //     final_local_values[i - idx] = final_unsorted_values[i];
+        // }
+
+        // Sort values locally
+        for (int i = 0; i < final_value_count[threadID] - 1; i++) {
+            for (int j = 0; j < final_value_count[threadID] - i - 1; j++) {
+                if (final_unsorted_values[j+idx] > final_unsorted_values[j + 1+idx]) {
+                    float temp = final_unsorted_values[j+idx];
+                    final_unsorted_values[j+idx] = final_unsorted_values[j + 1+idx];
+                    final_unsorted_values[j + 1+idx] = temp;
+                }
+            }
+        }
+
+        // Place values back into original array, sorted
+        for(int i = 0; i < final_value_count[threadID]; i++) {
+            final_sorted_values[i + idx] = final_unsorted_values[i + idx];
+        }
+        
+        /*
         float *final_local_values = new float[final_value_count[threadID]];
 
         int idx = 0;
@@ -202,6 +317,7 @@ __global__ void finalSort(float *final_sorted_values, float* final_unsorted_valu
         for(int i = 0; i < final_value_count[threadID]; i++) {
             final_sorted_values[i + idx] = final_local_values[i];
         }
+        */
 
     }
 
@@ -236,7 +352,11 @@ void sample_sort(float* values, int *kernel_calls) {
     CALI_MARK_END(comp_large);
     CALI_MARK_END(comp);
 
-  
+    // cudaError_t error = cudaGetLastError();
+    // if (error != cudaSuccess) {
+    //     fprintf(stderr, "SPOT 1! CUDA error: %s\n", cudaGetErrorString(error));
+    //     exit(1);
+    // }
 
     cudaDeviceSynchronize();
 
@@ -272,6 +392,12 @@ void sample_sort(float* values, int *kernel_calls) {
     CALI_MARK_END(comm_small);
     CALI_MARK_END(comm);
 
+    // printf("PIVOTS:\n");
+    // for(int i = 0; i < BLOCKS-1; i++) {
+    //     printf("%0.3f,", pivots[i]);
+    // }
+    // printf("\n");
+
     // Count displaced values 
     int* incoming_value_count;
     cudaMalloc((void**)&incoming_value_count, BLOCKS * BLOCKS * sizeof(int));
@@ -287,6 +413,8 @@ void sample_sort(float* values, int *kernel_calls) {
 
     cudaDeviceSynchronize();
 
+    // error = cudaGetLastError();
+
     // Find out how many values will be in each block and communicate back to device
     int* incoming_values = (int*)malloc(BLOCKS * BLOCKS * sizeof(int));
 
@@ -298,16 +426,46 @@ void sample_sort(float* values, int *kernel_calls) {
     CALI_MARK_END(comm_small);
     CALI_MARK_END(comm);
 
+    // printf("INCOMING VALUES:\n");
+    // for(int i = 0; i < BLOCKS*BLOCKS; i++) {
+    //     printf("%i,", incoming_values[i]);
+    // }
+    // printf("\n");
+
+    // error = cudaGetLastError();
+    // if (error != cudaSuccess) {
+    //     fprintf(stderr, "SPOT 7! CUDA error: %s\n", cudaGetErrorString(error));
+    //     exit(1);
+    // }
+
     int* final_value_count;
     cudaMalloc((void**)&final_value_count, BLOCKS * sizeof(int));
 
     int* final_counts = (int*)malloc(BLOCKS * sizeof(int));
+
+    // error = cudaGetLastError();
+    // if (error != cudaSuccess) {
+    //     fprintf(stderr, "SPOT 6! CUDA error: %s\n", cudaGetErrorString(error));
+    //     exit(1);
+    // }
 
     CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_small);
     compute_final_counts(incoming_values, final_counts, BLOCKS);
     CALI_MARK_END(comp_small);
     CALI_MARK_END(comp);
+
+    // printf("FINAL VALUE COUNTS:\n");
+    // for(int i = 0; i < BLOCKS; i++) {
+    //     printf("%i,", final_counts[i]);
+    // }
+    // printf("\n");
+
+    // error = cudaGetLastError();
+    // if (error != cudaSuccess) {
+    //     fprintf(stderr, "SPOT 5! CUDA error: %s\n", cudaGetErrorString(error));
+    //     exit(1);
+    // }
 
     CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_small);
@@ -320,12 +478,25 @@ void sample_sort(float* values, int *kernel_calls) {
     float *final_unsorted_values;
     cudaMalloc((void**)&final_unsorted_values, NUM_VALS*sizeof(float));
 
+    // error = cudaGetLastError();
+    // if (error != cudaSuccess) {
+    //     fprintf(stderr, "SPOT 4! CUDA error: %s\n", cudaGetErrorString(error));
+    //     exit(1);
+    // }
+
     CALI_MARK_BEGIN(comp);
     CALI_MARK_BEGIN(comp_large);
     // send displaced values to other blocks
     sendDisplacedValues<<<blocks, threads>>>(final_unsorted_values, dev_values, NUM_VALS, BLOCKS, local_chunk, incoming_value_count, displacements, final_value_count);
     CALI_MARK_END(comp_large);
     CALI_MARK_END(comp);
+
+
+    // error = cudaGetLastError();
+    // if (error != cudaSuccess) {
+    //     fprintf(stderr, "SPOT 3! CUDA error: %s\n", cudaGetErrorString(error));
+    //     exit(1);
+    // }
 
     cudaDeviceSynchronize();
 
@@ -339,6 +510,12 @@ void sample_sort(float* values, int *kernel_calls) {
     CALI_MARK_END(comp_large);
     CALI_MARK_END(comp);
 
+    // error = cudaGetLastError();
+    // if (error != cudaSuccess) {
+    //     fprintf(stderr, "SPOT 4! CUDA error: %s\n", cudaGetErrorString(error));
+    //     exit(1);
+    // }
+
     cudaDeviceSynchronize();
 
     CALI_MARK_BEGIN(comm);
@@ -349,6 +526,12 @@ void sample_sort(float* values, int *kernel_calls) {
     CALI_MARK_END(cudaMemcpy_region);
     CALI_MARK_END(comm_large);
     CALI_MARK_END(comm);
+
+    // printf("FINAL VALUES:\n");
+    // for(int i = 0; i < NUM_VALS; i++) {
+    //     printf("%0.3f,", values[i]);
+    // }
+    // printf("\n");
 
     // Free data from device
     cudaFree(dev_values);
@@ -436,7 +619,7 @@ int main(int argc, char *argv[]) {
     adiak::clustername();   // Name of the cluster
     adiak::value("Algorithm", "SampleSort"); // The name of the algorithm you are using (e.g., "MergeSort", "BitonicSort")
     adiak::value("ProgrammingModel", "CUDA"); // e.g., "MPI", "CUDA", "MPIwithCUDA"
-    adiak::value("Datatype", 4); // The datatype of input elements (e.g., double, int, float)
+    adiak::value("Datatype", "float"); // The datatype of input elements (e.g., double, int, float)
     adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
     adiak::value("InputSize", NUM_VALS); // The number of elements in input dataset (1000)
     adiak::value("InputType", inputTypeString); // For sorting, this would be "Sorted", "ReverseSorted", "Random", "1%perturbed"

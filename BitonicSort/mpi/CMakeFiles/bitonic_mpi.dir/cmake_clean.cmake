@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/bitonic_mpi.dir/bitonic_mpi.cpp.o"
-  "CMakeFiles/bitonic_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+  "CMakeFiles/bitonic_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o"
   "bitonic_mpi.pdb"
   "bitonic_mpi"
 )

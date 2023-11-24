@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/miguelgi347/Final_project/CSCE435GroupProject/BitonicSort/mpi/bitonic_mpi.cpp" "/home/miguelgi347/Final_project/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/bitonic_mpi.dir/bitonic_mpi.cpp.o"
-  "/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp" "/home/miguelgi347/Final_project/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/bitonic_mpi.dir/home/miguelgi347/Final_project/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+  "/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/mpi/bitonic_mpi.cpp" "/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/bitonic_mpi.dir/bitonic_mpi.cpp.o"
+  "/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp" "/scratch/user/aidan.heffron/CSCE435GroupProject/BitonicSort/mpi/CMakeFiles/bitonic_mpi.dir/scratch/user/aidan.heffron/CSCE435GroupProject/Utils/helper_functions.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
