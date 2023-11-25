@@ -635,19 +635,19 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 #### Randomized Input Graphs:
 
-![sample_mpi_strong_random](./Graphs/sample_mpi_strong_random.png) ![bubble_mpi_strong_random](./Graphs/bubble_mpi_strong_random.png) ![merge_mpi_strong_random](./Graphs/mergesort_mpi_strong_random.png) 
+![sample_mpi_strong_random](./Graphs/sample_mpi_strong_random.png) ![bubble_mpi_strong_random](./Graphs/bubble_mpi_strong_random.png) ![merge_mpi_strong_random](./Graphs/mergesort_mpi_strong_random.png) ![bitonic_mpi_strong_random](./Graphs/bitonic_mpi_strong_random.png)
 
 #### Sorted Input Graphs:
 
-![sample_mpi_strong_sorted](./Graphs/sample_mpi_strong_sorted.png) ![bubble_mpi_strong_sorted](./Graphs/bubble_mpi_strong_sorted.png) ![merge_mpi_strong_sorted](./Graphs/mergesort_mpi_strong_sorted.png) 
+![sample_mpi_strong_sorted](./Graphs/sample_mpi_strong_sorted.png) ![bubble_mpi_strong_sorted](./Graphs/bubble_mpi_strong_sorted.png) ![merge_mpi_strong_sorted](./Graphs/mergesort_mpi_strong_sorted.png) ![bitonic_mpi_strong_sorted](./Graphs/bitonic_mpi_strong_sorted.png)
 
 #### Reverse Sorted Input Graphs:
 
-![sample_mpi_strong_reverse](./Graphs/sample_mpi_strong_reverse.png) ![bubble_mpi_strong_reverse](./Graphs/bubble_mpi_strong_reverse.png) ![merge_mpi_strong_reverse](./Graphs/mergesort_mpi_strong_reverse.png) 
+![sample_mpi_strong_reverse](./Graphs/sample_mpi_strong_reverse.png) ![bubble_mpi_strong_reverse](./Graphs/bubble_mpi_strong_reverse.png) ![merge_mpi_strong_reverse](./Graphs/mergesort_mpi_strong_reverse.png) ![bitonic_mpi_strong_reverse](./Graphs/bitonic_mpi_strong_reverse.png)
 
 #### 1%Perturbed Input Graphs:
 
-![sample_mpi_strong_perturbed](./Graphs/sample_mpi_strong_perturbed.png) ![bubble_mpi_strong_perturbed](./Graphs/bubble_mpi_strong_perturbed.png) ![merge_mpi_strong_perturbed](./Graphs/mergesort_mpi_strong_perturbed.png) 
+![sample_mpi_strong_perturbed](./Graphs/sample_mpi_strong_perturbed.png) ![bubble_mpi_strong_perturbed](./Graphs/bubble_mpi_strong_perturbed.png) ![merge_mpi_strong_perturbed](./Graphs/mergesort_mpi_strong_perturbed.png) ![bitonic_mpi_strong_perturbed](./Graphs/bitonic_mpi_strong_perturbed.png)
 
 
 
@@ -657,19 +657,19 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 #### Randomized Input Graphs:
 
-![sample_mpi_weak_random](./Graphs/sample_mpi_weak_random.png) ![bubble_mpi_weak_random](./Graphs/bubble_mpi_weak_random.png) ![merge_mpi_weak_random](./Graphs/mergesort_mpi_weak_random.png) 
+![sample_mpi_weak_random](./Graphs/sample_mpi_weak_random.png) ![bubble_mpi_weak_random](./Graphs/bubble_mpi_weak_random.png) ![merge_mpi_weak_random](./Graphs/mergesort_mpi_weak_random.png) ![bitonic_mpi_weak_random](./Graphs/bitonic_mpi_weak_random.png)
 
 #### Sorted Input Graphs:
 
-![sample_mpi_weak_sorted](./Graphs/sample_mpi_weak_sorted.png) ![bubble_mpi_weak_sorted](./Graphs/bubble_mpi_weak_sorted.png) ![merge_mpi_weak_sorted](./Graphs/mergesort_mpi_weak_sorted.png)
+![sample_mpi_weak_sorted](./Graphs/sample_mpi_weak_sorted.png) ![bubble_mpi_weak_sorted](./Graphs/bubble_mpi_weak_sorted.png) ![merge_mpi_weak_sorted](./Graphs/mergesort_mpi_weak_sorted.png) ![bitonic_mpi_weak_sorted](./Graphs/bitonic_mpi_weak_sorted.png)
 
 #### Reverse Sorted Input Graphs:
 
-![sample_mpi_weak_reverse](./Graphs/sample_mpi_weak_reverse.png) ![bubble_mpi_weak_reverse](./Graphs/bubble_mpi_weak_reverse.png) ![merge_mpi_weak_reverse](./Graphs/mergesort_mpi_weak_reverse.png) 
+![sample_mpi_weak_reverse](./Graphs/sample_mpi_weak_reverse.png) ![bubble_mpi_weak_reverse](./Graphs/bubble_mpi_weak_reverse.png) ![merge_mpi_weak_reverse](./Graphs/mergesort_mpi_weak_reverse.png) ![bitonic_mpi_weak_reverse](./Graphs/bitonic_mpi_weak_reverse.png)
 
 #### 1%Perturbed Input Graphs:
 
-![sample_mpi_weak_perturbed](./Graphs/sample_mpi_weak_perturbed.png) ![bubble_mpi_weak_perturbed](./Graphs/bubble_mpi_weak_perturbed.png) ![merge_mpi_weak_perturbed](./Graphs/mergesort_mpi_weak_perturbed.png) 
+![sample_mpi_weak_perturbed](./Graphs/sample_mpi_weak_perturbed.png) ![bubble_mpi_weak_perturbed](./Graphs/bubble_mpi_weak_perturbed.png) ![merge_mpi_weak_perturbed](./Graphs/mergesort_mpi_weak_perturbed.png) ![bitonic_mpi_weak_perturbed](./Graphs/bitonic_mpi_weak_perturbed.png)
 
 
 ---
@@ -727,7 +727,4 @@ All of our algorithms also responded well to weak scaling. To test this for MPI,
 The graphs show that as the input size grows, the computation time ('comp') generally increases, which is a natural outcome given the larger data set each process is handling. However, we observe that the communication times ('comm', 'comm_small', 'comm_large') also increase, suggesting that our implementations experience some inefficiency due to communication overhead. This implies that while our algorithms scale with increasing data sizes, there are challenges to address in terms of communication efficiency to improve scalability further.
 
 #### Weak scaling in CUDA
-For CUDA, we kept at a constant 2048 threads and increased the input size of the array. As the Input size increases exponentially, the time it takes to sort the array also increases, however much slower. 
-
-#### Communication Performance
-In all of our algorithms, communication plays a huge role in the overall performance, as much of the time waiting to hear from different proceses can slow down the overall process. For example, in the Sample Sort CUDA implementation, comm_small is always implemented on the CPU while the comm_large portions are implemented in the GPU. This causes a bottleneck for the overall algorithm and makes comm_small generally higher than comm_large. 
+For CUDA, we kept at a constant 2048 threads and increased the input size of the array. As the Input size increases exponentially, the time it takes to sort the array also increases, however much slower. The biggest bottleneck found in CUDA implementations are parts of the program that are implemented on the CPU and parts that are implmemented on the GPU. For example, in the Sample Sort CUDA implementation, comp_small is always implemented on the CPU while the comp_large portions are implemented in the GPU. This causes a bottleneck for the overall algorithm and makes comp_small generally higher than comp_large because the speed of the CPU is significantly less than that of the GPU.
