@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Array of input sizes (2^16, 2^18, ..., 2^28)  65536 262144 1048576 4194304 16777216 67108864 268435456           
-inputSizes=(   1048576     )
+inputSizes=(  65536	262144	1048576	4194304	16777216	67108864	268435456   )
 
-# Array of proc  (2 4 8 16 32 64 128 256 512 1024 )  try 256 on 4 nodes
-procs=( 2 4 8 16 32 64 128 256)
+# Array of proc  (2 4 8 16 32 64 128 256 512 1024 )  try 256 on 4 nodes.  'r' 'a' 'p'. 256 128. 's'
+procs=( 2 4 8 16 32 64 128 )
 
-methods=('s' 'r' 'a' 'p')
+methods=('a' )
 
 # Iterate over each input size
 for size in "${inputSizes[@]}"; do
