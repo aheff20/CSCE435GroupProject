@@ -4,7 +4,7 @@
 inputSizes=(65536 262144 1048576 4194304 16777216 67108864)
 
 # Array of CUDA threads (64, 128, ..., 4096)
-mpiProcs=(2 4 8 16 32 64 128 256 512 1024)
+mpiProcs=(1024)
 
 inputTypes=("Sorted" "ReverseSorted" "Random" "Perturbed")
 
