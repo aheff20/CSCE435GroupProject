@@ -54,8 +54,6 @@ __global__ void merge_sort_step(float *dev_values, float *temp, int n, unsigned 
     }
 }
 
-
-
 void merge_sort(float *values) {
     float *dev_values, *temp;
     int n = NUM_VALS; // Assuming NUM_VALS is the size of the 'values' array
@@ -63,62 +61,55 @@ void merge_sort(float *values) {
     cudaMalloc((void**)&dev_values, bytes);
     cudaMalloc((void**)&temp, bytes);
 
-
-    CALI_MARK_BEGIN(comm);
+    // Only copy once to the device at the beginning
+        CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_large);
     cudaMemcpy(dev_values, values, bytes, cudaMemcpyHostToDevice);
-     CALI_MARK_END(comm_large);
+         CALI_MARK_END(comm_large);
     CALI_MARK_END(comm);
    
 
-    // dim3 blocks(BLOCKS,1);    /* Number of blocks   */
-     dim3 threadsPerBlock(THREADS,1);
-     
-    // if (threadsPerBlock.x > 1024) {
-    //     // Adjust threadsPerBlock.x to the maximum allowed if it exceeds
-    //     threadsPerBlock.x = 1024;
-    // }
-    
-
-    // Assume major_step and minor_step are defined elsewhere
-    CALI_MARK_BEGIN(comp);
-    CALI_MARK_BEGIN(comp_large);
+    dim3 threadsPerBlock(THREADS,1);
     int width;
+     CALI_MARK_BEGIN(comp);
+     CALI_MARK_BEGIN(comp_large);
     for (width = 1; width < n; width *= 2) {
-        //dim3 numBlocks((n + (threadsPerBlock.x * 2 * width) - 1) / (threadsPerBlock.x * 2 * width));
-        //  int numBlocks = (n + 2 * width * THREADS - 1) / (2 * width * THREADS);
-        
         long long totalThreads = (long long)n / (2 * width);
         int numBlocks = (totalThreads + threadsPerBlock.x - 1) / threadsPerBlock.x;
-
-                // Check if numBlocks exceeds your GPU's limit
-        // cudaDeviceProp prop;
-        // cudaGetDeviceProperties(&prop, 0);
-        // if (numBlocks > prop.maxGridSize[0]) {
-        //    numBlocks = prop.maxGridSize[0];
-        // }
-
+        
+        if ((width / 2) % 2 == 0) {
         merge_sort_step<<<numBlocks, threadsPerBlock>>>(dev_values, temp, n, width);
-        cudaDeviceSynchronize();
-       
+    } else {
+        merge_sort_step<<<numBlocks, threadsPerBlock>>>(temp, dev_values, n, width);
+    }
+    cudaDeviceSynchronize();
+        
+
+   
+        // Handle errors
         cudaError_t error = cudaGetLastError();
         if (error != cudaSuccess) {
             fprintf(stderr, "CUDA error: %s\n", cudaGetErrorString(error));
             exit(1);
         }
-
-    
     }
 
-    CALI_MARK_END(comp_large);
-    CALI_MARK_END(comp);
+       CALI_MARK_END(comp_large);
+        CALI_MARK_END(comp);
 
-   CALI_MARK_BEGIN(comm);
+    // Only copy back once after sorting is complete
+       CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_large);
-    cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
-     CALI_MARK_END(comm_large);
+    // Check which pointer contains the sorted data
+    if ((width / 2) % 2 == 0) {
+        cudaMemcpy(values, temp, bytes, cudaMemcpyDeviceToHost);
+    } else {
+        cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
+    }
+    CALI_MARK_END(comm_large);
     CALI_MARK_END(comm);
 
+    
     CALI_MARK_BEGIN(comm);
     CALI_MARK_BEGIN(comm_small);
     CALI_MARK_END(comm_small);
@@ -131,12 +122,92 @@ void merge_sort(float *values) {
     CALI_MARK_END(comp_small);
     CALI_MARK_END(comp);
 
- 
 
     cudaFree(dev_values);
     cudaFree(temp);
-   
 }
+
+// void merge_sort(float *values) {
+//     float *dev_values, *temp;
+//     int n = NUM_VALS; // Assuming NUM_VALS is the size of the 'values' array
+//     size_t bytes = n * sizeof(float);
+//     cudaMalloc((void**)&dev_values, bytes);
+//     cudaMalloc((void**)&temp, bytes);
+
+
+//     CALI_MARK_BEGIN(comm);
+//     CALI_MARK_BEGIN(comm_large);
+//     cudaMemcpy(dev_values, values, bytes, cudaMemcpyHostToDevice);
+//      CALI_MARK_END(comm_large);
+//     CALI_MARK_END(comm);
+   
+
+//     // dim3 blocks(BLOCKS,1);    /* Number of blocks   */
+//      dim3 threadsPerBlock(THREADS,1);
+     
+//     // if (threadsPerBlock.x > 1024) {
+//     //     // Adjust threadsPerBlock.x to the maximum allowed if it exceeds
+//     //     threadsPerBlock.x = 1024;
+//     // }
+    
+
+//     // Assume major_step and minor_step are defined elsewhere
+//     CALI_MARK_BEGIN(comp);
+//     CALI_MARK_BEGIN(comp_large);
+//     int width;
+//     for (width = 1; width < n; width *= 2) {
+//         //dim3 numBlocks((n + (threadsPerBlock.x * 2 * width) - 1) / (threadsPerBlock.x * 2 * width));
+//         //  int numBlocks = (n + 2 * width * THREADS - 1) / (2 * width * THREADS);
+        
+//         long long totalThreads = (long long)n / (2 * width);
+//         int numBlocks = (totalThreads + threadsPerBlock.x - 1) / threadsPerBlock.x;
+
+//                 // Check if numBlocks exceeds your GPU's limit
+//         // cudaDeviceProp prop;
+//         // cudaGetDeviceProperties(&prop, 0);
+//         // if (numBlocks > prop.maxGridSize[0]) {
+//         //    numBlocks = prop.maxGridSize[0];
+//         // }
+
+//         merge_sort_step<<<numBlocks, threadsPerBlock>>>(dev_values, temp, n, width);
+//         cudaDeviceSynchronize();
+       
+//         cudaError_t error = cudaGetLastError();
+//         if (error != cudaSuccess) {
+//             fprintf(stderr, "CUDA error: %s\n", cudaGetErrorString(error));
+//             exit(1);
+//         }
+
+    
+//     }
+
+//     CALI_MARK_END(comp_large);
+//     CALI_MARK_END(comp);
+
+//    CALI_MARK_BEGIN(comm);
+//     CALI_MARK_BEGIN(comm_large);
+//     cudaMemcpy(values, dev_values, bytes, cudaMemcpyDeviceToHost);
+//      CALI_MARK_END(comm_large);
+//     CALI_MARK_END(comm);
+
+//     CALI_MARK_BEGIN(comm);
+//     CALI_MARK_BEGIN(comm_small);
+//     CALI_MARK_END(comm_small);
+//     CALI_MARK_END(comm);
+
+
+
+//     CALI_MARK_BEGIN(comp);
+//     CALI_MARK_BEGIN(comp_small);
+//     CALI_MARK_END(comp_small);
+//     CALI_MARK_END(comp);
+
+ 
+
+//     cudaFree(dev_values);
+//     cudaFree(temp);
+   
+// }
 
 int main(int argc, char *argv[]) {
     CALI_CXX_MARK_FUNCTION;

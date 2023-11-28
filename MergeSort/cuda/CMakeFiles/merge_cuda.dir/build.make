@@ -43,10 +43,10 @@ RM = /sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda
+CMAKE_SOURCE_DIR = /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda
+CMAKE_BINARY_DIR = /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda
 
 # Include any dependencies generated for this target.
 include CMakeFiles/merge_cuda.dir/depend.make
@@ -59,8 +59,8 @@ include CMakeFiles/merge_cuda.dir/flags.make
 
 CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: CMakeFiles/merge_cuda.dir/flags.make
 CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: merge_cuda.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/merge_cuda.dir/merge_cuda.cu.o"
-	/sw/eb/sw/CUDA/9.2.88/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu -o CMakeFiles/merge_cuda.dir/merge_cuda.cu.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/merge_cuda.dir/merge_cuda.cu.o"
+	/sw/eb/sw/CUDA/9.2.88/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu -o CMakeFiles/merge_cuda.dir/merge_cuda.cu.o
 
 CMakeFiles/merge_cuda.dir/merge_cuda.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/merge_cuda.dir/merge_cuda.cu.i"
@@ -70,29 +70,29 @@ CMakeFiles/merge_cuda.dir/merge_cuda.cu.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/merge_cuda.dir/merge_cuda.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o: CMakeFiles/merge_cuda.dir/flags.make
-CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o: /scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
-	/sw/eb/sw/GCCcore/7.3.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o -c /scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp
+CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o: CMakeFiles/merge_cuda.dir/flags.make
+CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+	/sw/eb/sw/GCCcore/7.3.0/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp
 
-CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i"
-	/sw/eb/sw/GCCcore/7.3.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp > CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.i
+CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i"
+	/sw/eb/sw/GCCcore/7.3.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp > CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.i
 
-CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s"
-	/sw/eb/sw/GCCcore/7.3.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp -o CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.s
+CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s"
+	/sw/eb/sw/GCCcore/7.3.0/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp -o CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.s
 
 # Object files for target merge_cuda
 merge_cuda_OBJECTS = \
 "CMakeFiles/merge_cuda.dir/merge_cuda.cu.o" \
-"CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+"CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o"
 
 # External object files for target merge_cuda
 merge_cuda_EXTERNAL_OBJECTS =
 
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/merge_cuda.cu.o
-CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/build.make
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so
@@ -101,7 +101,7 @@ CMakeFiles/merge_cuda.dir/cmake_device_link.o: /lib64/librt.so
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: /lib64/libpthread.so
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: /lib64/libdl.so
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/dlink.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CUDA device code CMakeFiles/merge_cuda.dir/cmake_device_link.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CUDA device code CMakeFiles/merge_cuda.dir/cmake_device_link.o"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/merge_cuda.dir/dlink.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -112,13 +112,13 @@ CMakeFiles/merge_cuda.dir/build: CMakeFiles/merge_cuda.dir/cmake_device_link.o
 # Object files for target merge_cuda
 merge_cuda_OBJECTS = \
 "CMakeFiles/merge_cuda.dir/merge_cuda.cu.o" \
-"CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o"
+"CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o"
 
 # External object files for target merge_cuda
 merge_cuda_EXTERNAL_OBJECTS =
 
 merge_cuda: CMakeFiles/merge_cuda.dir/merge_cuda.cu.o
-merge_cuda: CMakeFiles/merge_cuda.dir/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.cpp.o
+merge_cuda: CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
 merge_cuda: CMakeFiles/merge_cuda.dir/build.make
 merge_cuda: /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
 merge_cuda: /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so
@@ -128,7 +128,7 @@ merge_cuda: /lib64/libpthread.so
 merge_cuda: /lib64/libdl.so
 merge_cuda: CMakeFiles/merge_cuda.dir/cmake_device_link.o
 merge_cuda: CMakeFiles/merge_cuda.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable merge_cuda"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable merge_cuda"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/merge_cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -141,6 +141,6 @@ CMakeFiles/merge_cuda.dir/clean:
 .PHONY : CMakeFiles/merge_cuda.dir/clean
 
 CMakeFiles/merge_cuda.dir/depend:
-	cd /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda /scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/merge_cuda.dir/DependInfo.cmake --color=$(COLOR)
+	cd /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/merge_cuda.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/merge_cuda.dir/depend
 

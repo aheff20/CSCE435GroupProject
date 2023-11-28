@@ -156,7 +156,7 @@ stdbool.h
 typesCaliper.h
 /scratch/group/csce435-f23/Caliper/caliper/include/caliper/typesCaliper.h
 
-/scratch/user/jfquismorio/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu
 stdlib.h
 -
 stdio.h
@@ -170,9 +170,9 @@ caliper/cali-manager.h
 adiak.hpp
 -
 ../../Utils/helper_functions.h
-/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.h
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.h
 
-/scratch/user/jfquismorio/CSCE435GroupProject/Utils/helper_functions.h
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.h
 vector
 -
 

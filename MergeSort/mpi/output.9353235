@@ -1,0 +1,13 @@
+merge_mpi has started with 128 tasks.
+merge_mpi has started with 268435456 num vals.
+Initializing array...
+Initialized perturbed_array  array
+******************************************************
+Master Times:
+Whole Computation Time: 36.547032 
+Master Initialization Time: 23.910575 
+Master Send : 23.910575 
+Master Recieve time: 23.910575 
+
+******************************************************
+The array is correctly sorted.
