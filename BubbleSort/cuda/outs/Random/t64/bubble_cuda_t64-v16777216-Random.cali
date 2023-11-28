@@ -23,7 +23,7 @@ __rec=node,id=88,attr=10,data=65,parent=87
 __rec=node,id=89,attr=8,data=min#min#aggregate.slot,parent=88
 __rec=node,id=15,attr=8,data=spot.channel,parent=12
 __rec=node,id=106,attr=15,data=regionprofile
-__rec=ctx,ref=106,attr=73=76=79=83=81=86=89,data=0.003748=0.003748=0.003748=0.003748=1=0.003748=0
+__rec=ctx,ref=106,attr=73=76=79=83=81=86=89,data=0.003895=0.003895=0.003895=0.003895=1=0.003895=0
 __rec=node,id=37,attr=10,data=276,parent=3
 __rec=node,id=38,attr=8,data=region,parent=37
 __rec=node,id=39,attr=38,data=main
@@ -41,21 +41,21 @@ __rec=node,id=102,attr=8,data=max#iscale#cupti.activity.duration,parent=101
 __rec=node,id=103,attr=13,data=Total GPU time,parent=70
 __rec=node,id=104,attr=10,data=65,parent=103
 __rec=node,id=105,attr=8,data=sum#iscale#cupti.activity.duration,parent=104
-__rec=ctx,ref=39=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=99.611228=99.611228=99.611228=99.611228=1=99.611228=98.787743=98.787743=1=98.787743=98.787743=98.787743=1
+__rec=ctx,ref=39=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=100.133701=100.133701=100.133701=100.133701=1=100.133701=99.285156=99.285156=1=99.285156=99.285156=99.285156=1
 __rec=node,id=44,attr=38,data=data_init,parent=39
-__rec=ctx,ref=44=106,attr=73=76=79=83=81=86=89,data=0.374622=0.374622=0.374622=0.374622=1=0.374622=2
+__rec=ctx,ref=44=106,attr=73=76=79=83=81=86=89,data=0.375304=0.375304=0.375304=0.375304=1=0.375304=2
 __rec=node,id=45,attr=38,data=comp,parent=39
-__rec=ctx,ref=45=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=98.774046=98.774046=98.774046=98.774046=1=98.774046=98.773760=98.773760=1=98.773760=98.773760=98.773760=3
+__rec=ctx,ref=45=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=99.270572=99.270572=99.270572=99.270572=1=99.270572=99.270278=99.270278=1=99.270278=99.270278=99.270278=3
 __rec=node,id=46,attr=38,data=comp_large,parent=45
-__rec=ctx,ref=46=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=98.773987=98.773987=98.773987=98.773987=1=98.773987=98.773760=98.773760=1=98.773760=98.773760=98.773760=4
+__rec=ctx,ref=46=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=99.270511=99.270511=99.270511=99.270511=1=99.270511=99.270278=99.270278=1=99.270278=99.270278=99.270278=4
 __rec=node,id=47,attr=38,data=comm,parent=39
-__rec=ctx,ref=47=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.014960=0.014960=0.014960=0.014960=1=0.014960=0.013983=0.013983=1=0.013983=0.013983=0.013983=5
+__rec=ctx,ref=47=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.015763=0.015763=0.015763=0.015763=1=0.015763=0.014877=0.014877=1=0.014877=0.014877=0.014877=5
 __rec=node,id=48,attr=38,data=comm_large,parent=47
-__rec=ctx,ref=48=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.014936=0.014936=0.014936=0.014936=1=0.014936=0.013983=0.013983=1=0.013983=0.013983=0.013983=6
+__rec=ctx,ref=48=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.015736=0.015736=0.015736=0.015736=1=0.015736=0.014877=0.014877=1=0.014877=0.014877=0.014877=6
 __rec=node,id=49,attr=38,data=cudaMemcpy,parent=48
-__rec=ctx,ref=49=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.014912=0.014912=0.014912=0.014912=1=0.014912=0.013983=0.013983=1=0.013983=0.013983=0.013983=7
+__rec=ctx,ref=49=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.015708=0.015708=0.015708=0.015708=1=0.015708=0.014877=0.014877=1=0.014877=0.014877=0.014877=7
 __rec=node,id=50,attr=38,data=correctness_check,parent=39
-__rec=ctx,ref=50=106,attr=73=76=79=83=81=86=89,data=0.047836=0.047836=0.047836=0.047836=1=0.047836=8
+__rec=ctx,ref=50=106,attr=73=76=79=83=81=86=89,data=0.047727=0.047727=0.047727=0.047727=1=0.047727=8
 __rec=node,id=175,attr=10,data=512,parent=3
 __rec=node,id=181,attr=8,data=spot.channels,parent=175
 __rec=node,id=180,attr=8,data=spot.options,parent=175
@@ -125,7 +125,7 @@ __rec=node,id=156,attr=155,data=spot
 __rec=node,id=157,attr=154,data=true,parent=156
 __rec=node,id=158,attr=153,data=true,parent=157
 __rec=node,id=159,attr=152,data=outs/Random/t64/bubble_cuda_t64-v16777216-Random.cali,parent=158
-__rec=node,id=160,attr=151,data=1700062818,parent=159
+__rec=node,id=160,attr=151,data=1701150426,parent=159
 __rec=node,id=161,attr=146,data=[/scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/libmpi.so.12\,/lib64/librt.so.1\,/lib64/libpthread.so.0\,/lib64/libdl.so.2\,/sw/eb/sw/GCCcore/7.3.0/lib64/libstdc++.so.6\,/lib64/libm.so.6\,/sw/eb/sw/GCCcore/7.3.0/lib64/libgcc_s.so.1\,/lib64/libc.so.6\,/sw/eb/sw/CUDA/12.2.2/extras/CUPTI/lib64/libcupti.so.12\,/sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpapi.so.6.0\,/lib64/ld-linux-x86-64.so.2\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/libfabric.so.1\,/lib64/libutil.so.1\,/sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpfm.so.4\,/lib64/libcuda.so.1\,/lib64/libnvidia-ptxjitcompiler.so.1],parent=160
 __rec=node,id=162,attr=141,data=[./bubble_cuda\,64\,16777216\,Random],parent=161
 __rec=node,id=163,attr=136,data=g,parent=162

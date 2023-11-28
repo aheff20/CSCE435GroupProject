@@ -23,7 +23,7 @@ __rec=node,id=88,attr=10,data=65,parent=87
 __rec=node,id=89,attr=8,data=min#min#aggregate.slot,parent=88
 __rec=node,id=15,attr=8,data=spot.channel,parent=12
 __rec=node,id=106,attr=15,data=regionprofile
-__rec=ctx,ref=106,attr=73=76=79=83=81=86=89,data=0.003714=0.003714=0.003714=0.003714=1=0.003714=0
+__rec=ctx,ref=106,attr=73=76=79=83=81=86=89,data=0.003705=0.003705=0.003705=0.003705=1=0.003705=0
 __rec=node,id=37,attr=10,data=276,parent=3
 __rec=node,id=38,attr=8,data=region,parent=37
 __rec=node,id=39,attr=38,data=main
@@ -41,21 +41,21 @@ __rec=node,id=102,attr=8,data=max#iscale#cupti.activity.duration,parent=101
 __rec=node,id=103,attr=13,data=Total GPU time,parent=70
 __rec=node,id=104,attr=10,data=65,parent=103
 __rec=node,id=105,attr=8,data=sum#iscale#cupti.activity.duration,parent=104
-__rec=ctx,ref=39=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=100.302291=100.302291=100.302291=100.302291=1=100.302291=99.790574=99.790574=1=99.790574=99.790574=99.790574=1
+__rec=ctx,ref=39=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=100.622339=100.622339=100.622339=100.622339=1=100.622339=99.819831=99.819831=1=99.819831=99.819831=99.819831=1
 __rec=node,id=44,attr=38,data=data_init,parent=39
-__rec=ctx,ref=44=106,attr=73=76=79=83=81=86=89,data=0.063694=0.063694=0.063694=0.063694=1=0.063694=2
+__rec=ctx,ref=44=106,attr=73=76=79=83=81=86=89,data=0.063824=0.063824=0.063824=0.063824=1=0.063824=2
 __rec=node,id=45,attr=38,data=comp,parent=39
-__rec=ctx,ref=45=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=99.777028=99.777028=99.777028=99.777028=1=99.777028=99.776751=99.776751=1=99.776751=99.776751=99.776751=3
+__rec=ctx,ref=45=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=99.805160=99.805160=99.805160=99.805160=1=99.805160=99.804886=99.804886=1=99.804886=99.804886=99.804886=3
 __rec=node,id=46,attr=38,data=comp_large,parent=45
-__rec=ctx,ref=46=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=99.776970=99.776970=99.776970=99.776970=1=99.776970=99.776751=99.776751=1=99.776751=99.776751=99.776751=4
+__rec=ctx,ref=46=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=99.805105=99.805105=99.805105=99.805105=1=99.805105=99.804886=99.804886=1=99.804886=99.804886=99.804886=4
 __rec=node,id=47,attr=38,data=comm,parent=39
-__rec=ctx,ref=47=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.014564=0.014564=0.014564=0.014564=1=0.014564=0.013823=0.013823=1=0.013823=0.013823=0.013823=5
+__rec=ctx,ref=47=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.015818=0.015818=0.015818=0.015818=1=0.015818=0.014946=0.014946=1=0.014946=0.014946=0.014946=5
 __rec=node,id=48,attr=38,data=comm_large,parent=47
-__rec=ctx,ref=48=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.014541=0.014541=0.014541=0.014541=1=0.014541=0.013823=0.013823=1=0.013823=0.013823=0.013823=6
+__rec=ctx,ref=48=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.015794=0.015794=0.015794=0.015794=1=0.015794=0.014946=0.014946=1=0.014946=0.014946=0.014946=6
 __rec=node,id=49,attr=38,data=cudaMemcpy,parent=48
-__rec=ctx,ref=49=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.014518=0.014518=0.014518=0.014518=1=0.014518=0.013823=0.013823=1=0.013823=0.013823=0.013823=7
+__rec=ctx,ref=49=106,attr=73=76=79=83=81=86=94=96=95=99=102=105=89,data=0.015770=0.015770=0.015770=0.015770=1=0.015770=0.014946=0.014946=1=0.014946=0.014946=0.014946=7
 __rec=node,id=50,attr=38,data=correctness_check,parent=39
-__rec=ctx,ref=50=106,attr=73=76=79=83=81=86=89,data=0.047625=0.047625=0.047625=0.047625=1=0.047625=8
+__rec=ctx,ref=50=106,attr=73=76=79=83=81=86=89,data=0.047805=0.047805=0.047805=0.047805=1=0.047805=8
 __rec=node,id=175,attr=10,data=512,parent=3
 __rec=node,id=181,attr=8,data=spot.channels,parent=175
 __rec=node,id=180,attr=8,data=spot.options,parent=175
@@ -125,7 +125,7 @@ __rec=node,id=156,attr=155,data=spot
 __rec=node,id=157,attr=154,data=true,parent=156
 __rec=node,id=158,attr=153,data=true,parent=157
 __rec=node,id=159,attr=152,data=outs/ReverseSorted/t512/bubble_cuda_t512-v16777216-ReverseSorted.cali,parent=158
-__rec=node,id=160,attr=151,data=1700062934,parent=159
+__rec=node,id=160,attr=151,data=1701150446,parent=159
 __rec=node,id=161,attr=146,data=[/scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/libmpicxx.so.12\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/lib/release/libmpi.so.12\,/lib64/librt.so.1\,/lib64/libpthread.so.0\,/lib64/libdl.so.2\,/sw/eb/sw/GCCcore/7.3.0/lib64/libstdc++.so.6\,/lib64/libm.so.6\,/sw/eb/sw/GCCcore/7.3.0/lib64/libgcc_s.so.1\,/lib64/libc.so.6\,/sw/eb/sw/CUDA/12.2.2/extras/CUPTI/lib64/libcupti.so.12\,/sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpapi.so.6.0\,/lib64/ld-linux-x86-64.so.2\,/sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/libfabric/lib/libfabric.so.1\,/lib64/libutil.so.1\,/sw/eb/sw/PAPI/6.0.0-GCCcore-8.3.0/lib/libpfm.so.4\,/lib64/libcuda.so.1\,/lib64/libnvidia-ptxjitcompiler.so.1],parent=160
 __rec=node,id=162,attr=141,data=[./bubble_cuda\,512\,16777216\,ReverseSorted],parent=161
 __rec=node,id=163,attr=136,data=g,parent=162
