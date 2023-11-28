@@ -5,7 +5,7 @@ inputSizes=( 32768 65536 131072 262144 524288 1048576  2097152 4194304  16777216
 
 # Array of CUDA threads (64, 128, ..., 4096) 64 128 256 512    1024 's' 'r' 'a' 'p' 
 cudaThreads=( 1 64 128 256 512 1024 )
-methods=( 'a' )
+methods=( 's' )
 
 # Iterate over each input size
 for size in "${inputSizes[@]}"; do
