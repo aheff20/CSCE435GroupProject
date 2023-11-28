@@ -330,7 +330,7 @@ int main(int argc, char** argv) {
         adiak::value("SizeOfDatatype", sizeof(float)); // sizeof(datatype) of input elements in bytes (e.g., 1, 2, 4)
         adiak::value("InputSize", data_size); // The number of elements in input dataset (1000)
         adiak::value("InputType", inputTypeString); 
-        adiak::value("num_threads", numTasks); // The number of CUDA or OpenMP threads
+        adiak::value("num_procs", numTasks); // The number of CUDA or OpenMP threads
         adiak::value("group_num", 1); // The number of your group (integer, e.g., 1, 10)
         adiak::value("implementation_source", "Handwritten"); // Where you got the source code of your algorithm; choices: ("Online", "AI", "Handwritten").
     }
