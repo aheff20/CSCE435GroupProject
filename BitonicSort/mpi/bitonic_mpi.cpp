@@ -32,23 +32,28 @@ const char* mpi_recv_region = "MPI_Recv";
 const char* mpi_send_region = "MPI_Send";
 const char* correctness_check = "correctness_check";
 
-const char* sortOptions[3] = {"random", "sorted", "reverse_sorted"};
+const char* sortOptions[3] = {"random", "reverse_sorted", "sorted"};
+std::string type_of_input;
 
 float *createArray(int size, int start, int type) {
     float *data = (float *)malloc(sizeof(float) * size);
     switch (type) {
         case 0:
             array_fill_random_no_seed(data, size);
+            type_of_input = "random_array";
             break;
         case 1:
             array_fill_descending_local(data, size, processId, totalValues);
+            type_of_input = "descending_array";
             break;
         case 2:
             array_fill_ascending_local(data, size, processId);
+            type_of_input = "ascending_array";
             break;
         case 3:
             array_fill_ascending_local(data, size, processId);
             perturb_array(data, size, 0.01);
+            type_of_input = "perturbed_array";
             break;
         default:
             array_fill_random_no_seed(data, size);
@@ -200,7 +205,7 @@ int main(int argc, char *argv[]) {
   CALI_MARK_BEGIN(data_init);
   float * data = createArray(arraySize, start, sortType);
   CALI_MARK_END(data_init);
-  print_array(data, arraySize);
+  //print_array(data, arraySize);
 
 
   bitonicMergeSort(data, arraySize);
@@ -221,13 +226,17 @@ int main(int argc, char *argv[]) {
   if (processId == 0) {
     CALI_MARK_BEGIN(correctness_check);
     int sortedCorrectly = check_sorted(allData, arraySize * totalProcesses);
-    if (sortedCorrectly)
-      printf("Successfully sorted!\n");
+    if (sortedCorrectly){
+      printf("Successfully sorted!\n"); 
+      printf(argv[1]);
+      printf("\n"); 
+      printf("%d", totalProcesses);
+    }
     else
       printf("Error: data not sorted.\n");
     CALI_MARK_END(correctness_check);
     
-    print_array(allData, arraySize * totalProcesses);
+    //print_array(allData, arraySize * totalProcesses);
 
     free(allData);
 
@@ -241,7 +250,7 @@ int main(int argc, char *argv[]) {
     adiak::value("Datatype", "float");
     adiak::value("SizeOfDatatype", sizeof(float));
     adiak::value("InputSize", totalValues);
-    adiak::value("InputType", sortOptions[sortType-1]);
+    adiak::value("InputType", type_of_input);
     adiak::value("num_procs", totalProcesses);
     adiak::value("group_num", 1);
     adiak::value("implementation_source", "Online");
