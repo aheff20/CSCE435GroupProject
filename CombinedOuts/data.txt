@@ -18,10 +18,11 @@ bitonic_random_weak = [nan, 0.187122, 0.286722, 0.386323, 0.543355, 0.700388, 2.
 
 // CUDA STRONG SCALING WITH 1048576 VALUES 
 cuda_strong_x = [64, 128, 256, 512, 1024]
-sample_random_strong = [0.000188, 0.000198, 0.000203, 0.000211, 0.000186]
+sample_random_strong = [32.269811, 9.622032, 4.627912, 3.13172, 3.171731]
 bubble_random_strong = [0.932938, 1.264807, 0.948661, 0.896486, 0.887458, 0.448709, 0.475548]
 merge_random_strong =[0.804571, 0.791038, 0.776759, 0.83607, 0.775691]
-bitonic_random_strong = [0.000962, 0.001216, 0.001182, 0.000953, 0.001199]
+bitonic_random_strong = [0.618623, 0.380076, 0.660015, 0.655819, 0.375530]
+
 
 
 // CUDA WEAK SCALING WITH 2048 VALUES PER BLOCK
