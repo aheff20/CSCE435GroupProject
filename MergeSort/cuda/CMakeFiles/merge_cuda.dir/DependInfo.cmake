@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CUDA
-  "/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu" "/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/merge_cuda.dir/merge_cuda.cu.o"
+  "/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/merge_2.cu" "/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/merge_cuda.dir/merge_2.cu.o"
   )
 set(CMAKE_CUDA_COMPILER_ID "NVIDIA")
 

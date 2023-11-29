@@ -10,7 +10,7 @@ find_package(adiak REQUIRED)
 include_directories(${CMAKE_SOURCE_DIR}/../Utils)
 
 set(SOURCE_FILES
-    merge_cuda.cu
+    merge_2.cu
     ${CMAKE_SOURCE_DIR}/../../Utils/helper_functions.cpp 
 )
 

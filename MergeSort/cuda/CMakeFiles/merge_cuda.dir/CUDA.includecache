@@ -156,7 +156,7 @@ stdbool.h
 typesCaliper.h
 /scratch/group/csce435-f23/Caliper/caliper/include/caliper/typesCaliper.h
 
-/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu
+/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/merge_2.cu
 stdlib.h
 -
 stdio.h

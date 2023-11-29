@@ -6,7 +6,7 @@ inputSizes=(  	65536	262144	1048576	4194304	16777216	67108864   )
 # Array of proc  (2 4 8 16 32 64 128 256 512 1024 )  try 256 on 4 nodes.  'r' 'a' 'p'. 256 128. 's'.       4 8 16 32 64 128
 procs=( 128  )
 
-methods=('p' )
+methods=('r' )
 
 # Iterate over each input size
 for size in "${inputSizes[@]}"; do

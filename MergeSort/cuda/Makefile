@@ -123,32 +123,32 @@ merge_cuda/fast:
 	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/build
 .PHONY : merge_cuda/fast
 
-merge_cuda.o: merge_cuda.cu.o
+merge_2.o: merge_2.cu.o
 
-.PHONY : merge_cuda.o
+.PHONY : merge_2.o
 
 # target to build an object file
-merge_cuda.cu.o:
-	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/merge_cuda.cu.o
-.PHONY : merge_cuda.cu.o
+merge_2.cu.o:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/merge_2.cu.o
+.PHONY : merge_2.cu.o
 
-merge_cuda.i: merge_cuda.cu.i
+merge_2.i: merge_2.cu.i
 
-.PHONY : merge_cuda.i
+.PHONY : merge_2.i
 
 # target to preprocess a source file
-merge_cuda.cu.i:
-	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/merge_cuda.cu.i
-.PHONY : merge_cuda.cu.i
+merge_2.cu.i:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/merge_2.cu.i
+.PHONY : merge_2.cu.i
 
-merge_cuda.s: merge_cuda.cu.s
+merge_2.s: merge_2.cu.s
 
-.PHONY : merge_cuda.s
+.PHONY : merge_2.s
 
 # target to generate assembly for a file
-merge_cuda.cu.s:
-	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/merge_cuda.cu.s
-.PHONY : merge_cuda.cu.s
+merge_2.cu.s:
+	$(MAKE) -f CMakeFiles/merge_cuda.dir/build.make CMakeFiles/merge_cuda.dir/merge_2.cu.s
+.PHONY : merge_2.cu.s
 
 scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.o: scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
 
@@ -186,9 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... merge_cuda"
 	@echo "... edit_cache"
-	@echo "... merge_cuda.o"
-	@echo "... merge_cuda.i"
-	@echo "... merge_cuda.s"
+	@echo "... merge_2.o"
+	@echo "... merge_2.i"
+	@echo "... merge_2.s"
 	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.o"
 	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.i"
 	@echo "... scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.s"

@@ -49,3 +49,54 @@ gmake[1]: Leaving directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupPr
 gmake: *** [cmTC_99d29/fast] Error 2
 
 
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_0735f/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_0735f.dir/build.make CMakeFiles/cmTC_0735f.dir/build
+gmake[1]: Entering directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0735f.dir/CheckSymbolExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++     -o CMakeFiles/cmTC_0735f.dir/CheckSymbolExists.cxx.o -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_0735f
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0735f.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++       CMakeFiles/cmTC_0735f.dir/CheckSymbolExists.cxx.o  -o cmTC_0735f 
+CMakeFiles/cmTC_0735f.dir/CheckSymbolExists.cxx.o:CheckSymbolExists.cxx:function main: error: undefined reference to 'pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_0735f] Error 1
+gmake[1]: Leaving directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_0735f/fast] Error 2
+
+File /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_39914/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_39914.dir/build.make CMakeFiles/cmTC_39914.dir/build
+gmake[1]: Entering directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_39914.dir/CheckFunctionExists.cxx.o
+/sw/eb/sw/GCCcore/7.3.0/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_39914.dir/CheckFunctionExists.cxx.o -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_39914
+/sw/eb/sw/CMake/3.12.1-GCCcore-7.3.0/bin/cmake -E cmake_link_script CMakeFiles/cmTC_39914.dir/link.txt --verbose=1
+/sw/eb/sw/GCCcore/7.3.0/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_39914.dir/CheckFunctionExists.cxx.o  -o cmTC_39914 -lpthreads 
+/sw/eb/sw/binutils/2.35/bin/ld.gold: error: cannot find -lpthreads
+CMakeFiles/cmTC_39914.dir/CheckFunctionExists.cxx.o:CheckFunctionExists.cxx:function main: error: undefined reference to 'pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_39914] Error 1
+gmake[1]: Leaving directory `/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_39914/fast] Error 2
+
+

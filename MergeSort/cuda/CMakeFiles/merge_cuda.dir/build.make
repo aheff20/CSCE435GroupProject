@@ -57,17 +57,17 @@ include CMakeFiles/merge_cuda.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/merge_cuda.dir/flags.make
 
-CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: CMakeFiles/merge_cuda.dir/flags.make
-CMakeFiles/merge_cuda.dir/merge_cuda.cu.o: merge_cuda.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/merge_cuda.dir/merge_cuda.cu.o"
-	/sw/eb/sw/CUDA/9.2.88/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/merge_cuda.cu -o CMakeFiles/merge_cuda.dir/merge_cuda.cu.o
+CMakeFiles/merge_cuda.dir/merge_2.cu.o: CMakeFiles/merge_cuda.dir/flags.make
+CMakeFiles/merge_cuda.dir/merge_2.cu.o: merge_2.cu
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/merge_cuda.dir/merge_2.cu.o"
+	/sw/eb/sw/CUDA/9.2.88/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/MergeSort/cuda/merge_2.cu -o CMakeFiles/merge_cuda.dir/merge_2.cu.o
 
-CMakeFiles/merge_cuda.dir/merge_cuda.cu.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/merge_cuda.dir/merge_cuda.cu.i"
+CMakeFiles/merge_cuda.dir/merge_2.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/merge_cuda.dir/merge_2.cu.i"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
 
-CMakeFiles/merge_cuda.dir/merge_cuda.cu.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/merge_cuda.dir/merge_cuda.cu.s"
+CMakeFiles/merge_cuda.dir/merge_2.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/merge_cuda.dir/merge_2.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o: CMakeFiles/merge_cuda.dir/flags.make
@@ -85,13 +85,13 @@ CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProjec
 
 # Object files for target merge_cuda
 merge_cuda_OBJECTS = \
-"CMakeFiles/merge_cuda.dir/merge_cuda.cu.o" \
+"CMakeFiles/merge_cuda.dir/merge_2.cu.o" \
 "CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o"
 
 # External object files for target merge_cuda
 merge_cuda_EXTERNAL_OBJECTS =
 
-CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/merge_cuda.cu.o
+CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/merge_2.cu.o
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: CMakeFiles/merge_cuda.dir/build.make
 CMakeFiles/merge_cuda.dir/cmake_device_link.o: /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
@@ -111,13 +111,13 @@ CMakeFiles/merge_cuda.dir/build: CMakeFiles/merge_cuda.dir/cmake_device_link.o
 
 # Object files for target merge_cuda
 merge_cuda_OBJECTS = \
-"CMakeFiles/merge_cuda.dir/merge_cuda.cu.o" \
+"CMakeFiles/merge_cuda.dir/merge_2.cu.o" \
 "CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o"
 
 # External object files for target merge_cuda
 merge_cuda_EXTERNAL_OBJECTS =
 
-merge_cuda: CMakeFiles/merge_cuda.dir/merge_cuda.cu.o
+merge_cuda: CMakeFiles/merge_cuda.dir/merge_2.cu.o
 merge_cuda: CMakeFiles/merge_cuda.dir/scratch/user/miguelgi347/FINAL_proj/CSCE435GroupProject/Utils/helper_functions.cpp.o
 merge_cuda: CMakeFiles/merge_cuda.dir/build.make
 merge_cuda: /scratch/group/csce435-f23/Caliper/caliper/lib64/libcaliper.so.2.11.0-dev
