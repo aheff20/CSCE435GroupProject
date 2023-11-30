@@ -419,83 +419,128 @@ def sampleSort(global_array, values, rankid, local_data_size, numTasks):
 
 **MPI:**
 ```
-    quickSort():
-    //Find the partner process for the current process based on rank
-    int partnerID = find_partner()
-    float* values_to_keep = new float[local_data_size]
-    float* values_to_send = new float[local_data_size]
-    int number_of_values_to_send = 0
-    int number_of_values_to_keep = 0
+   # Function to sort in descending order
+def sortDesc(a, b):
+    # Convert pointers to float values
+    first = *((float *)a)
+    second = *((float *)b)
 
-    //Seperate the values into those to keep and those send, based on smaller/larger than the chosen pivot in the array
-    if(partnerID > rankid):
-        for (int i = 0 i < local_data_size i++) :
-            if(local_values[i] >= pivot) :
-                values_to_send[number_of_values_to_send] = local_values[i]
-                number_of_values_to_send++
-             else :
-                values_to_keep[number_of_values_to_keep] = local_values[i]
-                number_of_values_to_keep++
-     else:
-        for i in range local_data_size :
-            if(local_values[i] < pivot) :
-                values_to_send[number_of_values_to_send] = local_values[i]
-                number_of_values_to_send++
-             else :
-                values_to_keep[number_of_values_to_keep] = local_values[i]
-                number_of_values_to_keep++
+    # Compare and return appropriate values for descending order
+    if first < second:
+        return 1
+    elif first > second:
+        return -1
+    else:
+        return 0
 
-    global_values_to_send[partnerID] = number_of_values_to_send
-    //Synchronize all processes to ensure that all have completed their partitioning before proceeding.
-    MPI_Barrier(MPI_COMM_WORLD)
-    float* values_to_recv = new float[global_values_to_send[rankid]]
-    // Synchronize all processes again before starting the exchange of values.
-    MPI_Barrier(MPI_COMM_WORLD)
-    //Send the partitioned values to the partner process.
-    MPI_Send(values_to_send, number_of_values_to_send, MPI_FLOAT, partnerID, 0, MPI_COMM_WORLD)
-    //Receive the partitioned values from the partner process.
-    MPI_Recv(values_to_recv, global_values_to_send[rankid], MPI_FLOAT, partnerID, MPI_COMM_WORLD, MPI_STATUS_IGNORE)
-    float* new_local_values = new float[global_values_to_send[rankid] + number_of_values_to_keep]
+# Function to sort in ascending order
+def sortAsc(a, b):
+    # Convert pointers to float values
+    first = *((float *)a)
+    second = *((float *)b)
 
-    //Merge the received values and the values to keep into a new array for further sorting.
-    for i in range global_values_to_send[rankid]:
-        new_local_values[i] = values_to_recv[i]
+    # Compare and return appropriate values for ascending order
+    if first < second:
+        return -1
+    elif first > second:
+        return 1
+    else:
+        return 0
 
-    for i in range number_of_values_to_keep:
-        new_local_values[i + global_values_to_send[rankid]] = values_to_keep[i]
+# Function to exchange and sort data between processes
+def exchangeAndSort(data, count, proc1, proc2, descOrder, seqNo):
+    # Only proceed if the current process is one of the specified processes
+    if processId != proc1 and processId != proc2:
+        return
 
-    // Synchronize all processes to ensure all exchanges are complete before proceeding.
-    MPI_Barrier(MPI_COMM_WORLD)
-    //Recursively call quickSort to continue sorting the newly formed array.
-    quickSort(new_local_values, global_values_to_send[rankid] + number_of_values_to_keep, pivot, rankid)
+    # Allocate temporary storage and copy data into it
+    tempData = allocate_array(count * sizeof(float))
+    memcpy(tempData, data, count * sizeof(float))
 
-main():
-    global_values_to_send = (int*)malloc(numTasks * sizeof(int))    
-    // Initialize the MPI environment.
-    MPI_Init(&argc,&argv)
-    //Get the current process's ID within the group of processes
-    MPI_Comm_rank(MPI_COMM_WORLD,&rankid)
-    //Get the total number of processes running in parallel.
-    MPI_Comm_size(MPI_COMM_WORLD,&numTasks)
+    # Determine the other process involved in the exchange
+    otherProc = proc1 if proc1 == processId else proc2
 
-    int local_data_size = data_size / numTasks
-    float *local_values = (float*)malloc(local_data_size * sizeof(float))
-    array_fill_random_no_seed(local_values, local_data_size)
-    //Ensure all processes have completed data initialization before proceeding.
-    MPI_Barrier(MPI_COMM_WORLD)
-    float pivot
-    // Process 0 select the first pivot and then broadcast to each of the other processes
-    if (rankid == 0) :  
-        pivot = select_pivot(local_values, local_data_size)
-    MPI_Bcast(pivot, 1, MPI_FLOAT, 0, MPI_COMM_WORLD)
-    MPI_Barrier(MPI_COMM_WORLD)
-    quickSort(local_values, local_data_size, pivot, 1, rankid)
-    MPI_Finalize()
+    # Exchange data between the two processes
+    if proc1 == processId:
+        mpi_send(data, count, MPI_FLOAT, otherProc, seqNo)
+        mpi_recv(&tempData[count], count, MPI_FLOAT, otherProc, seqNo)
+    else:
+        mpi_recv(&tempData[count], count, MPI_FLOAT, otherProc, seqNo)
+        mpi_send(data, count, MPI_FLOAT, otherProc, seqNo)
+
+    # Sort the combined data in the specified order
+    if descOrder:
+        qsort(tempData, count * 2, sizeof(float), sortDesc)
+    else:
+        qsort(tempData, count * 2, sizeof(float), sortAsc)
+
+    # Copy the sorted data back into the original array
+    if proc1 == processId:
+        memcpy(data, tempData, count * sizeof(float))
+    else:
+        memcpy(data, &tempData[count], count * sizeof(float))
+
+# Function to perform bitonic merge sort
+def bitonicMergeSort(data, count):
+    # Allocate temporary storage for sorting
+    tempData = allocate_array(count * 2 * sizeof(float))
+
+    # Initialize variables for the sorting process
+    logN = totalProcesses
+    powerOf2 = 2
+    seqNo = 0
+
+    # Main sorting loop
+    for i in range(1, logN > 1):
+        powerOf2j = powerOf2
+        for j in range(i, 0, -1):
+            seqNo += 1
+            # Perform sorting and data exchange among processes
+            for proc in range(0, totalProcesses, powerOf2j):
+                for k in range(powerOf2j // 2):
+                    exchangeAndSort(data, count, proc + k, proc + k + powerOf2j // 2, (proc + k) % (powerOf2 * 2) >= powerOf2, seqNo)
+            powerOf2j //= 2
+        powerOf2 *= 2
+        logN //= 2
+
+    # Free the temporary storage
+    free(tempData)
+
+# Main function to execute the bitonic sort
+def main(argc, argv):
+    # Initialize MPI environment
+    mpi_init(argc, argv)
+    totalProcesses = mpi_comm_size(MPI_COMM_WORLD)
+    processId = mpi_comm_rank(MPI_COMM_WORLD)
+    hostName, nameLen = mpi_get_processor_name()
+
+    # Parse command line arguments for total values and sort type
+    totalValues = atoi(argv[1])
+    sortType = atoi(argv[2])
+    arraySize = totalValues // totalProcesses
+
+    # Calculate the starting index for the current process
+    start = processId * arraySize
+    # Create an array of data to sort
+    data = createArray(arraySize, start, sortType)
+
+    # Perform the bitonic merge sort
+    bitonicMergeSort(data, arraySize)
+
+    # Gather sorted data at the root process
+    if processId == 0:
+        allData = allocate_array(arraySize * totalProcesses * sizeof(float))
+
+    mpi_gather(data, arraySize, MPI_FLOAT, allData, arraySize, MPI_FLOAT, 0)
+
+    # Free allocated memory at the root process
+    if processId == 0:
+        free(allData)
 ```
 **CUDA:**
 ```
-// CUDA function to perform a step in the bitonic sort algorithm
-__global__ void bitonic_sort_step {
+// CUDA function to perform the organization of ascending/descending bitonic sequences step in the bitonic sort algorithm
+__global__ void bitonic_sort_step:
     // This function computes a step in the bitonic sort algorithm
     // It is designed to run on the GPU
 
@@ -504,19 +549,16 @@ __global__ void bitonic_sort_step {
     ixj = i XOR j;
 
     // Perform the comparison and possibly swap elements
-    if (ixj > i) {
-        if ((i AND k) == 0 and dev_values[i] > dev_values[ixj]) {
-            // Swap for ascending order
+    if (ixj > i):
+        if ((i AND k) == 0 and dev_values[i] > dev_values[ixj]):
+            // Swap for an ascending bitonic sequence
             swap(dev_values[i], dev_values[ixj]);
-        } else if ((i AND k) != 0 and dev_values[i] < dev_values[ixj]) {
-            // Swap for descending order
+         else if ((i AND k) != 0 and dev_values[i] < dev_values[ixj]):
+            // Swap for a descending bitonic sequence
             swap(dev_values[i], dev_values[ixj]);
-        }
-    }
-}
 
 // Function to sort an array using the bitonic sort algorithm
-function bitonic_sort() {
+function bitonic_sort():
     // Allocate memory on the GPU and copy data from the host
     cudaMalloc(dev_values, size);
     cudaMemcpy(dev_values, values, size, hostToDevice);
@@ -526,12 +568,10 @@ function bitonic_sort() {
     threads = (THREADS, 1);
 
     // Perform the bitonic sort
-    for k = 2 to NUM_VALS step k <<= 1 {
-        for j = k>>1 to 0 step j=j>>1 {
+    (for k = 2 to NUM_VALS step k <<= 1):
+        (for j = k>>1 to 0 step j=j>>1):
             // Launch the bitonic sort step kernel
             bitonic_sort_step<<<blocks, threads>>>(dev_values, j, k);
-        }
-    }
 
     // Synchronize CUDA device to ensure all tasks are completed
     cudaDeviceSynchronize();
@@ -544,7 +584,7 @@ function bitonic_sort() {
 }
 
 // Main function
-main {
+main():
     // Initialize parameters like THREADS, NUM_VALS, and BLOCKS
     THREADS = parseInteger(argv[1]);
     NUM_VALS = parseInteger(argv[2]);
@@ -556,7 +596,6 @@ main {
 
     // Sort the array
     bitonic_sort(values);
-}
 ```
 
 For each algorithm and architecture, the code will test the performance of the sorting algorithm, the performance of the communication used, strong and weak scaling, etc. Algorithms implemented with MPI on each core will follow the master/worker organization, and will look something like:
