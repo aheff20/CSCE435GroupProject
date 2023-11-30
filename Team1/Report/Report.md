@@ -926,23 +926,50 @@ Each algorithm will have different inputs and be tested at different scales to s
 
 ---
 
-### Analysis
+## Analysis
 
-#### Effect of input type
-In all of our algorithms, we see that the input type does not dramatically increase the average time it takes to sort the overall array. This is because the way in which we each implemented our algorithms, regardless of how it is sorted at the beginning, the algorithms still go through the entire array, making comparisons and swapping values as they would with random inputs. Perhaps we could have added more checks into our algorithm to save time if the array was already sorted, but that was overlooked in the original implementation.
+### Sample Sort
+#### MPI
+The sample sort mpi implementation works very well when it comes to scaling. For strong scaling, the graphs show that as the overall amount of processes increases, the time it takes for the computation, communication, and main parts of the program decreases. This becomes much more apparent when the Input Size of the array is much larger, as there is more opportunity for the algorithm to parallelize the work. 
 
-#### Strong scaling in MPI
-All of our algorithms tend to scale well when the problem size is kept constant. At this point, we tested strong scaling for our MPI implementations by having them sort 2^20 values with different numbers of processors. The graphs indicate that as the number of processors grows exponentially, the time it takes to sort increases linearly, which is expected for strong scaling.
+When it comes to weak scaling, we can see that as the amount of values per processes stays the same, the average time it takes processes to complete stays generally stable. However, due to some overhead in terms of communication, as you add more and more processors, the time that it takes to process the same amount of values increases a little bit.
 
-As expected, the computational time ('comp') decreases as we increase the number of processes, aligning with the principles of strong scaling where the work per process reduces, ideally leading to a reduction in execution time. However, our communication times ('comm', 'comm_small', 'comm_large') do not consistently reduce and sometimes increase, likely due to overhead from more intensive inter-process communication. This suggests that while our algorithmic optimizations are effective to a point, there are diminishing returns on scaling due to inherent communication complexities that become prominent as the number of processes grows.
+Along with this, we can see that the input type (reverse, random, perturbed, or sorted) does have some role in the overall efficiency of the implementation. Random inputs tend to take a bit longer to process than sorted or perturbed inputs. 
 
-#### Strong scaling in CUDA
-For our CUDA implementations, we had our algorithms sort 2^16 values with different numbers of threads per block. We can see that as the number of threads increases, the time it takes to sort the array tends to decrease faster and faster. This is because more threads are working together to piece together the sorted array.
+The speed up in MPI is very good. As the input size increases, you can see that the program speeds up as would be expected, almost linearlly. 
 
-#### Weak scaling in MPI
-All of our algorithms also responded well to weak scaling. To test this for MPI, we kept at a constant 128 processors and increased the input size of the array. As the input size grew exponentially, the time it took to sort the array did not grow as exponentially.
+#### CUDA
+The cuda implementation of sample sort does not perform just as well as the mpi version. Due to some memory constraints on the GPU, the cuda implemenation was not able to scale to as many values as the mpi version was. However, the trends are still the same and very much evident. Strong scaling works very well for the cuda implementation, as adding more processors decreases the amount of time it takes to sort the array.
 
-The graphs show that as the input size grows, the computation time ('comp') generally increases, which is a natural outcome given the larger data set each process is handling. However, we observe that the communication times ('comm', 'comm_small', 'comm_large') also increase, suggesting that our implementations experience some inefficiency due to communication overhead. This implies that while our algorithms scale with increasing data sizes, there are challenges to address in terms of communication efficiency to improve scalability further.
+Weak scaling follows the same trend as it did in MPI, as adding more and more blocks computing the same amount of values causes a slight increase in the amount of time it takes due to communication concerns. 
 
-#### Weak scaling in CUDA
-For CUDA, we kept at a constant 2048 threads and increased the input size of the array. As the Input size increases exponentially, the time it takes to sort the array also increases, however much slower. The biggest bottleneck found in CUDA implementations are parts of the program that are implemented on the CPU and parts that are implmemented on the GPU. For example, in the Sample Sort CUDA implementation, comp_small is always implemented on the CPU while the comp_large portions are implemented in the GPU. This causes a bottleneck for the overall algorithm and makes comp_small generally higher than comp_large because the speed of the CPU is significantly less than that of the GPU.
+The input type can show as well that random inputs tend to perform the worst out of all.
+
+The speed up in CUDA is also very good, however could be improved by sorting larger input sizes. However, the speed up plot still shows that as the input size increases, so too does the speedup.
+
+---
+### Merge Sort
+#### MPI
+
+
+#### CUDA
+
+---
+### Odd-Even Sort
+#### MPI
+
+
+#### CUDA
+
+---
+### Bitonic Sort
+#### MPI
+
+
+#### CUDA
+
+---
+### Combined Plots
+Our combined plots show that generally sample sort performs the best. Due to the overall nature of the sample sort algorithm, there are less bottlenecks in the implementation. The only sequential portions occur when sorting a small amount of samples and communicating those back to every process. Beyond that, everything is usually pretty parallel. In contrast, merge, odd-even, and bitonic sort tend to have a few more bottlenecks in their implementation and thus perform slightly worse than sample. 
+
+All implementations tend to have pretty similar weak scaling trends, while sample sort demonstrates much better strong scaling. 
