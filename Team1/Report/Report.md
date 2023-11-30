@@ -957,9 +957,14 @@ The speed up in CUDA is also very good, however could be improved by sorting lar
 ---
 ### Odd-Even Sort
 #### MPI
+The MPI implementation of bubble sort, contrary to expectations, reveals significant inefficiencies and scaling issues. Strong scaling indicates an initial decrease in computation time with added processors, but generally suffers from inherent flaws in inter-processor communication and suggests that there may be severe limitations in parallelization due to communication overheads. In weak scaling, a consistent increase in time with the addition of more processors is observed. This aligns with the expected outcome when dealing with larger data volumes, yet the steepness of this increase is indicative of the algorithm's poor scalability and ineffectiveness in handling large datasets efficiently.
 
+The speedup presents a disappointing picture, starting with an increase but deteriorating when more processors and larger inputs are added. This trend underscores the algorithm's intrinsic limitations and the inefficacy of MPI implementation in overcoming these hurdles, particularly for bubble sort, which is inherently poorly suited for parallelization.
 
 #### CUDA
+The CUDA implementation of bubble sort further underscores the unsuitability of this algorithm for parallel environments. Strong scaling shows a general decrease in time with more threads, but an unexpected anomaly at 512 threads suggests significant CUDA-specific inefficiencies or fundamental limitations of the bubble sort algorithm itself. This variance highlights the implementation's inability to leverage CUDA's full potential, possibly due to suboptimal utilization of threads or memory management issues.
+
+In weak scaling, a rising trend in time with an increase in blocks points towards significant synchronization and communication costs, further hampering the efficiency of the sort. The speedup fluctuates, likely a result of uneven workload distribution among threads or poor implementation, exacerbating the inherent inefficiencies of bubble sort in a parallel setup. This fluctuation likely implies that the CUDA implementation fails to effectively manage thread workloads, leading to delays and inefficiencies that should ideally be minimized in a well-optimized parallel algorithm.
 
 ---
 ### Bitonic Sort
