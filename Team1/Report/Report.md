@@ -581,7 +581,7 @@ function bitonic_sort():
 
     // Free GPU memory
     cudaFree(dev_values);
-}
+
 
 // Main function
 main():
@@ -674,19 +674,87 @@ Each algorithm will have different inputs and be tested at different scales to s
 - Weak scaling (increase problem size, increase number of processors)
 - Number of threads in a block on the GPU 
 
-
-## 3. Project implementation
-**STATUS:**
-
-As of right now, our group has implemented and tested CUDA and MPI algorithms for MergeSort, BubbleSort, and SampleSort.
-
 ## 4. Performance Evaluation
 
 ### Sample Sort Performance:
 #### MPI Implementation:
-![]()
+![mpi_perturbed_speed.png](./Graphs/Sample/mpi_perturbed_speed.png)
+![mpi_random_speed.png](./Graphs/Sample/mpi_random_speed.png)
+![mpi_reverse_speed.png](./Graphs/Sample/mpi_reverse_speed.png)
+![mpi_sorted_speed.png](./Graphs/Sample/mpi_sorted_speed.png)
+![mpi_strong_comm_16.png](./Graphs/Sample/mpi_strong_comm_16.png)
+![mpi_strong_comm_18.png](./Graphs/Sample/mpi_strong_comm_18.png)
+![mpi_strong_comm_20.png](./Graphs/Sample/mpi_strong_comm_20.png)
+![mpi_strong_comm_22.png](./Graphs/Sample/mpi_strong_comm_22.png)
+![mpi_strong_comm_24.png](./Graphs/Sample/mpi_strong_comm_24.png)
+![mpi_strong_comm_26.png](./Graphs/Sample/mpi_strong_comm_26.png)
+![mpi_strong_comm_28.png](./Graphs/Sample/mpi_strong_comm_28.png)
+![mpi_strong_comp_16.png](./Graphs/Sample/mpi_strong_comp_16.png)
+![mpi_strong_comp_18.png](./Graphs/Sample/mpi_strong_comp_18.png)
+![mpi_strong_comp_20.png](./Graphs/Sample/mpi_strong_comp_20.png)
+![mpi_strong_comp_22.png](./Graphs/Sample/mpi_strong_comp_22.png)
+![mpi_strong_comp_24.png](./Graphs/Sample/mpi_strong_comp_24.png)
+![mpi_strong_comp_26.png](./Graphs/Sample/mpi_strong_comp_26.png)
+![mpi_strong_comp_28.png](./Graphs/Sample/mpi_strong_comp_28.png)
+![mpi_strong_main_16.png](./Graphs/Sample/mpi_strong_main_16.png)
+![mpi_strong_main_18.png](./Graphs/Sample/mpi_strong_main_18.png)
+![mpi_strong_main_20.png](./Graphs/Sample/mpi_strong_main_20.png)
+![mpi_strong_main_22.png](./Graphs/Sample/mpi_strong_main_22.png)
+![mpi_strong_main_24.png](./Graphs/Sample/mpi_strong_main_24.png)
+![mpi_strong_main_26.png](./Graphs/Sample/mpi_strong_main_26.png)
+![mpi_strong_main_28.png](./Graphs/Sample/mpi_strong_main_28.png)
+![mpi_weak_comm_perturbed.png](./Graphs/Sample/mpi_weak_comm_perturbed.png)
+![mpi_weak_comm_random.png](./Graphs/Sample/mpi_weak_comm_random.png)
+![mpi_weak_comm_reverse.png](./Graphs/Sample/mpi_weak_comm_reverse.png)
+![mpi_weak_comm_sorted.png](./Graphs/Sample/mpi_weak_comm_sorted.png)
+![mpi_weak_comp_perturbed.png](./Graphs/Sample/mpi_weak_comp_perturbed.png)
+![mpi_weak_comp_random.png](./Graphs/Sample/mpi_weak_comp_random.png)
+![mpi_weak_comp_reverse.png](./Graphs/Sample/mpi_weak_comp_reverse.png)
+![mpi_weak_comp_sorted.png](./Graphs/Sample/mpi_weak_comp_sorted.png)
+![mpi_weak_main_perturbed.png](./Graphs/Sample/mpi_weak_main_perturbed.png)
+![mpi_weak_main_random.png](./Graphs/Sample/mpi_weak_main_random.png)
+![mpi_weak_main_reverse.png](./Graphs/Sample/mpi_weak_main_reverse.png)
+![mpi_weak_main_sorted.png](./Graphs/Sample/mpi_weak_main_sorted.png)
 
 #### Cuda Implementation:
+
+![cuda_perturbed_speed.png](./Graphs/Sample/cuda_perturbed_speed.png)
+![cuda_random_speed.png](./Graphs/Sample/cuda_random_speed.png)
+![cuda_reverse_speed.png](./Graphs/Sample/cuda_reverse_speed.png)
+![cuda_sorted_speed.png](./Graphs/Sample/cuda_sorted_speed.png)
+![cuda_strong_comm_15.png](./Graphs/Sample/cuda_strong_comm_15.png)
+![cuda_strong_comm_16.png](./Graphs/Sample/cuda_strong_comm_16.png)
+![cuda_strong_comm_17.png](./Graphs/Sample/cuda_strong_comm_17.png)
+![cuda_strong_comm_18.png](./Graphs/Sample/cuda_strong_comm_18.png)
+![cuda_strong_comm_19.png](./Graphs/Sample/cuda_strong_comm_19.png)
+![cuda_strong_comm_20.png](./Graphs/Sample/cuda_strong_comm_20.png)
+![cuda_strong_comm_21.png](./Graphs/Sample/cuda_strong_comm_21.png)
+![cuda_strong_comp_15.png](./Graphs/Sample/cuda_strong_comp_15.png)
+![cuda_strong_comp_16.png](./Graphs/Sample/cuda_strong_comp_16.png)
+![cuda_strong_comp_17.png](./Graphs/Sample/cuda_strong_comp_17.png)
+![cuda_strong_comp_18.png](./Graphs/Sample/cuda_strong_comp_18.png)
+![cuda_strong_comp_19.png](./Graphs/Sample/cuda_strong_comp_19.png)
+![cuda_strong_comp_20.png](./Graphs/Sample/cuda_strong_comp_20.png)
+![cuda_strong_comp_21.png](./Graphs/Sample/cuda_strong_comp_21.png)
+![cuda_strong_main_15.png](./Graphs/Sample/cuda_strong_main_15.png)
+![cuda_strong_main_16.png](./Graphs/Sample/cuda_strong_main_16.png)
+![cuda_strong_main_17.png](./Graphs/Sample/cuda_strong_main_17.png)
+![cuda_strong_main_18.png](./Graphs/Sample/cuda_strong_main_18.png)
+![cuda_strong_main_19.png](./Graphs/Sample/cuda_strong_main_19.png)
+![cuda_strong_main_20.png](./Graphs/Sample/cuda_strong_main_20.png)
+![cuda_strong_main_21.png](./Graphs/Sample/cuda_strong_main_21.png)
+![cuda_weak_perturbed_comm.png](./Graphs/Sample/cuda_weak_perturbed_comm.png)
+![cuda_weak_perturbed_comp.png](./Graphs/Sample/cuda_weak_perturbed_comp.png)
+![cuda_weak_perturbed_main.png](./Graphs/Sample/cuda_weak_perturbed_main.png)
+![cuda_weak_random_comm.png](./Graphs/Sample/cuda_weak_random_comm.png)
+![cuda_weak_random_comp.png](./Graphs/Sample/cuda_weak_random_comp.png)
+![cuda_weak_random_main.png](./Graphs/Sample/cuda_weak_random_main.png)
+![cuda_weak_reverse_comm.png](./Graphs/Sample/cuda_weak_reverse_comm.png)
+![cuda_weak_reverse_comp.png](./Graphs/Sample/cuda_weak_reverse_comp.png)
+![cuda_weak_reverse_main.png](./Graphs/Sample/cuda_weak_reverse_main.png)
+![cuda_weak_sorted_comm.png](./Graphs/Sample/cuda_weak_sorted_comm.png)
+![cuda_weak_sorted_comp.png](./Graphs/Sample/cuda_weak_sorted_comp.png)
+![cuda_weak_sorted_main.png](./Graphs/Sample/cuda_weak_sorted_main.png)
 
 ---
 ### Merge Sort Performance:
@@ -705,6 +773,85 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 #### MPI Implementation:
 
 #### Cuda Implementation:
+
+---
+### Combined Graphs:
+#### MPI Implementation:
+![combine_mpi_speedup_perturbed_comm.png](./Graphs/Combined/combine_mpi_speedup_perturbed_comm.png)
+![combine_mpi_speedup_perturbed_comp.png](./Graphs/Combined/combine_mpi_speedup_perturbed_comp.png)
+![combine_mpi_speedup_perturbed_main.png](./Graphs/Combined/combine_mpi_speedup_perturbed_main.png)
+![combine_mpi_speedup_random_comm.png](./Graphs/Combined/combine_mpi_speedup_random_comm.png)
+![combine_mpi_speedup_random_comp.png](./Graphs/Combined/combine_mpi_speedup_random_comp.png)
+![combine_mpi_speedup_random_main.png](./Graphs/Combined/combine_mpi_speedup_random_main.png)
+![combine_mpi_speedup_reverse_comm.png](./Graphs/Combined/combine_mpi_speedup_reverse_comm.png)
+![combine_mpi_speedup_reverse_comp.png](./Graphs/Combined/combine_mpi_speedup_reverse_comp.png)
+![combine_mpi_speedup_reverse_main.png](./Graphs/Combined/combine_mpi_speedup_reverse_main.png)
+![combine_mpi_speedup_sorted_comm.png](./Graphs/Combined/combine_mpi_speedup_sorted_comm.png)
+![combine_mpi_speedup_sorted_comp.png](./Graphs/Combined/combine_mpi_speedup_sorted_comp.png)
+![combine_mpi_speedup_sorted_main.png](./Graphs/Combined/combine_mpi_speedup_sorted_main.png)
+![combine_mpi_strong_perturbed_comm.png](./Graphs/Combined/combine_mpi_strong_perturbed_comm.png)
+![combine_mpi_strong_perturbed_comp.png](./Graphs/Combined/combine_mpi_strong_perturbed_comp.png)
+![combine_mpi_strong_perturbed_main.png](./Graphs/Combined/combine_mpi_strong_perturbed_main.png)
+![combine_mpi_strong_random_comm.png](./Graphs/Combined/combine_mpi_strong_random_comm.png)
+![combine_mpi_strong_random_comp.png](./Graphs/Combined/combine_mpi_strong_random_comp.png)
+![combine_mpi_strong_random_main.png](./Graphs/Combined/combine_mpi_strong_random_main.png)
+![combine_mpi_strong_reverse_comm.png](./Graphs/Combined/combine_mpi_strong_reverse_comm.png)
+![combine_mpi_strong_reverse_comp.png](./Graphs/Combined/combine_mpi_strong_reverse_comp.png)
+![combine_mpi_strong_reverse_main.png](./Graphs/Combined/combine_mpi_strong_reverse_main.png)
+![combine_mpi_strong_sorted_comm.png](./Graphs/Combined/combine_mpi_strong_sorted_comm.png)
+![combine_mpi_strong_sorted_comp.png](./Graphs/Combined/combine_mpi_strong_sorted_comp.png)
+![combine_mpi_strong_sorted_main.png](./Graphs/Combined/combine_mpi_strong_sorted_main.png)
+![combine_mpi_weak_perturbed_comm.png](./Graphs/Combined/combine_mpi_weak_perturbed_comm.png)
+![combine_mpi_weak_perturbed_comp.png](./Graphs/Combined/combine_mpi_weak_perturbed_comp.png)
+![combine_mpi_weak_perturbed_main.png](./Graphs/Combined/combine_mpi_weak_perturbed_main.png)
+![combine_mpi_weak_random_comm.png](./Graphs/Combined/combine_mpi_weak_random_comm.png)
+![combine_mpi_weak_random_comp.png](./Graphs/Combined/combine_mpi_weak_random_comp.png)
+![combine_mpi_weak_random_main.png](./Graphs/Combined/combine_mpi_weak_random_main.png)
+![combine_mpi_weak_reverse_comm.png](./Graphs/Combined/combine_mpi_weak_reverse_comm.png)
+![combine_mpi_weak_reverse_comp.png](./Graphs/Combined/combine_mpi_weak_reverse_comp.png)
+![combine_mpi_weak_reverse_main.png](./Graphs/Combined/combine_mpi_weak_reverse_main.png)
+![combine_mpi_weak_sorted_comm.png](./Graphs/Combined/combine_mpi_weak_sorted_comm.png)
+![combine_mpi_weak_sorted_comp.png](./Graphs/Combined/combine_mpi_weak_sorted_comp.png)
+![combine_mpi_weak_sorted_main.png](./Graphs/Combined/combine_mpi_weak_sorted_main.png)
+
+
+#### Cuda Implementation
+![combine_cuda_speedup_perturbed_comm.png](./Graphs/Combined/combine_cuda_speedup_perturbed_comm.png)
+![combine_cuda_speedup_perturbed_comp.png](./Graphs/Combined/combine_cuda_speedup_perturbed_comp.png)
+![combine_cuda_speedup_perturbed_main.png](./Graphs/Combined/combine_cuda_speedup_perturbed_main.png)
+![combine_cuda_speedup_random_comm.png](./Graphs/Combined/combine_cuda_speedup_random_comm.png)
+![combine_cuda_speedup_random_comp.png](./Graphs/Combined/combine_cuda_speedup_random_comp.png)
+![combine_cuda_speedup_random_main.png](./Graphs/Combined/combine_cuda_speedup_random_main.png)
+![combine_cuda_speedup_reverse_comm.png](./Graphs/Combined/combine_cuda_speedup_reverse_comm.png)
+![combine_cuda_speedup_reverse_comp.png](./Graphs/Combined/combine_cuda_speedup_reverse_comp.png)
+![combine_cuda_speedup_reverse_main.png](./Graphs/Combined/combine_cuda_speedup_reverse_main.png)
+![combine_cuda_speedup_sorted_comm.png](./Graphs/Combined/combine_cuda_speedup_sorted_comm.png)
+![combine_cuda_speedup_sorted_comp.png](./Graphs/Combined/combine_cuda_speedup_sorted_comp.png)
+![combine_cuda_speedup_sorted_main.png](./Graphs/Combined/combine_cuda_speedup_sorted_main.png)
+![combine_cuda_strong_perturbed_comm.png](./Graphs/Combined/combine_cuda_strong_perturbed_comm.png)
+![combine_cuda_strong_perturbed_comp.png](./Graphs/Combined/combine_cuda_strong_perturbed_comp.png)
+![combine_cuda_strong_perturbed_main.png](./Graphs/Combined/combine_cuda_strong_perturbed_main.png)
+![combine_cuda_strong_random_comm.png](./Graphs/Combined/combine_cuda_strong_random_comm.png)
+![combine_cuda_strong_random_comp.png](./Graphs/Combined/combine_cuda_strong_random_comp.png)
+![combine_cuda_strong_random_main.png](./Graphs/Combined/combine_cuda_strong_random_main.png)
+![combine_cuda_strong_reverse_comm.png](./Graphs/Combined/combine_cuda_strong_reverse_comm.png)
+![combine_cuda_strong_reverse_comp.png](./Graphs/Combined/combine_cuda_strong_reverse_comp.png)
+![combine_cuda_strong_reverse_main.png](./Graphs/Combined/combine_cuda_strong_reverse_main.png)
+![combine_cuda_strong_sorted_comm.png](./Graphs/Combined/combine_cuda_strong_sorted_comm.png)
+![combine_cuda_strong_sorted_comp.png](./Graphs/Combined/combine_cuda_strong_sorted_comp.png)
+![combine_cuda_strong_sorted_main.png](./Graphs/Combined/combine_cuda_strong_sorted_main.png)
+![combine_cuda_weak_perturbed_comm.png](./Graphs/Combined/combine_cuda_weak_perturbed_comm.png)
+![combine_cuda_weak_perturbed_comp.png](./Graphs/Combined/combine_cuda_weak_perturbed_comp.png)
+![combine_cuda_weak_perturbed_main.png](./Graphs/Combined/combine_cuda_weak_perturbed_main.png)
+![combine_cuda_weak_random_comm.png](./Graphs/Combined/combine_cuda_weak_random_comm.png)
+![combine_cuda_weak_random_comp.png](./Graphs/Combined/combine_cuda_weak_random_comp.png)
+![combine_cuda_weak_random_main.png](./Graphs/Combined/combine_cuda_weak_random_main.png)
+![combine_cuda_weak_reverse_comm.png](./Graphs/Combined/combine_cuda_weak_reverse_comm.png)
+![combine_cuda_weak_reverse_comp.png](./Graphs/Combined/combine_cuda_weak_reverse_comp.png)
+![combine_cuda_weak_reverse_main.png](./Graphs/Combined/combine_cuda_weak_reverse_main.png)
+![combine_cuda_weak_sorted_comm.png](./Graphs/Combined/combine_cuda_weak_sorted_comm.png)
+![combine_cuda_weak_sorted_comp.png](./Graphs/Combined/combine_cuda_weak_sorted_comp.png)
+![combine_cuda_weak_sorted_main.png](./Graphs/Combined/combine_cuda_weak_sorted_main.png)
 
 ---
 
