@@ -415,7 +415,7 @@ def sampleSort(global_array, values, rankid, local_data_size, numTasks):
 
 
 ```
-**Quick Sort:**
+**Bitonic Sort:**
 
 **MPI:**
 ```
@@ -494,56 +494,69 @@ main():
 ```
 **CUDA:**
 ```
-    __device__ partition():
-//This function swaps elements based on the chosen partition point (the median)
-    while (left <= right):
-        while (data[left] < pivot) left++
-        while (data[right] > pivot) right--
-        if (left <= right):
-             swap(left,right)
-            left++
-            right--
-//Returns left index to be used as a partition
-    return left
+// CUDA function to perform a step in the bitonic sort algorithm
+__global__ void bitonic_sort_step {
+    // This function computes a step in the bitonic sort algorithm
+    // It is designed to run on the GPU
 
+    // Calculate the indices for the elements to be compared
+    i = threadIdx + blockDim * blockIdx;
+    ixj = i XOR j;
 
-__device__ quicksort_recursive():
-//Sorts elements between the specific section of the overall array
-    if (left < right):
-        float pivot = data[(left + right) / 2]
-    //Partition the array around the pivot and get the index of the pivot after partition.
-        int pivot_index = partition(data, left, right, pivot)
-    //Recursively sort the elements before the pivot index.
-        if (pivot_index > left):
-            quicksort_recursive(data, left, pivot_index - 1)
-    //Recursively sort the elements after the pivot index.
-        if (pivot_index < right):
-            quicksort_recursive(data, pivot_index + 1, right)
-
-//Global function to launch quicksort on the GPU
-__global__ quicksort_kernel():
-//Calculate the index of the current element using the block index, block dimension, and thread index to ensure each thread gets a unique index in the array.
-    int i = left + blockIdx.x * blockDim.x + threadIdx.x
-    if (i <= right):
-        quicksort_recursive(data, left, right)
-
-// Host function to set up the quicksort on the GPU, including memory allocation and data transfer
-quicksort():
-    float *d_data
-    cudaMalloc(&d_data, n * sizeof(float))
-    cudaMemcpy(d_data, data, n * sizeof(float), cudaMemcpyHostToDevice)
-
-//Launches execution of quicksort on the GPU with received data
-    quicksort_kernel<<<BLOCKS, THREADS>>>(d_data, 0, n - 1)
-    cudaDeviceSynchronize()
-    cudaMemcpy(data, d_data, n * sizeof(float), cudaMemcpyDeviceToHost)
-    cudaFree(d_data)
+    // Perform the comparison and possibly swap elements
+    if (ixj > i) {
+        if ((i AND k) == 0 and dev_values[i] > dev_values[ixj]) {
+            // Swap for ascending order
+            swap(dev_values[i], dev_values[ixj]);
+        } else if ((i AND k) != 0 and dev_values[i] < dev_values[ixj]) {
+            // Swap for descending order
+            swap(dev_values[i], dev_values[ixj]);
+        }
+    }
 }
 
-main:
-    float *values = (float*) malloc(NUM_VALS * sizeof(float))
-    array_fill(values, NUM_VALS)
-    quicksort(values, NUM_VALS)
+// Function to sort an array using the bitonic sort algorithm
+function bitonic_sort() {
+    // Allocate memory on the GPU and copy data from the host
+    cudaMalloc(dev_values, size);
+    cudaMemcpy(dev_values, values, size, hostToDevice);
+
+    // Set up CUDA blocks and threads
+    blocks = (BLOCKS, 1);
+    threads = (THREADS, 1);
+
+    // Perform the bitonic sort
+    for k = 2 to NUM_VALS step k <<= 1 {
+        for j = k>>1 to 0 step j=j>>1 {
+            // Launch the bitonic sort step kernel
+            bitonic_sort_step<<<blocks, threads>>>(dev_values, j, k);
+        }
+    }
+
+    // Synchronize CUDA device to ensure all tasks are completed
+    cudaDeviceSynchronize();
+
+    // Copy the sorted data back to the host
+    cudaMemcpy(values, dev_values, size, deviceToHost);
+
+    // Free GPU memory
+    cudaFree(dev_values);
+}
+
+// Main function
+main {
+    // Initialize parameters like THREADS, NUM_VALS, and BLOCKS
+    THREADS = parseInteger(argv[1]);
+    NUM_VALS = parseInteger(argv[2]);
+    BLOCKS = NUM_VALS / THREADS;
+
+    // Allocate memory for the array and fill it with data
+    values = allocateArray(NUM_VALS);
+    fill_array(values);
+
+    // Sort the array
+    bitonic_sort(values);
+}
 ```
 
 For each algorithm and architecture, the code will test the performance of the sorting algorithm, the performance of the communication used, strong and weak scaling, etc. Algorithms implemented with MPI on each core will follow the master/worker organization, and will look something like:
