@@ -23,8 +23,8 @@ The project will include the following algorithms and architectures:
 - Merge Sort (MPI)
 - Bubble Sort (CUDA)
 - Bubble Sort (MPI)
-- Quick Sort (CUDA)
-- Quick Sort (MPI)
+- Bitonic Sort (CUDA)
+- Bitonic Sort (MPI)
 - Sample Sort (CUDA)
 - Sample Sort (MPI)
 
@@ -630,83 +630,31 @@ As of right now, our group has implemented and tested CUDA and MPI algorithms fo
 
 ## 4. Performance Evaluation
 
-## MPI
-### Strong Scaling our Algorithms
+### Sample Sort Performance:
+#### MPI Implementation:
+![]()
 
-#### Randomized Input Graphs:
-
-![sample_mpi_strong_random](./Graphs/sample_mpi_strong_random.png) ![bubble_mpi_strong_random](./Graphs/bubble_mpi_strong_random.png) ![merge_mpi_strong_random](./Graphs/mergesort_mpi_strong_random.png) ![bitonic_mpi_strong_random](./Graphs/bitonic_mpi_strong_random.png)
-
-#### Sorted Input Graphs:
-
-![sample_mpi_strong_sorted](./Graphs/sample_mpi_strong_sorted.png) ![bubble_mpi_strong_sorted](./Graphs/bubble_mpi_strong_sorted.png) ![merge_mpi_strong_sorted](./Graphs/mergesort_mpi_strong_sorted.png) ![bitonic_mpi_strong_sorted](./Graphs/bitonic_mpi_strong_sorted.png)
-
-#### Reverse Sorted Input Graphs:
-
-![sample_mpi_strong_reverse](./Graphs/sample_mpi_strong_reverse.png) ![bubble_mpi_strong_reverse](./Graphs/bubble_mpi_strong_reverse.png) ![merge_mpi_strong_reverse](./Graphs/mergesort_mpi_strong_reverse.png) ![bitonic_mpi_strong_reverse](./Graphs/bitonic_mpi_strong_reverse.png)
-
-#### 1%Perturbed Input Graphs:
-
-![sample_mpi_strong_perturbed](./Graphs/sample_mpi_strong_perturbed.png) ![bubble_mpi_strong_perturbed](./Graphs/bubble_mpi_strong_perturbed.png) ![merge_mpi_strong_perturbed](./Graphs/mergesort_mpi_strong_perturbed.png) ![bitonic_mpi_strong_perturbed](./Graphs/bitonic_mpi_strong_perturbed.png)
-
-
-
-
-
-### Weak Scaling our Algorithms
-
-#### Randomized Input Graphs:
-
-![sample_mpi_weak_random](./Graphs/sample_mpi_weak_random.png) ![bubble_mpi_weak_random](./Graphs/bubble_mpi_weak_random.png) ![merge_mpi_weak_random](./Graphs/mergesort_mpi_weak_random.png) ![bitonic_mpi_weak_random](./Graphs/bitonic_mpi_weak_random.png)
-
-#### Sorted Input Graphs:
-
-![sample_mpi_weak_sorted](./Graphs/sample_mpi_weak_sorted.png) ![bubble_mpi_weak_sorted](./Graphs/bubble_mpi_weak_sorted.png) ![merge_mpi_weak_sorted](./Graphs/mergesort_mpi_weak_sorted.png) ![bitonic_mpi_weak_sorted](./Graphs/bitonic_mpi_weak_sorted.png)
-
-#### Reverse Sorted Input Graphs:
-
-![sample_mpi_weak_reverse](./Graphs/sample_mpi_weak_reverse.png) ![bubble_mpi_weak_reverse](./Graphs/bubble_mpi_weak_reverse.png) ![merge_mpi_weak_reverse](./Graphs/mergesort_mpi_weak_reverse.png) ![bitonic_mpi_weak_reverse](./Graphs/bitonic_mpi_weak_reverse.png)
-
-#### 1%Perturbed Input Graphs:
-
-![sample_mpi_weak_perturbed](./Graphs/sample_mpi_weak_perturbed.png) ![bubble_mpi_weak_perturbed](./Graphs/bubble_mpi_weak_perturbed.png) ![merge_mpi_weak_perturbed](./Graphs/mergesort_mpi_weak_perturbed.png) ![bitonic_mpi_weak_perturbed](./Graphs/bitonic_mpi_weak_perturbed.png)
-
+#### Cuda Implementation:
 
 ---
-## CUDA
+### Merge Sort Performance:
+#### MPI Implementation:
 
-### Strong Scaling our Algorithms
+#### Cuda Implementation:
 
-##### Randomized Input Graphs:
-![sample_cuda_strong_random](./Graphs/sample_cuda_strong_random.png) ![bubble_cuda_strong_random](./Graphs/bubble_cuda_strong_random.png) ![merge_cuda_strong_random](./Graphs/mergesort_cuda_strong_random.png)
+---
+### Odd-Even Sort Performance:
+#### MPI Implementation:
 
-##### Sorted Input Graphs:
-![sample_cuda_strong_sorted](./Graphs/sample_cuda_strong_sorted.png) ![bubble_cuda_strong_sorted](./Graphs/bubble_cuda_strong_sorted.png) ![merge_cuda_strong_sorted](./Graphs/mergesort_cuda_strong_sorted.png)
+#### Cuda Implementation:
 
-##### Reverse Sorted Input Graphs:
-![sample_cuda_strong_reverse](./Graphs/sample_cuda_strong_reverse.png) ![bubble_cuda_strong_reverse](./Graphs/bubble_cuda_strong_reverse.png) ![merge_cuda_strong_reverse](./Graphs/mergesort_cuda_strong_reverse.png)
+---
+### Bitonic Sort Performance:
+#### MPI Implementation:
 
-##### 1% Perturbed Input Graphs:
-![sample_cuda_strong_perturbed](./Graphs/sample_cuda_strong_perturbed.png) ![bubble_cuda_strong_perturbed](./Graphs/bubble_cuda_strong_perturbed.png) ![merge_cuda_strong_perturbed](./Graphs/mergesort_cuda_strong_perturbed.png)
+#### Cuda Implementation:
 
-
-### Weak Scaling our Algorithms
-
-##### Randomized Input Graphs:
-![sample_cuda_weak_random](./Graphs/sample_cuda_weak_random.png) ![bubble_cuda_weak_random](./Graphs/bubble_cuda_weak_random.png) ![merge_cuda_weak_random](./Graphs/mergesort_cuda_weak_random.png)
-
-##### Sorted Input Graphs:
-![sample_cuda_weak_sorted](./Graphs/sample_cuda_weak_sorted.png) ![bubble_cuda_weak_sorted](./Graphs/bubble_cuda_weak_sorted.png) ![merge_cuda_weak_sorted](./Graphs/mergesort_cuda_weak_sorted.png)
-
-##### Reverse Sorted Input Graphs:
-![sample_cuda_weak_reverse](./Graphs/sample_cuda_weak_reverse.png) ![bubble_cuda_weak_reverse](./Graphs/bubble_cuda_weak_reverse.png) ![merge_cuda_weak_reverse](./Graphs/mergesort_cuda_weak_reverse.png)
-
-##### 1% Perturbed Input Graphs:
-![sample_cuda_weak_perturbed](./Graphs/sample_cuda_weak_perturbed.png) ![bubble_cuda_weak_perturbed](./Graphs/bubble_cuda_weak_perturbed.png) ![merge_cuda_weak_perturbed](./Graphs/mergesort_cuda_weak_perturbed.png)
-
-
-
-
+---
 
 ### Analysis
 

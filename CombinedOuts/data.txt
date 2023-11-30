@@ -23,8 +23,6 @@ bubble_random_strong = [0.932938, 1.264807, 0.948661, 0.896486, 0.887458, 0.4487
 merge_random_strong =[0.804571, 0.791038, 0.776759, 0.83607, 0.775691]
 bitonic_random_strong = [0.618623, 0.380076, 0.660015, 0.655819, 0.375530]
 
-
-
 // CUDA WEAK SCALING WITH 2048 VALUES PER BLOCK
 cuda_weak_x = [64, 128, 256, 512, 1024]
 sample_random_weak = [0.00017, 0.000158, 0.000152, 0.000211, 0.000235]
