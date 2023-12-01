@@ -759,8 +759,92 @@ Each algorithm will have different inputs and be tested at different scales to s
 ---
 ### Merge Sort Performance:
 #### MPI Implementation:
+![MergeSort_MPI_comm_Sorting_1048576_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comm_Sorting_1048576_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comm_Sorting_16777216_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comm_Sorting_16777216_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comm_Sorting_262144_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comm_Sorting_262144_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comm_Sorting_268435456_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comm_Sorting_268435456_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comm_Sorting_4194304_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comm_Sorting_4194304_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comm_Sorting_65536_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comm_Sorting_65536_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comm_Sorting_67108864_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comm_Sorting_67108864_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comp_large_Sorting_1048576_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comp_large_Sorting_1048576_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comp_large_Sorting_16777216_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comp_large_Sorting_16777216_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comp_large_Sorting_262144_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comp_large_Sorting_262144_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comp_large_Sorting_268435456_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comp_large_Sorting_268435456_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comp_large_Sorting_4194304_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comp_large_Sorting_4194304_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comp_large_Sorting_65536_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comp_large_Sorting_65536_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_comp_large_Sorting_67108864_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_comp_large_Sorting_67108864_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_main_Sorting_1048576_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_main_Sorting_1048576_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_main_Sorting_16777216_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_main_Sorting_16777216_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_main_Sorting_262144_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_main_Sorting_262144_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_main_Sorting_268435456_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_main_Sorting_268435456_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_main_Sorting_4194304_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_main_Sorting_4194304_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_main_Sorting_65536_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_main_Sorting_65536_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_main_Sorting_67108864_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_MPI_main_Sorting_67108864_Values_Avg_time_rank_STRONG.png)
+![MergeSort_MPI_perturbed_Input_comm_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_perturbed_Input_comm_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_perturbed_Input_comp_large_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_perturbed_Input_comp_large_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_perturbed_Input_comp_large_Speed-up.png](./Graphs/Merge/MergeSort_MPI_perturbed_Input_comp_large_Speed-up.png)
+![MergeSort_MPI_perturbed_Input_main_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_perturbed_Input_main_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_random_Input_comm_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_random_Input_comm_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_random_Input_comp_large_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_random_Input_comp_large_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_random_Input_comp_large_Speed-up.png](./Graphs/Merge/MergeSort_MPI_random_Input_comp_large_Speed-up.png)
+![MergeSort_MPI_random_Input_main_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_random_Input_main_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_reverse_Input_comm_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_reverse_Input_comm_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_reverse_Input_comp_large_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_reverse_Input_comp_large_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_reverse_Input_comp_large_Speed-up.png](./Graphs/Merge/MergeSort_MPI_reverse_Input_comp_large_Speed-up.png)
+![MergeSort_MPI_reverse_Input_main_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_reverse_Input_main_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_sorted_Input_comm_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_sorted_Input_comm_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_sorted_Input_comp_large_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_sorted_Input_comp_large_Avg_time_rank_WEAK.png)
+![MergeSort_MPI_sorted_Input_comp_large_Speed-up.png](./Graphs/Merge/MergeSort_MPI_sorted_Input_comp_large_Speed-up.png)
+![MergeSort_MPI_sorted_Input_main_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_MPI_sorted_Input_main_Avg_time_rank_WEAK.png)
 
 #### Cuda Implementation:
+
+![MergeSort_CUDA_comm_Sorting_1048576_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_1048576_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_131072_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_131072_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_16777216_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_16777216_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_2097152_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_2097152_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_262144_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_262144_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_32768_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_32768_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_4194304_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_4194304_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_524288_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_524288_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_65536_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_65536_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comm_Sorting_67108864_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comm_Sorting_67108864_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_1048576_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_1048576_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_131072_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_131072_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_16777216_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_16777216_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_2097152_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_2097152_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_262144_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_262144_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_32768_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_32768_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_4194304_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_4194304_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_524288_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_524288_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_65536_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_65536_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_comp_large_Sorting_67108864_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_comp_large_Sorting_67108864_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_1048576_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_1048576_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_131072_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_131072_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_16777216_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_16777216_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_2097152_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_2097152_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_262144_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_262144_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_32768_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_32768_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_4194304_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_4194304_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_524288_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_524288_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_65536_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_65536_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_main_Sorting_67108864_Values_Avg_time_rank_STRONG.png](./Graphs/Merge/MergeSort_CUDA_main_Sorting_67108864_Values_Avg_time_rank_STRONG.png)
+![MergeSort_CUDA_perturbed_Input_comm_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_perturbed_Input_comm_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_perturbed_Input_comp_large_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_perturbed_Input_comp_large_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_perturbed_Input_main_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_perturbed_Input_main_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_perturbed_Input_main_Speed-up.png](./Graphs/Merge/MergeSort_CUDA_perturbed_Input_main_Speed-up.png)
+![MergeSort_CUDA_random_Input_comm_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_random_Input_comm_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_random_Input_comp_large_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_random_Input_comp_large_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_random_Input_main_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_random_Input_main_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_random_Input_main_Speed-up.png](./Graphs/Merge/MergeSort_CUDA_random_Input_main_Speed-up.png)
+![MergeSort_CUDA_reverse_Input_comm_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_reverse_Input_comm_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_reverse_Input_comp_large_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_reverse_Input_comp_large_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_reverse_Input_main_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_reverse_Input_main_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_reverse_Input_main_Speed-up.png](./Graphs/Merge/MergeSort_CUDA_reverse_Input_main_Speed-up.png)
+![MergeSort_CUDA_sorted_Input_comm_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_sorted_Input_comm_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_sorted_Input_comp_large_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_sorted_Input_comp_large_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_sorted_Input_main_Avg_time_rank_WEAK.png](./Graphs/Merge/MergeSort_CUDA_sorted_Input_main_Avg_time_rank_WEAK.png)
+![MergeSort_CUDA_sorted_Input_main_Speed-up.png](./Graphs/Merge/MergeSort_CUDA_sorted_Input_main_Speed-up.png)
 
 ---
 ### Odd-Even Sort Performance:
@@ -951,8 +1035,32 @@ The speed up in CUDA is also very good, however could be improved by sorting lar
 ### Merge Sort
 #### MPI
 
+Looking at the strong scaling graphs the time decreases as the number of processors increases, indicating good strong scaling; however, the curves start to flatten, pointing to diminishing returns with higher processor counts.
+Different input types affect the scaling differently, with reverse and perturbed inputs showing less improvement from added processors, likely due to the increased complexity in handling these data distributions in a parallel environment.
+
+
+Looking at weak scaling graphs we can see that execution times increase with the number of processors/workload, which is atypical for weak scaling, as ideally, we expect the time to remain constant if the workload per processor is unchanged.
+This trend suggests that there is a significant communication overhead or that the algorithm is not distributing the workload evenly as the processor count increases which is due to the nature of mergesort which inhibits its weak scaling ability.
+
+Looking at the speed up grpahs for MPI, the speed up increases for all input sizes as the number of processors is augmented, showing the expected acceleration from parallel computation.
+However, the largest dataset shows a speed-up that peaks and then declines, suggesting a limit to scalability or an overhead in communication for this input size when too many processors are used which is a fault due to the nature of merge sort needing accumalte the final step and send it back to the master proccess which creates a bottleneck.
 
 #### CUDA
+
+The weak scaling graphs indicates that the execution time stays consistent as the number of threads increases,
+which suggests that the algorithm maintains efficiency across different thread counts.
+Despite varying input sizes, the flat lines across the number of threads imply that the workload per thread remains constant, reflecting that the merge sort implementation might be bandwidth-bound rather than compute-bound on the CUDA architecture.
+
+
+The strong scaling graph shows strong scaling behavior for some input types, where the execution time decreases as the number of threads increases, particularly noticeable with reverse and random input types, indicating that the algorithm benefits from additional threads up to a point.
+The fluctuation in execution time, especially with the reverse-sorted and perturbed inputs, suggests that while the algorithm scales with added resources, it may face challenges with certain data arrangements that affect its parallel efficiency.
+
+
+The speed-up increases as the number of threads grows, indicates that the CUDA implementation scales with more resource
+but there is a point of diminishing returns where additional processors do not yield significant improvements as can be seen by the stagnant nature of the graphs.
+Larger input sizes tend to show a clearer benefit from increased parallelism for different input types, as seen in the steeper slopes for larger data sets.
+We believe it comes at fault of the seqeuntial bottle neck in merge sort for the final step, therefore giving us similar perfromance across the board for input value sizes.
+
 
 ---
 ### Odd-Even Sort
